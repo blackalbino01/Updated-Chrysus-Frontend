@@ -1,0 +1,1 @@
+export { PrimaryGradientText } from './primary-gradient-text';
