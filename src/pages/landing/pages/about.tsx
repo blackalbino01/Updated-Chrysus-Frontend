@@ -7,7 +7,7 @@ export const About = () => {
 		<>
 			<div className="mt-3"></div>
 			<div className="row d-flex flex-row justify-content-center">
-				<div className="col-8 text-center">
+				<div className="col-9 text-center">
 					<p style={{ fontWeight: "600", fontSize: "44px", color: "#846424", marginTop: "100px", marginBottom: "60px" }}>About US </p>
 					<div className="mt-5"></div>
 					<p className="text-white">
@@ -23,12 +23,10 @@ export const About = () => {
 						components of the Project Chrysus ecosystem will be re-distributed to CGT token holders who
 						actively participate in the stability mechanisms of the platform.
 					</p>
-				</div>
-			</div>
-			<div className="text-center" >
-				< p style={{ fontWeight: "600", fontSize: "44px", color: "#846424", marginTop: "100px", marginBottom: "60px" }}>Our Roadmap</p>
-				<div className=" text-center">
-					<img src={Picture} alt="picture.png" />
+					< p style={{ fontWeight: "600", fontSize: "44px", color: "#846424", marginTop: "100px", marginBottom: "60px" }}>Our Roadmap</p>
+					<div className=" text-center">
+						<img style={{ width: "100%" }} src={Picture} alt="picture.png" />
+					</div>
 				</div>
 			</div>
 

@@ -15,7 +15,7 @@ export const Ecosystem = () => {
 				Chrysus tokens, which are used to govern the network, 
 				incentivize user engagement, and facilitate transactions within the platform.
 				</p>
-				<img src={EcosystemImage} />
+				<img style={{ width: "60%" }} src={EcosystemImage} />
 			</div>
 		</>
 	);
