@@ -5,7 +5,6 @@ export const Ecosystem = () => {
 	return (
 		<>
 			<div className="d-flex flex-column align-items-center justify-content-center">
-				<div className="mt-5"></div>
 				{/* <PrimaryGradientText>Ecosystem</PrimaryGradientText> */}
 				<p style={{ fontWeight: "600", fontSize: "44px", color: "#846424", marginTop: "100px", marginBottom: "60px" }}>Ecosystem </p>
 				<p className="text-white text-center col-8">

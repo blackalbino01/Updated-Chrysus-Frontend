@@ -5,9 +5,8 @@ import Picture from "src/assets/images/picture.png"
 export const About = () => {
 	return (
 		<>
-			<div className="mt-5"></div>
+			<div className="mt-3"></div>
 			<div className="row d-flex flex-row justify-content-center">
-				<div className="mt-5"></div>
 				<div className="col-8 text-center">
 					<p style={{ fontWeight: "600", fontSize: "44px", color: "#846424", marginTop: "100px", marginBottom: "60px" }}>About US </p>
 					<div className="mt-5"></div>
