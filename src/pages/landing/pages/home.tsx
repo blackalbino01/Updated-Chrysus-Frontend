@@ -243,11 +243,10 @@ export const Home = () => {
 			<div className="row ">
 				<div className="col-12 digital-bg-animation">
 					<div className="row animation-wrapper ">
-						<div className="col-12  content p-lg-5">
+						<div className="col-14  content p-lg-5">
 							{/* Cards section */}
 							<div className="row my-5 py-4 ">
-								<div className="col-md-6 ">
-									<div className="w-100">
+								<div className="col-md-6 cards-section-fix ">
 										<LeftCard
 											title="Mint CHC"
 											text="Mint your CHC token now"
@@ -260,7 +259,6 @@ export const Home = () => {
 												/>
 											}
 										/>
-									</div>
 								</div>
 								<div className="col-md-6 cards-section-fix">
 									<RightCard
@@ -561,7 +559,7 @@ export const Home = () => {
 			<SwapModal showSwapModal={swapModal} />
 			{/* Shop Modal */}
 			<ShopModal showShopModal={shopModal} />
-		</div>
+		</div >
 	);
 };
 
@@ -575,18 +573,19 @@ interface ICardData {
 
 const LeftCard = ({ title, text, icon }: ICardData) => {
 	return (
-		<div className="row position-relative px-2 my-4 ">
-			<div className="col-15 ">
-				<div className="row mx-4">
-					<div className="col-8 my-5  mx-5" style={{ zIndex: 6 }}>
-						<div className=" d-flex flex-column mx-5  align-items-start justify-content-start">
+		<div className="row position-relative px-5 my-4 ">
+			<div className="col-12 " style={{marginLeft:"6em"}}>
+				<div className="row">
+				<div className="col-2 my-5 " style={{ zIndex: 6 }}>
+						{icon}
+					</div>
+					<div className="col-6 my-5" style={{ zIndex: 6 }}>
+						<div className=" d-flex flex-column align-items-start justify-content-start">
 							<CardTitle text={title} />
 							<CardText text={text} />
 						</div>
 					</div>
-					<div className="col-2 my-5 " style={{ zIndex: 6 }}>
-						{icon}
-					</div>
+					
 					{/* <div className="col-12 my-3 mb-3" style={{ zIndex: 6 }}>
 						<div>
 							<CardReadMore />
@@ -597,7 +596,7 @@ const LeftCard = ({ title, text, icon }: ICardData) => {
 			<div
 				className="position-absolute"
 				style={{
-					right: 10,
+					right: 25,
 					width: "80%",
 					height: "300px",
 					background: "#262522",

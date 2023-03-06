@@ -22,6 +22,7 @@ interface ITopNavProps {
 }
 
 export const TopNav = ({ links, modals }: ITopNavProps) => {
+	const [active, setActive] = useState("Home");
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [showToggler, setShowToggler] = useState<boolean>(false);
 	const toggle = () => setIsOpen(!isOpen);
@@ -117,8 +118,9 @@ export const TopNav = ({ links, modals }: ITopNavProps) => {
 								</NavItem>
 							))}
 							{links.map((link) => (
-								<NavItem className="mx-3">
-									<NavLink
+								<NavItem 
+								onClick={() => setActive(link.label)}>
+									<NavLink className={` mx-3 ${active === link.label ? "text-white" : "text-warning"}`}
 										onClick={() => navigate(link.url)}
 										style={{
 											cursor: "pointer",
