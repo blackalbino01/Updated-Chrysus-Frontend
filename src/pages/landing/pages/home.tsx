@@ -175,7 +175,7 @@ export const Home = () => {
 			<Container>
 				<div className="row my-5">
 					<div className="d-flex flex-row align-items-center justify-content-center w-100">
-						<div className="d-flex flex-column align-items-center justify-content-center w-50">
+						<div className="d-flex flex-column align-items-center justify-content-center w-100">
 							<span
 								style={{
 									fontStyle: "normal",
