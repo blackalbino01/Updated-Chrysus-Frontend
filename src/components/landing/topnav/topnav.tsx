@@ -15,6 +15,7 @@ import { CLink } from "src/types/ui";
 import Chrysus from "src/assets/icons/svg/chrysus.svg";
 import { ConnectButton, IconButton } from "src/components/buttons";
 import { ModalLink } from "src/types/ui/modal";
+import Pdf from "src/assets/pdf/whitepaper.pdf"
 
 interface ITopNavProps {
 	links: CLink[];
@@ -66,7 +67,7 @@ export const TopNav = ({ links, modals }: ITopNavProps) => {
 							<Nav navbar>
 								{links.map((link) => (
 									<NavItem>
-										<NavLink
+										<NavLink className={` ${active === link.label ? "text-white" : "text-warning"}`}
 											onClick={() => navigate(link.url)}
 											style={{
 												cursor: "pointer",
@@ -76,17 +77,35 @@ export const TopNav = ({ links, modals }: ITopNavProps) => {
 												lineHeight: "16px",
 												alignItems: "center",
 												letterSpacing: "1px",
-												color: "#FFFFFF",
+												// color: "#FFFFFF",
 											}}
 										>
 											{link.label}
 										</NavLink>
+										
 									</NavItem>
+									
 								))}
+								<NavItem>
+									<NavLink className={` text-warning`}
+									href = "#"
+									onClick={() => window.open(Pdf)}
+										style={{
+											cursor: "pointer",
+											fontStyle: "normal",
+											fontWeight: "400",
+											fontSize: "16px",
+											lineHeight: "16px",
+											alignItems: "center",
+											letterSpacing: "2px",
+										}}>
+										WhitePaper
+									</NavLink>
+								</NavItem>
 								<ConnectButton
 									className="col-12"
 									label="Connect"
-									onClick={() => {}}
+									onClick={() => { }}
 								/>
 							</Nav>
 						</Collapse>
@@ -118,8 +137,8 @@ export const TopNav = ({ links, modals }: ITopNavProps) => {
 								</NavItem>
 							))}
 							{links.map((link) => (
-								<NavItem 
-								onClick={() => setActive(link.label)}>
+								<NavItem
+									onClick={() => setActive(link.label)}>
 									<NavLink className={` mx-3 ${active === link.label ? "text-white" : "text-warning"}`}
 										onClick={() => navigate(link.url)}
 										style={{
@@ -137,8 +156,24 @@ export const TopNav = ({ links, modals }: ITopNavProps) => {
 									</NavLink>
 								</NavItem>
 							))}
+							<NavItem>
+								<NavLink className={` mx-3 text-warning`}
+								href = "#"
+								onClick={() => window.open(Pdf)}
+									style={{
+										cursor: "pointer",
+										fontStyle: "normal",
+										fontWeight: "400",
+										fontSize: "16px",
+										lineHeight: "16px",
+										alignItems: "center",
+										letterSpacing: "2px",
+									}}>
+									WhitePaper
+								</NavLink>
+							</NavItem>
 						</Nav>
-						<ConnectButton label="Connect" onClick={() => {}} />
+						<ConnectButton label="Connect" onClick={() => { }} />
 					</>
 				)}
 			</Navbar>

@@ -31,6 +31,8 @@ import ProductModalBanner from "src/assets/icons/svg/product-modal-banner.svg";
 import { Stepper } from "src/components/stepper";
 import { CToggle } from "src/components/toggles";
 
+
+
 export const Landing = () => {
 	const loanViews: IOption[] = [
 		{ value: "lend", label: "LEND" },
@@ -67,7 +69,7 @@ export const Landing = () => {
 						{ url: "about", label: "About" },
 						{ url: "services", label: "Services" },
 						{ url: "ecosystem", label: "Ecosystem" },
-						{ url: "whitepaper", label: "Whitepaper" },
+						// { url: "whitepaper", label: "Whitepaper"},
 						{ url: "faq", label: "FAQ" },
 						// { url: "contact", label: "Contact" },
 					]}
