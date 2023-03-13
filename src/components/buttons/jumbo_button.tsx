@@ -1,5 +1,8 @@
+import React from 'react'
 import { useState } from "react";
-import { Button } from "reactstrap";
+import { Button } from "react-bootstrap";
+
+
 
 interface JumboButtonProps {
 	text: string;
@@ -45,14 +48,16 @@ export const JumboButton = ({
 				}}
 			>
 				<span
-					className="jumbo-transition"
+					className="jumbo-transition "
 					style={{
 						transform: hover ? "scale(1.5)" : "scale(1)",
+
 					}}
 				>
 					{icon}
+					{text}
 				</span>
-				{text}
+				{/* {text} */}
 			</Button>
 		</div>
 	);

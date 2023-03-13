@@ -1,6 +1,7 @@
+import React from 'react';
 import { Button } from "reactstrap";
-import { Wallet } from "src/assets/icons/wallet";
-import { COLORS } from "src/assets/styles/theme";
+import { Wallet } from "../../assets/wallet";
+import { COLORS } from "../../assets/styless/theme";
 
 interface IConnectButtonProps {
 	label: string;
@@ -18,9 +19,9 @@ export const ConnectButton = ({
 		style={{
 			background:
 				"linear-gradient(153.13deg, #846424 17.05%, #EDC452 49.23%, #846424 82.83%)",
-			padding: "1px",
+			padding: "2px",
 			borderRadius: "40px",
-			marginRight:"40px"
+			marginRight:"40px",
 		}}
 	>
 		<Button
@@ -30,6 +31,9 @@ export const ConnectButton = ({
 				borderRadius: "40px",
 				background: "#262522",
 				width: "100%",
+				// width: "150px",
+				// height:"40px"
+				
 			}}
 		>
 			<span
@@ -42,7 +46,7 @@ export const ConnectButton = ({
 					letterSpacing: "1px",
 					textTransform: "uppercase",
 					color: "#846424",
-					marginLeft: "10px",
+					marginLeft: "30px",
 				}}
 			>
 				{label}
