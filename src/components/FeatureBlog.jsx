@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { pic1, SendDarkIcon } from '../assets';
+import { pic1,SendDarkIcon } from '../assets';
 import { useWindowSize } from "../hooks";
-import { PrimaryGradientButton } from "../components/buttons";
+import {PrimaryGradientButton} from "../components/buttons";
 
 const blocardList = [
     { image: pic1, image2: pic1, title: 'Five Things To Avoid In Cryptocurrency' },
@@ -55,14 +55,9 @@ const FeatureBlog = () => {
                                     <div className="col-12">
                                         <div className="row">
                                             <h1 className="text-white">Subscribe</h1>
-                                            <div className="row mt-3">
-                                                <p className="text-primary">
-                                                    Enter your email below for latest blogs and news
-                                                </p>
-                                            </div>
                                         </div>
                                         <div className="row mt-3">
-                                            <p className="text-primary">
+                                            <p style={{ color: "#846424" }}>
                                                 Enter your email below for latest blogs and news
                                             </p>
                                         </div>
