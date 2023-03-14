@@ -5,8 +5,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import NotFound from "./components/NotFound";
 import "react-toastify/dist/ReactToastify.css";
-// import About from './components/about/About';
 import About from './components/About';
+import Services from './components/Services';
+import Ecosystems from './components/Ecosystems';
+import { FAQ } from './components/Faq';
+import Footer from './components/Footer';
 
 const Home = lazy(() => import('./components/Home'));
 
@@ -39,9 +42,17 @@ const App = () => {
         </div>
         <Routes>
           <Route path="/" element={<Suspense fallback={<Loading />}><Home /></Suspense>} />
-          <Route path="/about" element={<About/>}/>
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/ecosystems" element={<Ecosystems />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+          <div className={`${styles.boxWidth}`}>
+            <Footer />
+          </div>
+        </div>
       </BrowserRouter>
 
     </div>

@@ -448,6 +448,28 @@ code {
 	-webkit-text-fill-color: transparent;
 }
 
+.services-side {
+	width: 30em;
+	height: 17em;
+  
+}
+.left-side {
+	margin-right: 3em;
+}
+.right-side {
+	margin-left: 0em;
+}
+
+ /* .services-left-top {
+ 	position: absolute;
+ 	top: -8em;
+ 	left: 17em;
+ 	width: 25em;
+ }
+ .services-left-bottom {
+ 	position: absolute;
+ } */
+
 
 
 

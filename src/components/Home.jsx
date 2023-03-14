@@ -5,7 +5,8 @@ const Hero = lazy(() => import('./Hero'));
 const Coin = lazy(() => import('./Coin'));
 const Ecosystem = lazy(() => import('./Ecosystem'));
 const FeatureBlog = lazy(() => import('./FeatureBlog'));
-const Footer = lazy(() => import('./Footer'));
+const Community = lazy(()=> import('./Community'))
+// const Footer = lazy(() => import('./Footer'));
 
 
 const Home = () => {
@@ -30,11 +31,14 @@ const Home = () => {
             <Ecosystem />
           </Suspense>
           <Suspense>
+            <Community />
+          </Suspense>         
+          <Suspense>
             <FeatureBlog />
           </Suspense>
-          <Suspense>
+          {/* <Suspense>
             <Footer />
-          </Suspense>
+          </Suspense> */}
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import {facebook, instagram, linkedin, twitter, shield, star, UmbrellaGold, SwapGold, CartGold  } from "../assets";
+import {facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold  } from "../assets";
 
 export const navLinks = [
   {
@@ -11,15 +11,15 @@ export const navLinks = [
   },
   {
     name: "Services",
-    path: '#'
+    path: '/services'
   },
   {
     name: "Ecosystem",
-    path: '#'
+    path: '/ecosystems'
   },
   {
     name: "FAQ",
-    path: '#'
+    path: '/faq'
   },
 
 ];
@@ -52,6 +52,13 @@ export const features = [
     id: "feature-3",
     icon: UmbrellaGold,
     title: "Loan with CHC",
+    content:
+      "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
+  },
+  {
+    id: "feature-4",
+    icon: LeafGold,
+    title: "Mint",
     content:
       "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
   },
@@ -95,9 +102,9 @@ export const footerLinks = [
       },
       {
         name: "Email",
-        link: "https://www.hoobank.com/become-a-partner/",
+        link: "",
         content:
-        "Email: info@secondarydao.com",
+        "Email: ",
       },
     ],
   },

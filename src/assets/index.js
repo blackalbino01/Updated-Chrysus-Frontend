@@ -26,11 +26,35 @@ import CartGold from './cart-gold.svg';
 import CCoinGold from './c-coin-gold.svg';
 import UmbrellaGold from './umbrella-gold.svg';
 import LeafGold from './leaf-gold.svg';
-import SwapGold from './swap-gold.svg'
-import Play from './play.svg'
-import SendDarkIcon from './send-dark.svg'
+import SwapGold from './swap-gold.svg';
+import Play from './play.svg';
+import SendDarkIcon from './send-dark.svg';
+import PlusWhiteIcon from './plus-white.svg';
+import XMarkWhiteIcon from './xmark-white.svg';
+import TelegramWhiteIcon from './telegram-white.svg';
+import TelegramGoldIcon from './telegram-gold.svg';
+import TwitterGoldIcon from "./twitter-gold.svg";
+import TwitterWhiteIcon from './twitter-white.svg';
+import DiscordGoldIcon from './discord-gold.svg';
+import DiscordWhiteIcon from './discord-white.svg';
+import FacebookGoldIcon from './facebook-gold.svg';
+import FacebookWhiteIcon from './facebook-white.svg';
+import Linkd from './linkd.svg';
+import Linkdin from './linkdin.svg';
 
 export {
+  Linkdin,
+  Linkd,
+  FacebookWhiteIcon,
+  FacebookGoldIcon,
+  DiscordWhiteIcon,
+  DiscordGoldIcon,
+  TwitterWhiteIcon,
+  TwitterGoldIcon,
+  TelegramGoldIcon,
+  TelegramWhiteIcon,
+  XMarkWhiteIcon,
+  PlusWhiteIcon,
   Picture,
   EcosystemImage,
   SendDarkIcon,
