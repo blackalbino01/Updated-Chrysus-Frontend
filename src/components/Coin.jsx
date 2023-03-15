@@ -1,8 +1,10 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
+import { PlayCircle } from "react-feather";
 import { features } from "../constants";
 import styles, { layout } from "../style";
 import Button from "./Button";
+import { ExplorButton } from "./buttons";
 
 const FeatureCard = ({ icon, title, content, index }) => (
   <div className={`flex flex-row p-6 rounded-[20px] ${index !== features.length - 1 ? "mb-6" : "mb-0"} feature-card`}>
@@ -23,22 +25,23 @@ const FeatureCard = ({ icon, title, content, index }) => (
 const Coin = () => (
   <section id="features" className={layout.section}>
     <div className={layout.sectionInfo}>
-      <h2  style={{ color: "#846424" }}>
-      About Chrysus Coin (CHC) <br className="sm:block hidden" />
+      <h2 style={{ color: "#846424" }}>
+        About Chrysus Coin (CHC) <br className="sm:block hidden" />
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-      Project Chrysus aims to be a fully decentralized ecosystem revolving around Chrysus Coin. 
-      Chrysus Coin (Chrysus) is an ERC20 token, deployed on the Ethereum network which is pegged 
-      to the price of gold (XAU/USD) using Decentralized Finance (DeFi) best practices. 
-      The ecosystem around Chrysus will involve a SWAP solution, a lending solution and an 
-      eCommerce integration solution allowing for the use of Chrysus outside of the DeFi 
-      ecosystem. One of the main goals of Chrysus is to not just closely follow the price of 
-      gold, but also to be a cash flow generating token. This is achieved through the Chrysus 
-      Governance Token (CGT) which will serve both 
-      as a decentralization tool for the system and as a reward tool for Chrysus token minters.
+        Project Chrysus aims to be a fully decentralized ecosystem revolving around Chrysus Coin.
+        Chrysus Coin (Chrysus) is an ERC20 token, deployed on the Ethereum network which is pegged
+        to the price of gold (XAU/USD) using Decentralized Finance (DeFi) best practices.
+        The ecosystem around Chrysus will involve a SWAP solution, a lending solution and an
+        eCommerce integration solution allowing for the use of Chrysus outside of the DeFi
+        ecosystem. One of the main goals of Chrysus is to not just closely follow the price of
+        gold, but also to be a cash flow generating token. This is achieved through the Chrysus
+        Governance Token (CGT) which will serve both
+        as a decentralization tool for the system and as a reward tool for Chrysus token minters.
       </p>
       <a target="_blank" href="https://chrysusofficial.medium.com/">
-        <Button styles={`mt-10`} />
+        <ExplorButton className="my-3 mb-5 " />
+        {/* <Button styles={`mt-10`} /> */}
       </a>
     </div>
 

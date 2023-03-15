@@ -21,7 +21,7 @@ import pic1 from "./pic1.jpg";
 import EcosystemImage from './ecosystem.svg'
 import Picture from './picture.png';
 
-
+import Wallets from './wallets.png';
 import CartGold from './cart-gold.svg';
 import CCoinGold from './c-coin-gold.svg';
 import UmbrellaGold from './umbrella-gold.svg';
@@ -43,6 +43,7 @@ import Linkd from './linkd.svg';
 import Linkdin from './linkdin.svg';
 
 export {
+  Wallets,
   Linkdin,
   Linkd,
   FacebookWhiteIcon,

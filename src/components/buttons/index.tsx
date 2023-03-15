@@ -5,3 +5,5 @@ export { ConnectButton } from "./connect_button"
 export { PlayTourButton } from "./play_tour_button"
 export { PrimaryGradientButton } from './primary_gradient.button'
 export { CircleExpandButton } from './circle_expand_Button'
+export { ExplorButton } from "./explorButton"
+export { ReadButton } from "./readButton"

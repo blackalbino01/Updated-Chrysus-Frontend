@@ -21,7 +21,7 @@ const Hero = () => {
 
 
         <div className="flex flex-row justify-between items-center w-full">
-          <h1 style={{ color: "#846424" }} className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100.8px] leading-[75px]">
+          <h1  className="text-gradient flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100.8px] leading-[75px]">
             Decenterlized <br className="sm:block hidden" />{" "}
             <span className="text-gradient">All-Rounder</span>{" "}
           </h1>
@@ -33,7 +33,7 @@ const Hero = () => {
 
         </div>
 
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
+        <div className="flex flex-row items-center py-[6px] px-1  rounded-[10px] mb-2">
           <img loading="lazy" src={logo} alt="discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} mt-3 ml-2`}>
             <span className="text-white">Innovative,</span> secure and smart ecosystem{" "}
@@ -119,9 +119,9 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className={`ss:hidden ${styles.flexCenter}`}>
+      {/* <div className={`ss:hidden ${styles.flexCenter}`}>
         <GetStarted />
-      </div>
+      </div> */}
     </section>
   );
 };

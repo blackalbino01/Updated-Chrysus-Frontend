@@ -49,7 +49,7 @@ export const ContentToggle = ({ title, content }: ContentToggleProps) => {
 				onExiting={onExiting}
 				onExited={onExited}
 			>
-				<div className="text-white p-3" style={{ opacity: 0.5 }}>
+				<div className="text-white" style={{ opacity: 0.5, paddingLeft: "2em", paddingBottom:"1em"}}>
 					{content}
 				</div>
 			</Collapse>
