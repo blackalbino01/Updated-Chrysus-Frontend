@@ -1,10 +1,17 @@
 import React from 'react'
 import styles from "../style";
 import { Picture } from '../assets';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const About = () => {
     return (
         <>
+            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+                <div className={`${styles.boxWidth}`}>
+                    <Navbar />
+                </div>
+            </div>
             <div className={`bg-black ${styles.padding}`}>
                 <div className={`${styles.boxWidth}`}>
                     <h1 className='text-center' style={{ color: "#846424" }}>About Us</h1>
@@ -22,6 +29,11 @@ const About = () => {
                     </a>
                     < p className='text-center' style={{ fontWeight: "600", fontSize: "44px", color: "#846424", marginTop: "100px", marginBottom: "60px" }}>Our Roadmap</p>
                     <img src={Picture} alt="picture.png" />
+                </div>
+            </div>
+            <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+                <div className={`${styles.boxWidth}`}>
+                    <Footer/>
                 </div>
             </div>
         </>

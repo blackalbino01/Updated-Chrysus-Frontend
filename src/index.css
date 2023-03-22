@@ -471,6 +471,12 @@ code {
  } */
 
 
+ .show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  right: 0 !important;
+}
+
 
 
 
@@ -822,8 +828,6 @@ select {
 button,
 [type="button"],
 [type="reset"],
-[type="submit"] {
-  -webkit-appearance: button; }
   button:not(:disabled),
   [type="button"]:not(:disabled),
   [type="reset"]:not(:disabled),
@@ -10757,7 +10761,7 @@ section {
   @media only screen and (max-width: 575px) {
     .logo-header {
       width: 185px; } }
-/* 
+
 .top-bar {
   background-color: var(--primary);
   color: #212529;
@@ -11548,7 +11552,7 @@ section {
   0% {
     margin-top: -150px; }
   100% {
-    margin-top: 0; } } */
+    margin-top: 0; } }
 
 .dz-bnr-inr {
   height: 450px;
@@ -13708,7 +13712,7 @@ ul.grid-2 {
     -webkit-transform: translateY(-10px);
     transform: translateY(-10px); } }
 
-/* .widget_contact {
+ .widget_contact {
   position: relative;
   padding: 50px 45px 45px;
   background-size: cover;
@@ -13780,7 +13784,7 @@ ul.grid-2 {
       .list-2 li {
         width: 100% !important; } }
 
-/* widget listing*/
+ widget listing
 .wp-block-latest-posts,
 .wp-block-categories-list,
 .wp-block-archives-list,
@@ -13918,7 +13922,7 @@ ul.grid-2 {
     margin-top: 0.5rem;
     margin-left: -0.9375rem; }
 
-/*widget categories*/
+/*widget categories
 .widget_archive li ul,
 .wp-block-categories-list li ul,
 .wp-block-archives-list li ul,

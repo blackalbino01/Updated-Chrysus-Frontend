@@ -10,6 +10,8 @@ import Services from './components/Services';
 import Ecosystems from './components/Ecosystems';
 import { FAQ } from './components/Faq';
 import Footer from './components/Footer';
+import Accounts from './components/Accounts';
+
 
 const Home = lazy(() => import('./components/Home'));
 
@@ -35,24 +37,25 @@ const App = () => {
     <div className='bg-black w-full overflow-hidden'>
       <BrowserRouter>
 
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+        {/* <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
             <Navbar />
           </div>
-        </div>
+        </div> */}
         <Routes>
           <Route path="/" element={<Suspense fallback={<Loading />}><Home /></Suspense>} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/ecosystems" element={<Ecosystems />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/accounts" element={<Accounts />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+        {/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
           <div className={`${styles.boxWidth}`}>
             <Footer />
           </div>
-        </div>
+        </div> */}
       </BrowserRouter>
 
     </div>
