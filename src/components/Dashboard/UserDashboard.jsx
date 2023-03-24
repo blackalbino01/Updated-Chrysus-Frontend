@@ -28,15 +28,15 @@ const UserDashboard = () => {
                                         <div className='row text-center  mt-5'>
                                             <div className="col mb-5">
                                                 <h4>Your Balance</h4>
-                                                <span> $0.00</span>
+                                                <span className='text-white'> $0.00</span>
                                             </div>
                                             <div className="col">
                                                 <h4>Total Debt Value</h4>
-                                                <span> $52.7</span>
+                                                <span className='text-white'> $52.7</span>
                                             </div>
                                             <div className="col">
                                                 <h4>Rewards</h4>
-                                                <span> 2.86</span>
+                                                <span className='text-white'> 2.86</span>
                                             </div>
                                             <div className='text-center'>
                                                 <TokenButton />
