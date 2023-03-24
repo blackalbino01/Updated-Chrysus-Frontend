@@ -1,32 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-// import { useDispatch, useSelector } from "react-redux";
 import { MdSpaceDashboard } from "react-icons/md";
 import { RiDashboard2Fill } from "react-icons/ri";
-// import { FaAddressCard, FaTaxi } from "react-icons/fa";
-// import { GiTwirlCenter } from "react-icons/gi";
-// import { BsFillChatTextFill } from "react-icons/bs";
-// import { IoSettings } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import scrollreveal from "scrollreveal";
-// import Logos from '../../assets/logoo.png';
 import { logoo, LeafGold, SwapGold, CartGold, UmbrellaGold } from "../../assets";
-// import { logoutUser } from "../../slices/authSlice";
-// import { loadUser } from "../../slices/authSlice";
 
 export default function UserSideBar() {
-  // const dispatch = useDispatch();
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
 
-  // useEffect(() => {
-  //     dispatch(loadUser(null));
-  // }, [dispatch]);
 
   useEffect(() => {
     const sr = scrollreveal({
@@ -106,7 +94,7 @@ export default function UserSideBar() {
                     alt="leaf-gold"
                   />
                   {/* <Link to={"/login"}></Link> */}
-                  <span> Mint</span>
+                  <span> Loan</span>
                 </a>
               </li>
               <li
@@ -259,7 +247,7 @@ const Section = styled.section`
   z-index: 99;
   left: 0;
   
-  background-color: black;
+  background-color: #211f21;
   height: 100vh;
   width: 18vw;
   display: flex;
@@ -375,7 +363,7 @@ const ResponsiveNav = styled.div`
   left: 0vw;
   top: 0;
   z-index: 10;
-  background-color: black;
+  background-color: #211f21;
   height: 100vh;
   margin-top: 85px;
   width: ${({ state }) => (state ? "45%" : "0%")};

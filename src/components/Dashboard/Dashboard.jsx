@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollreveal from "scrollreveal";
-import NotAllow from "./NotAllow";
+// import NotAllow from "./NotAllow";
+import UserDashboard from "./UserDashboard";
 export default function Dashboard() {
   useEffect(() => {
     const sr = scrollreveal({
@@ -25,7 +26,8 @@ export default function Dashboard() {
   return (
     <Section>
       <div className="grid">
-        <NotAllow/>
+        {/* <NotAllow/> */}
+        <UserDashboard/>
       </div>
     </Section>
   );
@@ -35,6 +37,7 @@ const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
+  background-color: black;
   .grid {
     display: flex;
     flex-direction: column;
