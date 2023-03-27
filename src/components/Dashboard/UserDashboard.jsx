@@ -39,7 +39,7 @@ const UserDashboard = () => {
                                                 <span className='text-white'> 2.86</span>
                                             </div>
                                             <div className='text-center'>
-                                                <TokenButton />
+                                                <TokenButton  className='my-3'/>
                                             </div>
                                         </div>
                                         <div className="coin-img">

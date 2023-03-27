@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollreveal from "scrollreveal";
-// import NotAllow from "./NotAllow";
+import NotAllow from "./NotAllow";
 import UserDashboard from "./UserDashboard";
 export default function Dashboard() {
   useEffect(() => {
