@@ -44,9 +44,20 @@ import Linkdin from './linkdin.svg';
 import Dash from './dash.svg'
 import C from './c.svg'
 import Ether from './ether.svg'
-
+import ETHWhite from './eth-white.svg'
+import DAIWhite from './eth-white.svg'
+import XRPWhite from './xrp-white.svg'
+import XLMWhite from './xlm-white.svg'
+import USDTWhite from './usdt-white.svg'
+import CheckPrimary from './check-primary.svg'
 
 export {
+  CheckPrimary,
+  USDTWhite,
+  XLMWhite,
+  XRPWhite,
+  DAIWhite,
+  ETHWhite,
   Ether,
   C,
   Dash,

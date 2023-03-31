@@ -14,7 +14,7 @@ export const navLinks = [
     path: '/services'
   },
   {
-    name: "Ecosystem",
+    name: "Governance",
     path: '/ecosystems'
   },
   {

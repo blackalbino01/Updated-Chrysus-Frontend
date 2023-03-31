@@ -2,15 +2,21 @@ import React, { Suspense, lazy } from 'react'
 import styles from "./style";
 import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import NotFound from "./components/NotFound";
 import "react-toastify/dist/ReactToastify.css";
 import About from './components/About';
 import Services from './components/Services';
 import Ecosystems from './components/Ecosystems';
 import { FAQ } from './components/Faq';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import Accounts from './components/Accounts';
+import Loan from './components/Dashboard/Loan';
+import { Collateral } from './components/chcform/collateral';
+// import { Vault } from './components/chcform/vault';
+import { DAI } from './components/chcform/dai';
+import { Confirmation } from './components/chcform/confirmation';
+import Dashboard from './components/Dashboard/Dashboard';
 
 
 const Home = lazy(() => import('./components/Home'));
@@ -48,7 +54,15 @@ const App = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/ecosystems" element={<Ecosystems />} />
           <Route path="/faq" element={<FAQ />} />
-          <Route path="/accounts" element={<Accounts />} />
+
+          <Route path="/accounts" element={<Accounts />}>
+            <Route index element={<Dashboard />} />
+            <Route path="loan" element={<Loan />} >
+              <Route index element={<Collateral />} />
+              <Route path="dai" element={<DAI />} />
+              <Route path="confirmation" element={<Confirmation />} />
+            </Route>
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
         {/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>

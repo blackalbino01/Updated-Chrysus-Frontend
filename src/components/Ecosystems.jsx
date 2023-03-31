@@ -14,20 +14,23 @@ const Ecosystems = () => {
                 </div>
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
-                <p style={{ fontWeight: "600", fontSize: "44px", color: "#846424", marginTop: "70px", marginBottom: "60px" }}>Ecosystem </p>
+                <p style={{ fontWeight: "600", fontSize: "44px", color: "#846424", marginTop: "70px", marginBottom: "60px" }}>
+                    Governance </p>
                 <p className="text-white text-center col-8">
-                    The Chrysus ecosystem is a blockchain-based financial infrastructure that enables users to
-                    earn yield, borrow and lend, and access DeFi liquidity through a single, unified platform.
-                    It utilizes Chrysus Protocols to create a secure, transparent, and efficient system for
-                    exchanging digital assets and fiat currency. The Chrysus coin ecosystem is powered by
-                    Chrysus tokens, which are used to govern the network,
-                    incentivize user engagement, and facilitate transactions within the platform.
+                Chrysus is a comprehensive decentralized application (dApp) that seamlessly integrates 
+                a range of financial services, such as loans, swaps, and more, to create a unified 
+                platform for its users. The Chrysus Governance Token (CGT) empowers token holders by
+                 granting them the ability to actively participate in decision-making processes, s
+                 teering the platform's future trajectory. As an added incentive, users who engage
+                  in various services on the platform, like loans and swaps, can earn rewards in CGT, 
+                  further enhancing the decentralized 
+                experience and fostering a collaborative ecosystem driven by its community members.
                 </p>
-                <img src={EcosystemImage} />
+                {/* <img src={EcosystemImage} /> */}
             </div>
             <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
-                    <Footer/>
+                    <Footer />
                 </div>
             </div>
         </>
