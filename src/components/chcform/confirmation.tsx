@@ -25,7 +25,7 @@ export const Confirmation = () => {
 				<div className="d-flex flex-column align-items-center mt-4">
 					<H4>Confirm Vault Details</H4>
 					<div className="d-flex flex-column align-items-center justify-content-center col-5">
-						<ConfirmationItem title="Depositing" value="1ETH" />
+						<ConfirmationItem title="Depositing" value="ETH" />
 						<ConfirmationItem title="Generatingg" value="0 DAI" />
 						<ConfirmationItem title="Collateralization ratio" value="0%" />
 						<ConfirmationItem title="Liquidation ratio" value="150%" />

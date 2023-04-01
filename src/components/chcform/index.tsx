@@ -19,7 +19,7 @@ export const CHCForm = () => {
 	const steps: FormViews = [
 		{ title: "Select Collateral", widget: "" },
 		// { title: "Vault Management", widget: "vault" },
-		{ title: "Generate DAI", widget: "dai" },
+		{ title: "Generate CHC", widget: "dai" },
 		{ title: "Confirmation", widget: "confirmation" },
 	];
 	const [_selectedView, _setSelectedView] = useState<FormView>(steps[0]);
