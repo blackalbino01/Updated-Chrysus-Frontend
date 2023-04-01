@@ -16,21 +16,6 @@ import {Button} from 'react-bootstrap';
 const tabDataBlog = [
 	{ Date: 'ETH/DAI', Trade: '$152.7', Status: '$605.2', Price: '$20000', Amount: '57.6%' },
 	{ Date: 'ETH/USDT', Trade: '$152.7', Status: '$605.2', Price: '$21000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$23000', Amount: '57.6%' },
-	{ Date: 'ETH/DAI', Trade: '$152.7', Status: '$605.2', Price: '$27000', Amount: '57.6%' },
-	{ Date: 'ETH/USDT', Trade: '$152.7', Status: '$605.2', Price: '$13000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-
 ];
 
 

@@ -164,7 +164,7 @@ export default function UserSideBar() {
         <div className="logout">
           <Link >
             <FiLogOut />
-            <span className="logout">Reconnect</span>
+            <span className="logout">Disconnect</span>
           </Link>
         </div>
       </Section>
@@ -247,7 +247,7 @@ export default function UserSideBar() {
               <Link >
                 <FiLogOut />
                 <span className="logout"
-                >Reconnect</span>
+                >Disconnect</span>
               </Link>
 
             </li>
