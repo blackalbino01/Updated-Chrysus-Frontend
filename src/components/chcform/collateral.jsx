@@ -26,23 +26,8 @@ const orderTable = [
 ];
 
 const tabDataBlog = [
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$20000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$21000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$23000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$27000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$13000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-
+	{ Date: 'ETH', Trade: '%', Status: '110%', Price: '%', Amount: '0' },
+	{ Date: 'DAI', Trade: '%', Status: '110%', Price: '%', Amount: '0' }
 ];
 export const Collateral = () => {
 	const [visible, setvisible] = useState(false);
@@ -288,9 +273,9 @@ export const Collateral = () => {
 																</th> */}
 																<th></th>
 																<th>Collateral</th>
-																<th>Stability Fee</th>
+																<th>Interest Rate</th>
 																<th>LIQ Ratio</th>
-																<th>LIQ Fee</th>
+																<th>Utilization Rate</th>
 																<th>Your Balance</th>
 																{/* <th>Reward</th> */}
 																<th className="text-end">Action</th>
@@ -330,7 +315,7 @@ export const Collateral = () => {
 																				fontSize: "10px",
 																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 																				borderRadius: "40px",
-																			}}>Deposite</span>																</td>
+																			}}>Deposit</span>																</td>
 																	<td>
 																		<span class="badge cursor-pointer"
 																			style={{
@@ -343,7 +328,7 @@ export const Collateral = () => {
 																				textTransform: "uppercase",
 																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 																				borderRadius: "40px",
-																			}}>Deposite</span>
+																			}}>Borrow</span>
 																	</td>
 																</tr>
 															))}

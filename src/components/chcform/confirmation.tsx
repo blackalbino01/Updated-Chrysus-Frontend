@@ -26,12 +26,11 @@ export const Confirmation = () => {
 					<H4>Confirm Vault Details</H4>
 					<div className="d-flex flex-column align-items-center justify-content-center col-5">
 						<ConfirmationItem title="Depositing" value="1ETH" />
-						<ConfirmationItem title="Generatingg" value="200 DAI" />
+						<ConfirmationItem title="Generatingg" value="0 DAI" />
 						<ConfirmationItem title="Collateralization ratio" value="0%" />
 						<ConfirmationItem title="Liquidation ratio" value="150%" />
-						<ConfirmationItem title="Liquidation price" value="$122" />
-						<ConfirmationItem title="Liquidation fee" value="$10" />
-						<ConfirmationItem title="Stability fee" value="5.85%" />
+						<ConfirmationItem title="Liquidation price" value="$" />
+						<ConfirmationItem title="Liquidation fee" value="1%" />
 						<div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
 							<CCheckbox />
 							<Body className="m-0 mx-3">

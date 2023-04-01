@@ -9,6 +9,7 @@ import TradeTab from '../Future/TradeTab';
 import { loadBlockchain, loadWalletConnect, updatAccount } from '../../slices/web3ContractSlice';
 import { useAppDispatch, useAppSelector } from '../../reducer/store';
 import {Button} from 'react-bootstrap';
+import utils from '../../utilities';
 
 
 
@@ -143,15 +144,15 @@ const UserDashboard = () => {
 							<div className="row sp20 mb-4 align-items-center">
 								<div className="col-xxl-8 d-flex flex-wrap justify-content-between align-items-center">
 									<div className="px-2 info-group">
-										<p className="fs-18 mb-1">TOTAL DAI SUPPLY</p>
+										<p className="fs-18 mb-1">Liquidation Ratio</p>
 										<h2 className="fs-28 font-w600 text-white">
-											95,314,510 DAI
+											110%
 										</h2>
 									</div>
 									<div className="px-2 info-group">
-										<p className="fs-14 mb-1" >COLLATERALIZATION</p>
+										<p className="fs-14 mb-1" >COLLATERALIZATION Ratio</p>
 										<h3 className="fs-20 font-w600 text-success">
-											318%
+											150%
 											<svg
 												width={14}
 												height={14}
@@ -169,7 +170,7 @@ const UserDashboard = () => {
 									<div className="px-2 info-group">
 										<p className="fs-14 mb-1">ACTIVE CDPS</p>
 										<h3 className="fs-20 font-w600 text-white">
-											4,124 CDPs
+											0 CDPs
 										</h3>
 									</div>
 									{/* <div className="px-2 info-group">
@@ -244,7 +245,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													512,534
+													0
 												</div>
 											</td>
 											<td>
@@ -257,7 +258,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													$512,535
+													$0
 												</div>
 											</td>
 											{/* <td>
@@ -291,7 +292,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													0.912
+													0
 												</div>
 											</td>
 											<td>
@@ -304,7 +305,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													$9,052.86
+													$0
 												</div>
 											</td>
 											{/* <td>
@@ -338,7 +339,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													898.301
+													0
 												</div>
 											</td>
 											<td>
@@ -351,7 +352,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													$130,073
+													$0
 												</div>
 											</td>
 											{/* <td>
@@ -422,7 +423,7 @@ const UserDashboard = () => {
 											color: "#FFFFFF",
 										}}
 									>
-										1,045.07 USD
+										1,969.07 USD
 									</div>
 								</div>
 								<div className="d-flex flex-row align-items-center justify-content-between my-2">
@@ -446,7 +447,7 @@ const UserDashboard = () => {
 											color: "#FFFFFF",
 										}}
 									>
-										312.45 USD
+										1,817.66 USD
 									</div>
 								</div>
 							</div>
@@ -488,44 +489,7 @@ const UserDashboard = () => {
 															<th className="text-end">Action</th>
 														</tr>
 													</thead>
-													<tbody className='text-white'>
-														{tabDataBlog.map((item, index) => (
-															<tr key={index}>
-																<td>{item.Date}</td>
-																<td>{item.Trade}</td>
-																<td>{item.Status}</td>
-																<td>{item.Price}</td>
-																<td>{item.Amount}</td>
-																<td className="text-end">--</td>
-																<td>
-																	<span class="badge cursor-pointer"
-																		style={{
-																			height: "22px",
-																			width: "80px",
-																			color: "black",
-																			textTransform: "uppercase",
-																			fontStyle: "normal",
-																			fontWeight: "700",
-																			fontSize: "10px",
-																			background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-																			borderRadius: "40px",
-																		}}>Withdraw</span>																</td>
-																<td>
-																	<span class="badge cursor-pointer"
-																		style={{
-																			color: "black",
-																			fontStyle: "normal",
-																			height: "22px",
-																			width: "80px",
-																			fontWeight: "700",
-																			fontSize: "10px",
-																			textTransform: "uppercase",
-																			background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-																			borderRadius: "40px",
-																		}}>Repay</span>
-																</td>															</tr>
-														))}
-													</tbody>
+													
 												</table>
 												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
 													<div className="dataTables_info">
