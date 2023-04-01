@@ -28,8 +28,7 @@ export const CHCForm = () => {
 			<div className="p-4 d-flex flex-row justify-content-between align-items-center">
 				<CToggle
 					options={[
-						{ value: "lend", label: "LEND" },
-						{ value: "borrow", label: "BORROW" },
+						{ value: "loan", label: "LOAN" },
 					]}
 					setSelected={() => { }}
 				/>
