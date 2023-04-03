@@ -7,19 +7,24 @@ import { RiDashboard2Fill } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
+import { PrimaryGradientButton } from "../buttons/primary_gradient.button";
 import scrollreveal from "scrollreveal";
-import { logoo, LeafGold, SwapGold, CartGold, UmbrellaGold, USDTWhite, XLMWhite, XRPWhite, DAIWhite, ETHWhite } from "../../assets";
+import {Transferblack, logoo, LeafGold, SwapGold, CartGold, UmbrellaGold, Chrysus, USDTWhite, XLMWhite, XRPWhite, DAIWhite, ETHWhite } from "../../assets";
 import { MintButton } from "../buttons/mint";
-// import { Button } from "reactstrap";
+
 
 export default function UserSideBar() {
   // const dispatch = useDispatch();
+  // const [swapModal, setSwapModal] = useState(false);
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
   const [modalShow, setModalShow] = useState(false);
+  const [showSwapModel, setshowSwapModel] = useState(false);
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
 
+
+  // <SwapModal showSwapModal={swapModal} />
   // useEffect(() => {
   //     dispatch(loadUser(null));
   // }, [dispatch]);
@@ -111,7 +116,7 @@ export default function UserSideBar() {
                 className={currentLink === 4 ? "active" : "none"}
                 onClick={() => setCurrentLink(4)}
               >
-                <a href="#">
+                <a className="cursor-pointer" onClick={() => setshowSwapModel(true)}>
                   {/* <GiTwirlCenter /> */}
                   {/* <Link to={"/login"}></Link> */}
                   <img
@@ -121,6 +126,7 @@ export default function UserSideBar() {
                   />
                   <span>Swap</span>
                 </a>
+                <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} />
               </li>
               <li
                 className={currentLink === 5 ? "active" : "none"}
@@ -208,7 +214,7 @@ export default function UserSideBar() {
               className={currentLink === 4 ? "active" : "none"}
               onClick={() => setCurrentLink(4)}
             >
-              <a href="#">
+              <a className="cursor-pointer" onClick={() => setshowSwapModel(true)}>
                 <img
                   className="jumbo-button-icon"
                   src={SwapGold}
@@ -216,6 +222,7 @@ export default function UserSideBar() {
                 />
                 <span> Swap</span>
               </a>
+              <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} />
             </li>
             <li
               className={currentLink === 5 ? "active" : "none"}
@@ -317,7 +324,7 @@ const Mint = (props) => {
               <span style={{
                 backgroundColor: "#1A1917",
                 color: "#846424",
-              }} className="input-group-text">USD</span>
+              }} className="input-group-text">Amount</span>
             </div>
           </div>
 
@@ -333,6 +340,113 @@ const Mint = (props) => {
   )
 }
 
+
+
+const Swap = (props) => {
+
+  return (
+    <div className="">
+      <Modal className="items-center"
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        {/* closeButton */}
+        <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">
+          <div
+            style={{
+              width: "100%",
+              height: "3px",
+              background:
+                "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+              borderRadius: "40px",
+            }}></div>
+          <Modal.Title >
+            <h4 className="primary-gradient-text">Swap Chrysus Coin (CHC)</h4>
+          </Modal.Title>
+          <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
+        </Modal.Header>
+        <Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
+          <div className="sell-blance" style={{
+            color: "#846424",
+          }}>
+            <label className="form-label text-primary">Amount Available</label>
+            <span className="ml-5">CHC{""} 0.123</span>
+            <div className="input-group" style={{
+              backgroundColor: "#1A1917",
+              color: "#846424",
+            }}>
+              <input type="text" className="form-control"
+                style={{
+                  backgroundColor: "#1A1917",
+                  color: "#846424",
+                }}
+                placeholder="0.00" />
+              <span style={{
+                backgroundColor: "#1A1917",
+                color: "#846424",
+              }} className="input-group-text"><img loading="lazy" src={Chrysus} alt="meta" /></span>
+            </div>
+          </div>
+          <div className="sell-blance" style={{
+            color: "#846424",
+          }}>
+            <label className="form-label text-primary">Enter Amount</label>
+            <div className="input-group" style={{
+              backgroundColor: "#1A1917",
+              color: "#846424",
+            }}>
+              <input type="text" className="form-control"
+                style={{
+                  backgroundColor: "#1A1917",
+                  color: "#846424",
+                }}
+                placeholder="0.00" />
+              <span style={{
+                backgroundColor: "#1A1917",
+                color: "#846424",
+              }} className="input-group-text">Amount</span>
+            </div>
+          </div>
+          <div className="options">
+            <select className=''
+              style={{
+                backgroundColor: "#1A1917",
+                borderRadius: "16px",
+                color: "#846424",
+              }}
+            // onChange={(e) => setlocation(e.target.value)}
+            >
+              <option value="">Swap To</option>
+              <option value="Ethreum">ETH</option>
+              <option value="DAI">DAI</option>
+              <option value="BCH">BCH</option>
+              <option value="XRP">XRP</option>
+            </select>
+          </div>
+
+
+          <div className="text-center">
+            <PrimaryGradientButton className="mt-3">
+              <div className="d-flex flex-row align-items-center justify-content-center">
+                Swap CHC
+                <img
+                  className="mx-2"
+                  src={Transferblack}
+                  alt="transfer-black.svg"
+                />
+              </div>
+            </PrimaryGradientButton>
+          </div>
+        </Modal.Body>
+        {/* <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer> */}
+      </Modal>
+    </div>
+  )
+}
 
 const Section = styled.section`
   position: fixed;

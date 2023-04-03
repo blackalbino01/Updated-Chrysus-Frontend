@@ -50,8 +50,13 @@ import XRPWhite from './xrp-white.svg'
 import XLMWhite from './xlm-white.svg'
 import USDTWhite from './usdt-white.svg'
 import CheckPrimary from './check-primary.svg'
-
+import Chrysus from './chrysus.svg'
+import Transferblack from './transfer-black.svg'
+import home from './home.png'
 export {
+  home,
+  Transferblack,
+  Chrysus,
   CheckPrimary,
   USDTWhite,
   XLMWhite,

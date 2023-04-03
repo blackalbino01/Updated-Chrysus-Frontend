@@ -1,36 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { TokenButton } from '../buttons';
+// import { TokenButton } from '../buttons';
+// import { FiLogOut } from "react-icons/fi";
+// import FcHome from "react-icons/fc";
 import { H4 } from '../typography/h4';
-import { Dash, C, Ether } from '../../assets';
+import { Dash, C, Ether, home } from '../../assets';
 import { Tab } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import OrderTab from '../Future/OrderTab';
 import TradeTab from '../Future/TradeTab';
 import { loadBlockchain, loadWalletConnect, updatAccount } from '../../slices/web3ContractSlice';
 import { useAppDispatch, useAppSelector } from '../../reducer/store';
-import {Button} from 'react-bootstrap';
-
+import { Button } from 'react-bootstrap';
+import styled from "styled-components";
+import { BiSearch } from "react-icons/bi";
 
 
 
 const tabDataBlog = [
 	{ Date: 'ETH/DAI', Trade: '$152.7', Status: '$605.2', Price: '$20000', Amount: '57.6%' },
 	{ Date: 'ETH/USDT', Trade: '$152.7', Status: '$605.2', Price: '$21000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$23000', Amount: '57.6%' },
-	{ Date: 'ETH/DAI', Trade: '$152.7', Status: '$605.2', Price: '$27000', Amount: '57.6%' },
-	{ Date: 'ETH/USDT', Trade: '$152.7', Status: '$605.2', Price: '$13000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-	{ Date: 'ETH/BUSDT', Trade: '$152.7', Status: '$605.2', Price: '$16000', Amount: '57.6%' },
-
 ];
 
 
@@ -107,9 +95,68 @@ const UserDashboard = () => {
 	})
 	console.log(usdprice * balance)
 
+
+
+	const DisconnectWallet = async () => {
+		if (window.ethereum) {
+			if (Provider.isMetaMask) {
+				Provider._handleDisconnect();
+				web3.setProvider(null)
+			} else {
+				Provider.disconnect();
+				web3.setProvider(null)
+			}
+		}
+	};
+
 	return (
 		<>
+			<Nav>
+				<div className="title">
+					<H4>Wellcome!</H4>
+				</div>
+
+				{/* <div className="search" >
+					<BiSearch />
+					<input type="text" placeholder="Search" />
+				</div> */}
+				<div>
+					{/* <div className="dropdown" >
+						<Button
+							type="button" data-toggle="dropdown"
+							style={{
+								backgroundColor: "#1A1917",
+								borderRadius: "16px",
+								color: "#846424",
+							}}
+							className=" font-medium
+                            rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
+                            ">
+							<a>{accounts[0]?.substring(0, 7) + "...."}</a>
+						</Button>
+					</div> */}
+					<div className="" >
+						<Button
+							type="button" 
+							style={{
+								backgroundColor: "#1A1917",
+								borderRadius: "16px",
+								color: "#846424",
+							}}
+							className=" font-medium
+                            rounded-lg text-sm  text-center inline-flex items-center 
+                            ">
+							<a>{accounts[0]?.substring(0, 7) + "...."}</a>
+						</Button>
+					</div>
+				</div>
+				{/* <div>
+					<img loading="lazy" src={home} alt="discount" />
+				</div> */}
+			</Nav>
+
 			<div className="row">
+
 				<div className="col-xl-12">
 					<div className="card"
 						style={{
@@ -138,19 +185,19 @@ const UserDashboard = () => {
 								</div> */}
 								{/* <p className="mb-0 fs-12 text-black">Lorem ipsum dolor sit amet, consectetur</p> */}
 							</div>
-								{web3 ?
-									(<span class="badge cursor-pointer"
-										style={{
-											height: "26px",
-											width: "270px",
-											color: "black",
-											textTransform: "uppercase",
-											fontStyle: "normal",
-											fontWeight: "700",
-											fontSize: "10px",
-											background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-											borderRadius: "40px",
-										}}>{accounts[0]}</span>) : ("")}
+							{web3 ?
+								(<span class="badge cursor-pointer"
+									style={{
+										height: "26px",
+										width: "270px",
+										color: "black",
+										textTransform: "uppercase",
+										fontStyle: "normal",
+										fontWeight: "700",
+										fontSize: "10px",
+										background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+										borderRadius: "40px",
+									}}>{accounts[0]}</span>) : ("")}
 							{/* <TokenButton /> */}
 							{/* <Link to={"#"} className="btn btn-primary text-black light btn-rounded me-3  mb-3"><i className="las la-download scale5 me-2"></i>Get Report</Link> */}
 						</div>
@@ -617,3 +664,64 @@ const UserDashboard = () => {
 	)
 }
 export default UserDashboard;
+
+
+
+
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  z-index: 99;
+  .title {
+    h1 {
+      span {
+        margin-left: 0.5rem;
+        color: #ffc107;
+        font-family: "Normal", cursive;
+        letter-spacing: 0.2rem;
+      }
+    }
+  }
+  .search {
+    background-color: #212121;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+    border-radius: 1rem;
+    svg {
+      color: #ffc107;
+    }
+    input {
+      background-color: transparent;
+      border: none;
+      color: #ffc107;
+      font-family: "Normal", cursive;
+      letter-spacing: 0.3rem;
+      &:focus {
+        outline: none;
+      }
+      &::placeholder {
+        color: #ffc107;
+        font-family: "Permanent Marker", cursive;
+      }
+    }
+  }
+  @media screen and (min-width: 280px) and (max-width: 1080px) {
+    flex-direction: column;
+    .title {
+      h1 {
+        span {
+          display: block;
+
+          margin: 1rem 0;
+          /* letter-spacing: 0; */
+        }
+      }
+    }
+  }
+`;
+
+
+
