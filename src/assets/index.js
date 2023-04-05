@@ -53,7 +53,26 @@ import CheckPrimary from './check-primary.svg'
 import Chrysus from './chrysus.svg'
 import Transferblack from './transfer-black.svg'
 import home from './home.png'
+import pic2 from './pic2.jpg'
+import pic3 from './pic3.jpg'
+import pic4 from './pic4.jpg'
+import pic5 from './pic5.jpg'
+import pic6 from './pic6.jpg'
+import G1 from './G1.png'
+import G2 from './G2.png'
+import G3 from './G3.png'
+import G4 from './G4.png'
+
 export {
+  G3,
+  G4,
+  G2,
+  G1,
+  pic6,
+  pic2,
+  pic3,
+  pic5,
+  pic4,
   home,
   Transferblack,
   Chrysus,

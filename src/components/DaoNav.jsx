@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // import styles from "../style";
 import { Link, NavLink } from "react-router-dom";
 import { close, logoo, menu, Wallets, walet, meta, logo } from "../assets";
-import { navLinks } from "../constants";
+import { daoNavLinks } from "../constants";
 import styled from "styled-components";
 import Pdf from "../assets/pdf/whitepaper.pdf";
 import { Button } from "react-bootstrap";
@@ -13,7 +13,7 @@ import { FiLogOut } from "react-icons/fi";
 import { useAppDispatch, useAppSelector } from '../reducer/store';
 import { loadBlockchain, loadWalletConnect, updatAccount } from '../slices/web3ContractSlice';
 
-const Navbar = () => {
+const DaoNav = () => {
   const [active, setActive] = useState("Home");
   // const [isNavShow, setisNavShow] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -40,51 +40,41 @@ const Navbar = () => {
       if (Provider.isMetaMask) {
         Provider._handleDisconnect();
         web3.setProvider(null)
-      } 
-      if(Provider.connected){
+      } else {
         Provider.disconnect();
-        // Provider.close();
-        web3.setProvider(null)  
+        web3.setProvider(null)
       }
     }
   };
 
-  // console.log(Provider.connected)
-  // console.log(web3.setProvider())
-  // console.log(Provider)
+  console.log(web3)
+  console.log(Provider)
 
-  // console.log("balance:", balance)
+  console.log("balance:", balance)
   return (
     <nav className="w-full flex  py-6 justify-between items-center navbar">
       <Link to="/">
-        <img src={logoo} alt="hoobank" className="w-[200px] h-[55px]" onClick={() => setToggle(false)} />
+        <img src={logo} alt="hoobank" className="w-[200px] h-[55px]" onClick={() => setToggle(false)} />
 
       </Link>
+      <h3 >Governance</h3>
       <ul className="list-none  sm:flex hidden justify-end items-center flex-1">
-        {navLinks.map((nav, index) => (
+        {daoNavLinks.map((nav, index) => (
           <li
             key={nav.path}
             className={`font-poppins font-normal cursor-pointer text-[16px] ${active === nav.name ? "text-yellow-400" : "text-dimWhite"
-              } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+              } ${index === daoNavLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.name)}
           >
             <NavLink to={nav.path}>{nav.name}</NavLink>
             {/* style={{color: "#846424",}} */}
           </li>
         ))}
-        <li className="text-dimWhite text-[16px] font-poppins mr-4  cursor-pointer" style={{ marginLeft: "35px" }} href="#" onClick={() => window.open(Pdf)}>
-          WhitePaper
-        </li>
-        {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
-          <li className="text-dimWhite text-[16px] font-poppins cursor-pointer">
-            <NavLink to="/accounts">My Position</NavLink>
-          </li>
-        ) : ""}
         <li style={{ marginLeft: "45px" }}
           className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
           onClick={() => setShowMenu(!showMenu)}>
 
-          {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
+          {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null) ? (
             <div className="dropdown">
               <Button
                 type="button" data-toggle="dropdown"
@@ -159,56 +149,18 @@ const Navbar = () => {
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
 
-            {navLinks.map((nav, index) => (
+            {daoNavLinks.map((nav, index) => (
               <li
                 key={nav.path}
 
                 className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.name ? "text-white" : "text-dimWhite"
-                  } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
+                  } ${index === daoNavLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.name)}
               >
                 <NavLink to={nav.path} onClick={() => setToggle(prev => !prev)}>{nav.name}</NavLink>
 
               </li>
             ))}
-            <li className="text-dimWhite text-[16px] font-poppins cursor-pointer" style={{ marginTop: "20px" }} href="#" onClick={() => window.open(Pdf)}>
-              WhitePaper
-            </li>
-            {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
-              <li style={{ marginTop: "20px" }} className="text-dimWhite text-[16px] font-poppins cursor-pointer">
-                <NavLink to="/accounts">My Position</NavLink>
-              </li>
-            ) : ""}
-            {/* <li style={{ marginTop: "20px" }}>
-                <Button
-                  style={{
-                    backgroundColor: "#1A1917",
-                    borderRadius: "16px",
-                    color: "#846424",
-                  }}
-                  onClick={() => setModalShow(true)}
-                  className=" font-medium 
-          rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center ">
-                  {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null)? (
-                    <a>{accounts[0]?.substring(0, 7) + "...."}</a>
-                  ) : (
-                    <>
-                      <img src={Wallets} alt="wallets" className="w-[20px] h-[25px] mr-3" />
-                      <a style={{
-                        fontStyle: "normal",
-                        fontWeight: "700",
-                        fontSize: "12px",
-                        lineHeight: "24px",
-                        letterSpacing: "1px",
-                        textTransform: "uppercase",
-                        color: "#846424",
-                      }}>Connect</a>
-                    </>
-                  )}
-                </Button>
-                <WalletConnect show={modalShow}
-                  onHide={() => setModalShow(false)} />
-              </li> */}
             <li style={{ 
               marginTop: "20px",
               zIndex: '1',
@@ -216,7 +168,7 @@ const Navbar = () => {
               className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
               onClick={() => setShowMenu(!showMenu)}>
 
-              {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
+              {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null) ? (
                 <div className="dropdown">
                   <Button
                     type="button" data-toggle="dropdown"
@@ -282,7 +234,7 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default DaoNav;
 
 const Links = styled.div`
   color: white;
@@ -367,9 +319,6 @@ const WalletConnect = (props) => {
               }} onClick={() => handleWalletConnect()}>WalletConnect</span>
           </Link>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer> */}
       </Modal>
     </div>
   )

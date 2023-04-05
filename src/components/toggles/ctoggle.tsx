@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "reactstrap";
-import { IOption } from "src/types/ui";
+import { IOption } from "../../types/ui";
 
 interface ICToggleProps {
 	setSelected: (option: IOption) => void;

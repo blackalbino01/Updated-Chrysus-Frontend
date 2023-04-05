@@ -17,7 +17,9 @@ import { Collateral } from './components/chcform/collateral';
 import { DAI } from './components/chcform/dai';
 import { Confirmation } from './components/chcform/confirmation';
 import Dashboard from './components/Dashboard/Dashboard';
-
+import Governance from './components/governance';
+// import {DaoLandPage} from './components/DaoLandPage';
+import DaoLandPage from './components/DaoLandPage';
 
 const Home = lazy(() => import('./components/Home'));
 
@@ -62,6 +64,9 @@ const App = () => {
               <Route path="dai" element={<DAI />} />
               <Route path="confirmation" element={<Confirmation />} />
             </Route>
+          </Route>
+          <Route path="/governance" element={<Governance />}>
+          <Route index element={<DaoLandPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

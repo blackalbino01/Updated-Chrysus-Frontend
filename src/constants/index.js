@@ -23,6 +23,18 @@ export const navLinks = [
   },
 
 ];
+export const daoNavLinks = [
+  {
+    name: "Overview",
+    path: '/governance'
+  },
+  {
+    name: "Proposal",
+    path: ''
+  },
+
+
+];
 
 export const descone = [
   {
