@@ -40,9 +40,10 @@ const DaoNav = () => {
       if (Provider.isMetaMask) {
         Provider._handleDisconnect();
         web3.setProvider(null)
-      } else {
+      } 
+      if(Provider.connected){
         Provider.disconnect();
-        web3.setProvider(null)
+        web3.setProvider(null)  
       }
     }
   };
@@ -74,7 +75,7 @@ const DaoNav = () => {
           className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
           onClick={() => setShowMenu(!showMenu)}>
 
-          {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null) ? (
+          {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
             <div className="dropdown">
               <Button
                 type="button" data-toggle="dropdown"
@@ -161,14 +162,14 @@ const DaoNav = () => {
 
               </li>
             ))}
-            <li style={{ 
+            <li style={{
               marginTop: "20px",
               zIndex: '1',
             }}
               className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
               onClick={() => setShowMenu(!showMenu)}>
 
-              {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null) ? (
+              {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
                 <div className="dropdown">
                   <Button
                     type="button" data-toggle="dropdown"

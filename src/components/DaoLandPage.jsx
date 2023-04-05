@@ -22,7 +22,7 @@ const DaoLandPage = () => {
                             <div className="col-xl-12 col-sm-6">
                                 <div className="card h-auto">
                                     <div className="card-body px-0 pt-1">
-                                        {/* <Tab.Container defaultActiveKey="Navbuy">
+                                        <Tab.Container defaultActiveKey="Navbuy">
                                             <div className="">
                                                 <div className="buy-sell">
                                                     <Nav className="nav nav-tabs" eventKey="nav-tab2" role="tablist">
@@ -55,8 +55,8 @@ const DaoLandPage = () => {
                                                     </Tab.Pane>
                                                 </Tab.Content>
                                             </div>
-                                        </Tab.Container> */}
-                                        <Tab.Container defaultActiveKey="Navbuy">
+                                        </Tab.Container>
+                                        {/* <Tab.Container defaultActiveKey="Navbuy">
                                             <Tab.Content>
                                                 <Tab.Pane eventKey="Navbuy" >
                                                     <Tab.Container defaultActiveKey="Navbuymarket">
@@ -71,7 +71,6 @@ const DaoLandPage = () => {
                                                             <Tab.Pane eventKey="Navbuylimit"></Tab.Pane>
                                                         </Tab.Content>
                                                         <div className="sell-element">
-                                                            {/* <OrderForm /> */}
                                                             <h1 className='text-white'>overview</h1>
                                                         </div>
                                                     </Tab.Container>
@@ -89,13 +88,29 @@ const DaoLandPage = () => {
                                                             <Tab.Pane id="Navselllimit" ></Tab.Pane>
                                                         </Tab.Content>
                                                         <div className="sell-element">
-                                                            {/* <OrderForm /> */}
                                                             <h1 className='text-white'>purposal</h1>
                                                         </div>
                                                     </Tab.Container>
                                                 </Tab.Pane>
                                             </Tab.Content>
-                                        </Tab.Container>
+                                        </Tab.Container> */}
+
+                                        {/* <li className='mb-3'>
+                                            <div className="limit-sell"
+                                                style={{
+                                                    width: "280px"
+                                                }}
+                                            >
+                                                <Nav className="nav nav-tabs" id="nav-tab3" role="tablist">
+                                                    <Nav.Link as="button" eventKey="Navbuymarket" type="button"  >market order</Nav.Link>
+                                                    <Nav.Link as="button" eventKey="Navbuylimit" type="button" >limit order</Nav.Link>
+                                                </Nav>
+                                            </div>
+                                            <Tab.Content id="nav-tabContent2">
+                                                <Tab.Pane id="Navsellmarket" ></Tab.Pane>
+                                                <Tab.Pane id="Navselllimit" ></Tab.Pane>
+                                            </Tab.Content>
+                                        </li> */}
                                     </div>
                                 </div>
                             </div>
