@@ -19,13 +19,13 @@ export const DAI = () => {
 					}}
 				>
 					<div className="mt-5"></div>
-					<H4>Deposit Ethereum and Generate Dai</H4>
+					<H4>Deposit Ethereum and Generate CHC</H4>
 					<div className="d-flex flex-column align-items-start">
 						<P className="m-0">
-							How much ETH would you like to lock into your Position?
+							How much Collateral would you like to lock into your Position?
 						</P>
 						<Body className="m-0">
-							The amount of ETH you deposit determines how much Dai you can
+							The amount of Collateral you deposit determines how much CHC you can
 							generate.
 						</Body>
 						<div className="my-3"></div>
@@ -33,10 +33,10 @@ export const DAI = () => {
 							type="text"
 							dir="rtl"
 							rightText="ETH"
-							bottomLineText="YOUR BALANCE 5.490 ETH"
+							bottomLineText="YOUR BALANCE 0"
 						/>
 						<div className="my-3"></div>
-						<P className="m-0">How much DAI would you like to generate?</P>
+						<P className="m-0">How much CHC would you like to generate?</P>
 						<Body className="m-0">
 							Generate an amount that is safety above the liquidation ratio.
 						</Body>
@@ -44,8 +44,8 @@ export const DAI = () => {
 						<CInput
 							type="text"
 							dir="rtl"
-							rightText="ETH"
-							bottomLineText="MAX AVAILABLE TO GENERATE 343.90 DAl"
+							rightText="CHC"
+							bottomLineText="MAX AVAILABLE TO GENERATE 0 CHC"
 						/>
 					</div>
 					{/* Last sections */}
