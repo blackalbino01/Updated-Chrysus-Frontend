@@ -12,7 +12,7 @@ export const initialState = {
     status: null,
     web3: null,
     socketContract: null,
-    accounts: [],
+    accounts:  [],
     balance: [],
     Provider: null,
     web3loadingerror: null,
@@ -40,6 +40,9 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
             const web3 = new Web3(Web3.givenProvider);
             console.log('web3', web3)
             const accounts = await web3.eth.getAccounts();
+            localStorage.setItem("accounts", accounts)
+            console.log(`Wallet address ${accounts} stored on local storage.`);
+            // const accountss = localStorage.getItem("accounts")
             const balance = await web3.eth.getBalance(accounts[0]);
             //web3 Socket
             // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
@@ -49,8 +52,8 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
             // const socketContract = new web3Socket.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
             return {
                 web3,
-                accounts,
                 balance,
+                accounts,
                 Provider,
                 // socketContract,
             }
@@ -124,6 +127,8 @@ export const loadWalletConnect = createAsyncThunk( "loadWalletConnect", async (_
             const web3 = new Web3(provider);
             console.log('web3', web3)
             const accounts = await web3.eth.getAccounts();
+            localStorage.setItem("accounts", accounts)
+            // console.log(`Wallet address ${accounts} stored on local storage.`);
             const balance = await web3.eth.getBalance(accounts[0]);
             //web3 Socket
             // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
@@ -186,6 +191,7 @@ export const loadWalletConnect = createAsyncThunk( "loadWalletConnect", async (_
 export const updatAccount = createAsyncThunk("updatAccount", async (data, thunkAPI) => {
     try {
         let accounts = data
+        localStorage.setItem("accounts", data)
         return {
             accounts,
         }
@@ -210,6 +216,7 @@ const web3ConnectSlice = createSlice({
             state.socketContract = payload?.socketContract;
             state.balance = payload?.balance;
             state.Provider = payload?.Provider;
+            // localStorage.setItem("accounts", state.accounts )
             state.status = "success";
         },
         [loadBlockchain.rejected.toString()]: (state, { payload }) => {
@@ -226,6 +233,7 @@ const web3ConnectSlice = createSlice({
         },
         [updatAccount.fulfilled.toString()]: (state, { payload }) => {
             state.accounts = payload?.accounts;
+            localStorage.setItem("accounts", state.accounts )
         },
     }
 })

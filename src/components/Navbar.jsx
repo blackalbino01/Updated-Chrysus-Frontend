@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import { toast } from "react-toastify";
 // import styles from "../style";
 import { Link, NavLink } from "react-router-dom";
-import { close, logoo, menu, Wallets, walet, meta, logo } from "../assets";
+import { close, logoo, menu, Wallets, walet1, meta1, logo } from "../assets";
 import { navLinks } from "../constants";
 import styled from "styled-components";
 import Pdf from "../assets/pdf/whitepaper.pdf";
@@ -37,17 +37,22 @@ const Navbar = () => {
 
   const DisconnectWallet = async () => {
     if (window.ethereum) {
+      localStorage.clear();
       if (Provider.isMetaMask) {
         Provider._handleDisconnect();
-        web3.setProvider(null)
-      } 
-      if(Provider.connected){
+        web3.setProvider(null);
+        if (addrees !== null) {
+          localStorage.clear();
+        }
+      }
+      if (Provider.connected) {
         Provider.disconnect();
-        // Provider.close();
-        web3.setProvider(null)  
+        web3.setProvider(null)
       }
     }
   };
+
+  const addrees = localStorage.getItem("accounts")
 
   // console.log(Provider.connected)
   // console.log(web3.setProvider())
@@ -75,7 +80,8 @@ const Navbar = () => {
         <li className="text-dimWhite text-[16px] font-poppins mr-4  cursor-pointer" style={{ marginLeft: "35px" }} href="#" onClick={() => window.open(Pdf)}>
           WhitePaper
         </li>
-        {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
+        {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
+        {addrees !== null ? (
           <li className="text-dimWhite text-[16px] font-poppins cursor-pointer">
             <NavLink to="/accounts">My Position</NavLink>
           </li>
@@ -84,7 +90,8 @@ const Navbar = () => {
           className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
           onClick={() => setShowMenu(!showMenu)}>
 
-          {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
+          {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
+          {addrees !== null ? (
             <div className="dropdown">
               <Button
                 type="button" data-toggle="dropdown"
@@ -96,14 +103,14 @@ const Navbar = () => {
                 className=" font-medium
                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
                dropdown-toggle">
-                <a>{accounts[0]?.substring(0, 7) + "...."}</a>
+                <a>{addrees?.substring(0, 7) + "...."}</a>
               </Button>
               <ul className="dropdown-menu text-black mt-2 bg-white">
                 <div className="mr-3 ml-5">
                   <h4>Wallet</h4>
                   <a className="inline-flex text-sm  py-2.5 items-center font-medium">
                     <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
-                    <span className="ml-2"> {accounts[0]?.substring(0, 7) + "...."}</span>
+                    <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
                   </a>
                   <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
                     <FiLogOut />
@@ -174,7 +181,8 @@ const Navbar = () => {
             <li className="text-dimWhite text-[16px] font-poppins cursor-pointer" style={{ marginTop: "20px" }} href="#" onClick={() => window.open(Pdf)}>
               WhitePaper
             </li>
-            {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
+            {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
+            {addrees !== null ? (
               <li style={{ marginTop: "20px" }} className="text-dimWhite text-[16px] font-poppins cursor-pointer">
                 <NavLink to="/accounts">My Position</NavLink>
               </li>
@@ -209,14 +217,15 @@ const Navbar = () => {
                 <WalletConnect show={modalShow}
                   onHide={() => setModalShow(false)} />
               </li> */}
-            <li style={{ 
+            <li style={{
               marginTop: "20px",
               zIndex: '1',
             }}
               className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
               onClick={() => setShowMenu(!showMenu)}>
 
-              {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
+              {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
+              {addrees !== null ? (
                 <div className="dropdown">
                   <Button
                     type="button" data-toggle="dropdown"
@@ -228,14 +237,14 @@ const Navbar = () => {
                     className=" font-medium
                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
                dropdown-toggle">
-                    <a>{accounts[0]?.substring(0, 7) + "...."}</a>
+                    <a>{addrees?.substring(0, 7) + "...."}</a>
                   </Button >
                   <ul className="dropdown-menu text-black mt-2 bg-white">
                     <div className="mr-3 ml-5">
                       <h4>Wallet</h4>
                       <a className="inline-flex text-sm  py-2.5 items-center font-medium">
                         <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
-                        <span className="ml-2"> {accounts[0]?.substring(0, 7) + "...."}</span>
+                        <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
                       </a>
                       <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
                         <FiLogOut />
@@ -325,7 +334,11 @@ const WalletConnect = (props) => {
         {/* closeButton */}
         <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">
           <Modal.Title >
-            <h3 className="text-white">
+            <h3 className="text-white"
+              style={{
+                paddingLeft: "40px"
+              }}
+            >
               Connect a Wallet
             </h3>
 
@@ -334,11 +347,7 @@ const WalletConnect = (props) => {
           <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
         </Modal.Header>
         <Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
-          {/* <img loading="lazy" src={logoo} alt="discount" className="w-[172px] h-[52px]" />
-          <p className="text-white">
-            Chose your Perferred Wallet
-          </p> */}
-          <Link onClick={props.onHide} className="flex flex-row cursor-pointer flex-wrap  items-center py-[6px] bg-white rounded-[12px]">
+          {/* <Link onClick={props.onHide} className="flex flex-row cursor-pointer flex-wrap  items-center py-[6px] bg-white rounded-[12px]">
             <img loading="lazy" width="40" height="40" src={meta} alt="meta"
               className="ml-5 object-contain cursor-pointer"
               onClick={() => handleblockchain()}
@@ -351,8 +360,8 @@ const WalletConnect = (props) => {
                 fontStyle: "normal",
                 paddingLeft: "10px"
               }} onClick={() => handleblockchain()}>MetaMask</span>
-          </Link>
-          <Link onClick={props.onHide} className="flex mt-3 flex-row cursor-pointer flex-wrap  items-center py-[6px]  bg-white rounded-[12px]">
+          </Link> */}
+          {/* <Link onClick={props.onHide} className="flex mt-3 flex-row cursor-pointer flex-wrap  items-center py-[6px]  bg-white rounded-[12px]">
             <img loading="lazy" width="50" height="5" src={walet} alt="walet"
               className="ml-5 mt-1 mb-1 cursor-pointer"
               onClick={() => handleWalletConnect()}
@@ -365,7 +374,49 @@ const WalletConnect = (props) => {
                 fontStyle: "normal",
                 paddingLeft: "10px"
               }} onClick={() => handleWalletConnect()}>WalletConnect</span>
-          </Link>
+          </Link> */}
+          <div onClick={() => handleblockchain()}>
+            <Link onClick={props.onHide} className="flex flex-row text-center cursor-pointer flex-wrap  items-center py-[6px] rounded-[12px]"
+              style={{
+                background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                paddingLeft: "40px"
+              }}
+            >
+              <img loading="lazy" width="65" height="65" src={meta1} alt="meta"
+                className="ml-5  object-contain cursor-pointer"
+                onClick={() => handleblockchain()}
+              />
+              <span className="text-black"
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                  fontFamily: "Helvetica",
+                  fontStyle: "normal",
+                  paddingLeft: "10px"
+                }} onClick={() => handleblockchain()}>MetaMask</span>
+            </Link>
+          </div>
+          <div onClick={() => handleblockchain()}>
+            <Link onClick={props.onHide} className="flex mt-3 flex-row cursor-pointer flex-wrap  items-center py-[6px]  bg-white rounded-[12px]"
+              style={{
+                background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                paddingLeft: "40px"
+              }}
+            >
+              <img loading="lazy" width="60" height="60" src={walet1} alt="walet"
+                className="ml-5 mt-1 mb-1 cursor-pointer"
+                onClick={() => handleWalletConnect()}
+              />
+              <span className="text-black"
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                  fontFamily: "Helvetica",
+                  fontStyle: "normal",
+                  paddingLeft: "10px"
+                }} onClick={() => handleWalletConnect()}>WalletConnect</span>
+            </Link>
+          </div>
         </Modal.Body>
         {/* <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>

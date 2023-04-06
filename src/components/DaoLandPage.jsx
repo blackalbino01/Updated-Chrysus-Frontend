@@ -3,6 +3,7 @@ import styles from "../style";
 import { Nav, Tab } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Overview from './Overview';
+import Proposal from './Proposal';
 
 
 
@@ -49,7 +50,7 @@ const DaoLandPage = () => {
                                             <Tab.Pane id="Navselllimit" ></Tab.Pane>
                                         </Tab.Content>
                                         <div className="sell-element">
-                                            <h1>under construction</h1>
+                                            <Proposal />
                                         </div>
                                     </Tab.Container>
                                 </Tab.Pane>

@@ -16,6 +16,8 @@ import twitter from "./twitter.svg";
 import login from "./login.png";
 import meta from "./meta.png";
 import walet from "./walet.png";
+import meta1 from "./meta1.png";
+import walet1 from "./walet1.png";
 import logoo from "./logoo.png";
 import pic1 from "./pic1.jpg";
 import EcosystemImage from './ecosystem.svg'
@@ -64,6 +66,8 @@ import G3 from './G3.png'
 import G4 from './G4.png'
 
 export {
+  meta1,
+  walet1,
   G3,
   G4,
   G2,
