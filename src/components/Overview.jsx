@@ -165,12 +165,12 @@ const Overview = () => {
                                                         id="application-tbl1_paginate"
                                                     >
                                                         <Link
-                                                            className="paginate_button previous text-white"
+                                                            className="paginate_button previous text-white mt-2"
                                                             // to="/future"
-                                                            style={{
-                                                                backgroundColor: "#757375",
-                                                                borderRadius: "16px",
-                                                            }}
+                                                            // style={{
+                                                            //     backgroundColor: "#757375",
+                                                            //     borderRadius: "16px",
+                                                            // }}
                                                             onClick={() =>
                                                                 activePag.current > 0 &&
                                                                 onClick(activePag.current - 1)
@@ -194,17 +194,17 @@ const Overview = () => {
                                                         </span>
 
                                                         <Link
-                                                            className="paginate_button next text-white"
+                                                            className="paginate_button next text-white mt-2"
                                                             // to="/future"
-                                                            style={{
-                                                                backgroundColor: "#757375",
-                                                                borderRadius: "16px",
-                                                            }}
+                                                            // style={{
+                                                            //     backgroundColor: "#757375",
+                                                            //     borderRadius: "16px",
+                                                            // }}
                                                             onClick={() =>
                                                                 activePag.current + 1 < paggination.length &&
                                                                 onClick(activePag.current + 1)
                                                             }
-                                                        >
+                                                            >
                                                             {/* <i className="fa fa-angle-double-right" ></i> */}
                                                             {/* <FontAwesomeIcon icon="fas fa-angle-double-right" /> */}
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
@@ -229,7 +229,7 @@ const Overview = () => {
             <div className="mt-5"></div>
             <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
-                    <Footer/>
+                    <Footer />
                 </div>
             </div>
         </>

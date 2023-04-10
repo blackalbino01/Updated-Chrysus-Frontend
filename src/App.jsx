@@ -20,7 +20,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Governance from './components/governance';
 // import {DaoLandPage} from './components/DaoLandPage';
 import DaoLandPage from './components/DaoLandPage';
-
+import Mint from './components/Dashboard/Mint';
+import { Collaterals } from './components/mintform/collaterals';
 const Home = lazy(() => import('./components/Home'));
 
 const App = () => {
@@ -61,6 +62,11 @@ const App = () => {
             <Route index element={<Dashboard />} />
             <Route path="loan" element={<Loan />} >
               <Route index element={<Collateral />} />
+              <Route path="dai" element={<DAI />} />
+              <Route path="confirmation" element={<Confirmation />} />
+            </Route>
+            <Route path="mint" element={<Mint />} >
+              <Route index element={<Collaterals />} />
               <Route path="dai" element={<DAI />} />
               <Route path="confirmation" element={<Confirmation />} />
             </Route>

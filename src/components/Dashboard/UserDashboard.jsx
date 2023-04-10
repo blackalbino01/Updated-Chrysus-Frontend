@@ -15,7 +15,7 @@ import { useAppDispatch, useAppSelector } from '../../reducer/store';
 import styled from "styled-components";
 // import { BiSearch } from "react-icons/bi";
 
-import {Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 // import utils from '../../utilities';
 
 
@@ -82,6 +82,27 @@ const UserDashboard = () => {
 		}
 	})
 
+
+	const DisconnectWallet = async () => {
+		if (window.ethereum) {
+			localStorage.clear();
+			if (Provider.isMetaMask) {
+				Provider._handleDisconnect();
+				web3.setProvider(null);
+				if (addrees !== null) {
+					localStorage.clear();
+				}
+			}
+			if (Provider.connected) {
+				Provider.disconnect();
+				web3.setProvider(null)
+			}
+		}
+	};
+
+	const addrees = localStorage.getItem("accounts")
+
+
 	useEffect(() => {
 		async function getEtherPriceInUSD() {
 			try {
@@ -99,19 +120,6 @@ const UserDashboard = () => {
 	})
 	console.log(usdprice * balance)
 
-
-
-	const DisconnectWallet = async () => {
-		if (window.ethereum) {
-			if (Provider.isMetaMask) {
-				Provider._handleDisconnect();
-				web3.setProvider(null)
-			} else {
-				Provider.disconnect();
-				web3.setProvider(null)
-			}
-		}
-	};
 
 	return (
 		<>
@@ -140,18 +148,22 @@ const UserDashboard = () => {
 						</Button>
 					</div> */}
 					<div className="" >
-						<Button
-							type="button" 
-							style={{
-								backgroundColor: "#1A1917",
-								borderRadius: "16px",
-								color: "#846424",
-							}}
-							className=" font-medium
-                            rounded-lg text-sm  text-center inline-flex items-center 
-                            ">
-							<a>{accounts[0]?.substring(0, 7) + "...."}</a>
-						</Button>
+						{addrees !== null ? (
+							<>
+								<Button
+									type="button"
+									style={{
+										backgroundColor: "#1A1917",
+										borderRadius: "16px",
+										color: "#846424",
+									}}
+									className=" font-medium
+                                    rounded-lg text-sm  text-center inline-flex items-center 
+                                    ">
+									<a>{addrees?.substring(0, 7) + "...."}</a>
+								</Button>
+							</>
+						) : ("")}
 					</div>
 				</div>
 				{/* <div>
@@ -189,7 +201,7 @@ const UserDashboard = () => {
 								</div> */}
 								{/* <p className="mb-0 fs-12 text-black">Lorem ipsum dolor sit amet, consectetur</p> */}
 							</div>
-							{web3 ?
+							{/* {web3 ?
 								(<span class="badge cursor-pointer"
 									style={{
 										height: "26px",
@@ -201,7 +213,7 @@ const UserDashboard = () => {
 										fontSize: "10px",
 										background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 										borderRadius: "40px",
-									}}>{accounts[0]}</span>) : ("")}
+									}}>{accounts[0]}</span>) : ("")} */}
 							{/* <TokenButton /> */}
 							{/* <Link to={"#"} className="btn btn-primary text-black light btn-rounded me-3  mb-3"><i className="las la-download scale5 me-2"></i>Get Report</Link> */}
 						</div>
@@ -554,7 +566,7 @@ const UserDashboard = () => {
 															<th className="text-end">Action</th>
 														</tr>
 													</thead>
-													
+
 												</table>
 												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
 													<div className="dataTables_info">
@@ -569,18 +581,21 @@ const UserDashboard = () => {
 														id="application-tbl1_paginate"
 													>
 														<Link
-															className="paginate_button previous text-white"
+															className="paginate_button previous text-white mt-2"
 															// to="/future"
-															style={{
-																backgroundColor: "#757375",
-																borderRadius: "16px",
-															}}
+															// style={{
+															// 	backgroundColor: "#757375",
+															// 	borderRadius: "16px",
+															// }}
 															onClick={() =>
 																activePag.current > 0 &&
 																onClick(activePag.current - 1)
 															}
 														>
-															<i className="fa fa-angle-double-left" ></i>
+															{/* <i className="fa fa-angle-double-left" ></i> */}
+															<i>
+																<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
+															</i>
 														</Link>
 														<span className='text-white'>
 															{paggination.map((number, i) => (
@@ -597,18 +612,21 @@ const UserDashboard = () => {
 														</span>
 
 														<Link
-															className="paginate_button next text-white"
+															className="paginate_button next text-white mt-2"
 															// to="/future"
-															style={{
-																backgroundColor: "#757375",
-																borderRadius: "16px",
-															}}
+															// style={{
+															// 	backgroundColor: "#757375",
+															// 	borderRadius: "16px",
+															// }}
 															onClick={() =>
 																activePag.current + 1 < paggination.length &&
 																onClick(activePag.current + 1)
 															}
 														>
-															<i className="fa fa-angle-double-right" ></i>
+															{/* <i className="fa fa-angle-double-right" ></i> */}
+															<i>
+																<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
+															</i>
 														</Link>
 													</div>
 												</div>

@@ -9,8 +9,9 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import { PrimaryGradientButton } from "../buttons/primary_gradient.button";
 import scrollreveal from "scrollreveal";
-import {Transferblack, logoo, LeafGold, SwapGold, CartGold, UmbrellaGold, Chrysus, USDTWhite, XLMWhite, XRPWhite, DAIWhite, ETHWhite } from "../../assets";
+import { Transferblack, logoo, LeafGold, SwapGold, CartGold, UmbrellaGold, Chrysus, USDTWhite, XLMWhite, XRPWhite, DAIWhite, ETHWhite } from "../../assets";
 import { MintButton } from "../buttons/mint";
+import { useAppDispatch, useAppSelector } from '../../reducer/store';
 
 
 export default function UserSideBar() {
@@ -22,7 +23,26 @@ export default function UserSideBar() {
   const [showSwapModel, setshowSwapModel] = useState(false);
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
+  const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
 
+
+
+  const DisconnectWallet = async () => {
+    if (window.ethereum) {
+      localStorage.clear();
+      if (Provider.isMetaMask) {
+        Provider._handleDisconnect();
+        web3.setProvider(null);
+        if (addrees !== null) {
+          localStorage.clear();
+        }
+      }
+      if (Provider.connected) {
+        Provider.disconnect();
+        web3.setProvider(null)
+      }
+    }
+  };
 
   // <SwapModal showSwapModal={swapModal} />
   // useEffect(() => {
@@ -99,18 +119,24 @@ export default function UserSideBar() {
                 className={currentLink === 3 ? "active" : "none"}
                 onClick={() => setCurrentLink(3)}
               >
-                <a className="cursor-pointer" onClick={() => setModalShow(true)}>
-                  {/* <FaAddressCard /> */}
+                {/* <a className="cursor-pointer" onClick={() => setModalShow(true)}>
                   <img
                     className="jumbo-button-icon"
                     src={LeafGold}
                     alt="leaf-gold"
                   />
-                  {/* <Link to={"/login"}></Link> */}
                   <span> Mint</span>
                 </a>
                 <Mint show={modalShow}
-                  onHide={() => setModalShow(false)} />
+                  onHide={() => setModalShow(false)} /> */}
+                <Link to={"mint"}>
+                  <img
+                    className="jumbo-button-icon"
+                    src={LeafGold}
+                    alt="leaf-gold"
+                  />
+                  <span> Mint </span>
+                </Link>
               </li>
               <li
                 className={currentLink === 4 ? "active" : "none"}
@@ -170,7 +196,8 @@ export default function UserSideBar() {
         <div className="logout">
           <Link >
             <FiLogOut />
-            <span className="logout">Disconnect</span>
+            <span className="logout"
+              onClick={() => DisconnectWallet()}>Disconnect</span>
           </Link>
         </div>
       </Section>
@@ -254,9 +281,8 @@ export default function UserSideBar() {
               <Link >
                 <FiLogOut />
                 <span className="logout"
-                >Disconnect</span>
+                  onClick={() => DisconnectWallet()}>Disconnect</span>
               </Link>
-
             </li>
           </ul>
         </div>
