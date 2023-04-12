@@ -94,30 +94,6 @@ export const footerLinks = [
         name: "Loan",
         link: "#",
       },
-      {
-        name: "Buy",
-        link: "#",
-      },
-    ],
-  },
-  {
-    title: "Learn",
-    links: [
-      {
-        name: "Whitepaper",
-        link: "#",
-      
-      },
-      {
-        name: "FAQ",
-        link: "#",
-      },
-      {
-        name: "Email",
-        link: "",
-        content:
-        "Email: ",
-      },
     ],
   },
   {
@@ -125,17 +101,32 @@ export const footerLinks = [
     links: [
       {
         name: "Ecosystem",
-        link: "#",
+        link: "/ecosystems",
       },
       {
         name: "About",
-        link: "#",
+        link: "/about",
       },
       {
         name: "Contact",
         link: "#",
       },
       
+    ],
+  },
+  {
+    title: "Learn",
+    links: [
+      {
+        name: "FAQ",
+        link: "/faq",
+      },
+      {
+        name: "Email",
+        link: "",
+        content:
+        "Email: ",
+      },
     ],
   },
 ];

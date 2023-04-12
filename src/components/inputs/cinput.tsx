@@ -1,6 +1,7 @@
+import React from "react"
 import { Input } from "reactstrap";
 import { InputType } from "reactstrap/types/lib/Input";
-import { InputOutline } from "src/types/ui";
+import { InputOutline } from "../../types/ui";
 
 interface CInputProps {
 	type: InputType;

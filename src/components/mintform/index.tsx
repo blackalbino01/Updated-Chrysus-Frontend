@@ -17,10 +17,10 @@ export const MintForm = () => {
 	}, [location]);
 
 	const steps: FormViews = [
-		{ title: "Select Collateral", widget: "" },
+		// { title: "Select Collateral", widget: "" },
 		// { title: "Vault Management", widget: "vault" },
-		{ title: "Generate CHC", widget: "dai" },
-		{ title: "Confirmation", widget: "confirmation" },
+		// { title: "Generate CHC", widget: "dai" },
+		// { title: "Confirmation", widget: "confirmation" },
 	];
 	const [_selectedView, _setSelectedView] = useState<FormView>(steps[0]);
 	return (
@@ -33,7 +33,6 @@ export const MintForm = () => {
 					setSelected={() => { }}
 				/>
 			</div> */}
-
 			<StepperForm callback={_setSelectedView} steps={steps}>
 				<Outlet />
 			</StepperForm>

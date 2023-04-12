@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollreveal from "scrollreveal";
 import { MintForm } from "../mintform";
-
+import styles from "../../style";
 
 
 const Mint = () => {
@@ -32,6 +32,22 @@ const Mint = () => {
     <Section>
       <div className="grid">
         <MintForm />
+      </div>
+      <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
+            <div className={`${styles.flexStart} md:flex-row flex-col w-full`}>
+              <div className=" flex flex-col justify-start">
+                <p className={`${styles.paragraph}  max-w-[450px]`}> </p>
+              </div>
+            </div>
+            <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
+              <p className={`${styles.paragraph} `}>
+                Copyright Ⓒ 2023 Chrysus. 2022, All Rights Reserved.
+              </p>
+            </div>
+          </section>
+        </div>
       </div>
     </Section>
   )

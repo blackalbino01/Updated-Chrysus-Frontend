@@ -14,7 +14,9 @@ import Accounts from './components/Accounts';
 import Loan from './components/Dashboard/Loan';
 import { Collateral } from './components/chcform/collateral';
 // import { Vault } from './components/chcform/vault';
-import { DAI } from './components/chcform/dai';
+// import { DAI } from './components/chcform/dai';
+import { DAIDeposite } from './components/mintform/dai';
+import { ETHDeposite } from './components/mintform/eth';
 import { Confirmation } from './components/chcform/confirmation';
 import Dashboard from './components/Dashboard/Dashboard';
 import Governance from './components/governance';
@@ -62,12 +64,13 @@ const App = () => {
             <Route index element={<Dashboard />} />
             <Route path="loan" element={<Loan />} >
               <Route index element={<Collateral />} />
-              <Route path="dai" element={<DAI />} />
+              {/* <Route path="dai" element={<DAI />} /> */}
               <Route path="confirmation" element={<Confirmation />} />
             </Route>
             <Route path="mint" element={<Mint />} >
               <Route index element={<Collaterals />} />
-              <Route path="dai" element={<DAI />} />
+              <Route path="daideposite" element={<DAIDeposite />} />
+              <Route path="ethdeposite" element={<ETHDeposite />} />
               <Route path="confirmation" element={<Confirmation />} />
             </Route>
           </Route>

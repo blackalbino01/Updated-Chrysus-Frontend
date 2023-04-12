@@ -175,21 +175,6 @@ export default function UserSideBar() {
                   <span> Loan</span>
                 </a> */}
               </li>
-              <li
-                className={currentLink === 6 ? "active" : "none"}
-                onClick={() => setCurrentLink(6)}
-              >
-                <a href="#">
-                  {/* <IoSettings /> */}
-                  {/* <Link to={"/login"}></Link> */}
-                  <img
-                    className="jumbo-button-icon"
-                    src={CartGold}
-                    alt="card-gold"
-                  />
-                  <span> Buy</span>
-                </a>
-              </li>
             </ul>
           </div>
         </div>
@@ -262,19 +247,6 @@ export default function UserSideBar() {
                   alt="umbrella-gold"
                 />
                 <span> Loan</span>
-              </a>
-            </li>
-            <li
-              className={currentLink === 6 ? "active" : "none"}
-              onClick={() => setCurrentLink(6)}
-            >
-              <a href="#">
-                <img
-                  className="jumbo-button-icon"
-                  src={CartGold}
-                  alt="card-gold"
-                />
-                <span> Buy</span>
               </a>
             </li>
             <li className="logout">

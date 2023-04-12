@@ -1,3 +1,4 @@
+import React from "react";
 interface IBodyProps {
 	children?: React.ReactNode | React.ReactNode[];
 	className?: string;

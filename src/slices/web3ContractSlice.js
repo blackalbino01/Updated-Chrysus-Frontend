@@ -1,4 +1,6 @@
 import Web3 from 'web3';
+import { CHRYSUS } from '../constant';
+import { CHRYSUS_ABI } from '../abis/Chrysus';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import { Web3Provider } from '@ethersproject/providers';
 // import { useWeb3React } from '@web3-react/core';
@@ -13,6 +15,7 @@ export const initialState = {
     web3: null,
     socketContract: null,
     accounts:  [],
+    contract:null,
     balance: [],
     Provider: null,
     web3loadingerror: null,
@@ -39,6 +42,8 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
             await Web3.givenProvider.enable();
             const web3 = new Web3(Web3.givenProvider);
             console.log('web3', web3)
+            const contract = new web3.eth.Contract(CHRYSUS_ABI, CHRYSUS);
+            console.log("contract",contract )
             const accounts = await web3.eth.getAccounts();
             localStorage.setItem("accounts", accounts)
             console.log(`Wallet address ${accounts} stored on local storage.`);
@@ -55,6 +60,7 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
                 balance,
                 accounts,
                 Provider,
+                contract,
                 // socketContract,
             }
         }
@@ -71,6 +77,8 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
 
     }
 });
+
+
 
 
 // export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thunkAPI) => {
@@ -213,6 +221,7 @@ const web3ConnectSlice = createSlice({
         [loadBlockchain.fulfilled.toString()]: (state, { payload }) => {
             state.web3 = payload?.web3;
             state.accounts = payload?.accounts;
+            state.contract = payload?.contract;
             state.socketContract = payload?.socketContract;
             state.balance = payload?.balance;
             state.Provider = payload?.Provider;
@@ -226,6 +235,7 @@ const web3ConnectSlice = createSlice({
         [loadWalletConnect.fulfilled.toString()]: (state, { payload }) => {
             state.web3 = payload?.web3;
             state.accounts = payload?.accounts;
+            state.contract = payload?.contract;
             state.balance = payload?.balance;
             state.Provider = payload?.Provider;
             // state.socketContract = payload?.socketContract;

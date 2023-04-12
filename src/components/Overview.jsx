@@ -70,7 +70,7 @@ const Overview = () => {
                             <div className="icon-content">
                                 <ul className="price ">
                                     <li>
-                                        <p className="mb-0 amount">CGT</p>
+                                        <p className="mb-0 amount">Tokens</p>
                                         <span className='text-white'>180,8484</span>
                                     </li>
                                 </ul>

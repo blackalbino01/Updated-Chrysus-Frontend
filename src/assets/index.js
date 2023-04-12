@@ -64,8 +64,10 @@ import G1 from './G1.png'
 import G2 from './G2.png'
 import G3 from './G3.png'
 import G4 from './G4.png'
+import Gov from './Gov.png'
 
 export {
+  Gov,
   meta1,
   walet1,
   G3,

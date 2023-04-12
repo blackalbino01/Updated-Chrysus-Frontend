@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import { toast } from "react-toastify";
 // import styles from "../style";
 import { Link, NavLink } from "react-router-dom";
-import { close, logoo, menu, Wallets, walet, walet1, meta1, logo } from "../assets";
+import { close, logoo, menu, Wallets, walet, walet1, meta1, logo,Gov } from "../assets";
 import { daoNavLinks } from "../constants";
 import styled from "styled-components";
 import Pdf from "../assets/pdf/whitepaper.pdf";
@@ -62,12 +62,11 @@ const DaoNav = () => {
   return (
     <nav className="w-full flex  py-6 justify-between items-center navbar">
       <Link to="/">
-        <img src={logo} alt="hoobank" className="w-[200px] h-[55px]" onClick={() => setToggle(false)} />
+        <img src={Gov} alt="hoobank" className="w-[250px] h-[55px]" onClick={() => setToggle(false)} />
 
       </Link>
-      <h3 >Governance</h3>
       <ul className="list-none  sm:flex hidden justify-end items-center flex-1">
-        {daoNavLinks.map((nav, index) => (
+        {/* {daoNavLinks.map((nav, index) => (
           <li
             key={nav.path}
             className={`font-poppins font-normal cursor-pointer text-[16px] ${active === nav.name ? "text-yellow-400" : "text-dimWhite"
@@ -75,9 +74,8 @@ const DaoNav = () => {
             onClick={() => setActive(nav.name)}
           >
             <NavLink to={nav.path}>{nav.name}</NavLink>
-            {/* style={{color: "#846424",}} */}
           </li>
-        ))}
+        ))} */}
         <li style={{ marginLeft: "45px" }}
           className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
           onClick={() => setShowMenu(!showMenu)}>
@@ -137,62 +135,6 @@ const DaoNav = () => {
                 onHide={() => setModalShow(false)} />
             </>
           )}
-          {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? (
-            <div className="dropdown">
-              <Button
-                type="button" data-toggle="dropdown"
-                style={{
-                  backgroundColor: "#1A1917",
-                  borderRadius: "16px",
-                  color: "#846424",
-                }}
-                className=" font-medium
-               rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
-               dropdown-toggle">
-                <a>{addrees?.substring(0, 7) + "...."}</a>
-              </Button>
-              <ul className="dropdown-menu text-black mt-2 bg-white">
-                <div className="mr-3 ml-5">
-                  <h4>Wallet</h4>
-                  <a className="inline-flex text-sm  py-2.5 items-center font-medium">
-                    <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
-                    <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
-                  </a>
-                  <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
-                    <FiLogOut />
-                    <Link className="ml-2"
-                      onClick={() => DisconnectWallet()}
-                    >Disconnect</Link>
-                  </li>
-                </div>
-              </ul>
-            </div>
-          ) : (
-            <>
-              <Button
-                style={{
-                  backgroundColor: "#1A1917",
-                  borderRadius: "16px",
-                  color: "#846424",
-                }}
-                onClick={() => setModalShow(true)}
-                className=" font-medium 
-                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                <img src={Wallets} alt="wallets" className="w-[20px] h-[25px] mr-3" />
-                <a style={{
-                  fontStyle: "normal",
-                  fontWeight: "700",
-                  fontSize: "12px",
-                  lineHeight: "24px",
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                  color: "#846424",
-                }}>Connect</a>
-              </Button>
-              <WalletConnect show={modalShow}
-                onHide={() => setModalShow(false)} />
-            </>
-          )} */}
         </li>
       </ul>
 
@@ -212,7 +154,7 @@ const DaoNav = () => {
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
 
-            {daoNavLinks.map((nav, index) => (
+            {/* {daoNavLinks.map((nav, index) => (
               <li
                 key={nav.path}
 
@@ -223,7 +165,7 @@ const DaoNav = () => {
                 <NavLink to={nav.path} onClick={() => setToggle(prev => !prev)}>{nav.name}</NavLink>
 
               </li>
-            ))}
+            ))} */}
             <li style={{
               marginTop: "20px",
               zIndex: '1',
