@@ -6,21 +6,21 @@ import { Body, H4, P } from "../typography";
 import { CInput } from "../inputs/cinput";
 import { useAppSelector, useAppDispatch } from '../../reducer/store';
 import { loadBlockchain, updatAccount } from '../../slices/web3ContractSlice';
+import { Button } from 'reactstrap';
 
 
 export const DAIDeposite = () => {
 	const { web3, contract, accounts, socketContract } = useAppSelector((state) => state.web3Connect);
-    const [ethamount, setethamount] = useState();
-	
+	const [DAIamount, setDAIamount] = useState();
 
-	const DepositCollateral = async () => {
+
+	const DepositDAICollateral = async () => {
 		try {
-			let valueToSend = web3.utils.toWei(ethamount, 'ether');
-			let zeroAddress = "0x0000000000000000000000000000000000000000"
-			await contract?.methods.depositCollateral(zeroAddress, valueToSend).send({ from: accounts[0] })
-			
+			let DAIAddress = "0x04124E92d67C20E7c078AEB6E8050d585b369eC5"
+			await contract?.methods.depositCollateral(DAIAddress, DAIamount).send({ from: accounts[0] })
+
 		} catch (error) {
-			console.log("Send Eth Error", error)
+			console.log("Send DAI Error", error)
 		}
 	}
 
@@ -49,24 +49,44 @@ export const DAIDeposite = () => {
 									generate.
 								</Body>
 								<div className="my-3"></div>
-								<CInput
+								<input type="text" className="form-control"
+									style={{
+										backgroundColor: "#1A1917",
+										color: "#846424",
+									}}
+									onChange={(e) => setDAIamount(e.target.value)} placeholder="0.00" />
+								{/* <CInput
 									type="text"
 									dir="rtl"
 									rightText="DAI"
 									bottomLineText="YOUR BALANCE 0"
-								/>
+								/> */}
 								<div className="my-3"></div>
 							</div>
 							<div className="mt-2"></div>
 							<div className="w-100  p-3 text-center">
-								<FormActionButton
+							<Button 
+                                    style={{
+                                        color: "black",
+                                        fontStyle: "normal",
+                                        fontWeight: "700",
+                                        fontSize: "16px",
+                                        lineHeight: "34px",
+                                        letterSpacing: "1px",
+                                        textTransform: "uppercase",
+                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                        borderRadius: "40px",
+                                    }}
+                                    onClick={() => DepositDAICollateral()}>
+                                    Deposit</Button>
+								{/* <FormActionButton
 									color="primary"
 									gradient={true}
 									outline={true}
 									className="mx-2"
-									>
+								>
 									Deposit
-								</FormActionButton>
+								</FormActionButton> */}
 							</div>
 							<div
 								className="w-100"
@@ -86,7 +106,7 @@ export const DAIDeposite = () => {
 					</div>
 				</div>
 			</div>
-			<div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+			{/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
 				<div className={`${styles.boxWidth}`}>
 					<section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
 						<div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
@@ -101,7 +121,7 @@ export const DAIDeposite = () => {
 						</div>
 					</section>
 				</div>
-			</div>
+			</div> */}
 		</>
 	);
 };

@@ -112,7 +112,7 @@ export const ETHDeposite = () => {
                     </div>
                 </div>
             </div>
-            <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+            {/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
                     <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
                         <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
@@ -127,7 +127,7 @@ export const ETHDeposite = () => {
                         </div>
                     </section>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 };

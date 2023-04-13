@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import { MdSpaceDashboard } from "react-icons/md";
@@ -166,6 +167,7 @@ export default function UserSideBar() {
                   />
                   <span> Loan </span>
                 </Link>
+
                 {/* <a href="#">
                   <img
                     className="jumbo-button-icon"
@@ -343,108 +345,109 @@ const Mint = (props) => {
 const Swap = (props) => {
 
   return (
-    <div className="">
-      <Modal className="items-center"
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        {/* closeButton */}
-        <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">
-          <div
-            style={{
-              width: "100%",
-              height: "3px",
-              background:
-                "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-              borderRadius: "40px",
-            }}></div>
-          <Modal.Title >
-            <h4 className="primary-gradient-text">Swap Chrysus Coin (CHC)</h4>
-          </Modal.Title>
-          <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
-        </Modal.Header>
-        <Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
-          <div className="sell-blance" style={{
+
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      {/* closeButton */}
+      <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">
+        <div
+          style={{
+            width: "100%",
+            height: "3px",
+            background:
+              "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+            borderRadius: "40px",
+          }}></div>
+        <Modal.Title >
+          <h4 className="primary-gradient-text">Swap Chrysus Coin (CHC)</h4>
+        </Modal.Title>
+        <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
+      </Modal.Header>
+      <Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
+        <div className="sell-blance" style={{
+          color: "#846424",
+        }}>
+          <label className="form-label text-primary">Amount Available</label>
+          <span className="ml-5">CHC{""} 0.123</span>
+          <div className="input-group" style={{
+            backgroundColor: "#1A1917",
             color: "#846424",
           }}>
-            <label className="form-label text-primary">Amount Available</label>
-            <span className="ml-5">CHC{""} 0.123</span>
-            <div className="input-group" style={{
-              backgroundColor: "#1A1917",
-              color: "#846424",
-            }}>
-              <input type="text" className="form-control"
-                style={{
-                  backgroundColor: "#1A1917",
-                  color: "#846424",
-                }}
-                placeholder="0.00" />
-              <span style={{
-                backgroundColor: "#1A1917",
-                color: "#846424",
-              }} className="input-group-text"><img loading="lazy" src={Chrysus} alt="meta" /></span>
-            </div>
-          </div>
-          <div className="sell-blance" style={{
-            color: "#846424",
-          }}>
-            <label className="form-label text-primary">Enter Amount</label>
-            <div className="input-group" style={{
-              backgroundColor: "#1A1917",
-              color: "#846424",
-            }}>
-              <input type="text" className="form-control"
-                style={{
-                  backgroundColor: "#1A1917",
-                  color: "#846424",
-                }}
-                placeholder="0.00" />
-              <span style={{
-                backgroundColor: "#1A1917",
-                color: "#846424",
-              }} className="input-group-text">Amount</span>
-            </div>
-          </div>
-          <div className="options">
-            <select className=''
+            <input type="text" className="form-control"
               style={{
                 backgroundColor: "#1A1917",
-                borderRadius: "16px",
                 color: "#846424",
               }}
-            // onChange={(e) => setlocation(e.target.value)}
-            >
-              <option value="">Swap To</option>
-              <option value="Ethreum">ETH</option>
-              <option value="DAI">DAI</option>
-              <option value="BCH">BCH</option>
-              <option value="XRP">XRP</option>
-            </select>
+              placeholder="0.00" />
+            <span style={{
+              backgroundColor: "#1A1917",
+              color: "#846424",
+            }} className="input-group-text"><img loading="lazy" src={Chrysus} alt="meta" /></span>
           </div>
+        </div>
+        <div className="sell-blance" style={{
+          color: "#846424",
+        }}>
+          <label className="form-label text-primary">Enter Amount</label>
+          <div className="input-group" style={{
+            backgroundColor: "#1A1917",
+            color: "#846424",
+          }}>
+            <input type="text" className="form-control"
+              style={{
+                backgroundColor: "#1A1917",
+                color: "#846424",
+              }}
+              placeholder="0.00" />
+            <span style={{
+              backgroundColor: "#1A1917",
+              color: "#846424",
+            }} className="input-group-text">Amount</span>
+          </div>
+        </div>
+        <div className="options">
+          <select className=''
+            style={{
+              backgroundColor: "#1A1917",
+              borderRadius: "16px",
+              color: "#846424",
+            }}
+          // onChange={(e) => setlocation(e.target.value)}
+          >
+            <option value="">Swap To</option>
+            <option value="Ethreum">ETH</option>
+            <option value="DAI">DAI</option>
+            <option value="BCH">BCH</option>
+            <option value="XRP">XRP</option>
+          </select>
+        </div>
 
 
-          <div className="text-center">
-            <PrimaryGradientButton className="mt-3">
-              <div className="d-flex flex-row align-items-center justify-content-center">
-                Swap CHC
-                <img
-                  className="mx-2"
-                  src={Transferblack}
-                  alt="transfer-black.svg"
-                />
-              </div>
-            </PrimaryGradientButton>
-          </div>
-        </Modal.Body>
-        {/* <Modal.Footer>
+        <div className="text-center">
+          <PrimaryGradientButton className="mt-3">
+            <div className="d-flex flex-row align-items-center justify-content-center">
+              Swap CHC
+              <img
+                className="mx-2"
+                src={Transferblack}
+                alt="transfer-black.svg"
+              />
+            </div>
+          </PrimaryGradientButton>
+        </div>
+      </Modal.Body>
+      {/* <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer> */}
-      </Modal>
-    </div>
+    </Modal>
   )
 }
+
+
 
 const Section = styled.section`
   position: fixed;
