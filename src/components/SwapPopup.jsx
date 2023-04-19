@@ -99,7 +99,7 @@ const SwapPopup = () => {
                             </div>
                         </Modal.Body> */}
             <div className="d-flex">
-                <div className="row w-100" style={{ borderRadius: "16px" }}>
+                <div className="row w-100" style={{ borderRadiusBottom: "16px" }}>
                     <div className="col ">
                         <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">
                             <div
@@ -109,6 +109,7 @@ const SwapPopup = () => {
                                     background:
                                         "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
                                     borderRadius: "40px",
+                                    borderRadiusBottom:"40px"
                                 }}></div>
                             <Modal.Title>
                                 <h4 className="primary-gradient-text">Swap Chrysus Coin (CHC)</h4>
@@ -121,6 +122,8 @@ const SwapPopup = () => {
                             style={{
                                 backgroundColor: "#211f21",
                                 // borderRadius: "16px",
+                                borderEndStartRadius:"16px",
+                                borderEndEndRadius:"16px",
                                 color: "#846424",
                             }}
                         >
@@ -128,7 +131,7 @@ const SwapPopup = () => {
                             <H4>Chrysus Coin</H4>
                             <div className="d-flex flex-column">
                                 <P className="m-0">
-                                    Chrysus facilitates the instant exchange between Chrysus Token and Selected Token 
+                                    Chrysus facilitates the instant exchange between Chrysus Token and Selected Token/Coin 
                                 </P>
                                 <Body className="m-0">
                                 Quickly swap to the growing asset.
