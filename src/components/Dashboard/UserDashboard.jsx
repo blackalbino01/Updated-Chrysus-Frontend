@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // import { FiLogOut } from "react-icons/fi";
 // import FcHome from "react-icons/fc";
 import { H4 } from '../typography/h4';
-import { Dash, C, Ether, home } from '../../assets';
+import { Dash, C, Ether, home, meta1 } from '../../assets';
 import { Tab } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import OrderTab from '../Future/OrderTab';
@@ -127,39 +127,31 @@ const UserDashboard = () => {
 				<div className="title">
 					<H4>Wellcome!</H4>
 				</div>
-
+				{/* <img loading="lazy" width="50" height="50" src={home} alt="meta"
+					className=" mr-2 object-contain cursor-pointer"
+				/> */}
 				{/* <div className="search" >
 					<BiSearch />
 					<input type="text" placeholder="Search" />
 				</div> */}
 				<div>
-					{/* <div className="dropdown" >
-						<Button
-							type="button" data-toggle="dropdown"
-							style={{
-								backgroundColor: "#1A1917",
-								borderRadius: "16px",
-								color: "#846424",
-							}}
-							className=" font-medium
-                            rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
-                            ">
-							<a>{accounts[0]?.substring(0, 7) + "...."}</a>
-						</Button>
-					</div> */}
 					<div className="" >
 						{addrees !== null ? (
 							<>
 								<Button
 									type="button"
 									style={{
-										backgroundColor: "#1A1917",
-										borderRadius: "16px",
-										color: "#846424",
+										// backgroundColor: "#1A1917",
+										background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+										// borderRadius: "16px",
+										color: "black",
 									}}
 									className=" font-medium
                                     rounded-lg text-sm  text-center inline-flex items-center 
                                     ">
+									<img loading="lazy" width="30" height="30" src={meta1} alt="meta"
+										className=" mr-2 object-contain cursor-pointer"
+									/>
 									<a>{addrees?.substring(0, 7) + "...."}</a>
 								</Button>
 							</>
