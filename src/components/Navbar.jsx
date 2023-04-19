@@ -106,7 +106,15 @@ const Navbar = () => {
                dropdown-toggle">
                 <a>{addrees?.substring(0, 7) + "...."}</a>
               </Button>
-              <ul className="dropdown-menu text-black mt-2 bg-white">
+              <ul className="dropdown-menu text-black mt-2"
+                style={{
+                  // backgroundColor: "#211f21",
+                  // borderRadius: "16px",
+                  background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                  borderEndStartRadius: "16px",
+                  borderEndEndRadius: "16px",
+                  color: "#846424",
+                }}>
                 <div className="mr-3 ml-5">
                   <h4>Wallet</h4>
                   <a className="inline-flex text-sm  py-2.5 items-center font-medium">
@@ -242,7 +250,13 @@ const Navbar = () => {
                dropdown-toggle">
                     <a>{addrees?.substring(0, 7) + "...."}</a>
                   </Button >
-                  <ul className="dropdown-menu text-black mt-2 bg-white">
+                  <ul className="dropdown-menu text-black mt-2"
+                    style={{
+                      background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                      borderEndStartRadius: "16px",
+                      borderEndEndRadius: "16px",
+                      color: "#846424",
+                    }}>
                     <div className="mr-3 ml-5">
                       <h4>Wallet</h4>
                       <a className="inline-flex text-sm  py-2.5 items-center font-medium">
@@ -288,7 +302,7 @@ const Navbar = () => {
                   <WalletConnect show={modalShow}
                     onHide={() => setModalShow(false)} />
                 </>
-                
+
               )}
             </li>
           </ul>
@@ -331,7 +345,7 @@ const WalletConnect = (props) => {
   };
 
 
-  
+
   return (
     <div className="">
       <Modal className="items-center"
