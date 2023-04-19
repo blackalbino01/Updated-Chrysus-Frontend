@@ -1,27 +1,24 @@
 import { useEffect, useState } from "react";
-// import { toast } from "react-toastify";
-// import styles from "../style";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { close, logoo, menu, Wallets, walet1, meta1, logo } from "../assets";
 import { navLinks } from "../constants";
 import styled from "styled-components";
 import Pdf from "../assets/pdf/whitepaper.pdf";
 import { Button } from "react-bootstrap";
-// import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FiLogOut } from "react-icons/fi";
 import { useAppDispatch, useAppSelector } from '../reducer/store';
 import { loadBlockchain, loadWalletConnect, updatAccount } from '../slices/web3ContractSlice';
 
+
 const Navbar = () => {
   const [active, setActive] = useState("Home");
-  // const [isNavShow, setisNavShow] = useState(false);
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  // const [isConnected, setIsConnected] = useState(false);
   const dispatch = useAppDispatch()
-  const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, balance, contract, accounts, socketContract, Provider, status } = useAppSelector((state) => state.web3Connect);
 
 
 
@@ -34,6 +31,16 @@ const Navbar = () => {
       })
     }
   })
+
+  console.log("status", status)
+  // useEffect(() => {
+  //   if(status === true){
+  //     navigate("/accounts");
+  //   }
+  // }, [navigate,statuss])
+
+
+
 
   const DisconnectWallet = async () => {
     if (window.ethereum) {
@@ -53,12 +60,6 @@ const Navbar = () => {
   };
 
   const addrees = localStorage.getItem("accounts")
-
-  // console.log(Provider.connected)
-  // console.log(web3.setProvider())
-  // console.log(Provider)
-
-  // console.log("balance:", balance)
   return (
     <nav className="w-full flex  py-6 justify-between items-center navbar">
       <Link to="/">
@@ -81,9 +82,9 @@ const Navbar = () => {
           WhitePaper
         </li>
         {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
-        {addrees !== null ? (
+        {web3 && addrees !== null ? (
           <li className="text-dimWhite text-[16px] font-poppins cursor-pointer">
-            <NavLink to="/accounts">My Position</NavLink>
+            <NavLink to="/accounts">Dashboard</NavLink>
           </li>
         ) : ""}
         <li style={{ marginLeft: "45px" }}
@@ -141,7 +142,9 @@ const Navbar = () => {
                   letterSpacing: "1px",
                   textTransform: "uppercase",
                   color: "#846424",
-                }}>Connect</a>
+                }}>
+                  {status === "pending" ? "Connecting..." : "Connect"}
+                </a>
               </Button>
               <WalletConnect show={modalShow}
                 onHide={() => setModalShow(false)} />
@@ -184,7 +187,7 @@ const Navbar = () => {
             {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
             {addrees !== null ? (
               <li style={{ marginTop: "20px" }} className="text-dimWhite text-[16px] font-poppins cursor-pointer">
-                <NavLink to="/accounts">My Position</NavLink>
+                <NavLink to="/accounts">Dashboard</NavLink>
               </li>
             ) : ""}
             {/* <li style={{ marginTop: "20px" }}>
@@ -225,7 +228,7 @@ const Navbar = () => {
               onClick={() => setShowMenu(!showMenu)}>
 
               {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
-              {addrees !== null ? (
+              {web3 && addrees !== null ? (
                 <div className="dropdown">
                   <Button
                     type="button" data-toggle="dropdown"
@@ -248,6 +251,7 @@ const Navbar = () => {
                       </a>
                       <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
                         <FiLogOut />
+                        {/* {navigate("/")} */}
                         <Link className="ml-2"
                           onClick={() => DisconnectWallet()}
                         >Disconnect</Link>
@@ -277,11 +281,14 @@ const Navbar = () => {
                       letterSpacing: "1px",
                       textTransform: "uppercase",
                       color: "#846424",
-                    }}>Connect</a>
+                    }}>
+                      {status === "pending" ? "Connecting..." : "Connect"}
+                    </a>
                   </Button>
                   <WalletConnect show={modalShow}
                     onHide={() => setModalShow(false)} />
                 </>
+                
               )}
             </li>
           </ul>
@@ -323,13 +330,20 @@ const WalletConnect = (props) => {
     setIsConnected(true);
   };
 
+
+  
   return (
-    <div className="items-center">
+    <div className="">
       <Modal className="items-center"
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
+        dialogClassName="modal-90w public-profile-modal-class"
         centered
+        style={{
+          background: "black ",
+          opacity: "1",
+        }}
       >
         {/* closeButton */}
         <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">
@@ -425,3 +439,9 @@ const WalletConnect = (props) => {
     </div>
   )
 }
+
+const Models = styled.div`
+.get{ 
+  opacity: 0.5;   
+}`
+

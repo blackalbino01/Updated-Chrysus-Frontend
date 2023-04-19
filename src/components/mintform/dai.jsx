@@ -10,13 +10,22 @@ import { Button } from 'reactstrap';
 
 
 export const DAIDeposite = () => {
-	const { web3, contract, accounts, socketContract } = useAppSelector((state) => state.web3Connect);
+	const [isApprove, setisApprove] = useState();
+	const { web3, contract, accounts, DAIContract } = useAppSelector((state) => state.web3Connect);
 	const [DAIamount, setDAIamount] = useState();
 
+	const DAIApprove = async () => {
+		try {
+			await DAIContract?.methods.approve(contract, DAIamount).send({ from: accounts[0] })
+			setisApprove(true);
+		} catch (error) {
+			console.log("First Approve Error", error)
+		}
+	}
 
 	const DepositDAICollateral = async () => {
 		try {
-			let DAIAddress = "0x04124E92d67C20E7c078AEB6E8050d585b369eC5"
+			let DAIAddress = "0x5777D3ce2695Ec1374DB456C81532b34879e1A68"
 			await contract?.methods.depositCollateral(DAIAddress, DAIamount).send({ from: accounts[0] })
 
 		} catch (error) {

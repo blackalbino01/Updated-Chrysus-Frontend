@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import { MdSpaceDashboard } from "react-icons/md";
 import { RiDashboard2Fill } from "react-icons/ri";
@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '../../reducer/store';
 export default function UserSideBar() {
   // const dispatch = useDispatch();
   // const [swapModal, setSwapModal] = useState(false);
+  const navigate = useNavigate();
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
   const [modalShow, setModalShow] = useState(false);
@@ -37,10 +38,12 @@ export default function UserSideBar() {
         if (addrees !== null) {
           localStorage.clear();
         }
+        navigate("/")
       }
       if (Provider.connected) {
         Provider.disconnect();
         web3.setProvider(null)
+        navigate("/")
       }
     }
   };
@@ -181,7 +184,7 @@ export default function UserSideBar() {
           </div>
         </div>
         <div className="logout">
-          <Link >
+          <Link to={"/"}>
             <FiLogOut />
             <span className="logout"
               onClick={() => DisconnectWallet()}>Disconnect</span>
@@ -252,7 +255,7 @@ export default function UserSideBar() {
               </a>
             </li>
             <li className="logout">
-              <Link >
+              <Link to={"/"}>
                 <FiLogOut />
                 <span className="logout"
                   onClick={() => DisconnectWallet()}>Disconnect</span>
@@ -351,6 +354,10 @@ const Swap = (props) => {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      style={{
+        background: "black ",
+        opacity: "1",
+      }}
     >
       {/* closeButton */}
       <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">

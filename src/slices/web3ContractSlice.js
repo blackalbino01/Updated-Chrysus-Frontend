@@ -1,6 +1,7 @@
 import Web3 from 'web3';
-import { CHRYSUS } from '../constant';
+import { CHRYSUS, DAI } from '../constant';
 import { CHRYSUS_ABI } from '../abis/Chrysus';
+import { DAI_ABI } from '../abis/Dai';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import { Web3Provider } from '@ethersproject/providers';
 // import { useWeb3React } from '@web3-react/core';
@@ -15,6 +16,7 @@ export const initialState = {
     web3: null,
     socketContract: null,
     accounts:  [],
+    DAIContract: null,
     contract:null,
     balance: [],
     Provider: null,
@@ -49,6 +51,7 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
             console.log(`Wallet address ${accounts} stored on local storage.`);
             // const accountss = localStorage.getItem("accounts")
             const balance = await web3.eth.getBalance(accounts[0]);
+            const DAIContract = new web3.eth.Contract(DAI_ABI, DAI);
             //web3 Socket
             // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
             //     `wss://goerli.infura.io/ws/v3/b0b0d100567e4e59bb2bab1a2c353381`
@@ -61,6 +64,7 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
                 accounts,
                 Provider,
                 contract,
+                DAIContract,
                 // socketContract,
             }
         }
@@ -222,6 +226,7 @@ const web3ConnectSlice = createSlice({
             state.web3 = payload?.web3;
             state.accounts = payload?.accounts;
             state.contract = payload?.contract;
+            state.DAIContract = payload?.DAIContract;
             state.socketContract = payload?.socketContract;
             state.balance = payload?.balance;
             state.Provider = payload?.Provider;
@@ -237,6 +242,7 @@ const web3ConnectSlice = createSlice({
             state.accounts = payload?.accounts;
             state.contract = payload?.contract;
             state.balance = payload?.balance;
+            state.DAIContract = payload?.DAIContract;
             state.Provider = payload?.Provider;
             // state.socketContract = payload?.socketContract;
             state.status = "success";

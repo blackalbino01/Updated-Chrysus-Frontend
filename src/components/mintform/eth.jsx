@@ -16,9 +16,9 @@ export const ETHDeposite = () => {
 
     const DepositCollateral = async () => {
         try {
-            // let valueToSend = web3.utils.toWei(ethamount, 'ether');
+            let valueToSend = web3.utils.toWei(ethamount, 'ether');
             let zeroAddress = "0x0000000000000000000000000000000000000000"
-            await contract?.methods.depositCollateral(zeroAddress, ethamount).send({ from: accounts[0] })
+            await contract?.methods.depositCollateral(zeroAddress, valueToSend).send({ from: accounts[0] })
 
         } catch (error) {
             console.log("Send Eth Error", error)
