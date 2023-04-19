@@ -30,7 +30,6 @@ export default function Loan() {
     <Section>
       <div className="grid">
         <CHCForm />
-        
       </div>
     </Section>
     // <Div className='bg-white'>

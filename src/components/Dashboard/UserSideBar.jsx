@@ -356,7 +356,7 @@ const Swap = (props) => {
       centered
       style={{
         background: "black ",
-        opacity: "1",
+        opacity: "2%",
       }}
     >
       {/* closeButton */}

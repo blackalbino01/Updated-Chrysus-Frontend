@@ -29,6 +29,7 @@ export const CHCForm = () => {
 				<CToggle
 					options={[
 						{ value: "loan", label: "LOAN" },
+						{ value: "borrow", label: "BORROW" },
 					]}
 					setSelected={() => { }}
 				/>
