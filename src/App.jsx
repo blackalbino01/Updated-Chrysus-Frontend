@@ -15,6 +15,7 @@ import Loan from './components/Dashboard/Loan';
 import { Collateral } from './components/chcform/collateral';
 // import { Vault } from './components/chcform/vault';
 import { DAI } from './components/chcform/dai';
+import SwapPopup from './components/SwapPopup';
 import { DAIDeposite } from './components/mintform/dai';
 import { ETHDeposite } from './components/mintform/eth';
 import { Confirmation } from './components/chcform/confirmation';
@@ -73,6 +74,7 @@ const App = () => {
               <Route path="ethdeposite" element={<ETHDeposite />} />
               <Route path="confirmation" element={<Confirmation />} />
             </Route>
+            <Route path="swappopup" element={<SwapPopup />} />
           </Route>
           <Route path="/governance" element={<Governance />}>
           <Route index element={<DaoLandPage />} />

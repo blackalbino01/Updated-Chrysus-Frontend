@@ -146,17 +146,23 @@ export default function UserSideBar() {
                 className={currentLink === 4 ? "active" : "none"}
                 onClick={() => setCurrentLink(4)}
               >
-                <a className="cursor-pointer" onClick={() => setshowSwapModel(true)}>
+                
+                <a className="cursor-pointer" 
+                // onClick={() => setshowSwapModel(true)}
+                >
                   {/* <GiTwirlCenter /> */}
                   {/* <Link to={"/login"}></Link> */}
+                  <Link to={"swappopup"}>
                   <img
                     className="jumbo-button-icon"
                     src={SwapGold}
                     alt="swap-gold"
                   />
                   <span>Swap</span>
+                  </Link>
                 </a>
-                <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} />
+                
+                {/* <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} /> */}
               </li>
               <li
                 className={currentLink === 5 ? "active" : "none"}
@@ -231,7 +237,10 @@ export default function UserSideBar() {
               className={currentLink === 4 ? "active" : "none"}
               onClick={() => setCurrentLink(4)}
             >
-              <a className="cursor-pointer" onClick={() => setshowSwapModel(true)}>
+              <Link to={"swappopup"}>
+              <a className="cursor-pointer" 
+              // onClick={() => setshowSwapModel(true)}
+              >
                 <img
                   className="jumbo-button-icon"
                   src={SwapGold}
@@ -239,7 +248,8 @@ export default function UserSideBar() {
                 />
                 <span> Swap</span>
               </a>
-              <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} />
+              </Link>
+              {/* <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} /> */}
             </li>
             <li
               className={currentLink === 5 ? "active" : "none"}
