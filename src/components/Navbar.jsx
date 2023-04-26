@@ -33,6 +33,7 @@ const Navbar = () => {
   })
 
   console.log("status", status)
+  console.log("web3", web3)
   // useEffect(() => {
   //   if(status === true){
   //     navigate("/accounts");
@@ -82,7 +83,7 @@ const Navbar = () => {
           WhitePaper
         </li>
         {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
-        {web3 && addrees !== null ? (
+        {addrees !== null ? (
           <li className="text-dimWhite text-[16px] font-poppins cursor-pointer">
             <NavLink to="/accounts">Dashboard</NavLink>
           </li>
@@ -92,7 +93,7 @@ const Navbar = () => {
           onClick={() => setShowMenu(!showMenu)}>
 
           {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
-          {addrees !== null ? (
+          { addrees !== null ? (
             <div className="dropdown">
               <Button
                 type="button" data-toggle="dropdown"
@@ -236,7 +237,7 @@ const Navbar = () => {
               onClick={() => setShowMenu(!showMenu)}>
 
               {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
-              {web3 && addrees !== null ? (
+              { addrees !== null ? (
                 <div className="dropdown">
                   <Button
                     type="button" data-toggle="dropdown"

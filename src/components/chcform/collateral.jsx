@@ -305,18 +305,20 @@ export const Collateral = () => {
 																	<td>{item.Amount}</td>
 																	{/* <td className="text-end">--</td> */}
 																	<td>
-																		<span class="badge cursor-pointer"
-																			style={{
-																				height: "22px",
-																				width: "80px",
-																				color: "black",
-																				textTransform: "uppercase",
-																				fontStyle: "normal",
-																				fontWeight: "700",
-																				fontSize: "10px",
-																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-																				borderRadius: "40px",
-																			}}>Loan</span>																</td>
+																		<Link to={"/accounts/loan/dai"}>
+																			<span class="badge cursor-pointer"
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "black",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																					borderRadius: "40px",
+																				}}>Loan</span>
+																		</Link>															</td>
 																	{/* <td>
 																		<span class="badge cursor-pointer"
 																			style={{
@@ -379,7 +381,7 @@ export const Collateral = () => {
 
 															<Link
 																style={{
-																	
+
 																	borderRadius: "16px",
 																}}
 																className="paginate_button next text-white"

@@ -1,4 +1,4 @@
-import {facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold  } from "../assets";
+import { facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold } from "../assets";
 
 export const navLinks = [
   {
@@ -43,7 +43,7 @@ export const descone = [
     title: "Rewards",
     content:
       "The best credit cards offer some tantalizing combinations of promotions and prizes",
-  }, 
+  },
 ];
 export const features = [
   {
@@ -80,19 +80,19 @@ export const features = [
 
 export const footerLinks = [
   {
-    title: "Servises",
+    title: "Services",
     links: [
       {
         name: "Mint",
-        link: "#",
+        path: "/accounts/mint",
       },
       {
         name: "Swap",
-        link: "#",
+        path: "/accounts/swappopup",
       },
       {
         name: "Loan",
-        link: "#",
+        path: "/accounts/loan",
       },
     ],
   },
@@ -101,31 +101,24 @@ export const footerLinks = [
     links: [
       {
         name: "Ecosystem",
-        link: "/ecosystems",
+        path: "/ecosystems",
       },
       {
         name: "About",
-        link: "/about",
+        path: "/about",
       },
-      {
-        name: "Contact",
-        link: "#",
-      },
-      
     ],
   },
   {
     title: "Learn",
     links: [
       {
-        name: "FAQ",
-        link: "/faq",
+        name: "Governance",
+        path: "/governance",
       },
       {
-        name: "Email",
-        link: "",
-        content:
-        "Email: ",
+        name: "FAQ",
+        path: "/faq",
       },
     ],
   },

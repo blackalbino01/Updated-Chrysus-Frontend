@@ -46,9 +46,12 @@ export const Confirmation = () => {
 			<div className="mt-4"></div>
 			<div className="w-100 d-flex flex-row justify-content-start p-3">
 				{/* Form Actions */}
-				<FormActionButton color="white" outline={true}>
-					Back
-				</FormActionButton>
+				{/* <FormActionButton  color="white" outline={true}> */}
+					<Link to={"/accounts/loan"}>
+						Back
+					</Link>
+				{/* </FormActionButton> */}
+
 				<FormActionButton
 					color="primary"
 					gradient={true}

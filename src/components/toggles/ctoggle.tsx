@@ -32,27 +32,6 @@ export const CToggle = ({ setSelected, options }: ICToggleProps) => {
 							<Button
 								color="primary"
 								style={{
-									background:
-										"linear-gradient(270deg, #FFD558 0.26%, #846424 99.99%, #846424 100%)",
-									border: "1px solid #262522",
-									boxShadow: "inset 0px 1px 2px rgba(0, 0, 0, 0.25)",
-									borderRadius: "40px",
-									letterSpacing: "1px",
-									color: "#000000",
-									fontStyle: "normal",
-									fontWeight: "700",
-									fontSize: "12px",
-									lineHeight: "16px",
-								}}
-							>
-								{option.label}
-							</Button>
-						);
-					} else {
-						return (
-							<Button
-								color="primary"
-								style={{
 									background: "transparent",
 									border: "1px solid transparent",
 									boxShadow: "none",
@@ -68,6 +47,27 @@ export const CToggle = ({ setSelected, options }: ICToggleProps) => {
 								onClick={() => {
 									_setSelected(option);
 									setSelected(option);
+								}}
+							>
+								{option.label}
+							</Button>
+						);
+					} else {
+						return (
+							<Button
+								color="primary"
+								style={{
+									background:
+										"linear-gradient(270deg, #FFD558 0.26%, #846424 99.99%, #846424 100%)",
+									border: "1px solid #262522",
+									boxShadow: "inset 0px 1px 2px rgba(0, 0, 0, 0.25)",
+									borderRadius: "40px",
+									letterSpacing: "1px",
+									color: "#000000",
+									fontStyle: "normal",
+									fontWeight: "700",
+									fontSize: "12px",
+									lineHeight: "16px",
 								}}
 							>
 								{option.label}

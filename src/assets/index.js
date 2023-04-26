@@ -65,8 +65,21 @@ import G2 from './G2.png'
 import G3 from './G3.png'
 import G4 from './G4.png'
 import Gov from './Gov.png'
-
+import G from './G.png'
+import P from './P.png'
+import GI from './GI.svg'
+import A from './A.svg'
+import B from './B.png'
+import CP from './CP.png'
+import D from './D.png'
 export {
+  A,
+  B,
+  CP,
+  D,
+  GI,
+  P,
+  G,
   Gov,
   meta1,
   walet1,

@@ -17,10 +17,10 @@ export const CHCForm = () => {
 	}, [location]);
 
 	const steps: FormViews = [
-		{ title: "Select Collateral", widget: "" },
+		// { title: "Select Collateral", widget: "" },
 		// { title: "Vault Management", widget: "vault" },
-		{ title: "Generate CHC", widget: "dai" },
-		{ title: "Confirmation", widget: "confirmation" },
+		// { title: "Generate CHC", widget: "dai" },
+		// { title: "Confirmation", widget: "confirmation" },
 	];
 	const [_selectedView, _setSelectedView] = useState<FormView>(steps[0]);
 	return (
@@ -28,8 +28,8 @@ export const CHCForm = () => {
 			<div className="p-4 d-flex flex-row justify-content-between align-items-center">
 				<CToggle
 					options={[
+						// { value: "loan", label: "LOAN" },
 						{ value: "loan", label: "LOAN" },
-						{ value: "borrow", label: "BORROW" },
 					]}
 					setSelected={() => { }}
 				/>

@@ -10,7 +10,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import { PrimaryGradientButton } from "../buttons/primary_gradient.button";
 import scrollreveal from "scrollreveal";
-import { Transferblack, logoo, LeafGold, SwapGold, CartGold, UmbrellaGold, Chrysus, USDTWhite, XLMWhite, XRPWhite, DAIWhite, ETHWhite } from "../../assets";
+import { Transferblack, logoo, LeafGold, SwapGold, UmbrellaGold, Chrysus, G, P,GI,A } from "../../assets";
 import { MintButton } from "../buttons/mint";
 import { useAppDispatch, useAppSelector } from '../../reducer/store';
 
@@ -192,10 +192,10 @@ export default function UserSideBar() {
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
               >
-                <Link to={"loan"}>
-                  <img
+                <Link to={"/governance"}>
+                  <img  width="15" height="15" 
                     className="jumbo-button-icon"
-                    src={UmbrellaGold}
+                    src={GI}
                     alt="umbrella-gold"
                   />
                   <span> Governance </span>
@@ -205,10 +205,10 @@ export default function UserSideBar() {
                 className={currentLink === 7 ? "active" : "none"}
                 onClick={() => setCurrentLink(7)}
               >
-                <Link to={"loan"}>
-                  <img
+                <Link to={"allpositions"}>
+                  <img width="15" height="15" 
                     className="jumbo-button-icon"
-                    src={UmbrellaGold}
+                    src={A}
                     alt="umbrella-gold"
                   />
                   <span> All Positions </span>
@@ -296,10 +296,10 @@ export default function UserSideBar() {
               className={currentLink === 6 ? "active" : "none"}
               onClick={() => setCurrentLink(6)}
             >
-              <Link to={"loan"}>
+              <Link to={"/governance"}>
                 <img
                   className="jumbo-button-icon"
-                  src={UmbrellaGold}
+                  src={GI}
                   alt="umbrella-gold"
                 />
                 <span> Governance </span>
@@ -309,10 +309,10 @@ export default function UserSideBar() {
               className={currentLink === 7 ? "active" : "none"}
               onClick={() => setCurrentLink(7)}
             >
-              <Link to={"loan"}>
+              <Link to={"allpositions"}>
                 <img
                   className="jumbo-button-icon"
-                  src={UmbrellaGold}
+                  src={A}
                   alt="umbrella-gold"
                 />
                 <span> All Positions </span>

@@ -5,13 +5,14 @@ import { Body, H4, P } from "../typography";
 import { Info } from "react-feather";
 // import { COLORS } from "src/assets/styles/theme";
 import { CInput } from "../inputs/cinput";
+import { Link } from "react-router-dom";
 export const DAI = () => {
 	return (
 		<div className="row w-100" style={{ borderRadius: "16px" }}>
 			<div className="col ">
 				<div
 					className="w-100 d-flex flex-column align-items-center text-center"
-					
+
 					style={{
 						backgroundColor: "#211f21",
 						borderRadius: "16px",
@@ -57,9 +58,11 @@ export const DAI = () => {
 					></div>
 					<div className="w-100 d-flex flex-row justify-content-start p-3">
 						{/* Form Actions */}
-						<FormActionButton color="white" outline={true}>
-							Back
-						</FormActionButton>
+						<Link to={"/accounts/loan"}>
+							<FormActionButton color="white" outline={true}>
+								Back
+							</FormActionButton>
+						</Link>
 						<FormActionButton
 							color="primary"
 							gradient={true}

@@ -24,6 +24,7 @@ import Governance from './components/governance';
 // import {DaoLandPage} from './components/DaoLandPage';
 import DaoLandPage from './components/DaoLandPage';
 import Mint from './components/Dashboard/Mint';
+import AllPositions from './components/AllPositions';
 import { Collaterals } from './components/mintform/collaterals';
 const Home = lazy(() => import('./components/Home'));
 
@@ -63,6 +64,7 @@ const App = () => {
 
           <Route path="/accounts" element={<Accounts />}>
             <Route index element={<Dashboard />} />
+            <Route path="allpositions" element={<AllPositions />} />
             <Route path="loan" element={<Loan />} >
               <Route index element={<Collateral />} />
               <Route path="dai" element={<DAI />} />
