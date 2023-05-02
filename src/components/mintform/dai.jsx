@@ -7,22 +7,25 @@ import { CInput } from "../inputs/cinput";
 import { useAppSelector, useAppDispatch } from '../../reducer/store';
 import { loadBlockchain, updatAccount } from '../../slices/web3ContractSlice';
 import { Button } from 'reactstrap';
+import { CHRYSUS, DAI } from '../../constant';
+
 
 
 export const DAIDeposite = () => {
-	const [isApprove, setisApprove] = useState();
+	const [isApprove, setisApprove] = useState(false);
 	const { web3, contract, accounts, DAIContract } = useAppSelector((state) => state.web3Connect);
 	const [DAIamount, setDAIamount] = useState();
 
 	const DAIApprove = async () => {
 		try {
-			await DAIContract?.methods.approve(contract, DAIamount).send({ from: accounts[0] })
+			await DAIContract?.methods.approve(CHRYSUS, DAIamount).send({ from: accounts[0] })
 			setisApprove(true);
 		} catch (error) {
 			console.log("First Approve Error", error)
 		}
 	}
-
+console.log("DAI amount", DAIamount)
+console.log("chrysus contract", contract)
 	const DepositDAICollateral = async () => {
 		try {
 			let DAIAddress = "0x5777D3ce2695Ec1374DB456C81532b34879e1A68"
@@ -74,20 +77,42 @@ export const DAIDeposite = () => {
 							</div>
 							<div className="mt-2"></div>
 							<div className="w-100  p-3 text-center">
-							<Button 
-                                    style={{
-                                        color: "black",
-                                        fontStyle: "normal",
-                                        fontWeight: "700",
-                                        fontSize: "16px",
-                                        lineHeight: "34px",
-                                        letterSpacing: "1px",
-                                        textTransform: "uppercase",
-                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                        borderRadius: "40px",
-                                    }}
-                                    onClick={() => DepositDAICollateral()}>
-                                    Deposit</Button>
+								{isApprove === true ?
+									(
+										<>
+											<Button
+												style={{
+													color: "black",
+													fontStyle: "normal",
+													fontWeight: "700",
+													fontSize: "16px",
+													lineHeight: "34px",
+													letterSpacing: "1px",
+													textTransform: "uppercase",
+													background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+													borderRadius: "40px",
+												}}
+												onClick={() => DepositDAICollateral()}>
+												Deposit</Button>
+										</>
+									) : (
+										<>
+											<Button
+												style={{
+													color: "black",
+													fontStyle: "normal",
+													fontWeight: "700",
+													fontSize: "16px",
+													lineHeight: "34px",
+													letterSpacing: "1px",
+													textTransform: "uppercase",
+													background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+													borderRadius: "40px",
+												}}
+												onClick={() => DAIApprove()}>
+												Approve</Button>
+										</>
+									)}
 								{/* <FormActionButton
 									color="primary"
 									gradient={true}

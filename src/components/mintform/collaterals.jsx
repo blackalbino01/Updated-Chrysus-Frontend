@@ -194,7 +194,7 @@ export const Collaterals = () => {
 																	<td>{item.Amount}</td>
 																	<td>
 																		<Link to={"ethdeposite"}>
-																			<span class="badge cursor-pointer"
+																			<span className="badge cursor-pointer"
 																				// onClick={() => setModalShow(true)}
 																				style={{
 																					height: "22px",
@@ -234,7 +234,7 @@ export const Collaterals = () => {
 																	<td>{item.Amount}</td>
 																	<td>
 																		<Link to={"daideposite"}>
-																			<span class="badge cursor-pointer"
+																			<span className="badge cursor-pointer"
 																				// onClick={() => setModalShowDAI(true)}
 																				style={{
 																					height: "22px",
