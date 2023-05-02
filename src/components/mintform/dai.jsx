@@ -28,9 +28,7 @@ console.log("DAI amount", DAIamount)
 console.log("chrysus contract", contract)
 	const DepositDAICollateral = async () => {
 		try {
-			let DAIAddress = "0x5777D3ce2695Ec1374DB456C81532b34879e1A68"
-			await contract?.methods.depositCollateral(DAIAddress, DAIamount).send({ from: accounts[0] })
-
+			await contract?.methods.depositCollateral(DAI, DAIamount).send({ from: accounts[0] })
 		} catch (error) {
 			console.log("Send DAI Error", error)
 		}
