@@ -53,9 +53,6 @@ const AllPositions = () => {
 
   return (
     <Section>
-      <div>
-        <h1 style={{ color: "#846424" }} className="text-center">Wallet Balances</h1>
-      </div>
       <div className="page-content mt-5">
         <div className="row justify-content-center">
           <div className="col-lg-4 col-md-6 m-b30 wow fadeInUp" data-wow-delay="0.2s" >
@@ -69,7 +66,7 @@ const AllPositions = () => {
               <div className="icon-content">
                 <div className=" dataTabletrade">
                   <div id="status_wrapper" className="dataTables_wrapper no-footer">
-                    <table  style={{ minWidth: "360px" }}>
+                    <table  style={{ minWidth: "260px" }}>
                       <thead  mb-3>
                         <tr style={{ color: "#846424" }}>
                           <th>ASSET</th>
@@ -259,11 +256,7 @@ const AllPositions = () => {
         </div>
       </div>
       <div className="mt-5"></div>
-      <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Footer />
-        </div>
-      </div>
+      
     </Section>
   )
 }

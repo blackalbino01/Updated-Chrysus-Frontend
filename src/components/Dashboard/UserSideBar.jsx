@@ -10,7 +10,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import { PrimaryGradientButton } from "../buttons/primary_gradient.button";
 import scrollreveal from "scrollreveal";
-import { Transferblack, logoo, LeafGold, SwapGold, UmbrellaGold, Chrysus, G, P,GI,A } from "../../assets";
+import { Transferblack, logoo, LeafGold, SwapGold, UmbrellaGold, Chrysus, G, P, GI, A } from "../../assets";
 import { MintButton } from "../buttons/mint";
 import { useAppDispatch, useAppSelector } from '../../reducer/store';
 
@@ -103,83 +103,78 @@ export default function UserSideBar() {
           </div>
           <div className="links">
             <ul>
-              <li
-                className={currentLink === 1 ? "active" : "none"}
-                onClick={() => setCurrentLink(1)}
-              >
-                <Link to={"/accounts"}>
-                  <MdSpaceDashboard />
-                  <span> Dashboard</span>
-                </Link>
-              </li>
-              <li
-                className={currentLink === 2 ? "active" : "none"}
-                onClick={() => setCurrentLink(2)}
-              >
-                <Link to={"/"}>
-                  <RiDashboard2Fill />
-                  <span> Home</span>
-                </Link>
-              </li>
-              <li
-                className={currentLink === 3 ? "active" : "none"}
-                onClick={() => setCurrentLink(3)}
-              >
-                {/* <a className="cursor-pointer" onClick={() => setModalShow(true)}>
-                  <img
-                    className="jumbo-button-icon"
-                    src={LeafGold}
-                    alt="leaf-gold"
-                  />
-                  <span> Mint</span>
-                </a>
-                <Mint show={modalShow}
-                  onHide={() => setModalShow(false)} /> */}
-                <Link to={"mint"}>
-                  <img
-                    className="jumbo-button-icon"
-                    src={LeafGold}
-                    alt="leaf-gold"
-                  />
-                  <span> Mint </span>
-                </Link>
-              </li>
-              <li
-                className={currentLink === 4 ? "active" : "none"}
-                onClick={() => setCurrentLink(4)}
-              >
-
-                <a className="cursor-pointer"
-                // onClick={() => setshowSwapModel(true)}
+              <Link to={"/accounts"}>
+                <li
+                  className={currentLink === 1 ? "active" : "none"}
+                  onClick={() => setCurrentLink(1)}
                 >
-                  {/* <GiTwirlCenter /> */}
-                  {/* <Link to={"/login"}></Link> */}
-                  <Link to={"swappopup"}>
+                  <Link to={"/accounts"}>
+                    <MdSpaceDashboard />
+                    <span> Dashboard</span>
+                  </Link>
+                </li>
+              </Link>
+              <Link to={"/"}>
+                <li
+                  className={currentLink === 2 ? "active" : "none"}
+                  onClick={() => setCurrentLink(2)}
+                >
+                  <Link to={"/"}>
+                    <RiDashboard2Fill />
+                    <span> Home</span>
+                  </Link>
+                </li>
+              </Link>
+              <Link to={"mint"}>
+                <li
+                  className={currentLink === 3 ? "active" : "none"}
+                  onClick={() => setCurrentLink(3)}
+                >
+                  <Link to={"mint"}>
                     <img
                       className="jumbo-button-icon"
-                      src={SwapGold}
-                      alt="swap-gold"
+                      src={LeafGold}
+                      alt="leaf-gold"
                     />
-                    <span>Swap</span>
+                    <span> Mint </span>
                   </Link>
-                </a>
+                </li>
+              </Link>
+              <Link to={"swappopup"}>
+                <li
+                  className={currentLink === 4 ? "active" : "none"}
+                  onClick={() => setCurrentLink(4)}
+                >
 
-                {/* <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} /> */}
-              </li>
-              <li
-                className={currentLink === 5 ? "active" : "none"}
-                onClick={() => setCurrentLink(5)}
-              >
-                <Link to={"loan"}>
-                  <img
-                    className="jumbo-button-icon"
-                    src={UmbrellaGold}
-                    alt="umbrella-gold"
-                  />
-                  <span> Loan </span>
-                </Link>
+                  <a className="cursor-pointer">
+                    <Link to={"swappopup"}>
+                      <img
+                        className="jumbo-button-icon"
+                        src={SwapGold}
+                        alt="swap-gold"
+                      />
+                      <span>Swap</span>
+                    </Link>
+                  </a>
 
-                {/* <a href="#">
+                  {/* <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} /> */}
+                </li>
+              </Link>
+              <Link to={"loan"}>
+                <li
+                  className={currentLink === 5 ? "active" : "none"}
+                  onClick={() => setCurrentLink(5)}
+                >
+                  <Link to={"loan"}>
+                    <img
+                      className="jumbo-button-icon"
+                      src={UmbrellaGold}
+                      alt="umbrella-gold"
+                    />
+                    <span> Loan </span>
+                  </Link>
+
+                  {/* <a href="#">
                   <img
                     className="jumbo-button-icon"
                     src={UmbrellaGold}
@@ -187,33 +182,38 @@ export default function UserSideBar() {
                   />
                   <span> Loan</span>
                 </a> */}
-              </li>
-              <li
-                className={currentLink === 6 ? "active" : "none"}
-                onClick={() => setCurrentLink(6)}
-              >
-                <Link to={"/governance"}>
-                  <img  width="15" height="15" 
-                    className="jumbo-button-icon"
-                    src={GI}
-                    alt="umbrella-gold"
-                  />
-                  <span> Governance </span>
-                </Link>
-              </li>
-              <li
-                className={currentLink === 7 ? "active" : "none"}
-                onClick={() => setCurrentLink(7)}
-              >
-                <Link to={"allpositions"}>
-                  <img width="15" height="15" 
-                    className="jumbo-button-icon"
-                    src={A}
-                    alt="umbrella-gold"
-                  />
-                  <span> All Positions </span>
-                </Link>
-              </li>
+                </li>
+              </Link>
+              <Link to={"governance"}>
+                <li
+                  className={currentLink === 6 ? "active" : "none"}
+                  onClick={() => setCurrentLink(6)}
+                >
+                  <Link to={"governance"}>
+                    <img width="15" height="15"
+                      className="jumbo-button-icon"
+                      src={GI}
+                      alt="umbrella-gold"
+                    />
+                    <span> Governance </span>
+                  </Link>
+                </li>
+              </Link>
+              <Link to={"allpositions"}>
+                <li
+                  className={currentLink === 7 ? "active" : "none"}
+                  onClick={() => setCurrentLink(7)}
+                >
+                  <Link to={"allpositions"}>
+                    <img width="15" height="15"
+                      className="jumbo-button-icon"
+                      src={A}
+                      alt="umbrella-gold"
+                    />
+                    <span> All Positions </span>
+                  </Link>
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
@@ -231,93 +231,107 @@ export default function UserSideBar() {
       <ResponsiveNav state={navbarState} className={navbarState ? "show" : ""}>
         <div className="responsive__links">
           <ul>
-            <li
-              className={currentLink === 1 ? "active" : "none"}
-              onClick={() => setCurrentLink(1)} >
-              <Link to={"/accounts"}>
-                <MdSpaceDashboard />
-                <span> Dashboard</span>
-              </Link>
-            </li>
-            <li
-              className={currentLink === 2 ? "active" : "none"}
-              onClick={() => setCurrentLink(2)}
-            >
-              <Link >
-                <RiDashboard2Fill />
-                <span> Home</span>
-              </Link>
-            </li>
-            <li
-              className={currentLink === 3 ? "active" : "none"}
-              onClick={() => setCurrentLink(3)}
-            >
-              <a href="#">
-                <img
-                  className="jumbo-button-icon"
-                  src={LeafGold}
-                  alt="leaf-gold"
-                />
-                <span> Mint</span>
-              </a>
-            </li>
-            <li
-              className={currentLink === 4 ? "active" : "none"}
-              onClick={() => setCurrentLink(4)}
-            >
-              <Link to={"swappopup"}>
-                <a className="cursor-pointer"
-                // onClick={() => setshowSwapModel(true)}
-                >
+            <Link to={"/accounts"}>
+              <li
+                className={currentLink === 1 ? "active" : "none"}
+                onClick={() => setCurrentLink(1)} >
+                <Link to={"/accounts"}>
+                  <MdSpaceDashboard />
+                  <span> Dashboard</span>
+                </Link>
+              </li>
+            </Link>
+            <Link to={"/"}>
+              <li
+                className={currentLink === 2 ? "active" : "none"}
+                onClick={() => setCurrentLink(2)}
+              >
+                <Link to={"/"}>
+                  <RiDashboard2Fill />
+                  <span> Home</span>
+                </Link>
+              </li>
+            </Link>
+            <Link to={"mint"}>
+              <li
+                className={currentLink === 3 ? "active" : "none"}
+                onClick={() => setCurrentLink(3)}
+              >
+                <Link to={"mint"}>
                   <img
                     className="jumbo-button-icon"
-                    src={SwapGold}
-                    alt="swap-gold"
+                    src={LeafGold}
+                    alt="leaf-gold"
                   />
-                  <span> Swap</span>
-                </a>
-              </Link>
-              {/* <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} /> */}
-            </li>
-            <li
-              className={currentLink === 5 ? "active" : "none"}
-              onClick={() => setCurrentLink(5)}
-            >
-              <a href="#">
-                <img
-                  className="jumbo-button-icon"
-                  src={UmbrellaGold}
-                  alt="umbrella-gold"
-                />
-                <span> Loan</span>
-              </a>
-            </li>
-            <li
-              className={currentLink === 6 ? "active" : "none"}
-              onClick={() => setCurrentLink(6)}
-            >
-              <Link to={"/governance"}>
-                <img
-                  className="jumbo-button-icon"
-                  src={GI}
-                  alt="umbrella-gold"
-                />
-                <span> Governance </span>
-              </Link>
-            </li>
-            <li
-              className={currentLink === 7 ? "active" : "none"}
-              onClick={() => setCurrentLink(7)}
-            >
-              <Link to={"allpositions"}>
-                <img
-                  className="jumbo-button-icon"
-                  src={A}
-                  alt="umbrella-gold"
-                />
-                <span> All Positions </span>
-              </Link>
-            </li>
+                  <span> Mint</span>
+                </Link>
+              </li>
+            </Link>
+            <Link to={"swappopup"}>
+              <li
+                className={currentLink === 4 ? "active" : "none"}
+                onClick={() => setCurrentLink(4)}
+              >
+                <Link to={"swappopup"}>
+                  <a className="cursor-pointer"
+                  // onClick={() => setshowSwapModel(true)}
+                  >
+                    <img
+                      className="jumbo-button-icon"
+                      src={SwapGold}
+                      alt="swap-gold"
+                    />
+                    <span> Swap</span>
+                  </a>
+                </Link>
+                {/* <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} /> */}
+              </li>
+            </Link>
+            <Link to={"loan"}>
+              <li
+                className={currentLink === 5 ? "active" : "none"}
+                onClick={() => setCurrentLink(5)}
+              >
+                <Link to={"loan"}>
+                  <img
+                    className="jumbo-button-icon"
+                    src={UmbrellaGold}
+                    alt="umbrella-gold"
+                  />
+                  <span> Loan</span>
+                </Link>
+              </li>
+            </Link>
+            <Link to={"governance"}>
+              <li
+                className={currentLink === 6 ? "active" : "none"}
+                onClick={() => setCurrentLink(6)}
+              >
+                <Link to={"governance"}>
+                  <img
+                    className="jumbo-button-icon"
+                    src={GI}
+                    alt="umbrella-gold"
+                  />
+                  <span> Governance </span>
+                </Link>
+              </li>
+            </Link>
+            <Link to={"allpositions"}>
+              <li
+                className={currentLink === 7 ? "active" : "none"}
+                onClick={() => setCurrentLink(7)}
+              >
+                <Link to={"allpositions"}>
+                  <img
+                    className="jumbo-button-icon"
+                    src={A}
+                    alt="umbrella-gold"
+                  />
+                  <span> All Positions </span>
+                </Link>
+              </li>
+            </Link>
             <li className="logout">
               <Link to={"/"}>
                 <FiLogOut />

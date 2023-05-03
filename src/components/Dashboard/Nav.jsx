@@ -7,9 +7,9 @@ const Navs = () => {
   return (
     <Nav>
     <div className="title">
-      <h4>Hi Kishan,</h4>
+      <h4>Chrysus</h4>
       <h1>
-        Welcome to <span>MY TAXI DASHBOARD</span>
+        Welcome to <span>Chrysus DASHBOARD</span>
       </h1>
     </div>
     <div className="search">

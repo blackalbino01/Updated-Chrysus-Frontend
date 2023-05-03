@@ -8,6 +8,8 @@ import { Button } from 'react-bootstrap';
 
 
 const ImageBox = ({ image, changeClass }) => {
+    const { web3, balance, contract, accounts, socketContract, Provider, status } = useAppSelector((state) => state.web3Connect);
+
     return (
 
         <div className="col-6">
@@ -18,6 +20,18 @@ const ImageBox = ({ image, changeClass }) => {
 
     )
 }
+
+const navigates = async () => {
+    if (window.ethereum) {
+      if (web3) {
+ 
+      }
+      if (Provider.connected) {
+        Provider.disconnect();
+        web3.setProvider(null)
+      }
+    }
+  };
 
 const Ecosystems = () => {
     return (
@@ -71,7 +85,8 @@ const Ecosystems = () => {
                                         }}>Get Started with ChrysusDAO</h2>
                                         <p className="m-0 lh-base">ChrysusDAO was founded with a simple mission of making everyone a part of a fair and inclusive Chrysus ecosystem</p>
                                     </div>
-                                    <Link to={"/governance"} className="btn btn-lg btn-primary btn-shadow"
+
+                                    <Link to={"/accounts/governance"} className="btn btn-lg btn-primary btn-shadow"
                                         style={{
                                             backgroundColor: "#211f21",
                                             borderRadius: "16px",

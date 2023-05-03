@@ -60,10 +60,10 @@ const DaoNav = () => {
 
   console.log("balance:", balance)
   return (
-    <nav className="w-full flex  py-6 justify-between items-center navbar">
+    <nav className="w-full flex justify-between items-center navbar">
       <Link to="/">
-        <img src={Gov} alt="hoobank" className="w-[250px] h-[55px]" onClick={() => setToggle(false)} />
-
+        {/* <img src={Gov} alt="hoobank" className="w-[250px] h-[55px]" onClick={() => setToggle(false)} /> */}
+        <h3 className="text-white">Governance</h3>
       </Link>
       <ul className="list-none  sm:flex hidden justify-end items-center flex-1">
         {/* {daoNavLinks.map((nav, index) => (

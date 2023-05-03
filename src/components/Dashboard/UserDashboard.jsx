@@ -162,7 +162,6 @@ const UserDashboard = () => {
 					<img loading="lazy" src={home} alt="discount" />
 				</div> */}
 			</Nav>
-
 			<div className="row">
 
 				<div className="col-xl-12">
@@ -266,7 +265,7 @@ const UserDashboard = () => {
 						</div>
 					</div>
 				</div>
-				<div className="col-xl-4">
+				<div className="col-xl-6">
 					<div className="card"
 						style={{
 							backgroundColor: "#211f21",
@@ -443,7 +442,18 @@ const UserDashboard = () => {
 									</tbody>
 								</table>
 							</div>
-							<div className="w-100 mt-5">
+						</div>
+					</div>
+				</div>
+				<div className="col-xl-6">
+					<div className="card"
+						style={{
+							backgroundColor: "#211f21",
+							borderRadius: "16px",
+							color: "#846424",
+						}}>
+						<div className="card-body pt-4">
+							<div className="w-100">
 								<div className="d-flex flex-row align-items-center justify-content-between mb-4">
 									<H4>Price Feeds</H4>
 								</div>
@@ -523,7 +533,7 @@ const UserDashboard = () => {
 						</div>
 					</div>
 				</div>
-				<div className="col-xl-8">
+				<div className="col-xl-12">
 					<div className="card"
 						style={{
 							backgroundColor: "#211f21",

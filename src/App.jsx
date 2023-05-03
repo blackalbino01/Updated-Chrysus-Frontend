@@ -20,7 +20,8 @@ import { DAIDeposite } from './components/mintform/dai';
 import { ETHDeposite } from './components/mintform/eth';
 import { Confirmation } from './components/chcform/confirmation';
 import Dashboard from './components/Dashboard/Dashboard';
-import Governance from './components/governance';
+// import Governance from './components/governance';
+import Governance from './components/Dashboard/gov';
 // import {DaoLandPage} from './components/DaoLandPage';
 import DaoLandPage from './components/DaoLandPage';
 import Mint from './components/Dashboard/Mint';
@@ -77,10 +78,13 @@ const App = () => {
               <Route path="confirmation" element={<Confirmation />} />
             </Route>
             <Route path="swappopup" element={<SwapPopup />} />
+            <Route path="governance" element={<Governance />}>
+              <Route index element={<DaoLandPage />} />
+            </Route>
           </Route>
-          <Route path="/governance" element={<Governance />}>
+          {/* <Route path="/governance" element={<Governance />}>
           <Route index element={<DaoLandPage />} />
-          </Route>
+          </Route> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         {/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>

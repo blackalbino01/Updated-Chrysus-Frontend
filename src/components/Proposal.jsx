@@ -523,11 +523,11 @@ const Proposal = () => {
                 </div>
             </div>
             <div className="mt-5"></div>
-            <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+            {/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
                 <div className={`${styles.boxWidth}`}>
                     <Footer />
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

@@ -10,7 +10,9 @@ const Toltip = ({ text, children }) => {
             onMouseEnter={() => setvisible(true)}
             onMouseLeave={() => setvisible(false)}
         >
-            {children}
+            {!visible ? (<>{ children }</>) : (
+                ""
+            )}
             {visible ? (
                 <div className='text' style={{
                     width: "270px",
@@ -20,11 +22,10 @@ const Toltip = ({ text, children }) => {
                     fontSize: "10px",
                     background: "#141414",
                     borderRadius: "10px",
-                    
                 }}>
                     <div className="">
                         <div className="p-3">
-                            <Body  style={{ fontWeight: "600" }}>
+                            <Body style={{ fontWeight: "600" }}>
                                 Stability Fee
                             </Body>
                             <Body style={{ fontWeight: "300" }}>
