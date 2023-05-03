@@ -95,7 +95,7 @@ export const Collateral = () => {
 
 	return (
 		<>
-			<div className="row mt-5">
+			<div className="row">
 				<div className="col-xl-12">
 					<div className="card" style={{
 						backgroundColor: "#211f21",
