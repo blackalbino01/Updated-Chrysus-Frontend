@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 import { CHRYSUS, DAI } from '../constant';
-import { CHRYSUS_ABI } from '../abis/Chrysus';
-import { DAI_ABI } from '../abis/Dai';
+import CHRYSUS_ABI  from '../abis/Chrysus.json';
+import ERC20  from '../abis/ERC20.json';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import { Web3Provider } from '@ethersproject/providers';
 // import { useWeb3React } from '@web3-react/core';
@@ -44,14 +44,14 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
             await Web3.givenProvider.enable();
             const web3 = new Web3(Web3.givenProvider);
             console.log('web3', web3)
-            const contract = new web3.eth.Contract(CHRYSUS_ABI, CHRYSUS);
+            const contract = new web3.eth.Contract(CHRYSUS_ABI.abi, CHRYSUS);
             console.log("contract",contract )
             const accounts = await web3.eth.getAccounts();
             localStorage.setItem("accounts", accounts)
             console.log(`Wallet address ${accounts} stored on local storage.`);
             // const accountss = localStorage.getItem("accounts")
             const balance = await web3.eth.getBalance(accounts[0]);
-            const DAIContract = new web3.eth.Contract(DAI_ABI, DAI);
+            const DAIContract = new web3.eth.Contract(ERC20.abi, DAI);
             //web3 Socket
             // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
             //     `wss://goerli.infura.io/ws/v3/b0b0d100567e4e59bb2bab1a2c353381`

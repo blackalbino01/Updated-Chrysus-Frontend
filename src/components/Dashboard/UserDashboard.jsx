@@ -10,6 +10,7 @@ import OrderTab from '../Future/OrderTab';
 import TradeTab from '../Future/TradeTab';
 import { loadBlockchain, loadWalletConnect, updatAccount } from '../../slices/web3ContractSlice';
 import { useAppDispatch, useAppSelector } from '../../reducer/store';
+import Utils from "../../utilities";
 
 // import { Button } from 'react-bootstrap';
 import styled from "styled-components";
@@ -31,6 +32,8 @@ const UserDashboard = () => {
 	const dispatch = useAppDispatch()
 	const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
 	const [usdprice, setusdprice] = useState();
+	const [collateralRatio, setcollateralRatio] = useState(null);
+	const [liquidationRatio, setLiquidationRatio] = useState(null);
 	const [data, setData] = useState(
 		document.querySelectorAll("#status_wrapper tbody tr")
 	);
@@ -116,9 +119,17 @@ const UserDashboard = () => {
 				console.error('Error fetching Ether price:', error);
 			}
 		}
+
+		Utils.getCollateralizationRatio().then(function(data){
+			setcollateralRatio((Number(data)/1E6).toFixed(2));
+		});
+
+		Utils.liqRatio().then(function(data){
+			setLiquidationRatio((Number(data)/1E6).toFixed(2));
+		});
 		getEtherPriceInUSD()
 	})
-	console.log(usdprice * balance)
+	console.log(usdprice * balance);
 
 
 	return (
@@ -214,13 +225,13 @@ const UserDashboard = () => {
 									<div className="px-2 info-group">
 										<p className="fs-18 mb-1">Liquidation Ratio</p>
 										<h2 className="fs-28 font-w600 text-white">
-											110%
+											{liquidationRatio}%
 										</h2>
 									</div>
 									<div className="px-2 info-group">
 										<p className="fs-14 mb-1" >COLLATERALIZATION Ratio</p>
 										<h3 className="fs-20 font-w600 text-success">
-											150%
+										{collateralRatio}%
 											<svg
 												width={14}
 												height={14}
