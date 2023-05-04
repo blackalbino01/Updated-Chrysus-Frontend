@@ -24,28 +24,22 @@ export const initialState = {
 }
 
 
-
-// const injectedConnector = new InjectedConnector({ supportedChainIds: [1, 5] });
-
-// const walletConnectProvider = new WalletConnectProvider({
-
-//     rpc: {
-//         5: "https://goerli.infura.io/v3/b0b0d100567e4e59bb2bab1a2c353381",
-//     },
-//     chainId: 5,
-
-// });
-
-export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thunkAPI) => {
+export const loadBlockchain = createAsyncThunk("loadBlockchain", async (_, thunkAPI) => {
     try {
-        // if(Web3.givenProvider && Web3.givenProvider.chainId ==="0x3"){
-        if (Web3.givenProvider !== 'undefined') {
+        // const provider = new InjectedConnector({ supportedChainIds: [1, 5, 11155111] })
+        // if(Web3.givenProvider && Web3.givenProvider.chainId ==="0x11155111"){
+        // if(Web3.givenProvider.chainId ==="0x11155111"){
+        if (Web3.givenProvider.chainId === Web3.utils.toHex(11155111)) {
+            // if (provider) {
+            // const Provider = provider;
+            // await provider.enable();
             const Provider = Web3.givenProvider;
+            // const web3 = new Web3(provider);
             await Web3.givenProvider.enable();
             const web3 = new Web3(Web3.givenProvider);
             console.log('web3', web3)
             const contract = new web3.eth.Contract(CHRYSUS_ABI.abi, CHRYSUS);
-            console.log("contract",contract )
+            console.log("contract", contract)
             const accounts = await web3.eth.getAccounts();
             localStorage.setItem("accounts", accounts)
             console.log(`Wallet address ${accounts} stored on local storage.`);
@@ -69,6 +63,50 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
             }
         }
         else {
+            try {
+                await Web3.givenProvider.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: Web3.utils.toHex(11155111), }]
+                });
+            } catch (error) {
+                if(error.code === 4902 ){
+                await window.ethereum.request({
+                    method: 'wallet_addEthereumChain',
+                    params: [
+                      {
+                        chainId: Web3.utils.toHex(11155111),
+                        chainName: "Sepolia test network",
+                        rpcUrls: ["https://rpc.sepolia.org"],
+                        nativeCurrency: {
+                            name:"ETH",
+                            symbol:"ETH",
+                            decimals: 18,
+                        },
+                        blockExplorerUrls: ["https://sepolia.etherscan.io"],
+                      },
+                    ],
+                  });
+                }
+            }
+            // if(error.code ==4902 ){
+            // await window.ethereum.request({
+            //     method: 'wallet_addEthereumChain',
+            //     params: [
+            //       {
+            //         chainId: Web3.utils.toHex(11155111),
+            //         chainName: "Sepolia test network",
+            //         rpcUrls: ["https://sepolia.infura.io/v3/"],
+            //         nativeCurrency: {
+            //             name:"ETH",
+            //             symbol:"ETH",
+            //             decimals: 18,
+            //         },
+            //         blockExplorerUrls: ["https://sepolia.etherscan.io"],
+            //       },
+            //     ],
+            //   });
+            // }
+            // // console.log("Networl error" ,error)
             return {
                 web3loadingerror: 'errorloading'
 
@@ -77,10 +115,57 @@ export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thun
         }
 
     } catch (error) {
-        console.log('error', error)
+        console.log('Network ID error', error)
 
     }
 });
+
+
+// export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thunkAPI) => {
+//     try {
+//         // if(Web3.givenProvider && Web3.givenProvider.chainId ==="0x3"){
+//         if (Web3.givenProvider !== 'undefined') {
+//             const Provider = Web3.givenProvider;
+//             await Web3.givenProvider.enable();
+//             const web3 = new Web3(Web3.givenProvider);
+//             console.log('web3', web3)
+//             const contract = new web3.eth.Contract(CHRYSUS_ABI.abi, CHRYSUS);
+//             console.log("contract",contract )
+//             const accounts = await web3.eth.getAccounts();
+//             localStorage.setItem("accounts", accounts)
+//             console.log(`Wallet address ${accounts} stored on local storage.`);
+//             // const accountss = localStorage.getItem("accounts")
+//             const balance = await web3.eth.getBalance(accounts[0]);
+//             const DAIContract = new web3.eth.Contract(ERC20.abi, DAI);
+//             //web3 Socket
+//             // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
+//             //     `wss://goerli.infura.io/ws/v3/b0b0d100567e4e59bb2bab1a2c353381`
+//             // ))
+
+//             // const socketContract = new web3Socket.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+//             return {
+//                 web3,
+//                 balance,
+//                 accounts,
+//                 Provider,
+//                 contract,
+//                 DAIContract,
+//                 // socketContract,
+//             }
+//         }
+//         else {
+//             return {
+//                 web3loadingerror: 'errorloading'
+
+//             }
+
+//         }
+
+//     } catch (error) {
+//         console.log('error', error)
+
+//     }
+// });
 
 
 
