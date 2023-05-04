@@ -18,7 +18,14 @@ export const ETHDeposite = () => {
         try {
             let valueToSend = web3.utils.toWei(ethamount, 'ether');
             let zeroAddress = "0x0000000000000000000000000000000000000000"
-            await contract?.methods.depositCollateral(zeroAddress, valueToSend).send({ from: accounts[0] })
+            await contract?.methods.depositCollateral(zeroAddress, valueToSend)
+            .send({ from: accounts[0], value: valueToSend}).then(function(receipt){
+                console.log(receipt);
+                alert(`You Have succefully minted Chrysus Coin,
+                See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
+            });
+
+            window.location.reload();
 
         } catch (error) {
             console.log("Send Eth Error", error)

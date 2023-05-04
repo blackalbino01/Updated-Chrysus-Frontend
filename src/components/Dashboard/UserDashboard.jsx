@@ -30,10 +30,16 @@ const tabDataBlog = [
 
 const UserDashboard = () => {
 	const dispatch = useAppDispatch()
-	const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
+	const { web3, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
 	const [usdprice, setusdprice] = useState();
 	const [collateralRatio, setcollateralRatio] = useState(null);
 	const [liquidationRatio, setLiquidationRatio] = useState(null);
+	const [daiBalance, setdaiBalance] = useState(0);
+	const [chcBalance, setchcBalance] = useState(0);
+	const [balance, setbalance] = useState(0);
+	const [daiFeed, setDaiFeed] = useState(0);
+	const [chcFeed, setChcFeed] = useState(0);
+	const [ethFeed, setEthFeed] = useState(0);
 	const [data, setData] = useState(
 		document.querySelectorAll("#status_wrapper tbody tr")
 	);
@@ -104,22 +110,10 @@ const UserDashboard = () => {
 	};
 
 	const addrees = localStorage.getItem("accounts")
-
+	console.log("addrees", addrees);
+	
 
 	useEffect(() => {
-		async function getEtherPriceInUSD() {
-			try {
-				const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
-				const data = await response.json();
-				const etherPriceUSD = data.ethereum.usd;
-				setusdprice(etherPriceUSD)
-				console.log(`Current Ether price: $${etherPriceUSD}`);
-				return etherPriceUSD;
-			} catch (error) {
-				console.error('Error fetching Ether price:', error);
-			}
-		}
-
 		Utils.getCollateralizationRatio().then(function(data){
 			setcollateralRatio((Number(data)/1E6).toFixed(2));
 		});
@@ -127,16 +121,40 @@ const UserDashboard = () => {
 		Utils.liqRatio().then(function(data){
 			setLiquidationRatio((Number(data)/1E6).toFixed(2));
 		});
-		getEtherPriceInUSD()
+
+		Utils.getFeed("CHC").then(function(data){
+			setChcFeed((Number(data[1])/1E18).toFixed(2));
+		});
+
+		Utils.getFeed("DAI").then(function(data){
+			setDaiFeed((Number(data[1])/1E8).toFixed(2));
+		});
+
+		Utils.getFeed("ETH").then(function(data){
+			setEthFeed((Number(data[1])/1E8).toFixed(2));
+		});
+
+		Utils.getUserBalance(addrees, "DAI").then(function(data){
+			setdaiBalance(Number(data)/1E18);
+		});
+
+		Utils.getUserBalance(addrees, "CHC").then(function(data){
+			setchcBalance(Number(data)/1E18);
+		});
+
+		Utils.getUserBalance(addrees, "ETH").then(function(data){
+			setbalance(Number(data)/1E18);
+		});
+
 	})
-	console.log(usdprice * balance);
+	
 
 
 	return (
 		<>
 			<Nav>
 				<div className="title">
-					<H4>Wellcome!</H4>
+					<H4>Welcome!</H4>
 				</div>
 				{/* <img loading="lazy" width="50" height="50" src={home} alt="meta"
 					className=" mr-2 object-contain cursor-pointer"
@@ -184,10 +202,9 @@ const UserDashboard = () => {
 						}}>
 						<div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
 							<div className="me-auto mb-3">
-								<h4 className="fs-20  font-w600">Your Balance</h4>
 								<h2 className="fs-28 font-w600 text-white">
 									{/* {usdprice * web3.utils.fromWei(balance, 'ether')?.substring(0, 7) + "...."} */}
-									{web3 ? (<>${Number(usdprice * web3.utils.fromWei(balance, 'ether')).toFixed(2)}</>) : ("")}
+									
 								</h2>
 								{/* <div className='row sp20 mb-4 align-items-center'>
 									<div className="d-flex col-xxl-4 align-items-center mt-sm-0 mt-3 justify-content-center">
@@ -324,7 +341,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													0
+													{daiBalance.toFixed(2)}
 												</div>
 											</td>
 											<td>
@@ -337,7 +354,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													$0
+													${(daiBalance * daiFeed).toFixed(2)}
 												</div>
 											</td>
 											{/* <td>
@@ -371,7 +388,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													0
+													{chcBalance.toFixed(2)}
 												</div>
 											</td>
 											<td>
@@ -384,7 +401,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													$0
+													${(chcBalance * chcFeed).toFixed(2)}
 												</div>
 											</td>
 											{/* <td>
@@ -418,7 +435,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													0
+													{balance.toFixed(2)}
 												</div>
 											</td>
 											<td>
@@ -431,7 +448,7 @@ const UserDashboard = () => {
 														color: "#FFFFFF",
 													}}
 												>
-													$0
+													${(balance * ethFeed).toFixed(2)}
 												</div>
 											</td>
 											{/* <td>
@@ -489,7 +506,7 @@ const UserDashboard = () => {
 											color: "#FFFFFF",
 										}}
 									>
-										1.00 USD
+										{daiFeed} USD
 									</div>
 								</div>
 								<div className="d-flex flex-row align-items-center justify-content-between my-2">
@@ -513,7 +530,7 @@ const UserDashboard = () => {
 											color: "#FFFFFF",
 										}}
 									>
-										1,969.07 USD
+										{chcFeed} USD
 									</div>
 								</div>
 								<div className="d-flex flex-row align-items-center justify-content-between my-2">
@@ -537,7 +554,7 @@ const UserDashboard = () => {
 											color: "#FFFFFF",
 										}}
 									>
-										1,817.66 USD
+										{ethFeed} USD
 									</div>
 								</div>
 							</div>

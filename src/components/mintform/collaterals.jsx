@@ -18,33 +18,9 @@ import OrderTab from '../Future/OrderTab';
 import TradeTab from '../Future/TradeTab';
 import { useEffect, useState, useRef } from 'react';
 import Toltip from "../buttons/toltip";
-// import { FiAlertCircle } from "react-icons/fi";
+import Utils from "../../utilities";
 
-// const orderTable = [
-// 	{ email: 'samantha@mail.com', title: 'Samanta William', price: '$75,00', status: 'Paid', statusChange: 'success' },
-// 	{ email: 'tony@gmail.com', title: 'Tony Soap', price: '$80,00', status: 'Unpaid', statusChange: 'danger' },
-// 	{ email: 'demo@mail.com', title: 'Nela Vita', price: '$90,00', status: 'Paid', statusChange: 'success' },
-// 	{ email: 'karen@mail.com', title: 'Karen Hope', price: '$70,00', status: 'Pending', statusChange: 'warning' },
-// 	{ email: 'nadia@mail.com', title: 'Nadia Edja', price: '$76,00', status: 'Unpaid', statusChange: 'danger' },
-// 	{ email: 'samantha@mail.com', title: 'Samanta William', price: '$75,00', status: 'Paid', statusChange: 'success' },
-// 	{ email: 'tony@gmail.com', title: 'Tony Soap', price: '$80,00', status: 'Unpaid', statusChange: 'danger' },
-// 	{ email: 'demo@mail.com', title: 'Nela Vita', price: '$90,00', status: 'Paid', statusChange: 'success' },
-// 	{ email: 'karen@mail.com', title: 'Karen Hope', price: '$70,00', status: 'Pending', statusChange: 'warning' },
-// 	{ email: 'nadia@mail.com', title: 'Nadia Edja', price: '$76,00', status: 'Unpaid', statusChange: 'danger' },
-// ];
 
-// const tabDataBlog = [
-// 	{ Date: 'ETH', Trade: '%', Status: '110%', Price: '%', Amount: '0' },
-// 	{ Date: 'DAI', Trade: '%', Status: '110%', Price: '%', Amount: '0' },
-// ];
-
-const Eth = [
-	{ Date: 'ETH', Trade: '%', Status: '110%', Price: '%', Amount: '0' },
-];
-
-const Dai = [
-	{ Date: 'DAI', Trade: '%', Status: '110%', Price: '%', Amount: '0' },
-];
 export const Collaterals = () => {
 	// const [modalShow, setModalShow] = useState(false);
 	// const [modalShowDAI, setModalShowDAI] = useState(false);
@@ -52,9 +28,12 @@ export const Collaterals = () => {
 	const [data, setData] = useState(
 		document.querySelectorAll("#status_wrapper tbody tr")
 	);
+	const [balance, setbalance] = useState(0);
+	const [daiBalance, setdaiBalance] = useState(0);
 	const sort = 6;
 	const activePag = useRef(0);
 	const [test, settest] = useState(0);
+	const addrees = localStorage.getItem("accounts")
 
 	// Active data
 	const chageData = (frist, sec) => {
@@ -71,6 +50,26 @@ export const Collaterals = () => {
 		setData(document.querySelectorAll("#status_wrapper tbody tr"));
 		//chackboxFun();
 	}, [test]);
+
+	useEffect(() => {
+		Utils.getUserBalance(addrees, "DAI").then(function(data){
+			setdaiBalance(Number(data)/1E18);
+		});
+
+		Utils.getUserBalance(addrees, "ETH").then(function(data){
+			setbalance(Number(data)/1E18);
+		});
+
+	});
+
+
+const Eth = [
+	{ Date: 'ETH',Price: '120%', Amount: balance.toFixed(2) },
+];
+
+const Dai = [
+	{ Date: 'DAI', Price: '267%', Amount: daiBalance.toFixed(2) },
+];
 
 
 	// Active pagginarion
@@ -164,9 +163,7 @@ export const Collaterals = () => {
 																</th> */}
 																{/* <th></th> */}
 																<th>Collateral</th>
-																<th>Interest Rate</th>
-																<th>LIQ Ratio</th>
-																<th>Utilization Rate</th>
+																<th>Collateralization Ratio</th>
 																<th>Your Balance</th>
 																{/* <th>Reward</th> */}
 																<th>Action</th>
@@ -189,8 +186,6 @@ export const Collaterals = () => {
 																		</div>
 																	</td> */}
 																	<td>{item.Date}</td>
-																	<td>{item.Trade}</td>
-																	<td>{item.Status}</td>
 																	<td>{item.Price}</td>
 																	<td>{item.Amount}</td>
 																	<td>
@@ -229,8 +224,6 @@ export const Collaterals = () => {
 																		</div>
 																	</td> */}
 																	<td>{item.Date}</td>
-																	<td>{item.Trade}</td>
-																	<td>{item.Status}</td>
 																	<td>{item.Price}</td>
 																	<td>{item.Amount}</td>
 																	<td>

@@ -28,7 +28,14 @@ console.log("DAI amount", DAIamount)
 console.log("chrysus contract", contract)
 	const DepositDAICollateral = async () => {
 		try {
-			await contract?.methods.depositCollateral(DAI, DAIamount).send({ from: accounts[0] })
+			await contract?.methods.depositCollateral(DAI, web3.utils.toWei(DAIamount, 'ether'))
+			.send({ from: accounts[0] }).then(function(receipt){
+                console.log(receipt);
+                alert(`You Have succefully minted Chrysus Coin,
+                See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
+            });
+
+            window.location.reload();
 		} catch (error) {
 			console.log("Send DAI Error", error)
 		}
