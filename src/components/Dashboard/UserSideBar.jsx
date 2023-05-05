@@ -10,10 +10,14 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import { PrimaryGradientButton } from "../buttons/primary_gradient.button";
 import scrollreveal from "scrollreveal";
-import { Transferblack, logoo, LeafGold, SwapGold, UmbrellaGold, Chrysus, G, P, GI, A } from "../../assets";
+import { Transferblack, logoo, LeafGold, SwapGold, UmbrellaGold, Chrysus, G, P, GI, A, DashboardIcon, HomeIcon, LoanIcon, MintIcon, SwapIcon, } from "../../assets";
 import { MintButton } from "../buttons/mint";
 import { useAppDispatch, useAppSelector } from '../../reducer/store';
+// DashboardIcon,
 
+// LoanIcon,
+// MintIcon,
+// SwapIcon,
 
 export default function UserSideBar() {
   // const dispatch = useDispatch();
@@ -109,7 +113,12 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(1)}
                 >
                   <Link to={"/accounts"}>
-                    <MdSpaceDashboard />
+                    {/* <MdSpaceDashboard /> */}
+                    <img
+                      className="jumbo-button-icon"
+                      src={DashboardIcon}
+                      alt="DashboardIcon"
+                    />
                     <span> Dashboard</span>
                   </Link>
                 </li>
@@ -120,7 +129,12 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(2)}
                 >
                   <Link to={"/"}>
-                    <RiDashboard2Fill />
+                    {/* <RiDashboard2Fill /> */}
+                    <img
+                      className="jumbo-button-icon"
+                      src={HomeIcon}
+                      alt="DashboardIcon"
+                    />
                     <span> Home</span>
                   </Link>
                 </li>
@@ -133,7 +147,7 @@ export default function UserSideBar() {
                   <Link to={"mint"}>
                     <img
                       className="jumbo-button-icon"
-                      src={LeafGold}
+                      src={MintIcon}
                       alt="leaf-gold"
                     />
                     <span> Mint </span>
@@ -150,7 +164,7 @@ export default function UserSideBar() {
                     <Link to={"swappopup"}>
                       <img
                         className="jumbo-button-icon"
-                        src={SwapGold}
+                        src={SwapIcon}
                         alt="swap-gold"
                       />
                       <span>Swap</span>
@@ -168,7 +182,7 @@ export default function UserSideBar() {
                   <Link to={"loan"}>
                     <img
                       className="jumbo-button-icon"
-                      src={UmbrellaGold}
+                      src={LoanIcon}
                       alt="umbrella-gold"
                     />
                     <span> Loan </span>
@@ -236,7 +250,12 @@ export default function UserSideBar() {
                 className={currentLink === 1 ? "active" : "none"}
                 onClick={() => setCurrentLink(1)} >
                 <Link to={"/accounts"}>
-                  <MdSpaceDashboard />
+                  {/* <MdSpaceDashboard /> */}
+                  <img
+                    className="jumbo-button-icon"
+                    src={DashboardIcon}
+                    alt="DashboardIcon"
+                  />
                   <span> Dashboard</span>
                 </Link>
               </li>
@@ -247,7 +266,12 @@ export default function UserSideBar() {
                 onClick={() => setCurrentLink(2)}
               >
                 <Link to={"/"}>
-                  <RiDashboard2Fill />
+                  {/* <RiDashboard2Fill /> */}
+                  <img
+                    className="jumbo-button-icon"
+                    src={HomeIcon}
+                    alt="DashboardIcon"
+                  />
                   <span> Home</span>
                 </Link>
               </li>
@@ -260,7 +284,7 @@ export default function UserSideBar() {
                 <Link to={"mint"}>
                   <img
                     className="jumbo-button-icon"
-                    src={LeafGold}
+                    src={MintIcon}
                     alt="leaf-gold"
                   />
                   <span> Mint</span>
@@ -278,7 +302,7 @@ export default function UserSideBar() {
                   >
                     <img
                       className="jumbo-button-icon"
-                      src={SwapGold}
+                      src={SwapIcon}
                       alt="swap-gold"
                     />
                     <span> Swap</span>
@@ -295,7 +319,7 @@ export default function UserSideBar() {
                 <Link to={"loan"}>
                   <img
                     className="jumbo-button-icon"
-                    src={UmbrellaGold}
+                    src={LoanIcon}
                     alt="umbrella-gold"
                   />
                   <span> Loan</span>
@@ -533,7 +557,7 @@ const Swap = (props) => {
 }
 
 
-
+// position: fixed;
 const Section = styled.section`
   position: fixed;
   z-index: 99;
@@ -657,7 +681,7 @@ const ResponsiveNav = styled.div`
   z-index: 10;
   background-color: #211f21;
   height: 100vh;
-  margin-top: 85px;
+  margin-top: 55px;
   width: ${({ state }) => (state ? "45%" : "0%")};
   transition: 0.4s ease-in-out;
   display: flex;

@@ -72,7 +72,20 @@ import A from './A.svg'
 import B from './B.png'
 import CP from './CP.png'
 import D from './D.png'
+
+import DashboardIcon from './DashboardIcon.svg'
+import GovernanceIcon from './GovernanceIcon.svg'
+import LoanIcon from './LoanIcon.svg'
+import MintIcon from './MintIcon.svg'
+import SwapIcon from './SwapIcon.svg'
+import HomeIcon from './HomeIcon.svg'
 export {
+  HomeIcon,
+  DashboardIcon,
+  GovernanceIcon,
+  LoanIcon,
+  MintIcon,
+  SwapIcon,
   A,
   B,
   CP,
