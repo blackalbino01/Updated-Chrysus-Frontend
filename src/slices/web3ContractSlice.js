@@ -29,7 +29,7 @@ export const loadBlockchain = createAsyncThunk("loadBlockchain", async (_, thunk
         // const provider = new InjectedConnector({ supportedChainIds: [1, 5, 11155111] })
         // if(Web3.givenProvider && Web3.givenProvider.chainId ==="0x11155111"){
         // if(Web3.givenProvider.chainId ==="0x11155111"){
-        if (Web3.givenProvider.chainId === Web3.utils.toHex(11155111)) {
+        if (Web3.givenProvider && Web3.givenProvider.chainId === Web3.utils.toHex(11155111)) {
             // if (provider) {
             // const Provider = provider;
             // await provider.enable();
@@ -66,7 +66,7 @@ export const loadBlockchain = createAsyncThunk("loadBlockchain", async (_, thunk
             try {
                 await Web3.givenProvider.request({
                     method: 'wallet_switchEthereumChain',
-                    params: [{ chainId: Web3.utils.toHex(11155111), }]
+                    params: [{ chainId: Web3.utils.toHex(11155111) }]
                 });
             } catch (error) {
                 if(error.code === 4902 ){
