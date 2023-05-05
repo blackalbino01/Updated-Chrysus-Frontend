@@ -137,7 +137,6 @@ export const Collateral = () => {
 																		onClick={() => checkboxFun('all')}
 																	/>
 																</th> */}
-																<th></th>
 																<th>Collateral</th>
 																<th>Interest Rate</th>
 																<th>LIQ Ratio</th>
@@ -151,7 +150,7 @@ export const Collateral = () => {
 														<tbody className='text-white'>
 															{tabDataBlog.map((item, index) => (
 																<tr key={index}>
-																	<td>
+																	{/* <td>
 																		<div className="checkbox me-0 align-self-center">
 																			<div className="custom-control custom-checkbox ">
 																				<input type="checkbox" className="form-check-input" id={`checkbox${index + 1}`} required=""
@@ -163,7 +162,7 @@ export const Collateral = () => {
 																				<label className="custom-control-label" htmlFor={`checkbox${index + 1}`}></label>
 																			</div>
 																		</div>
-																	</td>
+																	</td> */}
 																	<td>{item.Date}</td>
 																	<td>{item.Trade}</td>
 																	<td>{item.Status}</td>

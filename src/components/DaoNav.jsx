@@ -76,7 +76,7 @@ const DaoNav = () => {
             <NavLink to={nav.path}>{nav.name}</NavLink>
           </li>
         ))} */}
-        <li style={{ marginLeft: "45px" }}
+        {/* <li style={{ marginLeft: "45px" }}
           className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
           onClick={() => setShowMenu(!showMenu)}>
           {addrees !== null ? (
@@ -135,7 +135,7 @@ const DaoNav = () => {
                 onHide={() => setModalShow(false)} />
             </>
           )}
-        </li>
+        </li> */}
       </ul>
 
 
