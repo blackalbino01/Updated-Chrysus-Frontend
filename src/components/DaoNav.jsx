@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 // import { toast } from "react-toastify";
 // import styles from "../style";
-import { Link, NavLink } from "react-router-dom";
-import { close, logoo, menu, Wallets, walet, walet1, meta1, logo,Gov } from "../assets";
+import { Link, NavLink,useNavigate } from "react-router-dom";
+import { close, logoo, menu, Wallets, walet, walet1, meta1, logo, Gov } from "../assets";
 import { daoNavLinks } from "../constants";
 import styled from "styled-components";
 import Pdf from "../assets/pdf/whitepaper.pdf";
@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from '../reducer/store';
 import { loadBlockchain, loadWalletConnect, updatAccount } from '../slices/web3ContractSlice';
 
 const DaoNav = () => {
+  const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   // const [isNavShow, setisNavShow] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -52,6 +53,10 @@ const DaoNav = () => {
       }
     }
   };
+
+  const ProposalButton = async () =>{
+    navigate("/accounts/createproposal")
+  }
 
   const addrees = localStorage.getItem("accounts")
   console.log(addrees)
@@ -136,6 +141,94 @@ const DaoNav = () => {
             </>
           )}
         </li> */}
+        <li style={{ marginLeft: "45px" }}
+        // className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
+        // onClick={() => setShowMenu(!showMenu)}
+        >
+          {/* {addrees !== null ? (
+            <div className="">
+              <Button
+                type="button" 
+                style={{
+                  backgroundColor: "#1A1917",
+                  borderRadius: "16px",
+                  color: "#846424",
+                }}
+                className=" font-medium
+             rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
+             dropdown-toggle">
+                <a>Create Proposal</a>
+              </Button>
+              <ul className="dropdown-menu text-black mt-2 bg-white">
+                <div className="mr-3 ml-5">
+                  <h4>Wallet</h4>
+                  <a className="inline-flex text-sm  py-2.5 items-center font-medium">
+                    <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
+                    <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
+                  </a>
+                  <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
+                    <FiLogOut />
+                    <Link className="ml-2"
+                      onClick={() => DisconnectWallet()}
+                    >Disconnect</Link>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          ) : (
+            <>
+              <Button
+                style={{
+                  backgroundColor: "#1A1917",
+                  borderRadius: "16px",
+                  color: "#846424",
+                }}
+                // onClick={() => setModalShow(true)}
+                className=" font-medium 
+                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+                <img src={Wallets} alt="wallets" className="w-[20px] h-[25px] mr-3" />
+                <a style={{
+                  fontStyle: "normal",
+                  fontWeight: "700",
+                  fontSize: "12px",
+                  lineHeight: "24px",
+                  letterSpacing: "1px",
+                  textTransform: "uppercase",
+                  color: "#846424",
+                }}>Connect</a>
+              </Button>
+            </>
+          )} */}
+          <div className="">
+            <Button
+              type="button"
+              style={{
+                backgroundColor: "#1A1917",
+                borderRadius: "16px",
+                color: "#846424",
+              }}
+              onClick={() => ProposalButton()}
+              className=" font-medium
+             rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+              <a>Create Proposal</a>
+            </Button>
+            {/* <ul className="dropdown-menu text-black mt-2 bg-white">
+              <div className="mr-3 ml-5">
+                <h4>Wallet</h4>
+                <a className="inline-flex text-sm  py-2.5 items-center font-medium">
+                  <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
+                  <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
+                </a>
+                <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
+                  <FiLogOut />
+                  <Link className="ml-2"
+                    // onClick={() => DisconnectWallet()}
+                  >Disconnect</Link>
+                </li>
+              </div>
+            </ul> */}
+          </div>
+        </li>
       </ul>
 
 

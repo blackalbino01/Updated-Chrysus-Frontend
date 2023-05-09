@@ -79,7 +79,12 @@ import LoanIcon from './LoanIcon.svg'
 import MintIcon from './MintIcon.svg'
 import SwapIcon from './SwapIcon.svg'
 import HomeIcon from './HomeIcon.svg'
+import ero from './ero.png'
+import ero2 from './ero2.png'
+
 export {
+  ero2,
+  ero,
   HomeIcon,
   DashboardIcon,
   GovernanceIcon,
