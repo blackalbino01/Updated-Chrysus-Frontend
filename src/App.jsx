@@ -28,6 +28,7 @@ import Mint from './components/Dashboard/Mint';
 import AllPositions from './components/AllPositions';
 import { Collaterals } from './components/mintform/collaterals';
 import CreateProposal from './components/Dashboard/ProposalsCreate/CreateProposal';
+import Staking from './components/Dashboard/Staking';
 const Home = lazy(() => import('./components/Home'));
 
 const App = () => {
@@ -67,6 +68,7 @@ const App = () => {
           <Route path="/accounts" element={<Accounts />}>
             <Route index element={<Dashboard />} />
             <Route path="createproposal" element={<CreateProposal />} />
+            <Route path="staking" element = {<Staking/>}/>
             <Route path="allpositions" element={<AllPositions />} />
             <Route path="loan" element={<Loan />} >
               <Route index element={<Collateral />} />

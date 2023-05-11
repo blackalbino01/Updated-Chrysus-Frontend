@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { H4 } from '../../typography/h4';
 import { Dash, C, Ether, home, meta1, ero, ero2, HomeIcon, LoanIcon, MintIcon, SwapIcon, DashboardIcon, Chrysus } from '../../../assets';
 import { Tab } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { loadBlockchain, loadWalletConnect, updatAccount } from '../../../slices/web3ContractSlice';
 import { useAppDispatch, useAppSelector } from '../../../reducer/store';
@@ -16,6 +16,7 @@ import { Button } from 'react-bootstrap';
 
 
 const CreateProposal = () => {
+    const navigate = useNavigate();
     const dispatch = useAppDispatch()
     const [currentLink, setCurrentLink] = useState(1);
     const { web3, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
@@ -57,6 +58,9 @@ const CreateProposal = () => {
             }
         }
     };
+    const more = async () =>{
+        navigate("/accounts/governance")
+      }
 
     const addrees = localStorage.getItem("accounts")
     console.log("addrees of wallet", addrees);
@@ -82,7 +86,7 @@ const CreateProposal = () => {
                                             <ul style={{
                                                 marginTop: "25px"
                                             }}>
-                                                <Link to={"/accounts"}>
+                                                <Link to={"/accounts/createproposal"}>
                                                     <li
                                                         className={currentLink === 1 ? "active" : "none"}
                                                         onClick={() => setCurrentLink(1)} >
@@ -93,10 +97,11 @@ const CreateProposal = () => {
                                                         />
                                                     </li>
                                                 </Link>
-                                                <Link to={"/"}>
+                                                <Link to={"/accounts/staking"}>
                                                     <li
                                                         className={currentLink === 2 ? "active" : "none"}
-                                                        onClick={() => setCurrentLink(2)} >
+                                                        // onClick={() => setCurrentLink(2)} 
+                                                        >
                                                         <img width="95" height="95"
                                                             className="jumbo-button-icon"
                                                             src={ero2}
@@ -116,7 +121,7 @@ const CreateProposal = () => {
                                                         fontSize: "10px",
                                                         marginTop: "45px"
                                                     }}
-                                                    // onClick={() => ProposalButton()}
+                                                    onClick={() => more()}
                                                     className=" font-thin
                                                     rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
                                                     <a>Read More</a>

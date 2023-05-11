@@ -86,30 +86,6 @@ const Dai = [
 		settest(i);
 	};
 
-	// const checkboxFun = (type) => {
-	// 	setTimeout(() => {
-	// 		const checkbox = document.querySelectorAll('.order-history input');
-	// 		const motherCheckBox = document.querySelector('.sorting_asc input');
-	// 		for (let i = 0; i < checkbox.length; i++) {
-	// 			const element = checkbox[i]
-	// 			if (type === 'all') {
-	// 				if (motherCheckBox.checked) {
-	// 					element.checked = true
-	// 				} else {
-	// 					element.checked = false
-	// 				}
-	// 			} else {
-	// 				if (!element.checked) {
-	// 					motherCheckBox.checked = false
-	// 					break
-	// 				} else {
-	// 					motherCheckBox.checked = true
-	// 				}
-	// 			}
-	// 		}
-	// 	}, 200);
-	// }
-
 
 	return (
 		<>
@@ -124,26 +100,12 @@ const Dai = [
 							<Tab.Container defaultActiveKey="All">
 								<div className="card-header border-0 pb-2 flex-wrap">
 									<h4 className="heading "> Mint Chrysus Coin (CHC)
-									{/* <a className="text-white">Each Collateral type has its own risk parameters.</a> */}
-									{/* <div 
-									onMouseEnter={()=>setvisible(true)}
-									onMouseLeave = {()=>setvisible(false)}
-									style={{ position: "absolute", right: 30, top: 30 }}>
-										<Info text = {"Something"}/>
-									</div> */}
 									<div style={{ position: "absolute", right: 30, top: 30 }}>
 										<Toltip style={{ position: "absolute", right: 30, top: 30 }}>
 											<Info />
 										</Toltip>
 									</div>
 									</h4>
-									{/* <>
-									<Nav className="order nav nav-tabs">
-										<Nav.Link as="button" eventKey="All" type="button">Order</Nav.Link>
-										<Nav.Link as="button" eventKey="Order" type="button">Order History</Nav.Link>
-										<Nav.Link as="button" eventKey="Trade" type="button">Trade Histroy</Nav.Link>
-									</Nav>
-								</> */}
 								</div>
 								<div className="card-body pt-0 pb-0">
 									<Tab.Content >
@@ -156,42 +118,21 @@ const Dai = [
 																style={{
 																	color: "#846424",
 																}}>
-																{/* <th className="sorting_asc">
-																	<input type="checkbox" className="form-check-input" id="checkAll" required=""
-																		onClick={() => checkboxFun('all')}
-																	/>
-																</th> */}
-																{/* <th></th> */}
 																<th>Collateral</th>
 																<th>Collateralization Ratio</th>
 																<th>Your Balance</th>
-																{/* <th>Reward</th> */}
 																<th>Action</th>
 															</tr>
 														</thead>
 														<tbody className='text-white'>
 															{Eth.map((item, index) => (
 																<tr key={index}>
-																	{/* <td>
-																		<div className="checkbox me-0 align-self-center">
-																			<div className="custom-control custom-checkbox ">
-																				<input type="checkbox" className="form-check-input" id={`checkbox${index + 1}`} required=""
-																					style={{
-																						backgroundColor: "#757375"
-																					}}
-																					onClick={() => checkboxFun()}
-																				/>
-																				<label className="custom-control-label" htmlFor={`checkbox${index + 1}`}></label>
-																			</div>
-																		</div>
-																	</td> */}
 																	<td>{item.Date}</td>
 																	<td>{item.Price}</td>
 																	<td>{item.Amount}</td>
 																	<td>
 																		<Link to={"ethdeposite"}>
 																			<span className="badge cursor-pointer"
-																				// onClick={() => setModalShow(true)}
 																				style={{
 																					height: "22px",
 																					width: "80px",
@@ -204,25 +145,11 @@ const Dai = [
 																					borderRadius: "40px",
 																				}}>Deposit</span>
 																		</Link>
-																		{/* <DepositColletrals show={modalShow} onHide={() => setModalShow(false)} /> */}
 																	</td>
 																</tr>
 															))}
 															{Dai.map((item, index) => (
 																<tr key={index}>
-																	{/* <td>
-																		<div className="checkbox me-0 align-self-center">
-																			<div className="custom-control custom-checkbox ">
-																				<input type="checkbox" className="form-check-input" id={`checkbox${index + 1}`} required=""
-																					style={{
-																						backgroundColor: "#757375"
-																					}}
-																					onClick={() => checkboxFun()}
-																				/>
-																				<label className="custom-control-label" htmlFor={`checkbox${index + 1}`}></label>
-																			</div>
-																		</div>
-																	</td> */}
 																	<td>{item.Date}</td>
 																	<td>{item.Price}</td>
 																	<td>{item.Amount}</td>

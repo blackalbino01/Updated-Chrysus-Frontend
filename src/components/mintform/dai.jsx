@@ -24,8 +24,10 @@ export const DAIDeposite = () => {
 			console.log("First Approve Error", error)
 		}
 	}
+	
 console.log("DAI amount", DAIamount)
 console.log("chrysus contract", contract)
+
 	const DepositDAICollateral = async () => {
 		try {
 			await contract?.methods.depositCollateral(DAI, web3.utils.toWei(DAIamount, 'ether'))
