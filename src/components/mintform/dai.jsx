@@ -8,36 +8,46 @@ import { useAppSelector, useAppDispatch } from '../../reducer/store';
 import { loadBlockchain, updatAccount } from '../../slices/web3ContractSlice';
 import { Button } from 'reactstrap';
 import { CHRYSUS, DAI } from '../../constant';
-
+import Modal from 'react-bootstrap/Modal';
 
 
 export const DAIDeposite = () => {
+	const [modalShow, setModalShow] = useState(false);
 	const [isApprove, setisApprove] = useState(false);
+	const [loading, setloading] = useState(false);
 	const { web3, contract, accounts, DAIContract } = useAppSelector((state) => state.web3Connect);
 	const [DAIamount, setDAIamount] = useState();
 
 	const DAIApprove = async () => {
+		setloading(true)
+		setModalShow(true)
 		try {
-			await DAIContract?.methods.approve(CHRYSUS, DAIamount).send({ from: accounts[0] })
-			setisApprove(true);
+			await DAIContract?.methods.approve(CHRYSUS, DAIamount).send({ from: accounts[0] }).then(function (receipt) {
+				console.log(receipt);
+				alert(`You Have succefully Approve Chrysus Coin,
+			See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
+				setModalShow(false)
+			});
 		} catch (error) {
 			console.log("First Approve Error", error)
+			setModalShow(false)
 		}
 	}
-	
-console.log("DAI amount", DAIamount)
-console.log("chrysus contract", contract)
+
+	console.log("DAI amount", DAIamount)
+	console.log("chrysus contract", contract)
 
 	const DepositDAICollateral = async () => {
 		try {
 			await contract?.methods.depositCollateral(DAI, web3.utils.toWei(DAIamount, 'ether'))
-			.send({ from: accounts[0] }).then(function(receipt){
-                console.log(receipt);
-                alert(`You Have succefully minted Chrysus Coin,
+				.send({ from: accounts[0] }).then(function (receipt) {
+					console.log(receipt);
+					alert(`You Have succefully minted Chrysus Coin,
                 See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
-            });
+					setloading(true)
+				});
 
-            window.location.reload();
+			window.location.reload();
 		} catch (error) {
 			console.log("Send DAI Error", error)
 		}
@@ -117,18 +127,20 @@ console.log("chrysus contract", contract)
 													borderRadius: "40px",
 												}}
 												onClick={() => DAIApprove()}>
-												Approve</Button>
+												Approve
+												{/* {loading === true ? (
+													<div class="loader"></div>
+												) : <>Approve</>} */}
+												{/* <WalletConnect show={modalShow} /> */}
+											</Button>
+											<WalletConnect show={modalShow} />
 										</>
 									)}
-								{/* <FormActionButton
-									color="primary"
-									gradient={true}
-									outline={true}
-									className="mx-2"
-								>
-									Deposit
-								</FormActionButton> */}
 							</div>
+							{/* {loading  === true ? (
+								<div class="loader"></div>
+							) : ""} */}
+
 							<div
 								className="w-100"
 								style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
@@ -166,3 +178,50 @@ console.log("chrysus contract", contract)
 		</>
 	);
 };
+
+
+
+
+
+const WalletConnect = (props) => {
+
+	return (
+		<div className="">
+			<Modal className="items-center"
+				{...props}
+				size="lg"
+				aria-labelledby="contained-modal-title-vcenter"
+				dialogClassName="modal-90w public-profile-modal-class"
+				centered
+				style={{
+					background: "black ",
+					opacity: "1",
+				}}
+			>
+				<Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 ">
+					<Modal.Title >
+						<h3 className="text-white"
+							style={{
+								paddingLeft: "40px"
+							}}
+						>
+							Transection in Process
+						</h3>
+
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body className="items-center rounded-b-[12px]">
+					<div style={{
+						paddingLeft: "100px"
+					}}>
+						<div class="loader"></div>
+					</div>
+
+				</Modal.Body>
+				{/* <Modal.Footer>
+					<Button onClick={props.onHide}>Close</Button>
+				</Modal.Footer> */}
+			</Modal>
+		</div>
+	)
+}
