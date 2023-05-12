@@ -114,7 +114,7 @@ export const DAIDeposite = () => {
 										</>
 									) : (
 										<>
-											<Button
+											<Button data-modal-target="popup-modal" data-modal-toggle="popup-modal" 
 												style={{
 													color: "black",
 													fontStyle: "normal",
@@ -128,10 +128,6 @@ export const DAIDeposite = () => {
 												}}
 												onClick={() => DAIApprove()}>
 												Approve
-												{/* {loading === true ? (
-													<div class="loader"></div>
-												) : <>Approve</>} */}
-												{/* <WalletConnect show={modalShow} /> */}
 											</Button>
 											<WalletConnect show={modalShow} />
 										</>
@@ -184,44 +180,40 @@ export const DAIDeposite = () => {
 
 
 const WalletConnect = (props) => {
-
 	return (
 		<div className="">
-			<Modal className="items-center"
+			<Modal 
 				{...props}
 				size="lg"
 				aria-labelledby="contained-modal-title-vcenter"
 				dialogClassName="modal-90w public-profile-modal-class"
 				centered
 				style={{
-					background: "black ",
-					opacity: "1",
+					background: "black",
+					// opacity: "1",
 				}}
 			>
-				<Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 ">
-					<Modal.Title >
-						<h3 className="text-white"
-							style={{
-								paddingLeft: "40px"
-							}}
-						>
-							Transection in Process
-						</h3>
+			<Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 ">
+				<Modal.Title >
+					<h3 className="text-white"
+						style={{
+							paddingLeft: "40px"
+						}}
+					>
+						Transection in Process
+					</h3>
 
-					</Modal.Title>
-				</Modal.Header>
-				<Modal.Body className="items-center rounded-b-[12px]">
-					<div style={{
-						paddingLeft: "100px"
-					}}>
-						<div class="loader"></div>
-					</div>
+				</Modal.Title>
+			</Modal.Header>
+			<Modal.Body className="items-center rounded-b-[12px]">
+				<div style={{
+					paddingLeft: "100px"
+				}}>
+					<div class="loader"></div>
+				</div>
 
-				</Modal.Body>
-				{/* <Modal.Footer>
-					<Button onClick={props.onHide}>Close</Button>
-				</Modal.Footer> */}
-			</Modal>
-		</div>
+			</Modal.Body>
+		</Modal>
+		</div >
 	)
 }

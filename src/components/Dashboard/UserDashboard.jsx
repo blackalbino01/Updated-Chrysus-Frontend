@@ -111,43 +111,45 @@ const UserDashboard = () => {
 
 	const addrees = localStorage.getItem("accounts")
 	console.log("addrees", addrees);
-	
+
 
 	useEffect(() => {
-		Utils.getCollateralizationRatio().then(function(data){
-			setcollateralRatio((Number(data)/1E6).toFixed(2));
+		Utils.getCollateralizationRatio().then(function (data) {
+			setcollateralRatio((Number(data) / 1E6).toFixed(2));
 		});
 
-		Utils.liqRatio().then(function(data){
-			setLiquidationRatio((Number(data)/1E6).toFixed(2));
+		Utils.liqRatio().then(function (data) {
+			setLiquidationRatio((Number(data) / 1E6).toFixed(2));
 		});
 
-		Utils.getFeed("CHC").then(function(data){
-			setChcFeed((Number(data[1])/1E18).toFixed(2));
+		Utils.getFeed("CHC").then(function (data) {
+			setChcFeed((Number(data[1]) / 1E18).toFixed(2));
 		});
 
-		Utils.getFeed("DAI").then(function(data){
-			setDaiFeed((Number(data[1])/1E8).toFixed(2));
+		Utils.getFeed("DAI").then(function (data) {
+			setDaiFeed((Number(data[1]) / 1E8).toFixed(2));
 		});
 
-		Utils.getFeed("ETH").then(function(data){
-			setEthFeed((Number(data[1])/1E8).toFixed(2));
+		Utils.getFeed("ETH").then(function (data) {
+			setEthFeed((Number(data[1]) / 1E8).toFixed(2));
 		});
 
-		Utils.getUserBalance(addrees, "DAI").then(function(data){
-			setdaiBalance(Number(data)/1E18);
+		Utils.getUserBalance(addrees, "DAI").then(function (data) {
+			setdaiBalance(Number(data) / 1E18);
 		});
 
-		Utils.getUserBalance(addrees, "CHC").then(function(data){
-			setchcBalance(Number(data)/1E18);
+		Utils.getUserBalance(addrees, "CHC").then(function (data) {
+			setchcBalance(Number(data) / 1E18);
 		});
 
-		Utils.getUserBalance(addrees, "ETH").then(function(data){
-			setbalance(Number(data)/1E18);
+		Utils.getUserBalance(addrees, "ETH").then(function (data) {
+			setbalance(Number(data) / 1E18);
 		});
 
 	})
-	
+	// const Dai = [
+	// 	{ Pool: 'DAI', Borrow: '267%',  Value:"$152.7" , debt:"123%",daiBalance.toFixed(2) },
+	// ];
 
 
 	return (
@@ -204,7 +206,7 @@ const UserDashboard = () => {
 							<div className="me-auto mb-3">
 								<h2 className="fs-28 font-w600 text-white">
 									{/* {usdprice * web3.utils.fromWei(balance, 'ether')?.substring(0, 7) + "...."} */}
-									
+
 								</h2>
 								{/* <div className='row sp20 mb-4 align-items-center'>
 									<div className="d-flex col-xxl-4 align-items-center mt-sm-0 mt-3 justify-content-center">
@@ -248,7 +250,7 @@ const UserDashboard = () => {
 									<div className="px-2 info-group">
 										<p className="fs-14 mb-1" >COLLATERALIZATION Ratio</p>
 										<h3 className="fs-20 font-w600 text-success">
-										{collateralRatio}%
+											{collateralRatio}%
 											<svg
 												width={14}
 												height={14}
@@ -596,7 +598,31 @@ const UserDashboard = () => {
 															<th className="text-end">Action</th>
 														</tr>
 													</thead>
-
+													{/* <tbody className='text-white'>
+														{Dai.map((item, index) => (
+															<tr key={index}>
+																<td>{item.Date}</td>
+																<td>{item.Price}</td>
+																<td>{item.Amount}</td>
+																<td>
+																	<Link to={"daideposite"}>
+																		<span className="badge cursor-pointer"
+																			// onClick={() => setModalShowDAI(true)}
+																			style={{
+																				height: "22px",
+																				width: "80px",
+																				color: "black",
+																				textTransform: "uppercase",
+																				fontStyle: "normal",
+																				fontWeight: "700",
+																				fontSize: "10px",
+																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																				borderRadius: "40px",
+																			}}>Deposit</span>
+																	</Link>																</td>
+															</tr>
+														))}
+													</tbody> */}
 												</table>
 												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
 													<div className="dataTables_info">

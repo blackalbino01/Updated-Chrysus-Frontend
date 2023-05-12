@@ -51,6 +51,11 @@ const AllPositions = () => {
     settest(i);
   };
 
+  const Dai = [
+    { Pool: 'DAI', Collateral: '267%', Browser: "$152.7", Credit: "123%", Debt: "123%" },
+  ];
+
+
   return (
     <Section>
       <div className="page-content mt-5">
@@ -66,8 +71,8 @@ const AllPositions = () => {
               <div className="icon-content">
                 <div className=" dataTabletrade">
                   <div id="status_wrapper" className="dataTables_wrapper no-footer">
-                    <table  style={{ minWidth: "260px" }}>
-                      <thead  mb-3>
+                    <table style={{ minWidth: "260px" }}>
+                      <thead mb-3>
                         <tr style={{ color: "#846424" }}>
                           <th>ASSET</th>
                           <th>Balance</th>
@@ -77,14 +82,14 @@ const AllPositions = () => {
                       <tbody className='text-white'>
                         <tr className=' pt-3'>
                           <td>
-                            <img width="15" height="15"  className="jumbo-button-icon" src={B} alt="B" />
+                            <img width="15" height="15" className="jumbo-button-icon" src={B} alt="B" />
                           </td>
                           <td>5421</td>
                           <td>8764</td>
                         </tr>
                         <tr>
                           <td>
-                            <img width="15" height="15"  className="jumbo-button-icon" src={CP} alt="B" />
+                            <img width="15" height="15" className="jumbo-button-icon" src={CP} alt="B" />
                           </td>
                           <td>5421</td>
                           <td>8764</td>
@@ -149,13 +154,6 @@ const AllPositions = () => {
             <Tab.Container defaultActiveKey="All">
               <div className=" border-0 pb-2 flex-wrap">
                 <h4 className="heading text-center pt-4">All Positions</h4>
-                {/* <>
-									<Nav className="order nav nav-tabs">
-										<Nav.Link as="button" eventKey="All" type="button">Order</Nav.Link>
-										<Nav.Link as="button" eventKey="Order" type="button">Order History</Nav.Link>
-										<Nav.Link as="button" eventKey="Trade" type="button">Trade Histroy</Nav.Link>
-									</Nav>
-								</> */}
               </div>
               <div className="card-body pt-0 pb-0">
                 <Tab.Content >
@@ -170,10 +168,73 @@ const AllPositions = () => {
                               <th>Browser Credit</th>
                               <th>Collateral Credit </th>
                               <th>Debt Ratio </th>
-                              <th>Action</th>
+                              <th>Repay</th>
+                              <th>Liquidate </th>
+                              <th>Claim</th>
                             </tr>
                           </thead>
-
+                          <tbody className='text-white'>
+                            {Dai.map((item, index) => (
+                              <tr key={index}>
+                                <td>{item.Pool}</td>
+                                <td>{item.Collateral}</td>
+                                <td>{item.Browser}</td>
+                                <td>{item.Credit}</td>
+                                <td>{item.Debt}</td>
+                                <td>
+                                  <Link to={"daideposite"}>
+                                    <span className="badge cursor-pointer"
+                                      // onClick={() => setModalShowDAI(true)}
+                                      style={{
+                                        height: "22px",
+                                        width: "80px",
+                                        color: "black",
+                                        textTransform: "uppercase",
+                                        fontStyle: "normal",
+                                        fontWeight: "700",
+                                        fontSize: "10px",
+                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                        borderRadius: "40px",
+                                      }}>Repay</span>
+                                  </Link>
+                                </td>
+                                <td>
+                                  <Link to={"daideposite"}>
+                                    <span className="badge cursor-pointer"
+                                      // onClick={() => setModalShowDAI(true)}
+                                      style={{
+                                        height: "22px",
+                                        width: "80px",
+                                        color: "black",
+                                        textTransform: "uppercase",
+                                        fontStyle: "normal",
+                                        fontWeight: "700",
+                                        fontSize: "10px",
+                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                        borderRadius: "40px",
+                                      }}>Liquidate </span>
+                                  </Link>
+                                </td>
+                                <td>
+                                  <Link to={"daideposite"}>
+                                    <span className="badge cursor-pointer ml-2"
+                                      // onClick={() => setModalShowDAI(true)}
+                                      style={{
+                                        height: "22px",
+                                        width: "80px",
+                                        color: "black",
+                                        textTransform: "uppercase",
+                                        fontStyle: "normal",
+                                        fontWeight: "700",
+                                        fontSize: "10px",
+                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                        borderRadius: "40px",
+                                      }}>Claim</span>
+                                  </Link>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
                         </table>
                         <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
                           <div className="dataTables_info">
@@ -256,7 +317,7 @@ const AllPositions = () => {
         </div>
       </div>
       <div className="mt-5"></div>
-      
+
     </Section>
   )
 }

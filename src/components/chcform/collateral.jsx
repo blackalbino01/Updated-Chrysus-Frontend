@@ -25,10 +25,20 @@ const orderTable = [
 	{ email: 'nadia@mail.com', title: 'Nadia Edja', price: '$76,00', status: 'Unpaid', statusChange: 'danger' },
 ];
 
-const tabDataBlog = [
-	{ Date: 'ETH', Trade: '%', Status: '110%', Price: '%', Amount: '0' },
-	{ Date: 'DAI', Trade: '%', Status: '110%', Price: '%', Amount: '0' }
+
+const Eth = [
+	{ Collateral: 'aETH', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
 ];
+
+const Dai = [
+	{ Collateral: 'aETH', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
+];
+
+
+// const tabDataBlog = [
+// 	{ Date: 'ETH', Trade: '%', Status: '110%', Price: '%', Amount: '0' },
+// 	{ Date: 'DAI', Trade: '%', Status: '110%', Price: '%', Amount: '0' }
+// ];
 export const Collateral = () => {
 	const [visible, setvisible] = useState(false);
 	const [data, setData] = useState(
@@ -93,6 +103,16 @@ export const Collateral = () => {
 		}, 200);
 	}
 
+
+
+	const Eth = [
+		{ Collateral: 'ETH', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
+	];
+
+	const Dai = [
+		{ Collateral: 'DAI', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
+	];
+
 	return (
 		<>
 			<div className="row">
@@ -107,7 +127,7 @@ export const Collateral = () => {
 								<div className="card-header border-0 pb-2 flex-wrap">
 									<h4 className="heading ">Select a collateral type</h4>
 									<a className="text-white">Each Collateral type has its own risk parameters.</a>
-									
+
 									<div style={{ position: "absolute", right: 30, top: 30 }}>
 										<Toltip style={{ position: "absolute", right: 30, top: 30 }}>
 											<Info />
@@ -144,31 +164,35 @@ export const Collateral = () => {
 																<th>Your Balance</th>
 																{/* <th>Reward</th> */}
 																{/* className="text-end" */}
-																<th>Action</th>
+																{/* <th>Borrow</th> */}
+																<th>Borrow</th>
+																<th>Lend</th>
 															</tr>
 														</thead>
 														<tbody className='text-white'>
-															{tabDataBlog.map((item, index) => (
+															{/* {tabDataBlog.map((item, index) => (
 																<tr key={index}>
-																	{/* <td>
-																		<div className="checkbox me-0 align-self-center">
-																			<div className="custom-control custom-checkbox ">
-																				<input type="checkbox" className="form-check-input" id={`checkbox${index + 1}`} required=""
-																					style={{
-																						backgroundColor: "#757375"
-																					}}
-																					onClick={() => checkboxFun()}
-																				/>
-																				<label className="custom-control-label" htmlFor={`checkbox${index + 1}`}></label>
-																			</div>
-																		</div>
-																	</td> */}
 																	<td>{item.Date}</td>
 																	<td>{item.Trade}</td>
 																	<td>{item.Status}</td>
 																	<td>{item.Price}</td>
 																	<td>{item.Amount}</td>
-																	{/* <td className="text-end">--</td> */}
+																	<td>
+																		<Link to={"/accounts/loan/dai"}>
+																			<span class="badge cursor-pointer"
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "black",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																					borderRadius: "40px",
+																				}}>Borrow</span>
+																		</Link>
+																	</td>
 																	<td>
 																		<Link to={"/accounts/loan/dai"}>
 																			<span class="badge cursor-pointer"
@@ -183,21 +207,92 @@ export const Collateral = () => {
 																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 																					borderRadius: "40px",
 																				}}>Loan</span>
-																		</Link>															</td>
-																	{/* <td>
-																		<span class="badge cursor-pointer"
-																			style={{
-																				color: "black",
-																				fontStyle: "normal",
-																				height: "22px",
-																				width: "80px",
-																				fontWeight: "700",
-																				fontSize: "10px",
-																				textTransform: "uppercase",
-																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-																				borderRadius: "40px",
-																			}}>Borrow</span>
-																	</td> */}
+																		</Link>
+																	</td>
+																</tr>
+															))} */}
+															{Eth.map((item, index) => (
+																<tr key={index}>
+																	<td>{item.Collateral}</td>
+																	<td>{item.Interest}</td>
+																	<td>{item.LIQ}</td>
+																	<td>{item.Utilization}</td>
+																	<td>{item.Balance}</td>
+																	<td>
+																		<Link to={"ethdeposite"}>
+																			<span className="badge cursor-pointer"
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "black",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																					borderRadius: "40px",
+																				}}>Borrow</span>
+																		</Link>
+																	</td>
+																	<td>
+																		<Link >
+																			<span className="badge cursor-pointer"
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "black",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																					borderRadius: "40px",
+																				}}>Lend</span>
+																		</Link>
+																	</td>
+																</tr>
+															))}
+															{Dai.map((item, index) => (
+																<tr key={index}>
+																	<td>{item.Collateral}</td>
+																	<td>{item.Interest}</td>
+																	<td>{item.LIQ}</td>
+																	<td>{item.Utilization}</td>
+																	<td>{item.Balance}</td>
+																	<td>
+																		<Link to={"daideposite"}>
+																			<span className="badge cursor-pointer"
+																				// onClick={() => setModalShowDAI(true)}
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "black",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																					borderRadius: "40px",
+																				}}>Borrow</span>
+																		</Link>
+																		{/* <DepositColletralsDAI show={modalShowDAI} onHide={() => setModalShowDAI(false)} /> */}
+																	</td>
+																	<td>
+																		<Link >
+																			<span className="badge cursor-pointer"
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "black",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																					borderRadius: "40px",
+																				}}>Lend</span>
+																		</Link>
+																	</td>
 																</tr>
 															))}
 														</tbody>
