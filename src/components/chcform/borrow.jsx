@@ -177,7 +177,7 @@ export const Borrow = () => {
                                                                 {/* className="text-end" */}
                                                                 {/* <th>Borrow</th> */}
                                                                 {/* <th>Borrow</th> */}
-                                                                <th>Borrow</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody className='text-white'>
@@ -260,6 +260,20 @@ export const Borrow = () => {
                                                                                     borderRadius: "40px",
                                                                                 }}>Borrow</span>
                                                                         </Link>
+                                                                        <Link to={"/accounts/loan/borrowchc"}>
+                                                                            <span className="badge cursor-pointer ml-2"
+                                                                                style={{
+                                                                                    height: "22px",
+                                                                                    width: "80px",
+                                                                                    color: "black",
+                                                                                    textTransform: "uppercase",
+                                                                                    fontStyle: "normal",
+                                                                                    fontWeight: "700",
+                                                                                    fontSize: "10px",
+                                                                                    background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                                                                    borderRadius: "40px",
+                                                                                }}>Repay</span>
+                                                                        </Link>
                                                                     </td>
                                                                 </tr>
                                                             ))}
@@ -300,6 +314,20 @@ export const Borrow = () => {
                                                                                     background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
                                                                                     borderRadius: "40px",
                                                                                 }}>Borrow</span>
+                                                                        </Link>
+                                                                        <Link to={"/accounts/loan/borrowchc"}>
+                                                                            <span className="badge cursor-pointer ml-2"
+                                                                                style={{
+                                                                                    height: "22px",
+                                                                                    width: "80px",
+                                                                                    color: "black",
+                                                                                    textTransform: "uppercase",
+                                                                                    fontStyle: "normal",
+                                                                                    fontWeight: "700",
+                                                                                    fontSize: "10px",
+                                                                                    background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                                                                    borderRadius: "40px",
+                                                                                }}>Repay</span>
                                                                         </Link>
                                                                     </td>
                                                                 </tr>
