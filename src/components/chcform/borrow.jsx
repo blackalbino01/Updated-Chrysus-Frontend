@@ -251,13 +251,15 @@ export const Borrow = () => {
                                                                                 style={{
                                                                                     height: "22px",
                                                                                     width: "80px",
-                                                                                    color: "black",
+                                                                                    color: "#846424",
                                                                                     textTransform: "uppercase",
                                                                                     fontStyle: "normal",
                                                                                     fontWeight: "700",
                                                                                     fontSize: "10px",
-                                                                                    background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                                                                    borderRadius: "40px",
+                                                                                    backgroundColor: "#1A1917",
+                                                                                    borderRadius: "16px",
+                                                                                    border: "1px solid transparent",
+                                                                                    borderColor: "#846424",
                                                                                 }}>Borrow</span>
                                                                         </Link>
                                                                         <Link to={"/accounts/loan/repay"}>
@@ -306,13 +308,15 @@ export const Borrow = () => {
                                                                                 style={{
                                                                                     height: "22px",
                                                                                     width: "80px",
-                                                                                    color: "black",
+                                                                                    color: "#846424",
                                                                                     textTransform: "uppercase",
                                                                                     fontStyle: "normal",
                                                                                     fontWeight: "700",
                                                                                     fontSize: "10px",
-                                                                                    background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                                                                    borderRadius: "40px",
+                                                                                    backgroundColor: "#1A1917",
+                                                                                    borderRadius: "16px",
+                                                                                    border: "1px solid transparent",
+                                                                                    borderColor: "#846424",
                                                                                 }}>Borrow</span>
                                                                         </Link>
                                                                         <Link to={"/accounts/loan/repay"}>

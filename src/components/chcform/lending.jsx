@@ -177,7 +177,7 @@ export const Lending = () => {
                                                                 {/* className="text-end" */}
                                                                 {/* <th>Borrow</th> */}
                                                                 {/* <th>Borrow</th> */}
-                                                                <th>Lend</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody className='text-white'>
@@ -246,8 +246,26 @@ export const Lending = () => {
                                                                         </Link>
                                                                     </td> */}
                                                                     <td>
-                                                                        <Link to={"/accounts/loan/lend"}>
+                                                                        <Link>
                                                                             <span className="badge cursor-pointer"
+                                                                                // onClick={() => setModalShowDAI(true)}
+                                                                                style={{
+                                                                                    height: "22px",
+                                                                                    width: "80px",
+                                                                                    color: "#846424",
+                                                                                    textTransform: "uppercase",
+                                                                                    fontStyle: "normal",
+                                                                                    fontWeight: "700",
+                                                                                    fontSize: "10px",
+                                                                                    backgroundColor: "#1A1917",
+                                                                                    borderRadius: "16px",
+                                                                                    border: "1px solid transparent",
+                                                                                    borderColor: "#846424",
+
+                                                                                }}>Withdraw</span>
+                                                                        </Link>
+                                                                        <Link to={"/accounts/loan/lend"}>
+                                                                            <span className="badge cursor-pointer ml-2"
                                                                                 style={{
                                                                                     height: "22px",
                                                                                     width: "80px",
@@ -287,8 +305,26 @@ export const Lending = () => {
                                                                         </Link>
                                                                     </td> */}
                                                                     <td>
-                                                                        <Link to={"/accounts/loan/lend"}>
+                                                                    <Link>
                                                                             <span className="badge cursor-pointer"
+                                                                                // onClick={() => setModalShowDAI(true)}
+                                                                                style={{
+                                                                                    height: "22px",
+                                                                                    width: "80px",
+                                                                                    color: "#846424",
+                                                                                    textTransform: "uppercase",
+                                                                                    fontStyle: "normal",
+                                                                                    fontWeight: "700",
+                                                                                    fontSize: "10px",
+                                                                                    backgroundColor: "#1A1917",
+                                                                                    borderRadius: "16px",
+                                                                                    border: "1px solid transparent",
+                                                                                    borderColor: "#846424",
+
+                                                                                }}>Withdraw</span>
+                                                                        </Link>
+                                                                        <Link to={"/accounts/loan/lend"}>
+                                                                            <span className="badge cursor-pointer ml-2"
                                                                                 style={{
                                                                                     height: "22px",
                                                                                     width: "80px",

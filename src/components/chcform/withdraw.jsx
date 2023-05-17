@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { Chrysus } from "../../assets";
 import styles from "../../style";
 
-export const Repay = () => {
+export const Withdraw = () => {
     return (
         <>
             <div className="row w-100" style={{ borderRadius: "16px" }}>
