@@ -43,6 +43,7 @@ const UserDashboard = () => {
 	const [data, setData] = useState(
 		document.querySelectorAll("#status_wrapper tbody tr")
 	);
+	const [cdp,  setCDP] = useState(0);
 	const sort = 6;
 	const activePag = useRef(0);
 	const [test, settest] = useState(0);
@@ -116,6 +117,10 @@ const UserDashboard = () => {
 	useEffect(() => {
 		Utils.getCollateralizationRatio().then(function (data) {
 			setcollateralRatio((Number(data) / 1E6).toFixed(2));
+		});
+
+		Utils.getCDPCount().then(function (data) {
+			setCDP(Number(data));
 		});
 
 		Utils.liqRatio().then(function (data) {
@@ -267,7 +272,7 @@ const UserDashboard = () => {
 									<div className="px-2 info-group">
 										<p className="fs-14 mb-1">ACTIVE CDPS</p>
 										<h3 className="fs-20 font-w600 text-white">
-											0 CDPs
+											{cdp} CDPs
 										</h3>
 									</div>
 									{/* <div className="px-2 info-group">
