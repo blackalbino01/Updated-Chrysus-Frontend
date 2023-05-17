@@ -260,7 +260,7 @@ export const Borrow = () => {
                                                                                     borderRadius: "40px",
                                                                                 }}>Borrow</span>
                                                                         </Link>
-                                                                        <Link to={"/accounts/loan/borrowchc"}>
+                                                                        <Link to={"/accounts/loan/repay"}>
                                                                             <span className="badge cursor-pointer ml-2"
                                                                                 style={{
                                                                                     height: "22px",
@@ -315,7 +315,7 @@ export const Borrow = () => {
                                                                                     borderRadius: "40px",
                                                                                 }}>Borrow</span>
                                                                         </Link>
-                                                                        <Link to={"/accounts/loan/borrowchc"}>
+                                                                        <Link to={"/accounts/loan/repay"}>
                                                                             <span className="badge cursor-pointer ml-2"
                                                                                 style={{
                                                                                     height: "22px",

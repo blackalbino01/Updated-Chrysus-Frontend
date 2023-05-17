@@ -32,6 +32,7 @@ import Staking from './components/Dashboard/Staking';
 import { ETH } from './components/chcform/Eth';
 import { Lend } from './components/chcform/Lend';
 import { BorrowCHC } from './components/chcform/borrowCHC';
+import { Repay } from './components/chcform/repay';
 const Home = lazy(() => import('./components/Home'));
 
 const App = () => {
@@ -80,6 +81,7 @@ const App = () => {
               <Route path="lend" element={<Lend/>} />
               <Route path="confirmation" element={<Confirmation />} />
               <Route path= "borrowchc" element={<BorrowCHC/>} />
+              <Route path= "repay" element={<Repay/>} />
             </Route>
             <Route path="mint" element={<Mint />} >
               <Route index element={<Collaterals />} />
