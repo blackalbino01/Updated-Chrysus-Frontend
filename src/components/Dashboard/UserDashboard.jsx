@@ -147,10 +147,9 @@ const UserDashboard = () => {
 		});
 
 	})
-	// const Dai = [
-	// 	{ Pool: 'DAI', Borrow: '267%',  Value:"$152.7" , debt:"123%",daiBalance.toFixed(2) },
-	// ];
-
+	const Dai = [
+		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", debt: "123", APY: "213", Reward: "reward" },
+	];
 
 	return (
 		<>
@@ -588,25 +587,54 @@ const UserDashboard = () => {
 											<div id="status_wrapper" className="dataTables_wrapper no-footer">
 												<table id="example" className="table display dataTable no-footer" style={{ minWidth: "845px" }}>
 													<thead>
-														<tr className='text-white'>
+														<tr
+															style={{
+																color: "#846424",
+															}}>
+															{/* <th className="sorting_asc">
+																	<input type="checkbox" className="form-check-input" id="checkAll" required=""
+																		onClick={() => checkboxFun('all')}
+																	/>
+																</th> */}
 															<th>Pool</th>
 															<th>Borrow</th>
 															<th>Current Value</th>
 															<th>Debt Ratio</th>
 															<th>APY </th>
 															<th>Reward</th>
-															<th className="text-end">Action</th>
+															<th className='text-center'>Action</th>
 														</tr>
 													</thead>
-													{/* <tbody className='text-white'>
+													<tbody className='text-white'>
 														{Dai.map((item, index) => (
 															<tr key={index}>
-																<td>{item.Date}</td>
-																<td>{item.Price}</td>
-																<td>{item.Amount}</td>
+																<td>{item.Pool}</td>
+																<td>{item.Borrow}</td>
+																<td>{item.Value}</td>
+																<td>{item.debt}</td>
+																<td>{item.APY}</td>
+																<td>{item.Reward}</td>
 																<td>
-																	<Link to={"daideposite"}>
+																	<Link to={"/accounts/loan/dai"}>
 																		<span className="badge cursor-pointer"
+																			// onClick={() => setModalShowDAI(true)}
+																			style={{
+																				height: "22px",
+																				width: "80px",
+																				color: "#846424",
+																				textTransform: "uppercase",
+																				fontStyle: "normal",
+																				fontWeight: "700",
+																				fontSize: "10px",
+																				backgroundColor: "#1A1917",
+																				borderRadius: "16px",
+																				border: "1px solid transparent",
+																				borderColor: "#846424",
+																				
+																			}}>Repay</span>
+																	</Link>
+																	<Link to={"/accounts/loan/dai"}>
+																		<span className="badge cursor-pointer ml-3"
 																			// onClick={() => setModalShowDAI(true)}
 																			style={{
 																				height: "22px",
@@ -618,11 +646,29 @@ const UserDashboard = () => {
 																				fontSize: "10px",
 																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 																				borderRadius: "40px",
-																			}}>Deposit</span>
-																	</Link>																</td>
+																			}}>Claim</span>
+																	</Link>
+																	{/* <DepositColletralsDAI show={modalShowDAI} onHide={() => setModalShowDAI(false)} /> */}
+																</td>
+																{/* <td>
+																	<Link >
+																		<span className="badge cursor-pointer"
+																			style={{
+																				height: "22px",
+																				width: "80px",
+																				color: "black",
+																				textTransform: "uppercase",
+																				fontStyle: "normal",
+																				fontWeight: "700",
+																				fontSize: "10px",
+																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																				borderRadius: "40px",
+																			}}>Claim</span>
+																	</Link>
+																</td> */}
 															</tr>
 														))}
-													</tbody> */}
+													</tbody>
 												</table>
 												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
 													<div className="dataTables_info">

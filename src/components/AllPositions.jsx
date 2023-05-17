@@ -59,88 +59,6 @@ const AllPositions = () => {
   return (
     <Section>
       <div className="page-content mt-5">
-        <div className="row justify-content-center">
-          <div className="col-lg-4 col-md-6 m-b30 wow fadeInUp" data-wow-delay="0.2s" >
-            <div className=" icon-bx-wraper style-1 box-hover"
-              style={{
-                backgroundColor: "#211f21",
-                borderRadius: "16px",
-                color: "#846424",
-              }}
-            >
-              <div className="icon-content">
-                <div className=" dataTabletrade">
-                  <div id="status_wrapper" className="dataTables_wrapper no-footer">
-                    <table style={{ minWidth: "260px" }}>
-                      <thead mb-3>
-                        <tr style={{ color: "#846424" }}>
-                          <th>ASSET</th>
-                          <th>Balance</th>
-                          <th>USD</th>
-                        </tr>
-                      </thead>
-                      <tbody className='text-white'>
-                        <tr className=' pt-3'>
-                          <td>
-                            <img width="15" height="15" className="jumbo-button-icon" src={B} alt="B" />
-                          </td>
-                          <td>5421</td>
-                          <td>8764</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <img width="15" height="15" className="jumbo-button-icon" src={CP} alt="B" />
-                          </td>
-                          <td>5421</td>
-                          <td>8764</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <img width="15" height="15" className="jumbo-button-icon" src={D} alt="B" />
-                          </td>
-                          <td>5421</td>
-                          <td>8764</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6 m-b30 wow fadeInUp" data-wow-delay="0.2s" >
-            <div className=" icon-bx-wraper style-1 box-hover"
-              style={{
-                backgroundColor: "#211f21",
-                borderRadius: "16px",
-                color: "#846424",
-              }}
-            >
-              <div className=" justify-between items-center">
-                {/* <img src={data.image} alt="" /> */}
-                <div className="icon-info">
-                  <h5 className="title text-center">Price Feeds</h5>
-                </div>
-              </div>
-              <div className="icon-content">
-                <ul className="price ">
-                  <li>
-                    <p className="mb-0 amount text-white">ETH/USD</p>
-                    <span className='text-white'>312.45 USD</span>
-                  </li>
-                  <li>
-                    <p className="mb-0 amount text-white">DAI/USD</p>
-                    <span className='text-white'>312 USD</span>
-                  </li>
-                  <li>
-                    <p className="mb-0 amount text-white">CHC/USD</p>
-                    <span className='text-white'>31245 USD</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="col-xl-12 col-md-6 m-b30 wow fadeInUp" data-wow-delay="0.2s" >
           <div className="style-1 box-hover"
             style={{
@@ -168,9 +86,7 @@ const AllPositions = () => {
                               <th>Browser Credit</th>
                               <th>Collateral Credit </th>
                               <th>Debt Ratio </th>
-                              <th>Repay</th>
-                              <th>Liquidate </th>
-                              <th>Claim</th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody className='text-white'>
@@ -195,41 +111,7 @@ const AllPositions = () => {
                                         fontSize: "10px",
                                         background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
                                         borderRadius: "40px",
-                                      }}>Repay</span>
-                                  </Link>
-                                </td>
-                                <td>
-                                  <Link to={"daideposite"}>
-                                    <span className="badge cursor-pointer"
-                                      // onClick={() => setModalShowDAI(true)}
-                                      style={{
-                                        height: "22px",
-                                        width: "80px",
-                                        color: "black",
-                                        textTransform: "uppercase",
-                                        fontStyle: "normal",
-                                        fontWeight: "700",
-                                        fontSize: "10px",
-                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                        borderRadius: "40px",
                                       }}>Liquidate </span>
-                                  </Link>
-                                </td>
-                                <td>
-                                  <Link to={"daideposite"}>
-                                    <span className="badge cursor-pointer ml-2"
-                                      // onClick={() => setModalShowDAI(true)}
-                                      style={{
-                                        height: "22px",
-                                        width: "80px",
-                                        color: "black",
-                                        textTransform: "uppercase",
-                                        fontStyle: "normal",
-                                        fontWeight: "700",
-                                        fontSize: "10px",
-                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                        borderRadius: "40px",
-                                      }}>Claim</span>
                                   </Link>
                                 </td>
                               </tr>
@@ -317,7 +199,14 @@ const AllPositions = () => {
         </div>
       </div>
       <div className="mt-5"></div>
-
+      <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
+        <p className={`${styles.paragraph} `}>
+          Copyright Ⓒ 2023 Chrysus. 2022, All Rights Reserved.
+        </p>
+      </div>
+      <div className="mt-5"></div>
+      <div className="mt-5"></div>
+      
     </Section>
   )
 }

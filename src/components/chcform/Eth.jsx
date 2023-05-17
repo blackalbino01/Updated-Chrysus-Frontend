@@ -6,7 +6,7 @@ import { Info } from "react-feather";
 // import { COLORS } from "src/assets/styles/theme";
 import { CInput } from "../inputs/cinput";
 import { Link } from "react-router-dom";
-export const DAI = () => {
+export const ETH = () => {
 	return (
 		<div className="row w-100" style={{ borderRadius: "16px" }}>
 			<div className="col ">
@@ -20,7 +20,7 @@ export const DAI = () => {
 					}}
 				>
 					<div className="mt-5"></div>
-					<H4>Deposit DAI and Generate CHC</H4>
+					<H4>Deposit Ethereum and Generate CHC</H4>
 					<div className="d-flex flex-column align-items-start">
 						<P className="m-0">
 							How much Collateral would you like to lock into your Position?
@@ -33,7 +33,7 @@ export const DAI = () => {
 						<CInput
 							type="text"
 							dir="rtl"
-							rightText="DAI"
+							rightText="ETH"
 							bottomLineText="YOUR BALANCE 0"
 						/>
 						<div className="my-3"></div>

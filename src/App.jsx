@@ -29,6 +29,9 @@ import AllPositions from './components/AllPositions';
 import { Collaterals } from './components/mintform/collaterals';
 import CreateProposal from './components/Dashboard/ProposalsCreate/CreateProposal';
 import Staking from './components/Dashboard/Staking';
+import { ETH } from './components/chcform/Eth';
+import { Lend } from './components/chcform/Lend';
+import { BorrowCHC } from './components/chcform/borrowCHC';
 const Home = lazy(() => import('./components/Home'));
 
 const App = () => {
@@ -73,7 +76,10 @@ const App = () => {
             <Route path="loan" element={<Loan />} >
               <Route index element={<Collateral />} />
               <Route path="dai" element={<DAI />} />
+              <Route path="eth" element={<ETH/>} />
+              <Route path="lend" element={<Lend/>} />
               <Route path="confirmation" element={<Confirmation />} />
+              <Route path= "borrowchc" element={<BorrowCHC/>} />
             </Route>
             <Route path="mint" element={<Mint />} >
               <Route index element={<Collaterals />} />
