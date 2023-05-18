@@ -170,16 +170,14 @@ const UserDashboard = () => {
 					<BiSearch />
 					<input type="text" placeholder="Search" />
 				</div> */}
-				<div>
+				{/* <div>
 					<div className="" >
 						{addrees !== null ? (
 							<>
 								<Button
 									type="button"
 									style={{
-										// backgroundColor: "#1A1917",
 										background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-										// borderRadius: "16px",
 										color: "black",
 									}}
 									className=" font-medium
@@ -193,7 +191,7 @@ const UserDashboard = () => {
 							</>
 						) : ("")}
 					</div>
-				</div>
+				</div> */}
 				{/* <div>
 					<img loading="lazy" src={home} alt="discount" />
 				</div> */}

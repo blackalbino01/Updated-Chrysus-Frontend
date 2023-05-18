@@ -87,7 +87,7 @@ export const Collaterals = () => {
 	};
 
 	const Dais = [
-		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", debt: "123", APY: "213", Reward: "reward" },
+		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", liquidation: "123"},
 	];
 	return (
 		<>
@@ -276,9 +276,7 @@ export const Collaterals = () => {
 															<th>Pool</th>
 															<th>Borrow</th>
 															<th>Current Value</th>
-															<th>Debt Ratio</th>
-															<th>APY </th>
-															<th>Reward</th>
+															<th> liquidation price</th>
 															<th className='text-center'>Action</th>
 														</tr>
 													</thead>
@@ -288,9 +286,7 @@ export const Collaterals = () => {
 																<td>{item.Pool}</td>
 																<td>{item.Borrow}</td>
 																<td>{item.Value}</td>
-																<td>{item.debt}</td>
-																<td>{item.APY}</td>
-																<td>{item.Reward}</td>
+																<td>{item.liquidation}</td>
 																<td>
 																	<Link >
 																		<span className="badge cursor-pointer"
