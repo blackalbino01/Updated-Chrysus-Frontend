@@ -22,12 +22,9 @@ export const DAIDeposite = () => {
 		setloading(true)
 		setModalShow(true)
 		try {
-			await DAIContract?.methods.approve(CHRYSUS, DAIamount).send({ from: accounts[0] }).then(function (receipt) {
-				console.log(receipt);
-				alert(`You Have succefully Approve Chrysus Coin,
-			See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
-				setModalShow(false)
-			});
+			await DAIContract?.methods.approve(CHRYSUS, DAIamount).send({ from: accounts[0] })
+			setisApprove(true);
+			setModalShow(false);
 		} catch (error) {
 			console.log("First Approve Error", error)
 			setModalShow(false)
