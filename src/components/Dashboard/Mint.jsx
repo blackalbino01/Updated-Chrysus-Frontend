@@ -33,7 +33,7 @@ const Mint = () => {
       <div className="grid">
         <MintForm />
       </div>
-      <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+      {/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
             <div className={`${styles.flexStart} md:flex-row flex-col w-full`}>
@@ -48,7 +48,7 @@ const Mint = () => {
             </div>
           </section>
         </div>
-      </div>
+      </div> */}
     </Section>
   )
 }

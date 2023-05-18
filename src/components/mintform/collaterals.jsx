@@ -52,24 +52,24 @@ export const Collaterals = () => {
 	}, [test]);
 
 	useEffect(() => {
-		Utils.getUserBalance(addrees, "DAI").then(function(data){
-			setdaiBalance(Number(data)/1E18);
+		Utils.getUserBalance(addrees, "DAI").then(function (data) {
+			setdaiBalance(Number(data) / 1E18);
 		});
 
-		Utils.getUserBalance(addrees, "ETH").then(function(data){
-			setbalance(Number(data)/1E18);
+		Utils.getUserBalance(addrees, "ETH").then(function (data) {
+			setbalance(Number(data) / 1E18);
 		});
 
 	});
 
 
-const Eth = [
-	{ Date: 'ETH',Price: '120%', Amount: balance.toFixed(2) },
-];
+	const Eth = [
+		{ Date: 'ETH', Price: '120%', Amount: balance.toFixed(2) },
+	];
 
-const Dai = [
-	{ Date: 'DAI', Price: '267%', Amount: daiBalance.toFixed(2) },
-];
+	const Dai = [
+		{ Date: 'DAI', Price: '267%', Amount: daiBalance.toFixed(2) },
+	];
 
 
 	// Active pagginarion
@@ -86,10 +86,12 @@ const Dai = [
 		settest(i);
 	};
 
-
+	const Dais = [
+		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", debt: "123", APY: "213", Reward: "reward" },
+	];
 	return (
 		<>
-			<div className="row mt-5">
+			<div className="row mt-1">
 				<div className="col-xl-12">
 					<div className="card" style={{
 						backgroundColor: "#211f21",
@@ -100,17 +102,17 @@ const Dai = [
 							<Tab.Container defaultActiveKey="All">
 								<div className="card-header border-0 pb-2 flex-wrap">
 									<h4 className="heading "> Mint Chrysus Coin (CHC)
-									<div style={{ position: "absolute", right: 30, top: 30 }}>
-										<Toltip style={{ position: "absolute", right: 30, top: 30 }}>
-											<Info />
-										</Toltip>
-									</div>
+										<div style={{ position: "absolute", right: 30, top: 30 }}>
+											<Toltip style={{ position: "absolute", right: 30, top: 30 }}>
+												<Info />
+											</Toltip>
+										</div>
 									</h4>
 								</div>
 								<div className="card-body pt-0 pb-0">
 									<Tab.Content >
 										<Tab.Pane eventKey="All">
-											<div className="table-responsive dataTabletrade ">
+											<div className=" dataTabletrade ">
 												<div id="status_wrapper" className="dataTables_wrapper no-footer">
 													<table id="example" className="table display dataTable no-footer" style={{ minWidth: "845px" }}>
 														<thead>
@@ -175,7 +177,7 @@ const Dai = [
 															))}
 														</tbody>
 													</table>
-													<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
+													{/* <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
 														<div className="dataTables_info">
 															Showing {activePag.current * sort + 1} to{" "}
 															{data.length > (activePag.current + 1) * sort
@@ -189,26 +191,23 @@ const Dai = [
 														>
 															<Link
 																className="paginate_button previous text-white mt-2"
-																// style={{
-																// 	backgroundColor: "#757375",
-																// 	borderRadius: "16px",
-																// }}
-																// to="/future"
+																
 																onClick={() =>
 																	activePag.current > 0 &&
 																	onClick(activePag.current - 1)
 																}
 															>
-																{/* <i className="fa fa-angle-double-left" ></i> */}
 																<i>
-																	<svg style={{ width: "20px", height: "20px", marginTop: "10" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
+																	<svg style={{ width: "15px", height: "15px", marginTop: "10" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
 																</i>
 															</Link>
 															<span className='text-white'>
 																{paggination.map((number, i) => (
 																	<Link
+																		style={{
+																			fontSize: "10px",
+																		}}
 																		key={i}
-																		// to="/future"
 																		className={`paginate_button  ${activePag.current === i ? "current" : ""
 																			} `}
 																		onClick={() => onClick(i)}
@@ -219,24 +218,19 @@ const Dai = [
 															</span>
 
 															<Link
-																// style={{
-																// 	backgroundColor: "#757375",
-																// 	borderRadius: "16px",
-																// }}
+														
 																className="paginate_button next text-white mt-2"
-																// to="/future"
 																onClick={() =>
 																	activePag.current + 1 < paggination.length &&
 																	onClick(activePag.current + 1)
 																}
 															>
-																{/* <i className="fa fa-angle-double-right" ></i> */}
-																<i>
-																	<svg style={{ width: "20px", height: "20px", marginTop: "10" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
+																<i >
+																	<svg style={{ width: "15px", height: "15px", marginTop: "10", marginLeft: "10px" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
 																</i>
 															</Link>
 														</div>
-													</div>
+													</div> */}
 												</div>
 											</div>
 										</Tab.Pane>
@@ -257,7 +251,150 @@ const Dai = [
 						</div>
 					</div>
 				</div>
+				<div className="col-xl-12">
+					<div className="card"
+						style={{
+							backgroundColor: "#211f21",
+							borderRadius: "16px",
+							color: "#846424",
+						}}>
+						<Tab.Container defaultActiveKey="All">
+							<div className="card-header border-0 pb-2 flex-wrap">
+								<h4 className="heading ">Your Positions</h4>
+							</div>
+							<div className="card-body pt-0 pb-0">
+								<Tab.Content >
+									<Tab.Pane eventKey="All">
+										<div className="table-responsive dataTabletrade ">
+											<div id="status_wrapper" className="dataTables_wrapper no-footer">
+												<table id="example" className="table display dataTable no-footer" style={{ minWidth: "845px" }}>
+													<thead>
+														<tr
+															style={{
+																color: "#846424",
+															}}>
+															<th>Pool</th>
+															<th>Borrow</th>
+															<th>Current Value</th>
+															<th>Debt Ratio</th>
+															<th>APY </th>
+															<th>Reward</th>
+															<th className='text-center'>Action</th>
+														</tr>
+													</thead>
+													<tbody className='text-white'>
+														{Dais.map((item, index) => (
+															<tr key={index}>
+																<td>{item.Pool}</td>
+																<td>{item.Borrow}</td>
+																<td>{item.Value}</td>
+																<td>{item.debt}</td>
+																<td>{item.APY}</td>
+																<td>{item.Reward}</td>
+																<td>
+																	<Link to={"/accounts/loan/dai"}>
+																		<span className="badge cursor-pointer"
+																			style={{
+																				height: "22px",
+																				width: "80px",
+																				color: "#846424",
+																				textTransform: "uppercase",
+																				fontStyle: "normal",
+																				fontWeight: "700",
+																				fontSize: "10px",
+																				backgroundColor: "#1A1917",
+																				borderRadius: "16px",
+																				border: "1px solid transparent",
+																				borderColor: "#846424",
 
+																			}}>Repay</span>
+																	</Link>
+																	<Link to={"/accounts/loan/dai"}>
+																		<span className="badge cursor-pointer ml-3"
+																			style={{
+																				height: "22px",
+																				width: "80px",
+																				color: "black",
+																				textTransform: "uppercase",
+																				fontStyle: "normal",
+																				fontWeight: "700",
+																				fontSize: "10px",
+																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																				borderRadius: "40px",
+																			}}>Claim</span>
+																	</Link>
+																</td>
+															</tr>
+														))}
+													</tbody>
+												</table>
+												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
+													<div className="dataTables_info">
+														Showing {activePag.current * sort + 1} to{" "}
+														{data.length > (activePag.current + 1) * sort
+															? (activePag.current + 1) * sort
+															: data.length}{" "}
+														of {data.length} entries
+													</div>
+													<div
+														className="dataTables_paginate paging_simple_numbers mb-0"
+														id="application-tbl1_paginate"
+													>
+														<Link
+															className="paginate_button previous text-white mt-2"
+
+															onClick={() =>
+																activePag.current > 0 &&
+																onClick(activePag.current - 1)
+															}
+														>
+															<i>
+																<svg style={{ width: "15px", height: "15px", marginTop: "12" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
+															</i>
+														</Link>
+														<span className='text-white'>
+															{paggination.map((number, i) => (
+																<Link
+																style={{
+																	fontSize:"10px",
+																  }}
+																	key={i}
+																	className={`paginate_button  ${activePag.current === i ? "current" : ""
+																		} `}
+																	onClick={() => onClick(i)}
+																>
+																	{number}
+																</Link>
+															))}
+														</span>
+
+														<Link
+															className="paginate_button next text-white mt-2"
+															onClick={() =>
+																activePag.current + 1 < paggination.length &&
+																onClick(activePag.current + 1)
+															}
+														>
+															<i>
+																<svg style={{ width: "15px", height: "15px", marginTop: "10", marginLeft:"10px" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
+															</i>
+														</Link>
+													</div>
+												</div>
+											</div>
+										</div>
+									</Tab.Pane>
+									<Tab.Pane eventKey="Order">
+										<OrderTab />
+									</Tab.Pane>
+									<Tab.Pane eventKey="Trade">
+										<TradeTab />
+									</Tab.Pane>
+								</Tab.Content>
+							</div>
+						</Tab.Container>
+					</div>
+				</div>
 			</div>
 		</>
 	);

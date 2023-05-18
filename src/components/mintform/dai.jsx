@@ -142,7 +142,6 @@ export const DAIDeposite = () => {
 																<div className="flex items-start justify-between">
 																<div class="loader"></div>
 																</div>
-																
 															</div>
 														</div>
 													</div>

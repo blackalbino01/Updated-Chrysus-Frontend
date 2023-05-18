@@ -59,8 +59,6 @@ export const Liquidate = () => {
                                     // onChange={(e) => setlocation(e.target.value)}
                                     >
                                         <option value="Ethreum">ETH</option>
-                                        {/* <option value="">ETH</option>
-                                        <option value="Ethreum">ETH</option> */}
                                         <option value="DAI">DAI</option>
                                     </select>
 
@@ -133,13 +131,6 @@ export const Liquidate = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-5"></div>
-            <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
-                <p className={`${styles.paragraph} `}>
-                    Copyright Ⓒ 2023 Chrysus. 2022, All Rights Reserved.
-                </p>
-            </div>
-            <div className="mt-5"></div>
             <div className="mt-5"></div>
         </Section>
 

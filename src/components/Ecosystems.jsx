@@ -5,6 +5,7 @@ import Navbar from './Navbar'
 import styles from "../style";
 import Footer from './Footer';
 import { Button } from 'react-bootstrap';
+import {useAppSelector } from '../reducer/store';
 
 
 const ImageBox = ({ image, changeClass }) => {
