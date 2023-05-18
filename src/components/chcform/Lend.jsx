@@ -34,8 +34,7 @@ export const Lend = () => {
 						<label className="form-label text-primary">Avaliable to Lend 00.0</label>
 						<div className="input-group" style={{
 							backgroundColor: "#1A1917",
-							color: "#846424",
-						}}>
+							color: "#846424",}}>
 							<input type="text" className="form-control"
 								style={{
 									backgroundColor: "#1A1917",

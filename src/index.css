@@ -28655,8 +28655,8 @@ table.dataTable.no-footer {
 
 
 .mod{
-  /* filter: blur(2px);
-  overflow: hidden; */
+  filter: blur(2px);
+  overflow: hidden;
   opacity: 0.5;
 }
 

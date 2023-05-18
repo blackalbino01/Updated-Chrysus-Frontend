@@ -98,7 +98,7 @@ const AllPositions = () => {
                                 <td>{item.Credit}</td>
                                 <td>{item.Debt}</td>
                                 <td>
-                                  <Link to={"daideposite"}>
+                                  <Link to={"/accounts/liquidate"}>
                                     <span className="badge cursor-pointer"
                                       // onClick={() => setModalShowDAI(true)}
                                       style={{

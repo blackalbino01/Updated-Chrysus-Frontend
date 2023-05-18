@@ -114,7 +114,7 @@ export const DAIDeposite = () => {
 										</>
 									) : (
 										<>
-											<Button data-modal-target="popup-modal" data-modal-toggle="popup-modal" 
+											<Button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
 												style={{
 													color: "black",
 													fontStyle: "normal",
@@ -129,7 +129,30 @@ export const DAIDeposite = () => {
 												onClick={() => DAIApprove()}>
 												Approve
 											</Button>
-											<WalletConnect show={modalShow} />
+											{/* <WalletConnect show={modalShow} /> */}
+											{modalShow ? (
+												<>
+													<div
+														className="justify-center bg-black items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+													style={{
+														// paddingLeft:"220px"
+														// background:""
+														opacity: "0.7"
+													}}
+													>
+														<div className="relative w-auto my-6 mx-auto max-w-3xl">
+															<div className="border-0 relative flex flex-col w-full outline-none focus:outline-none">
+																<div className="flex items-start justify-between">
+																<div class="loader"></div>
+																</div>
+																
+															</div>
+														</div>
+													</div>
+													{/* <div className="opacity-25 fixed inset-0 z-40 bg-black"></div> */}
+												</>
+											) : null}
+
 										</>
 									)}
 							</div>
@@ -182,7 +205,7 @@ export const DAIDeposite = () => {
 const WalletConnect = (props) => {
 	return (
 		<div className="">
-			<Modal 
+			<Modal
 				{...props}
 				size="lg"
 				aria-labelledby="contained-modal-title-vcenter"
@@ -193,27 +216,29 @@ const WalletConnect = (props) => {
 					// opacity: "1",
 				}}
 			>
-			<Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 ">
-				<Modal.Title >
-					<h3 className="text-white"
-						style={{
-							paddingLeft: "40px"
-						}}
-					>
-						Transection in Process
-					</h3>
+				<Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 ">
+					<Modal.Title >
+						<h3 className="text-white"
+							style={{
+								paddingLeft: "40px"
+							}}
+						>
+							Transection in Process
+						</h3>
 
-				</Modal.Title>
-			</Modal.Header>
-			<Modal.Body className="items-center rounded-b-[12px]">
-				<div style={{
-					paddingLeft: "100px"
-				}}>
-					<div class="loader"></div>
-				</div>
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body className="items-center rounded-b-[12px]">
+					<div style={{
+						paddingLeft: "100px"
+					}}>
+						<div class="loader"></div>
+					</div>
 
-			</Modal.Body>
-		</Modal>
+				</Modal.Body>
+			</Modal>
 		</div >
 	)
 }
+
+

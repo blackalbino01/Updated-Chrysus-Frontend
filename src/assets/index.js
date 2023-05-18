@@ -81,8 +81,11 @@ import SwapIcon from './SwapIcon.svg'
 import HomeIcon from './HomeIcon.svg'
 import ero from './ero.png'
 import ero2 from './ero2.png'
-
+import dai from './dai.png'
+import eths from './eths.png'
 export {
+  eths,
+  dai,
   ero2,
   ero,
   HomeIcon,
