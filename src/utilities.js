@@ -9,13 +9,13 @@ import { DAI } from "./constant";
 
 
 const PROVIDER = "https://rpc.sepolia.org";
-const LOAN = "0x8fA7d093C0eF185a7B4c19273239Fa25F78DA80f";
-const CHRYSUS = "0xC3dde5aB877c07039095379c4F43DEdD9D9D6b02";
-const GOVERNANCE = "0xd1A242664720D1e0556b65D9DCCbAD8727976DDC";
+const LOAN = "0x4660EE59aed149ff2C53B9917667254CeddA3e70";
+const CHRYSUS = "0xE7B741255B1d74C1BAD1Dff2a6D22AF738540B50";
+const GOVERNANCE = "0x2AEDCC09e05Fa90d9bD273d799dD121EEBbb848a";
 const SWAP = "0xAd0353208Ea03736469bcA4d26593C24f4255cD2";
 const oracleDAI = "0x14866185B1962B63C3Ea9E03Bc1da838bab34C19";
 const oracleETH = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
-const oracleCHC = "0xd1b9f0a15AEB59a3fd542Fc6093037e7326A0914";
+const oracleCHC = "0x6008581B9f3B0A3C85a2C6230ED94fEffeA44a7c";
 const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
 const chrysusContract = new ethers.Contract(
     CHRYSUS,
@@ -41,6 +41,10 @@ const governanceContract = new ethers.Contract(
 
 const getCollateralizationRatio = async () => {
   return await chrysusContract.getCollateralizationRatio();
+};
+
+const getCDPCount = async () => {
+    return await chrysusContract.getCdpCounter();
 };
 
 const liqRatio = async () => {
@@ -79,5 +83,6 @@ export default{
   getCollateralizationRatio,
   liqRatio,
   getUserBalance,
-  getFeed
+  getFeed,
+  getCDPCount
 }
