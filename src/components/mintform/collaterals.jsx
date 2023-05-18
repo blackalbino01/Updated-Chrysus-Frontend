@@ -292,7 +292,7 @@ export const Collaterals = () => {
 																<td>{item.APY}</td>
 																<td>{item.Reward}</td>
 																<td>
-																	<Link to={"/accounts/loan/dai"}>
+																	<Link >
 																		<span className="badge cursor-pointer"
 																			style={{
 																				height: "22px",
@@ -307,9 +307,9 @@ export const Collaterals = () => {
 																				border: "1px solid transparent",
 																				borderColor: "#846424",
 
-																			}}>Repay</span>
+																			}}>Withdraw</span>
 																	</Link>
-																	<Link to={"/accounts/loan/dai"}>
+																	{/* <Link to={"/accounts/loan/dai"}>
 																		<span className="badge cursor-pointer ml-3"
 																			style={{
 																				height: "22px",
@@ -322,7 +322,7 @@ export const Collaterals = () => {
 																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 																				borderRadius: "40px",
 																			}}>Claim</span>
-																	</Link>
+																	</Link> */}
 																</td>
 															</tr>
 														))}
