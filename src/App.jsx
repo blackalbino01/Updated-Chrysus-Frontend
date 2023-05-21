@@ -25,7 +25,7 @@ import Governance from './components/Dashboard/gov';
 // import {DaoLandPage} from './components/DaoLandPage';
 import DaoLandPage from './components/DaoLandPage';
 import Mint from './components/Dashboard/Mint';
-import AllPositions from './components/AllPositions';
+import LoanPositions from './components/Dashboard/LoanPositions';
 import { Collaterals } from './components/mintform/collaterals';
 import CreateProposal from './components/Dashboard/ProposalsCreate/CreateProposal';
 import Staking from './components/Dashboard/Staking';
@@ -34,6 +34,7 @@ import { Lend } from './components/chcform/Lend';
 import { BorrowCHC } from './components/chcform/borrowCHC';
 import { Repay } from './components/chcform/repay';
 import { Liquidate } from './components/Liquidate';
+import { MintPosition } from './components/Dashboard/MintPosition';
 const Home = lazy(() => import('./components/Home'));
 
 const App = () => {
@@ -75,7 +76,8 @@ const App = () => {
             <Route path="createproposal" element={<CreateProposal />} />
             <Route path="liquidate" element={<Liquidate/>}/>
             <Route path="staking" element = {<Staking/>}/>
-            <Route path="allpositions" element={<AllPositions />} />
+            <Route path="loanpositions" element={<LoanPositions />} />
+            <Route path="mintposition" element={<MintPosition/>} />
             <Route path="loan" element={<Loan />} >
               <Route index element={<Collateral />} />
               <Route path="dai" element={<DAI />} />
@@ -107,7 +109,6 @@ const App = () => {
           </div>
         </div> */}
       </BrowserRouter>
-
     </div>
   )
 }

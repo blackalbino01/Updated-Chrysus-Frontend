@@ -13,11 +13,43 @@ import scrollreveal from "scrollreveal";
 import { Transferblack, logoo, LeafGold, SwapGold, UmbrellaGold, Chrysus, G, P, GI, A, DashboardIcon, HomeIcon, LoanIcon, MintIcon, SwapIcon, } from "../../assets";
 import { MintButton } from "../buttons/mint";
 import { useAppDispatch, useAppSelector } from '../../reducer/store';
+import PerfectScrollbar from "react-perfect-scrollbar";
+import { WalletDropdown } from "../dropdowns/wallet_dropdown.jsx";
+import * as AiIcons from 'react-icons/ai';
+import * as FaIcons from 'react-icons/fa';
+import SubMenu from "../dropdowns/submenu";
+import { IconContext } from 'react-icons/lib';
+
+// import SubMenu from "../dropdowns/wallet_dropdown.jsxs";
 // DashboardIcon,
 
 // LoanIcon,
 // MintIcon,
 // SwapIcon,
+
+
+const MenuList = [
+  {
+    title: 'Overview',
+    path: '/overview',
+    icon: <AiIcons.AiFillHome />,
+    // iconClosed: <RiIcons.RiArrowDownSFill />,
+    // iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'Users',
+        path: '/overview/users',
+        // icon: <IoIcons.IoIosPaper />
+      },
+      {
+        title: 'Revenue',
+        path: '/overview/revenue',
+        // icon: <IoIcons.IoIosPaper />
+      }
+    ]
+  },
+]
 
 export default function UserSideBar() {
   // const dispatch = useDispatch();
@@ -30,7 +62,30 @@ export default function UserSideBar() {
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
   const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
+  const [sidebar, setSidebar] = useState(false);
+  const [visible, setvisible] = useState(false);
 
+  const showSidebar = () => setSidebar(!sidebar);
+
+  // const MenuList = [
+  //   {
+  //     title: 'Overview',
+  //     path: '/overview',
+
+  //     subNav: [
+  //       {
+  //         title: 'Users',
+  //         path: '/overview/users',
+  //         // icon: <IoIcons.IoIosPaper />
+  //       },
+  //       {
+  //         title: 'Revenue',
+  //         path: '/overview/revenue',
+  //         // icon: <IoIcons.IoIosPaper />
+  //       }
+  //     ]
+  //   }
+  // ]
 
 
   const DisconnectWallet = async () => {
@@ -76,6 +131,8 @@ export default function UserSideBar() {
       .links>ul>li:nth-of-type(6),
       .links>ul>li:nth-of-type(7),
       .links>ul>li:nth-of-type(8),
+      .links>ul>li:nth-of-type(9),
+      .links>ul>li:nth-of-type(10),
       .logout
       `,
       {
@@ -176,25 +233,11 @@ export default function UserSideBar() {
               <Link to={"loan"}>
                 <li
                   className={currentLink === 5 ? "active" : "none"}
-                  onClick={() => setCurrentLink(5)}
-                >
+                  onClick={() => setCurrentLink(5)}>
                   <Link to={"loan"}>
-                    <img
-                      className="jumbo-button-icon"
-                      src={LoanIcon}
-                      alt="umbrella-gold"
-                    />
-                    <span> Loan </span>
+                    <img className="jumbo-button-icon" src={LoanIcon} alt="umbrella-gold" />
+                    <span> Loan</span>
                   </Link>
-
-                  {/* <a href="#">
-                  <img
-                    className="jumbo-button-icon"
-                    src={UmbrellaGold}
-                    alt="umbrella-gold"
-                  />
-                  <span> Loan</span>
-                </a> */}
                 </li>
               </Link>
               <Link to={"governance"}>
@@ -212,21 +255,62 @@ export default function UserSideBar() {
                   </Link>
                 </li>
               </Link>
-              <Link to={"allpositions"}>
-                <li
-                  className={currentLink === 7 ? "active" : "none"}
-                  onClick={() => setCurrentLink(7)}
-                >
-                  <Link to={"allpositions"}>
-                    <img width="15" height="15"
-                      className="jumbo-button-icon"
-                      src={A}
-                      alt="umbrella-gold"
-                    />
-                    <span> All Positions </span>
-                  </Link>
-                </li>
-              </Link>
+              <div 
+                onMouseEnter={() => setvisible(true)}
+                onMouseLeave={() => setvisible(false)}
+              >
+                <Link >
+                  <li
+                    className={currentLink === 7 ? "active" : "none"}
+                    onClick={() => setCurrentLink(7)}
+                  >
+                    <Link >
+                      <img width="15" height="15"
+                        className="jumbo-button-icon"
+                        src={A}
+                        alt="umbrella-gold"
+                      />
+                      <span className="dropdown-toggle"> All Positions </span>
+                    </Link>
+                  </li>
+                </Link>
+                {visible ? (
+                  <>
+                    <Link to={"mintposition"}>
+                      <li
+                        className={currentLink === 8 ? "active" : "none"}
+                      onClick={() => setCurrentLink(8)}
+                      >
+                        <Link to={"mintposition"}>
+                          {/* <img width="15" height="15"
+                            className="jumbo-button-icon"
+                            src={GI}
+                            alt="umbrella-gold"
+                          /> */}
+                          {/* <FiLogOut /> */}
+                          <span> Mint Position </span>
+                        </Link>
+                      </li>
+                    </Link>
+                    <Link to={"loanpositions"}>
+                      <li
+                        className={currentLink === 9 ? "active" : "none"}
+                      onClick={() => setCurrentLink(9)}
+                      >
+                        <Link to={"loanpositions"}>
+                          {/* <img width="15" height="15"
+                            className="jumbo-button-icon"
+                            src={GI}
+                            alt="umbrella-gold"
+                          /> */}
+                          {/* <FiLogOut /> */}
+                          <span> Loan Position </span>
+                        </Link>
+                      </li>
+                    </Link>
+                  </>
+                ) : ("")}
+              </div>
             </ul>
           </div>
         </div>
@@ -368,6 +452,41 @@ export default function UserSideBar() {
     </>
   );
 }
+
+
+const Nav = styled.div`
+  background: #15171c;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const NavIcon = styled(Link)`
+  margin-left: 2rem;
+  font-size: 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const SidebarNav = styled.nav`
+  background: #15171c;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  transition: 350ms;
+  z-index: 10;
+`;
+
+const SidebarWrap = styled.div`
+  width: 100%;
+`;
 
 
 
@@ -558,20 +677,24 @@ export default function UserSideBar() {
 
 // position: fixed;
 
+// height: 100vh;
 const Section = styled.section`
   position: fixed;
   z-index: 99;
   left: 0;
+
   
+  height:100vh;
+  overflow-y: scroll;
+
   background-color: #211f21;
-  height: 100vh;
   width: 18vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 2rem 0;
-  gap: 2rem;
+  gap: 0.5rem;
   .top {
     display: flex;
     flex-direction: column;

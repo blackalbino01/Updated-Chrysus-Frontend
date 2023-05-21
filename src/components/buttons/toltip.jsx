@@ -10,7 +10,9 @@ const Toltip = ({ text, children }) => {
             onMouseEnter={() => setvisible(true)}
             onMouseLeave={() => setvisible(false)}
         >
-            {!visible ? (<>{ children }</>) : (
+            {!visible ? (
+            <>{ children }</>
+            ) : (
                 ""
             )}
             {visible ? (

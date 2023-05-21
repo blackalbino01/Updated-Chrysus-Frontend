@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { FormGroup, Input, Label } from "reactstrap";
 
-interface IWalletDropdownProps {
-	onChange: (selected: string) => void;
-	items: string[];
-}
 
-export const WalletDropdown = ({ onChange, items }: IWalletDropdownProps) => {
+
+export const WalletDropdown = ({onChange, items }) => {
 	return (
 		<div className="d-flex p-5">
 			<Input

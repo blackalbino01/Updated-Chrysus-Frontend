@@ -5,12 +5,16 @@ import styles from "../../style";
 import { Body, H4, P } from "../typography";
 import { CInput } from "../inputs/cinput";
 import { useAppSelector, useAppDispatch } from '../../reducer/store';
-import { loadBlockchain, updatAccount } from '../../slices/web3ContractSlice';
+// import { loadBlockchain, updatAccount } from '../../slices/web3ContractSlice';
+// import { CheckButton } from "../buttons";
+import { CCheckbox } from "../inputs/ccheckbox";
+import { ConfirmationItem } from "../confirmation_item";
 import { Button } from "reactstrap";
 
 export const ETHDeposite = () => {
     const { web3, contract, accounts, socketContract } = useAppSelector((state) => state.web3Connect);
     const [ethamount, setethamount] = useState();
+    const [modalShow, setModalShow] = useState(false);
 
 
 
@@ -19,11 +23,11 @@ export const ETHDeposite = () => {
             let valueToSend = web3.utils.toWei(ethamount, 'ether');
             let zeroAddress = "0x0000000000000000000000000000000000000000"
             await contract?.methods.depositCollateral(zeroAddress, valueToSend)
-            .send({ from: accounts[0], value: valueToSend}).then(function(receipt){
-                console.log(receipt);
-                alert(`You Have succefully minted Chrysus Coin,
+                .send({ from: accounts[0], value: valueToSend }).then(function (receipt) {
+                    console.log(receipt);
+                    alert(`You Have succefully minted Chrysus Coin,
                 See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
-            });
+                });
 
             window.location.reload();
 
@@ -77,7 +81,7 @@ export const ETHDeposite = () => {
                             </div>
                             <div className="mt-2"></div>
                             <div className="w-100  p-3 text-center">
-                                <Button 
+                                <Button
                                     style={{
                                         color: "black",
                                         fontStyle: "normal",
@@ -89,8 +93,106 @@ export const ETHDeposite = () => {
                                         background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
                                         borderRadius: "40px",
                                     }}
-                                    onClick={() => DepositCollateral()}>
-                                    Deposit</Button>
+                                    // onClick={() => DepositCollateral()}>
+                                    onClick={() => setModalShow(true)}>
+                                    Preview</Button>
+                                {modalShow ? (
+                                    <>
+                                        <>
+                                            <div
+                                                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                                            >
+                                                <div className="relative w-auto my-6 mx-auto max-w-2xl"
+                                                  style={{
+                                                    // backgroundColor: "#7a7a79",
+                                                    // color: "black",
+                                                    backgroundColor: "#211f21",
+                                                    borderRadius: "16px",
+                                                    color: "#846424",
+                                                }}>
+                                                    {/* <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none"
+                                                        style={{
+                                                            // backgroundColor: "#7a7a79",
+                                                            // color: "black",
+                                                            backgroundColor: "#211f21",
+                                                            borderRadius: "16px",
+                                                            color: "#846424",
+                                                        }}
+                                                    > */}
+                                                        
+                                                        <div
+                                                            className="row w-150"
+                                                        // style={{
+                                                        //     backgroundColor: "#211f21",
+                                                        //     borderRadius: "16px",
+                                                        //     color: "#846424",
+                                                        // }}
+                                                        >
+                                                            <div className="col-12">
+                                                                <div className="d-flex flex-column align-items-center mt-4">
+                                                                    <H4>Confirm Vault Details</H4>
+                                                                    <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                                                                        <ConfirmationItem title="Depositing" value={ethamount} />
+                                                                        <ConfirmationItem title="Generating" value="0 CHC" />
+                                                                        <ConfirmationItem title="Collateralization ratio" value="120%" />
+                                                                        <ConfirmationItem title="Liquidation ratio" value="150%" />
+                                                                        {/* <ConfirmationItem title="Liquidation price" value="$" />
+                                                                        <ConfirmationItem title="Liquidation fee" value="1%" /> */}
+                                                                        <div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
+                                                                            <input
+                                                                                type="checkbox"
+                                                                                style={{
+                                                                                    transform: "scale(1.5)",
+                                                                                    accentColor: "#EDC452",
+                                                                                }}
+                                                                            />
+                                                                            <Body className="m-0 mx-3">
+                                                                                Understand the Stability Fee is not fixed and is likely to
+                                                                                change over time
+                                                                            </Body>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="mt-2"></div>
+                                                            <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
+
+                                                        </div>
+                                                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                                            <button
+                                                                className="text-white background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                                type="button"
+                                                                onClick={() => setModalShow(false)}
+                                                            >
+                                                                Close
+                                                            </button>
+                                                            <button
+                                                                style={{
+                                                                    height: "52px",
+                                                                    width: "120px",
+                                                                    color: "#846424",
+                                                                    textTransform: "uppercase",
+                                                                    fontStyle: "normal",
+                                                                    fontWeight: "700",
+                                                                    fontSize: "10px",
+                                                                    backgroundColor: "#1A1917",
+                                                                    borderRadius: "16px",
+                                                                    border: "1px solid transparent",
+                                                                    borderColor: "#846424",
+                                                                }} type="button"
+                                                            // onClick={() => setShowModal(false)}
+                                                            onClick={() => DepositCollateral()}
+                                                            >
+                                                               Deposit
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {/* </div> */}
+                                            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                                        </>
+                                    </>
+                                ) : null}
                                 {/* <FormActionButton
                                     color="primary"
                                     gradient={true}
@@ -119,8 +221,8 @@ export const ETHDeposite = () => {
                     </div>
                 </div>
             </div>
-          <div className="pt-5"></div>
-          <div className="pt-2"></div>
+            <div className="pt-5"></div>
+            <div className="pt-2"></div>
         </>
     );
 };

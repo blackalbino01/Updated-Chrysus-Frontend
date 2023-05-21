@@ -9,6 +9,7 @@ import { loadBlockchain, updatAccount } from '../../slices/web3ContractSlice';
 import { Button } from 'reactstrap';
 import { CHRYSUS, DAI } from '../../constant';
 import Modal from 'react-bootstrap/Modal';
+import { ConfirmationItem } from "../confirmation_item";
 
 
 export const DAIDeposite = () => {
@@ -17,10 +18,12 @@ export const DAIDeposite = () => {
 	const [loading, setloading] = useState(false);
 	const { web3, contract, accounts, DAIContract } = useAppSelector((state) => state.web3Connect);
 	const [DAIamount, setDAIamount] = useState();
+	const [modalShows, setModalShows] = useState(false);
 
 	const DAIApprove = async () => {
 		setloading(true)
 		setModalShow(true)
+		// if(isApprove === false){
 		try {
 			await DAIContract?.methods.approve(CHRYSUS, DAIamount).send({ from: accounts[0] })
 			setisApprove(true);
@@ -29,12 +32,14 @@ export const DAIDeposite = () => {
 			console.log("First Approve Error", error)
 			setModalShow(false)
 		}
-	}
 
+	}
 	console.log("DAI amount", DAIamount)
 	console.log("chrysus contract", contract)
 
 	const DepositDAICollateral = async () => {
+		setloading(true)
+		setModalShow(true)
 		try {
 			await contract?.methods.depositCollateral(DAI, web3.utils.toWei(DAIamount, 'ether'))
 				.send({ from: accounts[0] }).then(function (receipt) {
@@ -42,11 +47,14 @@ export const DAIDeposite = () => {
 					alert(`You Have succefully minted Chrysus Coin,
                 See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
 					setloading(true)
+					setisApprove(true);
+					setModalShow(false);
 				});
 
 			window.location.reload();
 		} catch (error) {
 			console.log("Send DAI Error", error)
+			setModalShow(false)
 		}
 	}
 
@@ -106,8 +114,112 @@ export const DAIDeposite = () => {
 													background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 													borderRadius: "40px",
 												}}
-												onClick={() => DepositDAICollateral()}>
-												Deposit</Button>
+												// onClick={() => DepositDAICollateral()}
+												onClick={() => setModalShows(true)}>
+												Preview</Button>
+											{modalShows ? (
+												<>
+													<>
+														<div
+															className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+														>
+															<div className="relative w-auto my-6 mx-auto max-w-2xl"
+																style={{
+																	// backgroundColor: "#7a7a79",
+																	// color: "black",
+																	backgroundColor: "#211f21",
+																	borderRadius: "16px",
+																	color: "#846424",
+																}}>
+
+																<div
+																	className="row w-150"
+																>
+																	<div className="col-12">
+																		<div className="d-flex flex-column align-items-center mt-4">
+																			<H4>Confirm Vault Details</H4>
+																			<div className="d-flex flex-column align-items-center justify-content-center col-5">
+																				<ConfirmationItem title="Depositing" value={DAIamount} />
+																				<ConfirmationItem title="Generating" value="0 CHC" />
+																				<ConfirmationItem title="Collateralization ratio" value="120%" />
+																				<ConfirmationItem title="Liquidation ratio" value="150%" />
+																				{/* <ConfirmationItem title="Liquidation price" value="$" />
+                                                                        <ConfirmationItem title="Liquidation fee" value="1%" /> */}
+																				<div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
+																					<input
+																						type="checkbox"
+																						style={{
+																							transform: "scale(1.5)",
+																							accentColor: "#EDC452",
+																						}}
+																					/>
+																					<Body className="m-0 mx-3">
+																						Understand the Stability Fee is not fixed and is likely to
+																						change over time
+																					</Body>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div className="mt-2"></div>
+																	<div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
+
+																</div>
+																<div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+																	<button
+																		className="text-white background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+																		type="button"
+																		onClick={() => setModalShows(false)}
+																	>
+																		Close
+																	</button>
+																	<button
+																		style={{
+																			height: "52px",
+																			width: "120px",
+																			color: "#846424",
+																			textTransform: "uppercase",
+																			fontStyle: "normal",
+																			fontWeight: "700",
+																			fontSize: "10px",
+																			backgroundColor: "#1A1917",
+																			borderRadius: "16px",
+																			border: "1px solid transparent",
+																			borderColor: "#846424",
+																		}} type="button"
+																		// onClick={() => setShowModal(false)}
+																		onClick={() => DepositDAICollateral()}
+																	>
+																		Deposit
+																	</button>
+																</div>
+															</div>
+														</div>
+														{/* </div> */}
+														<div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+													</>
+												</>
+											) : null}
+											{modalShow ? (
+												<>
+													<div
+														className="justify-center bg-black items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+														style={{
+															// paddingLeft:"220px"
+															// background:""
+															opacity: "0.7"
+														}}>
+														<div className="relative w-auto my-6 mx-auto max-w-3xl">
+															<div className="border-0 relative flex flex-col w-full outline-none focus:outline-none">
+																<div className="flex items-start justify-between">
+																	<div class="loader"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+													{/* <div className="opacity-25 fixed inset-0 z-40 bg-black"></div> */}
+												</>
+											) : null}
 										</>
 									) : (
 										<>
@@ -131,16 +243,16 @@ export const DAIDeposite = () => {
 												<>
 													<div
 														className="justify-center bg-black items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-													style={{
-														// paddingLeft:"220px"
-														// background:""
-														opacity: "0.7"
-													}}
+														style={{
+															// paddingLeft:"220px"
+															// background:""
+															opacity: "0.7"
+														}}
 													>
 														<div className="relative w-auto my-6 mx-auto max-w-3xl">
 															<div className="border-0 relative flex flex-col w-full outline-none focus:outline-none">
 																<div className="flex items-start justify-between">
-																<div class="loader"></div>
+																	<div class="loader"></div>
 																</div>
 															</div>
 														</div>
@@ -190,51 +302,13 @@ export const DAIDeposite = () => {
 					</section>
 				</div>
 			</div> */}
+			<div className="mt-5"></div>
+			<div className="mt-5"></div>
+			<div className="mt-5"></div>
 		</>
 	);
 };
 
 
-
-
-
-const WalletConnect = (props) => {
-	return (
-		<div className="">
-			<Modal
-				{...props}
-				size="lg"
-				aria-labelledby="contained-modal-title-vcenter"
-				dialogClassName="modal-90w public-profile-modal-class"
-				centered
-				style={{
-					background: "black",
-					// opacity: "1",
-				}}
-			>
-				<Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 ">
-					<Modal.Title >
-						<h3 className="text-white"
-							style={{
-								paddingLeft: "40px"
-							}}
-						>
-							Transection in Process
-						</h3>
-
-					</Modal.Title>
-				</Modal.Header>
-				<Modal.Body className="items-center rounded-b-[12px]">
-					<div style={{
-						paddingLeft: "100px"
-					}}>
-						<div class="loader"></div>
-					</div>
-
-				</Modal.Body>
-			</Modal>
-		</div >
-	)
-}
 
 
