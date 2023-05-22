@@ -96,8 +96,6 @@ export const Repay = () => {
             </div>
             <div className="pt-5"></div>
             <div className="pt-5"></div>
-            <div className="pt-5"></div>
-            <div className="pt-5"></div>
         </>
 
     );

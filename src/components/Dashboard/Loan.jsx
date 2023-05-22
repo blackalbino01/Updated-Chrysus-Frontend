@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollreveal from "scrollreveal";
-// import NotAllow from "./NotAllow";
-// import UserDashboard from "./UserDashboard";
-// import UserSideBar from "./UserSideBar";
 import { CHCForm } from "../chcform";
-// import { Outlet } from "react-router-dom";
 export default function Loan() {
   useEffect(() => {
     const sr = scrollreveal({
@@ -32,20 +28,9 @@ export default function Loan() {
         <CHCForm />
       </div>
     </Section>
-    // <Div className='bg-white'>
-    //     <UserSideBar/>
-    //     <Section>
-    //         <div className="grid">
-    //            <CHCForm/>
-    //         </div>
-    //     </Section>
-    // </Div>
   );
 }
 
-// const Div = styled.div`
-//   position: relative;
-// `;
 
 const Section = styled.section`
   margin-left: 18vw;
