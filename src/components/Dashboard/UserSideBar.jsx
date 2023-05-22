@@ -64,6 +64,7 @@ export default function UserSideBar() {
   const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
   const [sidebar, setSidebar] = useState(false);
   const [visible, setvisible] = useState(false);
+  const [drop, setdrop] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -255,62 +256,65 @@ export default function UserSideBar() {
                   </Link>
                 </li>
               </Link>
-              <div 
+              {/* <div 
                 onMouseEnter={() => setvisible(true)}
                 onMouseLeave={() => setvisible(false)}
-              >
-                <Link >
-                  <li
-                    className={currentLink === 7 ? "active" : "none"}
-                    onClick={() => setCurrentLink(7)}
-                  >
-                    <Link >
-                      <img width="15" height="15"
-                        className="jumbo-button-icon"
-                        src={A}
-                        alt="umbrella-gold"
-                      />
-                      <span className="dropdown-toggle"> All Positions </span>
-                    </Link>
-                  </li>
-                </Link>
-                {visible ? (
-                  <>
-                    <Link to={"mintposition"}>
-                      <li
-                        className={currentLink === 8 ? "active" : "none"}
+              > */}
+              <Link
+                onClick={() => setdrop(true)}>
+                <li
+                  className={currentLink === 7 ? "active" : "none"}
+                  onClick={() => setCurrentLink(7)}
+                >
+                  <Link >
+                    <img width="15" height="15"
+                      className="jumbo-button-icon"
+                      src={A}
+                      alt="umbrella-gold"
+                    />
+                    <span className="dropdown-toggle"> All Positions </span>
+                  </Link>
+                </li>
+              </Link>
+              {drop === true ? (
+                <>
+                  <Link to={"mintposition"}
+                    onClick={() => setdrop(false)}>
+                    <li
+                      className={currentLink === 8 ? "active" : "none"}
                       onClick={() => setCurrentLink(8)}
-                      >
-                        <Link to={"mintposition"}>
-                          {/* <img width="15" height="15"
+                    >
+                      <Link to={"mintposition"}>
+                        {/* <img width="15" height="15"
                             className="jumbo-button-icon"
                             src={GI}
                             alt="umbrella-gold"
                           /> */}
-                          {/* <FiLogOut /> */}
-                          <span> Mint Position </span>
-                        </Link>
-                      </li>
-                    </Link>
-                    <Link to={"loanpositions"}>
-                      <li
-                        className={currentLink === 9 ? "active" : "none"}
+                        {/* <FiLogOut /> */}
+                        <span> Mint Position </span>
+                      </Link>
+                    </li>
+                  </Link>
+                  <Link to={"loanpositions"}
+                    onClick={() => setdrop(false)}>
+                    <li
+                      className={currentLink === 9 ? "active" : "none"}
                       onClick={() => setCurrentLink(9)}
-                      >
-                        <Link to={"loanpositions"}>
-                          {/* <img width="15" height="15"
+                    >
+                      <Link to={"loanpositions"}>
+                        {/* <img width="15" height="15"
                             className="jumbo-button-icon"
                             src={GI}
                             alt="umbrella-gold"
                           /> */}
-                          {/* <FiLogOut /> */}
-                          <span> Loan Position </span>
-                        </Link>
-                      </li>
-                    </Link>
-                  </>
-                ) : ("")}
-              </div>
+                        {/* <FiLogOut /> */}
+                        <span> Loan Position </span>
+                      </Link>
+                    </li>
+                  </Link>
+                </>
+              ) : ("")}
+              {/* </div> */}
             </ul>
           </div>
         </div>
