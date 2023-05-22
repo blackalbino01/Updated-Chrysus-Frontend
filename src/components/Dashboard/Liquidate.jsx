@@ -26,13 +26,13 @@ export const Liquidate = () => {
                         }}
                     >
                         <div className="mt-5"></div>
-                        <H4>Add Liquidity</H4>
+                        <H4>Liquidite</H4>
                         <div className="d-flex flex-column align-items-start">
                             <P className="m-0">
-                                How much would you like to Borrow?
+                                How much would you like to Liquidite?
                             </P>
                             <Body className="m-0">
-                                Please Enter an amount would you like to Borrow
+                                Please Enter an amount would you like to Liquidite
                             </Body>
                             <div className="my-3"></div>
                             <label className="form-label text-primary">Your Blanace 0.123</label>
@@ -49,8 +49,8 @@ export const Liquidate = () => {
                                 <span style={{
                                     backgroundColor: "#1A1917",
                                     color: "#846424",
-                                }} className="">
-                                    <select
+                                }} className="input-group-text">
+                                    {/* <select
                                         style={{
                                             backgroundColor: "#1A1917",
                                             color: "#846424",
@@ -60,8 +60,8 @@ export const Liquidate = () => {
                                     >
                                         <option value="Ethreum">ETH</option>
                                         <option value="DAI">DAI</option>
-                                    </select>
-
+                                    </select> */}
+                                    CHC
                                 </span>
                             </div>
                             {/* <a style={{

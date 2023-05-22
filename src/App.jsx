@@ -33,7 +33,7 @@ import { ETH } from './components/chcform/Eth';
 import { Lend } from './components/chcform/Lend';
 import { BorrowCHC } from './components/chcform/borrowCHC';
 import { Repay } from './components/chcform/repay';
-import { Liquidate } from './components/Dashboard/EthLiquidate';
+import { Liquidate } from './components/Dashboard/Liquidate';
 // import { DaiLiquidate } from './components/Dashboard/DaiLiquidate';
 import { MintPosition } from './components/Dashboard/MintPosition';
 const Home = lazy(() => import('./components/Home'));
