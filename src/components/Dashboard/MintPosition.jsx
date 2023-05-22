@@ -139,7 +139,7 @@ export const MintPosition = () => {
 																<td>{(Number(item.minted) / 1e18).toFixedNoRounding(3)}</td>
 																<td>{"$"+((Number(item.minted) / 1e18).toFixedNoRounding(3) * feed).toFixedNoRounding(2)}</td>
 																<td>
-																	<Link >
+																	<Link to={"/accounts/liquidate"}>
 																		<span className="badge cursor-pointer"
 																			style={{
 																				height: "22px",

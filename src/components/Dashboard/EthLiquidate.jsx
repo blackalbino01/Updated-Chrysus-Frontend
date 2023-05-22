@@ -1,13 +1,13 @@
 import React from "react";
-import { FormActionButton } from "../components/buttons/form_action_button";
+import { FormActionButton } from "../buttons/form_action_button";
 // import { Table } from "../table";
-import { Body, H4, P } from "../components/typography";
+import { Body, H4, P } from "../typography";
 // import { Info } from "react-feather";
 // import { COLORS } from "src/assets/styles/theme";
 // import { CInput } from "../inputs/cinput";
 import { Link } from "react-router-dom";
-import { Chrysus } from "../assets";
-import styles from "../style";
+import { Chrysus } from "../../assets";
+import styles from "../../style";
 import styled from "styled-components";
 
 
@@ -64,7 +64,7 @@ export const Liquidate = () => {
 
                                 </span>
                             </div>
-                            <a style={{
+                            {/* <a style={{
                                 paddingLeft:"130px",
                                 paddingBottom:"10px",
                                 color:"white"
@@ -84,7 +84,7 @@ export const Liquidate = () => {
                                     backgroundColor: "#1A1917",
                                     color: "#846424",
                                 }} className="input-group-text"><img loading="lazy" src={Chrysus} alt="meta" /></span>
-                            </div>
+                            </div> */}
                             <div className="my-1"></div>
                             {/* <P className="m-0">Please Enter an amount would you like to Borrow</P>
 						<Body className="m-0">
@@ -114,7 +114,7 @@ export const Liquidate = () => {
                         ></div>
                         <div className="w-100 d-flex flex-row justify-content-start p-3">
                             {/* Form Actions */}
-                            <Link to={"/accounts/loan"}>
+                            <Link to={"/accounts/mintposition"}>
                                 <FormActionButton color="white" outline={true}>
                                     Back
                                 </FormActionButton>

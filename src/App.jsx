@@ -33,7 +33,8 @@ import { ETH } from './components/chcform/Eth';
 import { Lend } from './components/chcform/Lend';
 import { BorrowCHC } from './components/chcform/borrowCHC';
 import { Repay } from './components/chcform/repay';
-import { Liquidate } from './components/Liquidate';
+import { Liquidate } from './components/Dashboard/EthLiquidate';
+// import { DaiLiquidate } from './components/Dashboard/DaiLiquidate';
 import { MintPosition } from './components/Dashboard/MintPosition';
 const Home = lazy(() => import('./components/Home'));
 
@@ -75,6 +76,7 @@ const App = () => {
             <Route index element={<Dashboard />} />
             <Route path="createproposal" element={<CreateProposal />} />
             <Route path="liquidate" element={<Liquidate/>}/>
+            {/* <Route path="daiLiquidate" element={<DaiLiquidate/>}/> */}
             <Route path="staking" element = {<Staking/>}/>
             <Route path="loanpositions" element={<LoanPositions />} />
             <Route path="mintposition" element={<MintPosition/>} />
