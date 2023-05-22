@@ -16,9 +16,13 @@ const listData = [
 
 const DaoLandPage = () => {
     return (
-        <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+        <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}
+        style={{
+            borderRadius:"21px"
+        }}
+        >
             <div className={`${styles.boxWidth}`}>
-                <div className=''>
+                <div className='mt-5'>
                     <div>
                         <Tab.Container defaultActiveKey="Navbuy">
                             <div className={`${styles.flexCenter}`}>
