@@ -17,10 +17,10 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { WalletDropdown } from "../dropdowns/wallet_dropdown.jsx";
 import * as AiIcons from 'react-icons/ai';
 import * as FaIcons from 'react-icons/fa';
-import SubMenu from "../dropdowns/submenu";
+import SubMenu from "../dropdowns/SubMenu";
 import { IconContext } from 'react-icons/lib';
 
-// import SubMenu from "../dropdowns/wallet_dropdown.jsxs";
+// import SubMenu from "../dropdowns/wallet_dropdown.jsx";
 // DashboardIcon,
 
 // LoanIcon,

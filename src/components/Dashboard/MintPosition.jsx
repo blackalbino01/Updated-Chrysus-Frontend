@@ -20,6 +20,7 @@ import TradeTab from '../Future/TradeTab';
 import { useEffect, useState, useRef } from 'react';
 import Toltip from "../buttons/toltip";
 import Utils from "../../utilities";
+import {DAI, ETH} from "../../constant";
 
 
 export const MintPosition = () => {
@@ -29,12 +30,12 @@ export const MintPosition = () => {
 	const [data, setData] = useState(
 		document.querySelectorAll("#status_wrapper tbody tr")
 	);
-	const [balance, setbalance] = useState(0);
-	const [daiBalance, setdaiBalance] = useState(0);
+	const [position, setposition] = useState([]);
 	const sort = 6;
 	const activePag = useRef(0);
 	const [test, settest] = useState(0);
 	const addrees = localStorage.getItem("accounts")
+	const [feed, setFeed] = useState(0);
 
 	// Active data
 	const chageData = (frist, sec) => {
@@ -53,24 +54,25 @@ export const MintPosition = () => {
 	}, [test]);
 
 	useEffect(() => {
-		Utils.getUserBalance(addrees, "DAI").then(function (data) {
-			setdaiBalance(Number(data) / 1E18);
+		Utils.getMintPositions().then(function (data) {
+			setposition(data);
 		});
 
-		Utils.getUserBalance(addrees, "ETH").then(function (data) {
-			setbalance(Number(data) / 1E18);
+		Utils.getFeed("CHC").then(function (data) {
+			setFeed((Number(data[1]) / 1E18).toFixedNoRounding(2));
 		});
-
 	});
 
-
-	const Eth = [
-		{ Date: 'ETH', Price: '120%', Amount: balance.toFixed(2) },
-	];
-
-	const Dai = [
-		{ Date: 'DAI', Price: '267%', Amount: daiBalance.toFixed(2) },
-	];
+	Number.prototype.toFixedNoRounding = function(n) {
+		const reg = new RegExp("^-?\\d+(?:\\.\\d{0," + n + "})?", "g")
+		const a = this.toString().match(reg)[0];
+		const dot = a.indexOf(".");
+		if (dot === -1) { // integer, insert decimal dot and pad up zeros
+			return a + "." + "0".repeat(n);
+		}
+		const b = n - (a.length - dot) + 1;
+		return b > 0 ? (a + "0".repeat(b)) : a;
+	}
 
 
 	// Active pagginarion
@@ -86,6 +88,13 @@ export const MintPosition = () => {
 		chageData(activePag.current * sort, (activePag.current + 1) * sort);
 		settest(i);
 	};
+
+	const checkCollateral = (address) => {
+		if(address == DAI){
+			return "DAI";
+		}
+		return "ETH";
+	}
 
 	const Dais = [
 		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", liquidation: "123"},
@@ -115,20 +124,20 @@ export const MintPosition = () => {
 															style={{
 																color: "#846424",
 															}}>
-															<th>Pool</th>
-															<th>Borrow</th>
+															<th>Collateral</th>
+															<th>Collateral Deposited</th>
+															<th>CHC Minted</th>
 															<th>Current Value</th>
-															<th> liquidation price</th>
 															<th>Action</th>
 														</tr>
 													</thead>
 													<tbody className='text-white'>
-														{Dais.map((item, index) => (
+														{position.map((item, index) => (
 															<tr key={index}>
-																<td>{item.Pool}</td>
-																<td>{item.Borrow}</td>
-																<td>{item.Value}</td>
-																<td>{item.liquidation}</td>
+																<td>{checkCollateral(item.collateral)}</td>
+																<td>{Number(item.deposited) / 1e18}</td>
+																<td>{(Number(item.minted) / 1e18).toFixedNoRounding(3)}</td>
+																<td>{"$"+((Number(item.minted) / 1e18).toFixedNoRounding(3) * feed).toFixedNoRounding(2)}</td>
 																<td>
 																	<Link >
 																		<span className="badge cursor-pointer"
@@ -145,7 +154,7 @@ export const MintPosition = () => {
 																				border: "1px solid transparent",
 																				borderColor: "#846424",
 
-																			}}>Withdraw</span>
+																			}}>Liquidate</span>
 																	</Link>
 																	{/* <Link to={"/accounts/loan/dai"}>
 																		<span className="badge cursor-pointer ml-3"
@@ -167,57 +176,7 @@ export const MintPosition = () => {
 													</tbody>
 												</table>
 												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
-													<div className="dataTables_info">
-														Showing {activePag.current * sort + 1} to{" "}
-														{data.length > (activePag.current + 1) * sort
-															? (activePag.current + 1) * sort
-															: data.length}{" "}
-														of {data.length} entries
-													</div>
-													<div
-														className="dataTables_paginate paging_simple_numbers mb-0"
-														id="application-tbl1_paginate"
-													>
-														<Link
-															className="paginate_button previous text-white mt-2"
-
-															onClick={() =>
-																activePag.current > 0 &&
-																onClick(activePag.current - 1)
-															}
-														>
-															<i>
-																<svg style={{ width: "15px", height: "15px", marginTop: "12" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
-															</i>
-														</Link>
-														<span className='text-white'>
-															{paggination.map((number, i) => (
-																<Link
-																style={{
-																	fontSize:"10px",
-																  }}
-																	key={i}
-																	className={`paginate_button  ${activePag.current === i ? "current" : ""
-																		} `}
-																	onClick={() => onClick(i)}
-																>
-																	{number}
-																</Link>
-															))}
-														</span>
-
-														<Link
-															className="paginate_button next text-white mt-2"
-															onClick={() =>
-																activePag.current + 1 < paggination.length &&
-																onClick(activePag.current + 1)
-															}
-														>
-															<i>
-																<svg style={{ width: "15px", height: "15px", marginTop: "10", marginLeft:"10px" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
-															</i>
-														</Link>
-													</div>
+													
 												</div>
 											</div>
 										</div>

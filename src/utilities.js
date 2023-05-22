@@ -5,17 +5,18 @@ import ERC20 from "./abis/ERC20.json";
 import swap from "./abis/Swap.json";
 import governance from "./abis/Governance.json";
 import mockOracle from "./abis/MockOracle.json";
-import { DAI } from "./constant";
+import { DAI, ETH } from "./constant";
 
 
 const PROVIDER = "https://rpc.sepolia.org";
-const LOAN = "0x4660EE59aed149ff2C53B9917667254CeddA3e70";
-const CHRYSUS = "0xE7B741255B1d74C1BAD1Dff2a6D22AF738540B50";
-const GOVERNANCE = "0x2AEDCC09e05Fa90d9bD273d799dD121EEBbb848a";
+const LOAN = "0xf61460d65dce931E98E2e9DD0Eded544f7cB558B";
+const CHRYSUS = "0x614715975D744621fE1c6B5EB4c8859093C094aF";
+const GOVERNANCE = "0x9A4DCbe82B28e325179eABaAd755743FC9c4fA24";
 const SWAP = "0xAd0353208Ea03736469bcA4d26593C24f4255cD2";
 const oracleDAI = "0x14866185B1962B63C3Ea9E03Bc1da838bab34C19";
 const oracleETH = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
-const oracleCHC = "0x6008581B9f3B0A3C85a2C6230ED94fEffeA44a7c";
+const oracleCHC = "0xC0F78BE665B71c48b01e42b37961D73cb9221A8f";
+const stake = "0x041783AbA9E40D2E0D48d2b71dCafdacB12c3E6a";
 const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
 const chrysusContract = new ethers.Contract(
     CHRYSUS,
@@ -51,6 +52,19 @@ const liqRatio = async () => {
   return await chrysusContract.liquidationRatio();
 };
 
+const getMintPosition = async (user, collateral) => {
+    if(collateral == "DAI"){
+        return await chrysusContract.getUserPositions(user, DAI);
+    }
+    else if(collateral == "ETH"){
+        return await chrysusContract.getUserPositions(user, ETH);
+    }
+}
+
+const getMintPositions = async () =>{
+    return chrysusContract.getPositions();
+}
+
 const getUserBalance = async (user, token) => {
     if(token == "CHC"){
         return await chrysusContract.balanceOf(user);
@@ -84,5 +98,7 @@ export default{
   liqRatio,
   getUserBalance,
   getFeed,
-  getCDPCount
+  getCDPCount,
+  getMintPosition,
+  getMintPositions
 }

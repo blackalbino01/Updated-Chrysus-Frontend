@@ -30,6 +30,9 @@ export const Collaterals = () => {
 	);
 	const [balance, setbalance] = useState(0);
 	const [daiBalance, setdaiBalance] = useState(0);
+	const [dai_chcBalance, setDai_chcBalance] = useState(0);
+	const [eth_chcBalance, setEth_chcBalance] = useState(0);
+	const [feed, setFeed] = useState(0);
 	const sort = 6;
 	const activePag = useRef(0);
 	const [test, settest] = useState(0);
@@ -45,6 +48,18 @@ export const Collaterals = () => {
 			}
 		}
 	};
+
+	Number.prototype.toFixedNoRounding = function(n) {
+		const reg = new RegExp("^-?\\d+(?:\\.\\d{0," + n + "})?", "g")
+		const a = this.toString().match(reg)[0];
+		const dot = a.indexOf(".");
+		if (dot === -1) { // integer, insert decimal dot and pad up zeros
+			return a + "." + "0".repeat(n);
+		}
+		const b = n - (a.length - dot) + 1;
+		return b > 0 ? (a + "0".repeat(b)) : a;
+	}
+
 	// use effect
 	useEffect(() => {
 		setData(document.querySelectorAll("#status_wrapper tbody tr"));
@@ -60,15 +75,28 @@ export const Collaterals = () => {
 			setbalance(Number(data) / 1E18);
 		});
 
+		Utils.getMintPosition(addrees, "DAI").then(function (data) {
+			setDai_chcBalance((Number(data.minted)/ 1e18).toFixedNoRounding(3));
+			//setchcBalance(Number(data) / 1E18);
+		});
+
+		Utils.getMintPosition(addrees, "ETH").then(function (data) {
+			setEth_chcBalance((Number(data.minted)/ 1e18).toFixedNoRounding(3));
+			//setchcBalance(Number(data) / 1E18);
+		});
+
+		Utils.getFeed("CHC").then(function (data) {
+			setFeed((Number(data[1]) / 1E18).toFixedNoRounding(2));
+		});
 	});
 
 
 	const Eth = [
-		{ Date: 'ETH', Price: '120%', Amount: balance.toFixed(2) },
+		{ Date: 'ETH', Price: balance.toFixed(2), Amount: eth_chcBalance, Value: (feed * eth_chcBalance).toFixedNoRounding(2) },
 	];
 
 	const Dai = [
-		{ Date: 'DAI', Price: '267%', Amount: daiBalance.toFixed(2) },
+		{ Date: 'DAI', Price: daiBalance.toFixed(2), Amount: dai_chcBalance, Value: (dai_chcBalance * feed).toFixedNoRounding(2) },
 	];
 
 
@@ -121,8 +149,9 @@ export const Collaterals = () => {
 																	color: "#846424",
 																}}>
 																<th>Collateral</th>
-																<th>Collateralization Ratio</th>
-																<th>Your Balance</th>
+																<th>Collateral Balance</th>
+																<th>CHC Deposit</th>
+																<th>CHC Value</th>
 																<th>Action</th>
 															</tr>
 														</thead>
@@ -132,6 +161,7 @@ export const Collaterals = () => {
 																	<td>{item.Date}</td>
 																	<td>{item.Price}</td>
 																	<td>{item.Amount}</td>
+																	<td>${item.Value}</td>
 																	<td>
 																		<Link to={"ethdeposite"}>
 																			<span className="badge cursor-pointer"
@@ -147,6 +177,21 @@ export const Collaterals = () => {
 																					borderRadius: "40px",
 																				}}>Deposit</span>
 																		</Link>
+																		<Link to={"ethdeposite"}>
+																			<span className="badge cursor-pointer"
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "black",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																					borderRadius: "40px",
+																					marginLeft: "10px",
+																				}}>Withdraw</span>
+																		</Link>
 																	</td>
 																</tr>
 															))}
@@ -155,6 +200,7 @@ export const Collaterals = () => {
 																	<td>{item.Date}</td>
 																	<td>{item.Price}</td>
 																	<td>{item.Amount}</td>
+																	<td>${item.Value}</td>
 																	<td>
 																		<Link to={"daideposite"}>
 																			<span className="badge cursor-pointer"
@@ -170,6 +216,21 @@ export const Collaterals = () => {
 																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 																					borderRadius: "40px",
 																				}}>Deposit</span>
+																		</Link>
+																		<Link to={"daideposite"}>
+																			<span className="badge cursor-pointer"
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "black",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+																					borderRadius: "40px",
+																					marginLeft: "10px",
+																				}}>Withdraw</span>
 																		</Link>
 																		{/* <DepositColletralsDAI show={modalShowDAI} onHide={() => setModalShowDAI(false)} /> */}
 																	</td>
@@ -248,146 +309,6 @@ export const Collaterals = () => {
 						<div className="mt-4"></div>
 						<div className="w-100 d-flex flex-row justify-content-start p-3">
 						</div>
-					</div>
-				</div>
-				<div className="col-xl-12">
-					<div className="card"
-						style={{
-							backgroundColor: "#211f21",
-							borderRadius: "16px",
-							color: "#846424",
-						}}>
-						<Tab.Container defaultActiveKey="All">
-							<div className="card-header border-0 pb-2 flex-wrap">
-								<h4 className="heading ">Your Positions</h4>
-							</div>
-							<div className="card-body pt-0 pb-0">
-								<Tab.Content >
-									<Tab.Pane eventKey="All">
-										<div className="table-responsive dataTabletrade ">
-											<div id="status_wrapper" className="dataTables_wrapper no-footer">
-												<table id="example" className="table display dataTable no-footer" style={{ minWidth: "845px" }}>
-													<thead>
-														<tr
-															style={{
-																color: "#846424",
-															}}>
-															<th>Pool</th>
-															<th>Borrow</th>
-															<th>Current Value</th>
-															<th> liquidation price</th>
-															<th className='text-center'>Action</th>
-														</tr>
-													</thead>
-													<tbody className='text-white'>
-														{Dais.map((item, index) => (
-															<tr key={index}>
-																<td>{item.Pool}</td>
-																<td>{item.Borrow}</td>
-																<td>{item.Value}</td>
-																<td>{item.liquidation}</td>
-																<td>
-																	<Link >
-																		<span className="badge cursor-pointer"
-																			style={{
-																				height: "22px",
-																				width: "80px",
-																				color: "#846424",
-																				textTransform: "uppercase",
-																				fontStyle: "normal",
-																				fontWeight: "700",
-																				fontSize: "10px",
-																				backgroundColor: "#1A1917",
-																				borderRadius: "16px",
-																				border: "1px solid transparent",
-																				borderColor: "#846424",
-
-																			}}>Withdraw</span>
-																	</Link>
-																	{/* <Link to={"/accounts/loan/dai"}>
-																		<span className="badge cursor-pointer ml-3"
-																			style={{
-																				height: "22px",
-																				width: "80px",
-																				color: "black",
-																				textTransform: "uppercase",
-																				fontStyle: "normal",
-																				fontWeight: "700",
-																				fontSize: "10px",
-																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-																				borderRadius: "40px",
-																			}}>Claim</span>
-																	</Link> */}
-																</td>
-															</tr>
-														))}
-													</tbody>
-												</table>
-												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
-													<div className="dataTables_info">
-														Showing {activePag.current * sort + 1} to{" "}
-														{data.length > (activePag.current + 1) * sort
-															? (activePag.current + 1) * sort
-															: data.length}{" "}
-														of {data.length} entries
-													</div>
-													<div
-														className="dataTables_paginate paging_simple_numbers mb-0"
-														id="application-tbl1_paginate"
-													>
-														<Link
-															className="paginate_button previous text-white mt-2"
-
-															onClick={() =>
-																activePag.current > 0 &&
-																onClick(activePag.current - 1)
-															}
-														>
-															<i>
-																<svg style={{ width: "15px", height: "15px", marginTop: "12" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
-															</i>
-														</Link>
-														<span className='text-white'>
-															{paggination.map((number, i) => (
-																<Link
-																style={{
-																	fontSize:"10px",
-																  }}
-																	key={i}
-																	className={`paginate_button  ${activePag.current === i ? "current" : ""
-																		} `}
-																	onClick={() => onClick(i)}
-																>
-																	{number}
-																</Link>
-															))}
-														</span>
-
-														<Link
-															className="paginate_button next text-white mt-2"
-															onClick={() =>
-																activePag.current + 1 < paggination.length &&
-																onClick(activePag.current + 1)
-															}
-														>
-															<i>
-																<svg style={{ width: "15px", height: "15px", marginTop: "10", marginLeft:"10px" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
-															</i>
-														</Link>
-													</div>
-												</div>
-											</div>
-										</div>
-									</Tab.Pane>
-									<Tab.Pane eventKey="Order">
-										<OrderTab />
-									</Tab.Pane>
-									<Tab.Pane eventKey="Trade">
-										<TradeTab />
-									</Tab.Pane>
-								</Tab.Content>
-							</div>
-						</Tab.Container>
 					</div>
 				</div>
 			</div>
