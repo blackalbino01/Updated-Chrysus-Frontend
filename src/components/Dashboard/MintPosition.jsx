@@ -20,13 +20,12 @@ import TradeTab from '../Future/TradeTab';
 import { useEffect, useState, useRef } from 'react';
 import Toltip from "../buttons/toltip";
 import Utils from "../../utilities";
-import {DAI, ETH} from "../../constant";
+import { DAI, ETH } from "../../constant";
 
 
 export const MintPosition = () => {
-	// const [modalShow, setModalShow] = useState(false);
-	// const [modalShowDAI, setModalShowDAI] = useState(false);
-	// const [visible, setvisible] = useState(false);
+	const [collateralRatio, setcollateralRatio] = useState(null);
+	const [liquidationRatio, setLiquidationRatio] = useState(null);
 	const [data, setData] = useState(
 		document.querySelectorAll("#status_wrapper tbody tr")
 	);
@@ -47,7 +46,19 @@ export const MintPosition = () => {
 			}
 		}
 	};
-	// use effect
+
+
+	useEffect(() => {
+		Utils.getCollateralizationRatio().then(function (data) {
+			setcollateralRatio((Number(data) / 1E6).toFixed(2));
+		});
+
+		Utils.liqRatio().then(function (data) {
+			setLiquidationRatio((Number(data) / 1E6).toFixed(2));
+		});
+
+	})
+
 	useEffect(() => {
 		setData(document.querySelectorAll("#status_wrapper tbody tr"));
 		//chackboxFun();
@@ -63,7 +74,9 @@ export const MintPosition = () => {
 		});
 	});
 
-	Number.prototype.toFixedNoRounding = function(n) {
+
+
+	Number.prototype.toFixedNoRounding = function (n) {
 		const reg = new RegExp("^-?\\d+(?:\\.\\d{0," + n + "})?", "g")
 		const a = this.toString().match(reg)[0];
 		const dot = a.indexOf(".");
@@ -90,14 +103,18 @@ export const MintPosition = () => {
 	};
 
 	const checkCollateral = (address) => {
-		if(address == DAI){
+		if (address == DAI) {
 			return "DAI";
 		}
 		return "ETH";
 	}
 
+	// function myFunction() {
+	// 	document.getElementById("myBtn").disabled = true;
+	// }
+
 	const Dais = [
-		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", liquidation: "123"},
+		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", liquidation: "123" },
 	];
 	return (
 		<Section>
@@ -137,25 +154,45 @@ export const MintPosition = () => {
 																<td>{checkCollateral(item.collateral)}</td>
 																<td>{Number(item.deposited) / 1e18}</td>
 																<td>{(Number(item.minted) / 1e18).toFixedNoRounding(3)}</td>
-																<td>{"$"+((Number(item.minted) / 1e18).toFixedNoRounding(3) * feed).toFixedNoRounding(2)}</td>
+																<td>{"$" + ((Number(item.minted) / 1e18).toFixedNoRounding(3) * feed).toFixedNoRounding(2)}</td>
 																<td>
-																	<Link to={"/accounts/liquidate"}>
-																		<span className="badge cursor-pointer"
-																			style={{
-																				height: "22px",
-																				width: "80px",
-																				color: "#846424",
-																				textTransform: "uppercase",
-																				fontStyle: "normal",
-																				fontWeight: "700",
-																				fontSize: "10px",
-																				backgroundColor: "#1A1917",
-																				borderRadius: "16px",
-																				border: "1px solid transparent",
-																				borderColor: "#846424",
+																	{collateralRatio < liquidationRatio ?
+																		(<>
+																			<span className="badge"
+																				style={{
+																					height: "22px",
+																					width: "80px",
+																					color: "#846424",
+																					textTransform: "uppercase",
+																					fontStyle: "normal",
+																					fontWeight: "700",
+																					fontSize: "10px",
+																					backgroundColor: "#1A1917",
+																					borderRadius: "16px",
+																					border: "1px solid transparent",
+																					borderColor: "#846424",
 
-																			}}>Liquidate</span>
-																	</Link>
+																				}}>Liquidate</span>
+																		</>
+																		) : (
+																			<Link to={"/accounts/liquidate"}>
+																				<span className="badge cursor-pointer"
+																					style={{
+																						height: "22px",
+																						width: "80px",
+																						color: "#846424",
+																						textTransform: "uppercase",
+																						fontStyle: "normal",
+																						fontWeight: "700",
+																						fontSize: "10px",
+																						backgroundColor: "#1A1917",
+																						borderRadius: "16px",
+																						border: "1px solid transparent",
+																						borderColor: "#846424",
+
+																					}}>Liquidate</span>
+																			</Link>
+																		)}
 																	{/* <Link to={"/accounts/loan/dai"}>
 																		<span className="badge cursor-pointer ml-3"
 																			style={{
@@ -176,7 +213,7 @@ export const MintPosition = () => {
 													</tbody>
 												</table>
 												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
-													
+
 												</div>
 											</div>
 										</div>
@@ -187,11 +224,11 @@ export const MintPosition = () => {
 					</div>
 				</div>
 			</div>
-            <div style={{
-                paddingBottom:"220px"
-            }}></div>
+			<div style={{
+				paddingBottom: "220px"
+			}}></div>
 		</Section>
-	); 
+	);
 };
 
 
