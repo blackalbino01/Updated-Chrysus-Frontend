@@ -44,7 +44,7 @@ const UserDashboard = () => {
 	const [data, setData] = useState(
 		document.querySelectorAll("#status_wrapper tbody tr")
 	);
-	const [cdp,  setCDP] = useState(0);
+	const [cdp, setCDP] = useState(0);
 	const sort = 6;
 	const activePag = useRef(0);
 	const [test, settest] = useState(0);
@@ -274,27 +274,8 @@ const UserDashboard = () => {
 											{cdp} CDPs
 										</h3>
 									</div>
-									{/* <div className="px-2 info-group">
-										<p className="fs-14 mb-1">Market Cap</p>
-										<h3 className="fs-20 font-w600 text-black">
-											$874.11B
-										</h3>
-									</div> */}
 								</div>
-								{/* <div className="d-flex col-xxl-4 align-items-center mt-sm-0 mt-3 justify-content-center">
-									<div className="fs-18 font-w600 me-4">
-										<span className="text-success pe-3">BUY</span>
-										<span className="text-black">$6,456</span>
-									</div>
-									<div className="fs-18 font-w600">
-										<span className="text-danger pe-3">SELL</span>
-										<span className="text-black">$8,123</span>
-									</div>
-								</div> */}
 							</div>
-							{/* <div className="tradingview-widget-container">
-								<IntradayChart />
-							</div> */}
 						</div>
 					</div>
 				</div>
@@ -331,7 +312,6 @@ const UserDashboard = () => {
 										</tr>
 									</thead>
 									<tbody>
-										{/* one */}
 										<tr>
 											<td>
 												<img src={Dash} alt="d" width={13} height={11} />
@@ -362,23 +342,7 @@ const UserDashboard = () => {
 													${(daiBalance * daiFeed).toFixed(2)}
 												</div>
 											</td>
-											{/* <td>
-												<Button
-													className="rounded-pill px-4 py-2"
-													color="primary"
-													outline={true}
-													style={{
-														fontStyle: "normal",
-														fontWeight: "700",
-														fontSize: "12px",
-														lineHeight: "16px",
-													}}
-												>
-													SEND
-												</Button>
-											</td> */}
 										</tr>
-										{/* tow */}
 										<tr>
 											<td>
 												<img src={C} alt="d" width={13} height={11} />
@@ -409,23 +373,7 @@ const UserDashboard = () => {
 													${(chcBalance * chcFeed).toFixed(2)}
 												</div>
 											</td>
-											{/* <td>
-												<Button
-													className="rounded-pill px-4 py-2"
-													color="primary"
-													outline={true}
-													style={{
-														fontStyle: "normal",
-														fontWeight: "700",
-														fontSize: "12px",
-														lineHeight: "16px",
-													}}
-												>
-													SEND
-												</Button>
-											</td> */}
 										</tr>
-										{/* three */}
 										<tr>
 											<td>
 												<img src={Ether} alt="d" width={13} height={11} />
@@ -456,21 +404,6 @@ const UserDashboard = () => {
 													${(balance * ethFeed).toFixed(2)}
 												</div>
 											</td>
-											{/* <td>
-												<Button
-													className="rounded-pill px-4 py-2"
-													color="primary"
-													outline={true}
-													style={{
-														fontStyle: "normal",
-														fontWeight: "700",
-														fontSize: "12px",
-														lineHeight: "16px",
-													}}
-												>
-													SEND
-												</Button>
-											</td> */}
 										</tr>
 									</tbody>
 								</table>
