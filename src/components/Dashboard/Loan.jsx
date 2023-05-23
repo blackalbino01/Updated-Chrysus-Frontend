@@ -36,41 +36,12 @@ export default function Loan() {
 							<div className="me-auto mb-3">
 								<h2 className="fs-28 font-w600 text-white">
 									{/* {usdprice * web3.utils.fromWei(balance, 'ether')?.substring(0, 7) + "...."} */}
-
 								</h2>
-								{/* <div className='row sp20 mb-4 align-items-center'>
-									<div className="d-flex col-xxl-4 align-items-center mt-sm-0 mt-3 justify-content-center">
-										<div className="fs-18 font-w600 me-4">
-											<span className="text-success pe-3">BUY</span>
-											<span className="text-warning">$6,456</span>
-										</div>
-										<div className="fs-18 font-w600">
-											<span className="text-danger pe-3">LEND</span>
-											<span className="text-warning">$8,123</span>
-										</div>
-									</div>
-								</div> */}
-								{/* <p className="mb-0 fs-12 text-black">Lorem ipsum dolor sit amet, consectetur</p> */}
 							</div>
-							{/* {web3 ?
-								(<span class="badge cursor-pointer"
-									style={{
-										height: "26px",
-										width: "270px",
-										color: "black",
-										textTransform: "uppercase",
-										fontStyle: "normal",
-										fontWeight: "700",
-										fontSize: "10px",
-										background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-										borderRadius: "40px",
-									}}>{accounts[0]}</span>) : ("")} */}
-							{/* <TokenButton /> */}
-							{/* <Link to={"#"} className="btn btn-primary text-black light btn-rounded me-3  mb-3"><i className="las la-download scale5 me-2"></i>Get Report</Link> */}
 						</div>
 						<div className="card-body">
 							<div className="row sp20 mb-4 align-items-center">
-								<div className="col-xxl-8 d-flex flex-wrap justify-content-between align-items-center">
+								<div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
 									<div className="px-2 info-group">
 										<p className="fs-18 mb-1"> Interest Rate</p>
 										<h2 className="fs-28 font-w600 text-white">
@@ -79,9 +50,9 @@ export default function Loan() {
 									</div>
 									<div className="px-2 info-group">
 										<p className="fs-14 mb-1" >Utilization Rate</p>
-										<h3 className="fs-20 font-w600 text-success">
+										<h3 className="fs-20 font-w600 text-white">
 											10
-											<svg
+											{/* <svg
 												width={14}
 												height={14}
 												viewBox="0 0 14 14"
@@ -92,13 +63,19 @@ export default function Loan() {
 													d="M0 7L7.00001 -8.77983e-06L14 7H7.00001H0Z"
 													fill="#2BC155"
 												/>
-											</svg>
+											</svg> */}
 										</h3>
 									</div>
 									<div className="px-2 info-group">
 										<p className="fs-14 mb-1">Total Supplied</p>
 										<h3 className="fs-20 font-w600 text-white">
 											 1000
+										</h3>
+									</div>
+                  <div className="px-2 info-group">
+										<p className="fs-14 mb-1">Total Borrowd</p>
+										<h3 className="fs-20 font-w600 text-white">
+											 1000.21
 										</h3>
 									</div>
 								</div>
