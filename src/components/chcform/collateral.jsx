@@ -122,7 +122,7 @@ export const Collateral = () => {
 	return (
 		<>
 			<Tab.Container defaultActiveKey="Navbuy">
-				<div className={`${styles.flexCenter}`}>
+				<div className={`${styles.flexCenter} `}>
 					<nav className="w-full flex justify-between items-center navbar"> 
 						<div className="buy-sell">
 							<div style={{

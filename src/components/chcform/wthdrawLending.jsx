@@ -8,10 +8,13 @@ import { CInput } from "../inputs/cinput";
 import { Link } from "react-router-dom";
 import { Chrysus } from "../../assets";
 import styles from "../../style";
+import styled from "styled-components";
 
-export const Withdraw = () => {
+
+
+export const WthdrawLending = () => {
     return (
-        <>
+        <Section>
             <div className="row w-100" style={{ borderRadius: "16px" }}>
                 <div className="col ">
                     <div
@@ -49,27 +52,6 @@ export const Withdraw = () => {
                                 }} className="input-group-text"><img loading="lazy" src={Chrysus} alt="meta" /></span>
                             </div>
                             <div className="my-1"></div>
-                            {/* <P className="m-0">Please Enter an amount would you like to Borrow</P>
-						<Body className="m-0">
-							Generate an amount that is safety above the liquidation ratio.
-						</Body> */}
-                            {/* <div className="my-3"></div> */}
-                            {/* <label className="form-label text-primary">Your Blanace 0.123</label>
-						<div className="input-group" style={{
-							backgroundColor: "#1A1917",
-							color: "#846424",
-						}}>
-							<input type="text" className="form-control"
-								style={{
-									backgroundColor: "#1A1917",
-									color: "#846424",
-								}}
-								placeholder="0.00" />
-							<span style={{
-								backgroundColor: "#1A1917",
-								color: "#846424",
-							}} className="input-group-text">Amount</span>
-						</div> */}
                         </div>
                         <div
                             className="w-100"
@@ -95,7 +77,43 @@ export const Withdraw = () => {
                 </div>
             </div>
             <div className="mt-5"></div>
-        </>
+        </Section>
 
     );
 };
+
+
+const Section = styled.section`
+  margin-left: 18vw;
+  padding: 2rem;
+  height: 100%;
+  background-color:  #121212;
+  .grid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1rem;
+    margin-top: 0rem;
+    .row__one {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      height: 50%;
+      gap: 1rem;
+    }
+    .row__two {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      height: 50%;
+    }
+  }
+  @media screen and (min-width: 280px) and (max-width: 1080px) {
+    margin-left: 0;
+    .grid {
+      .row__one,
+      .row__two {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+`;

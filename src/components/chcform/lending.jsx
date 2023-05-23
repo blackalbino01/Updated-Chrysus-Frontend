@@ -246,7 +246,7 @@ export const Lending = () => {
                                                                         </Link>
                                                                     </td> */}
                                                                     <td>
-                                                                        <Link>
+                                                                        <Link to={"/accounts/wthdrawLending"}>
                                                                             <span className="badge cursor-pointer"
                                                                                 // onClick={() => setModalShowDAI(true)}
                                                                                 style={{
@@ -305,7 +305,7 @@ export const Lending = () => {
                                                                         </Link>
                                                                     </td> */}
                                                                     <td>
-                                                                    <Link>
+                                                                    <Link to={"/accounts/wthdrawLending"}>
                                                                             <span className="badge cursor-pointer"
                                                                                 // onClick={() => setModalShowDAI(true)}
                                                                                 style={{
