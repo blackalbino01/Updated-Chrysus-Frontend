@@ -252,9 +252,9 @@ const UserDashboard = () => {
 									</div>
 									<div className="px-2 info-group">
 										<p className="fs-14 mb-1" >COLLATERALIZATION Ratio</p>
-										<h3 className="fs-20 font-w600 text-success">
+										<h3 className="fs-20 font-w600 text-white">
 											{collateralRatio}%
-											<svg
+											{/* <svg
 												width={14}
 												height={14}
 												viewBox="0 0 14 14"
@@ -265,7 +265,7 @@ const UserDashboard = () => {
 													d="M0 7L7.00001 -8.77983e-06L14 7H7.00001H0Z"
 													fill="#2BC155"
 												/>
-											</svg>
+											</svg> */}
 										</h3>
 									</div>
 									<div className="px-2 info-group">
