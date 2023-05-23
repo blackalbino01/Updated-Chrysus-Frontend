@@ -36,6 +36,7 @@ import { Repay } from './components/chcform/repay';
 import { Liquidate } from './components/Dashboard/Liquidate';
 // import { DaiLiquidate } from './components/Dashboard/DaiLiquidate';
 import { MintPosition } from './components/Dashboard/MintPosition';
+import { Withdraw } from './components/Dashboard/withdraw';
 const Home = lazy(() => import('./components/Home'));
 
 const App = () => {
@@ -76,6 +77,7 @@ const App = () => {
             <Route index element={<Dashboard />} />
             <Route path="createproposal" element={<CreateProposal />} />
             <Route path="liquidate" element={<Liquidate/>}/>
+            <Route path="withdraw" element={<Withdraw/>}/>
             {/* <Route path="daiLiquidate" element={<DaiLiquidate/>}/> */}
             <Route path="staking" element = {<Staking/>}/>
             <Route path="loanpositions" element={<LoanPositions />} />

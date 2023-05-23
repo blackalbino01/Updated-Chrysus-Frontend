@@ -177,7 +177,7 @@ export const Collaterals = () => {
 																					borderRadius: "40px",
 																				}}>Deposit</span>
 																		</Link>
-																		<Link to={"ethdeposite"}>
+																		<Link to={"/accounts/withdraw"}>
 																			<span className="badge cursor-pointer"
 																				style={{
 																					height: "22px",
