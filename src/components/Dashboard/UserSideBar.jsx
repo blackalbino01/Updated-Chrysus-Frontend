@@ -256,11 +256,11 @@ export default function UserSideBar() {
                   </Link>
                 </li>
               </Link>
-              <div
-              // onMouseEnter={() => setvisible(true)}
-              // onMouseLeave={() => setvisible(false)}
-              >
-                {drop === false ? (
+              {/* <div
+              onMouseEnter={() => setvisible(true)}
+              onMouseLeave={() => setvisible(false)}
+              > */}
+              {/* {drop === false ? (
                   <>
                     <Link
                       onClick={() => setdrop(true)}>
@@ -297,8 +297,8 @@ export default function UserSideBar() {
                           </Link>
                         </li>
                       </Link>
-                    </>)}
-                {drop === true ? (
+                    </>)} */}
+              {/* {drop === true ? (
                   <div className="mt-2">
                     <Link to={"mintposition"}
                       onClick={() => setdrop(false)}>
@@ -307,12 +307,12 @@ export default function UserSideBar() {
                         onClick={() => setCurrentLink(8)}
                       >
                         <Link to={"mintposition"}>
-                          {/* <img width="15" height="15"
+                          <img width="15" height="15"
                             className="jumbo-button-icon"
                             src={GI}
                             alt="umbrella-gold"
-                          /> */}
-                          {/* <FiLogOut /> */}
+                          />
+                          <FiLogOut />
                           <span> Mint Position </span>
                         </Link>
                       </li>
@@ -324,19 +324,34 @@ export default function UserSideBar() {
                         onClick={() => setCurrentLink(9)}
                       >
                         <Link to={"loanpositions"}>
-                          {/* <img width="15" height="15"
+                          <img width="15" height="15"
                             className="jumbo-button-icon"
                             src={GI}
                             alt="umbrella-gold"
-                          /> */}
-                          {/* <FiLogOut /> */}
+                          />
+                          <FiLogOut />
                           <span> Loan Position </span>
                         </Link>
                       </li>
                     </Link>
                   </div>
-                ) : ("")}
-              </div>
+                ) : ("")} */}
+              {/* </div> */}
+              <Link to={"mintposition"}>
+                <li
+                  className={currentLink === 7 ? "active" : "none"}
+                  onClick={() => setCurrentLink(7)}
+                >
+                  <Link to={"mintposition"}>
+                    <img width="15" height="15"
+                      className="jumbo-button-icon"
+                      src={A}
+                      alt="umbrella-gold"
+                    />
+                    <span> All Positions </span>
+                  </Link>
+                </li>
+              </Link>
             </ul>
           </div>
         </div>

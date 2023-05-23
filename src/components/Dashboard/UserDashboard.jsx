@@ -243,7 +243,7 @@ const UserDashboard = () => {
 						</div>
 						<div className="card-body">
 							<div className="row sp20 mb-4 align-items-center">
-								<div className="col-xxl-8 d-flex flex-wrap justify-content-between align-items-center">
+								<div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
 									<div className="px-2 info-group">
 										<p className="fs-18 mb-1">Liquidation Ratio</p>
 										<h2 className="fs-28 font-w600 text-white">
