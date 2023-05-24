@@ -158,7 +158,7 @@ export const DAIDeposite = () => {
 																				<ConfirmationItem title="Depositing" value={DAIamount} />
 																				<ConfirmationItem title="Generating" value={ amount + "CHC"} />
 																				
-																				<div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
+																				{/* <div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
 																					<input
 																						type="checkbox"
 																						style={{
@@ -170,7 +170,7 @@ export const DAIDeposite = () => {
 																						Understand the Stability Fee is not fixed and is likely to
 																						change over time
 																					</Body>
-																				</div>
+																				</div> */}
 																			</div>
 																		</div>
 																	</div>

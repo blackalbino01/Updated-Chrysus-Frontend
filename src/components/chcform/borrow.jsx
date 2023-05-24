@@ -156,81 +156,20 @@ export const Borrow = () => {
 																</th> */}
                                                                 <th>Pool</th>
                                                                 <th>Borrow</th>
+                                                                <th>CHC Balance</th>
                                                                 <th>Current Value</th>
-                                                                <th>Debit Ratio</th>
-                                                                <th>APY</th>
-                                                                {/* <th>Reward</th> */}
-                                                                {/* className="text-end" */}
-                                                                {/* <th>Borrow</th> */}
-                                                                {/* <th>Borrow</th> */}
+                                                                <th>Borrow Value</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody className='text-white'>
-                                                            {/* {tabDataBlog.map((item, index) => (
-																<tr key={index}>
-																	<td>{item.Date}</td>
-																	<td>{item.Trade}</td>
-																	<td>{item.Status}</td>
-																	<td>{item.Price}</td>
-																	<td>{item.Amount}</td>
-																	<td>
-																		<Link to={"/accounts/loan/dai"}>
-																			<span class="badge cursor-pointer"
-																				style={{
-																					height: "22px",
-																					width: "80px",
-																					color: "black",
-																					textTransform: "uppercase",
-																					fontStyle: "normal",
-																					fontWeight: "700",
-																					fontSize: "10px",
-																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-																					borderRadius: "40px",
-																				}}>Borrow</span>
-																		</Link>
-																	</td>
-																	<td>
-																		<Link to={"/accounts/loan/dai"}>
-																			<span class="badge cursor-pointer"
-																				style={{
-																					height: "22px",
-																					width: "80px",
-																					color: "black",
-																					textTransform: "uppercase",
-																					fontStyle: "normal",
-																					fontWeight: "700",
-																					fontSize: "10px",
-																					background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-																					borderRadius: "40px",
-																				}}>Loan</span>
-																		</Link>
-																	</td>
-																</tr>
-															))} */}
-                                                            {Eth.map((item, index) => (
+                                                                                                                       {Eth.map((item, index) => (
                                                                 <tr key={index}>
                                                                     <td>{item.Collateral}</td>
                                                                     <td>{item.Interest}</td>
                                                                     <td>{item.LIQ}</td>
                                                                     <td>{item.Utilization}</td>
                                                                     <td>{item.Balance}</td>
-                                                                    {/* <td>
-                                                                        <Link to={"/accounts/loan/dai"}>
-                                                                            <span className="badge cursor-pointer"
-                                                                                style={{
-                                                                                    height: "22px",
-                                                                                    width: "80px",
-                                                                                    color: "black",
-                                                                                    textTransform: "uppercase",
-                                                                                    fontStyle: "normal",
-                                                                                    fontWeight: "700",
-                                                                                    fontSize: "10px",
-                                                                                    background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                                                                    borderRadius: "40px",
-                                                                                }}>Borrow</span>
-                                                                        </Link>
-                                                                    </td> */}
                                                                     <td>
                                                                         <Link to={"/accounts/loan/borrowchc"}>
                                                                             <span className="badge cursor-pointer"
