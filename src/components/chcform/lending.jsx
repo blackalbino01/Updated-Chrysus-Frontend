@@ -186,7 +186,7 @@ export const Lending = () => {
 
                                                                                 }}>Withdraw</span>
                                                                         </Link>
-                                                                        <Link to={"/accounts/loan/lend"} state={{collateral: "ETH"}}>
+                                                                        <Link to={"/accounts/lend"} state={{collateral: "ETH"}}>
                                                                             <span className="badge cursor-pointer ml-2"
                                                                                 style={{
                                                                                     height: "22px",
@@ -229,7 +229,7 @@ export const Lending = () => {
 
                                                                                 }}>Withdraw</span>
                                                                         </Link>
-                                                                        <Link to={"/accounts/loan/lend"} state={{collateral: "DAI"}}>
+                                                                        <Link to={"/accounts/lend"} state={{collateral: "DAI"}}>
                                                                             <span className="badge cursor-pointer ml-2"
                                                                                 style={{
                                                                                     height: "22px",

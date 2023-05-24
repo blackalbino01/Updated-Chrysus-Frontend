@@ -142,19 +142,6 @@ export const Collateral = () => {
 								</div>
 							</div>
 						</div>
-						{/* <div className="mt-2">
-							<Button
-								type="button"
-								style={{
-									backgroundColor: "#1A1917",
-									borderRadius: "16px",
-									color: "#846424",
-								}}
-								className=" font-medium
-                                             rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-								<a>Create Proposal</a>
-							</Button>
-						</div> */}
 					</nav>
 				</div>
 				<Tab.Content  >
@@ -167,7 +154,6 @@ export const Collateral = () => {
 							<div className="text-center">
 								<div className="sell-element">
 									<Lending />
-									{/* <Lend/> */}
 								</div>
 							</div>
 						</Tab.Container>
@@ -180,7 +166,6 @@ export const Collateral = () => {
 							</Tab.Content>
 							<div className="sell-element">
 								<Borrow />
-								{/* <BorrowCHC/> */}
 							</div>
 						</Tab.Container>
 					</Tab.Pane>

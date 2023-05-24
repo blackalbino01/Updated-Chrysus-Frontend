@@ -80,6 +80,7 @@ const App = () => {
             <Route path="liquidate" element={<Liquidate/>}/>
             <Route path="withdraw" element={<Withdraw/>}/>
             <Route path="wthdrawLending" element={<WthdrawLending/>}/>
+            <Route path="lend" element={<Lend/>} />
             {/* <Route path="daiLiquidate" element={<DaiLiquidate/>}/> */}
             <Route path="staking" element = {<Staking/>}/>
             <Route path="loanpositions" element={<LoanPositions />} />
@@ -88,7 +89,7 @@ const App = () => {
               <Route index element={<Collateral />} />
               <Route path="dai" element={<DAI />} />
               <Route path="eth" element={<ETH/>} />
-              <Route path="lend" element={<Lend/>} />
+              {/* <Route path="lend" element={<Lend/>} /> */}
               <Route path="confirmation" element={<Confirmation />} />
               <Route path= "borrowchc" element={<BorrowCHC/>} />
               <Route path= "repay" element={<Repay/>} />
