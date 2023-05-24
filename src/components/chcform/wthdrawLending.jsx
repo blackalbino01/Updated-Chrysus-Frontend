@@ -26,16 +26,16 @@ export const WthdrawLending = () => {
                             color: "#846424",
                         }}>
                         <div className="mt-5"></div>
-                        <H4>Repay CHC Fund</H4>
+                        <H4>Withdraw CHC Fund</H4>
                         <div className="d-flex flex-column align-items-start">
                             <P className="m-0">
-                                How much would you like to Repay?
+                                How much would you like to Withdraw?
                             </P>
                             <Body className="m-0">
-                                Please Enter an amount would you like to Repay
+                                Please Enter an amount would you like to Withdraw
                             </Body>
                             <div className="my-3"></div>
-                            <label className="form-label text-primary">Total Borrow 00.0</label>
+                            <label className="form-label text-primary">Total Withdraw 00.0</label>
                             <div className="input-group" style={{
                                 backgroundColor: "#1A1917",
                                 color: "#846424",
