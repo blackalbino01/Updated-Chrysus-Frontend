@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import {ethers} from "ethers";
 import { FormActionButton } from "../buttons/form_action_button";
 import styles from "../../style";
 import { Body, H4, P } from "../typography";
@@ -9,13 +10,21 @@ import { useAppSelector, useAppDispatch } from '../../reducer/store';
 // import { CheckButton } from "../buttons";
 import { CCheckbox } from "../inputs/ccheckbox";
 import { ConfirmationItem } from "../confirmation_item";
-import { Button } from "reactstrap";
+import { Button, Util } from "reactstrap";
+import Utils from "../../utilities";
 
 export const ETHDeposite = () => {
     const { web3, contract, accounts, socketContract } = useAppSelector((state) => state.web3Connect);
-    const [ethamount, setethamount] = useState();
+    const [ethamount, setethamount] = useState(0);
     const [modalShow, setModalShow] = useState(false);
+    const [amount, setAmount] = useState(0);
 
+
+    useEffect(() => {
+		Utils.generate(ethers.utils.parseUnits(ethamount.toString()), "ETH").then(function(data){
+            setAmount(Utils.toFixedNoRounding(data, 3));
+        });
+	})
 
 
     const DepositCollateral = async () => {
@@ -57,7 +66,7 @@ export const ETHDeposite = () => {
                             <H4>Deposit Ethereum</H4>
                             <div className="d-flex flex-column text-center">
                                 <P className="m-0">
-                                    How much Collateral would you like to lock into your Position?
+                                    How much Collateral would you like to deposit into your Position?
                                 </P>
                                 <Body className="m-0">
                                     The amount of Collateral you deposit determines how much CHC you can
@@ -130,14 +139,11 @@ export const ETHDeposite = () => {
                                                         >
                                                             <div className="col-12">
                                                                 <div className="d-flex flex-column align-items-center mt-4">
-                                                                    <H4>Confirm Vault Details</H4>
+                                                                    <H4>Confirm MInt Details</H4>
                                                                     <div className="d-flex flex-column align-items-center justify-content-center col-5">
                                                                         <ConfirmationItem title="Depositing" value={ethamount} />
-                                                                        <ConfirmationItem title="Generating" value="0 CHC" />
-                                                                        <ConfirmationItem title="Collateralization ratio" value="120%" />
-                                                                        <ConfirmationItem title="Liquidation ratio" value="150%" />
-                                                                        {/* <ConfirmationItem title="Liquidation price" value="$" />
-                                                                        <ConfirmationItem title="Liquidation fee" value="1%" /> */}
+                                                                        <ConfirmationItem title="Generating" value={amount +"CHC"} />
+                                                                        
                                                                         <div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
                                                                             <input
                                                                                 type="checkbox"

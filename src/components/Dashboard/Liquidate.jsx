@@ -1,17 +1,72 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { FormActionButton } from "../buttons/form_action_button";
 // import { Table } from "../table";
 import { Body, H4, P } from "../typography";
 // import { Info } from "react-feather";
 // import { COLORS } from "src/assets/styles/theme";
 // import { CInput } from "../inputs/cinput";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Chrysus } from "../../assets";
 import styles from "../../style";
 import styled from "styled-components";
+import Utils from "../../utilities";
+import { DAI, ETH, CHRYSUS } from "../../constant";
+import {ethers} from "ethers";
+import chrysus from "../../abis/Chrysus.json";
 
 
 export const Liquidate = () => {
+    const [balance, setBalance] = useState(0);
+	const addrees = localStorage.getItem("accounts");
+	const location = useLocation()
+	const { collateral, userToLiquidate } = location.state;
+	const [amount, setAmount] = useState(0);
+	const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+		Utils.getUserBalance(addrees, "CHC").then(function (data) {
+			setBalance(Number(data) / 1E18);
+		});
+	});
+
+
+    const liquidate = async () => {
+		try {
+			const { ethereum } = window;
+	  
+			if (ethereum) {
+			  let chainId = await ethereum.request({ method: "eth_chainId" });
+			  console.log("Connecteds to chains " + chainId);
+			  const provider = new ethers.providers.Web3Provider(ethereum);
+			  const _signer = provider.getSigner();
+			  const chrysusContract = new ethers.Contract(
+				CHRYSUS,
+				chrysus.abi,
+				_signer 
+				);
+				
+				const _collateral = collateral == "DAI" ? DAI : ETH; 
+                
+            let  Txn = await chrysusContract.approve(CHRYSUS, ethers.utils.parseUnits(String(amount)));
+            setLoading(true);
+            await Txn.wait();
+
+			Txn = await chrysusContract.liquidate(
+				userToLiquidate,
+                _collateral,
+				ethers.utils.parseUnits(String(amount))
+			  );
+			  await Txn.wait();
+			  setLoading(false);
+			  console.log('Liquidated successfully!');
+			  window.location.reload();
+			}
+		  } catch (error) {
+			console.error('Error:', error);
+		  }
+	}
+
+
     return (
         <Section>
             <div className="row w-100" style={{ borderRadius: "16px" }}>
@@ -26,16 +81,13 @@ export const Liquidate = () => {
                         }}
                     >
                         <div className="mt-5"></div>
-                        <H4>Liquidite</H4>
+                        <H4>Liquidate</H4>
                         <div className="d-flex flex-column align-items-start">
                             <P className="m-0">
-                                How much would you like to Liquidite?
+                                How much would you like to Liquidate?
                             </P>
-                            <Body className="m-0">
-                                Please Enter an amount would you like to Liquidite
-                            </Body>
                             <div className="my-3"></div>
-                            <label className="form-label text-primary">Your Blanace 0.123</label>
+                            <label className="form-label text-primary">Your Balance {Utils.toFixedNoRounding(balance, 3)}</label>
                             <div className="input-group" style={{
                                 backgroundColor: "#1A1917",
                                 color: "#846424",
@@ -45,6 +97,7 @@ export const Liquidate = () => {
                                         backgroundColor: "#1A1917",
                                         color: "#846424",
                                     }}
+                                    onChange={(e) => setAmount(e.target.value)}
                                     placeholder="0.00" />
                                 <span style={{
                                     backgroundColor: "#1A1917",
@@ -119,14 +172,24 @@ export const Liquidate = () => {
                                     Back
                                 </FormActionButton>
                             </Link>
-                            <FormActionButton
-                                color="primary"
-                                gradient={true}
-                                outline={true}
-                                className="mx-2"
+                            <button
+                                style={{
+                                    borderRadius: "40px",
+                                    background:"linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                    // Fonts
+                                    fontStyle: "normal",
+                                    padding: "10px",
+                                    fontWeight: "700",
+                                    fontSize: "14px",
+                                    lineHeight: "24px",
+                                    letterSpacing: "1px",
+                                    textTransform: "uppercase",
+                                    color: "black",
+                                }}
+                                onClick={() =>liquidate()}
                             >
-                                Continue
-                            </FormActionButton>
+                                {loading ? "Processing...." : "Continue"}
+                            </button>
                         </div>
                     </div>
                 </div>

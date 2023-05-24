@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {ethers} from "ethers";
 import { Link } from 'react-router-dom';
 import { FormActionButton } from "../buttons/form_action_button";
 import styles from "../../style";
@@ -10,6 +11,8 @@ import { Button } from 'reactstrap';
 import { CHRYSUS, DAI } from '../../constant';
 import Modal from 'react-bootstrap/Modal';
 import { ConfirmationItem } from "../confirmation_item";
+import Utils from "../../utilities";
+
 
 
 export const DAIDeposite = () => {
@@ -17,17 +20,28 @@ export const DAIDeposite = () => {
 	const [isApprove, setisApprove] = useState(false);
 	const [loading, setloading] = useState(false);
 	const { web3, contract, accounts, DAIContract } = useAppSelector((state) => state.web3Connect);
-	const [DAIamount, setDAIamount] = useState();
+	const [DAIamount, setDAIamount] = useState(0);
 	const [modalShows, setModalShows] = useState(false);
+	const [amount, setAmount] = useState(0);
+
+	useEffect(() => {
+		Utils.generate(ethers.utils.parseUnits(DAIamount.toString()), "DAI").then(function(data){
+            setAmount(Utils.toFixedNoRounding(data, 3));
+        });
+	})
 
 	const DAIApprove = async () => {
-		setloading(true)
-		setModalShow(true)
+		//setloading(true)
+		//setModalShow(true)
 		// if(isApprove === false){
 		try {
-			await DAIContract?.methods.approve(CHRYSUS, DAIamount).send({ from: accounts[0] })
-			setisApprove(true);
-			setModalShow(false);
+			await DAIContract?.methods.approve(CHRYSUS, web3.utils.toWei(DAIamount, 'ether')).send({ from: accounts[0] })
+			.then(function(){
+				setloading(true)
+				setisApprove(true);
+			});
+			setloading(false);
+			//setModalShow(false);
 		} catch (error) {
 			console.log("First Approve Error", error)
 			setModalShow(false)
@@ -38,18 +52,20 @@ export const DAIDeposite = () => {
 	console.log("chrysus contract", contract)
 
 	const DepositDAICollateral = async () => {
-		setloading(true)
-		setModalShow(true)
+		//setloading(true)
+		//setModalShow(true)
 		try {
 			await contract?.methods.depositCollateral(DAI, web3.utils.toWei(DAIamount, 'ether'))
 				.send({ from: accounts[0] }).then(function (receipt) {
-					console.log(receipt);
-					alert(`You Have succefully minted Chrysus Coin,
-                See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
-					setloading(true)
-					setisApprove(true);
-					setModalShow(false);
+					//console.log(receipt);
+					setloading(true);
+					/*alert(`You Have succefully minted Chrysus Coin,
+                See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);*/
+					//setloading(true)
+					//setisApprove(true);
+					//setModalShow(false);
 				});
+				setloading(false);
 
 			window.location.reload();
 		} catch (error) {
@@ -76,7 +92,7 @@ export const DAIDeposite = () => {
 							<H4>Deposit DAI</H4>
 							<div className="d-flex flex-column text-center">
 								<P className="m-0">
-									How much Collateral would you like to lock into your Position?
+									How much Collateral would you like to deposit into your Position?
 								</P>
 								<Body className="m-0">
 									The amount of Collateral you deposit determines how much CHC you can
@@ -137,14 +153,11 @@ export const DAIDeposite = () => {
 																>
 																	<div className="col-12">
 																		<div className="d-flex flex-column align-items-center mt-4">
-																			<H4>Confirm Vault Details</H4>
+																			<H4>Confirm Mint Details</H4>
 																			<div className="d-flex flex-column align-items-center justify-content-center col-5">
 																				<ConfirmationItem title="Depositing" value={DAIamount} />
-																				<ConfirmationItem title="Generating" value="0 CHC" />
-																				<ConfirmationItem title="Collateralization ratio" value="120%" />
-																				<ConfirmationItem title="Liquidation ratio" value="150%" />
-																				{/* <ConfirmationItem title="Liquidation price" value="$" />
-                                                                        <ConfirmationItem title="Liquidation fee" value="1%" /> */}
+																				<ConfirmationItem title="Generating" value={ amount + "CHC"} />
+																				
 																				<div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
 																					<input
 																						type="checkbox"
@@ -190,7 +203,7 @@ export const DAIDeposite = () => {
 																		// onClick={() => setShowModal(false)}
 																		onClick={() => DepositDAICollateral()}
 																	>
-																		Deposit
+																		{loading ? "Processing..." : "Deposit"}
 																	</button>
 																</div>
 															</div>
@@ -236,7 +249,7 @@ export const DAIDeposite = () => {
 													borderRadius: "40px",
 												}}
 												onClick={() => DAIApprove()}>
-												Approve
+												{loading ? "Processing..." : "Approve"}
 											</Button>
 											{/* <WalletConnect show={modalShow} /> */}
 											{modalShow ? (

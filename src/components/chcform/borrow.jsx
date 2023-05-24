@@ -14,20 +14,6 @@ import { Button } from "react-bootstrap";
 import Toltip from "../buttons/toltip";
 // import { FiAlertCircle } from "react-icons/fi";
 
-const orderTable = [
-    { email: 'samantha@mail.com', title: 'Samanta William', price: '$75,00', status: 'Paid', statusChange: 'success' },
-    { email: 'tony@gmail.com', title: 'Tony Soap', price: '$80,00', status: 'Unpaid', statusChange: 'danger' },
-    { email: 'demo@mail.com', title: 'Nela Vita', price: '$90,00', status: 'Paid', statusChange: 'success' },
-    { email: 'karen@mail.com', title: 'Karen Hope', price: '$70,00', status: 'Pending', statusChange: 'warning' },
-    { email: 'nadia@mail.com', title: 'Nadia Edja', price: '$76,00', status: 'Unpaid', statusChange: 'danger' },
-    { email: 'samantha@mail.com', title: 'Samanta William', price: '$75,00', status: 'Paid', statusChange: 'success' },
-    { email: 'tony@gmail.com', title: 'Tony Soap', price: '$80,00', status: 'Unpaid', statusChange: 'danger' },
-    { email: 'demo@mail.com', title: 'Nela Vita', price: '$90,00', status: 'Paid', statusChange: 'success' },
-    { email: 'karen@mail.com', title: 'Karen Hope', price: '$70,00', status: 'Pending', statusChange: 'warning' },
-    { email: 'nadia@mail.com', title: 'Nadia Edja', price: '$76,00', status: 'Unpaid', statusChange: 'danger' },
-];
-
-
 const Eth = [
     { Collateral: 'aETH', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
 ];

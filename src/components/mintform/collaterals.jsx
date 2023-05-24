@@ -77,12 +77,10 @@ export const Collaterals = () => {
 
 		Utils.getMintPosition(addrees, "DAI").then(function (data) {
 			setDai_chcBalance((Number(data.minted)/ 1e18).toFixedNoRounding(3));
-			//setchcBalance(Number(data) / 1E18);
 		});
 
 		Utils.getMintPosition(addrees, "ETH").then(function (data) {
 			setEth_chcBalance((Number(data.minted)/ 1e18).toFixedNoRounding(3));
-			//setchcBalance(Number(data) / 1E18);
 		});
 
 		Utils.getFeed("CHC").then(function (data) {
@@ -177,7 +175,7 @@ export const Collaterals = () => {
 																					borderRadius: "40px",
 																				}}>Deposit</span>
 																		</Link>
-																		<Link to={"/accounts/withdraw"}>
+																		<Link to={"/accounts/withdraw"} state={{collateral: "ETH"}}>
 																			<span className="badge cursor-pointer"
 																				style={{
 																					height: "22px",
@@ -217,7 +215,7 @@ export const Collaterals = () => {
 																					borderRadius: "40px",
 																				}}>Deposit</span>
 																		</Link>
-																		<Link to={"daideposite"}>
+																		<Link to={"/accounts/withdraw"} state={{collateral: "DAI"}}>
 																			<span className="badge cursor-pointer"
 																				style={{
 																					height: "22px",

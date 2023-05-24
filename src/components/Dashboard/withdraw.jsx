@@ -1,15 +1,72 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { FormActionButton } from "../buttons/form_action_button";
 import { Table } from "../table";
 import { Body, H4, P } from "../typography";
 import { Info } from "react-feather";
 // import { COLORS } from "src/assets/styles/theme";
 import { CInput } from "../inputs/cinput";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Chrysus } from "../../assets";
 import styled from "styled-components";
+import Utils from "../../utilities";
+import {ethers} from "ethers";
+import chrysus from "../../abis/Chrysus.json";
+import {CHRYSUS} from "../../constant.js";
+import {DAI, ETH} from "../../constant";
+
 
 export const Withdraw = () => {
+	const [dai_chcBalance, setDai_chcBalance] = useState(0);
+	const [eth_chcBalance, setEth_chcBalance] = useState(0);
+	const addrees = localStorage.getItem("accounts");
+	const location = useLocation()
+	const { collateral } = location.state;
+	const [amount, setAmount] = useState(0);
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		Utils.getMintPosition(addrees, "DAI").then(function (data) {
+			setDai_chcBalance((Number(data.minted)/ 1e18));
+		});
+
+		Utils.getMintPosition(addrees, "ETH").then(function (data) {
+			setEth_chcBalance((Number(data.minted)/ 1e18));
+		});
+	});
+
+	const withdraw = async () => {
+		try {
+			const { ethereum } = window;
+	  
+			if (ethereum) {
+			  let chainId = await ethereum.request({ method: "eth_chainId" });
+			  console.log("Connecteds to chains " + chainId);
+			  const provider = new ethers.providers.Web3Provider(ethereum);
+			  const _signer = provider.getSigner();
+			  const chrysusContract = new ethers.Contract(
+				CHRYSUS,
+				chrysus.abi,
+				_signer 
+				);
+				
+				const _collateral = collateral == "DAI" ? DAI : ETH; 
+	  
+			  let Txn = await chrysusContract.withdrawCollateral(
+				_collateral,
+				ethers.utils.parseUnits(String(amount))
+			  );
+			  setLoading(true);
+			  await Txn.wait();
+			  setLoading(false);
+			  console.log('Withdrawn successfully!');
+			  window.location.reload();
+			}
+		  } catch (error) {
+			console.error('Error:', error);
+		  }
+	}
+
+
 	return (
         <Section>
 		<div className="row w-100" style={{ borderRadius: "16px" }}>
@@ -30,10 +87,11 @@ export const Withdraw = () => {
 							How much would you like to Withdraw?
 						</P>
 						<Body className="m-0">
-						Please Enter an amount would you like to Withdraw
+						Please Enter the CHC amount you would like to Withdraw
 						</Body>
 						<div className="my-3"></div>
-						<label className="form-label text-primary">Avaliable to Withdraw 00.0</label>
+						<label className="form-label text-primary">Avaliable to Withdraw 
+						{ collateral== "DAI" ?  Utils.toFixedNoRounding(dai_chcBalance,3): Utils.toFixedNoRounding(eth_chcBalance,3)}</label>
 						<div className="input-group" style={{
 							backgroundColor: "#1A1917",
 							color: "#846424",}}>
@@ -42,6 +100,7 @@ export const Withdraw = () => {
 									backgroundColor: "#1A1917",
 									color: "#846424",
 								}}
+								onChange={(e) => setAmount(e.target.value)}
 								placeholder="0.00" />
 							<span style={{
 								backgroundColor: "#1A1917",
@@ -78,18 +137,28 @@ export const Withdraw = () => {
 					<div className="w-100 d-flex flex-row justify-content-start p-3">
 						{/* Form Actions */}
 						<Link to={"/accounts/mint"}>
-							<FormActionButton color="white" outline={true}>
+							<FormActionButton color="white" outline={true} onClick={() => console.log("first")}>
 								Back
 							</FormActionButton>
 						</Link>
-						<FormActionButton
-							color="primary"
-							gradient={true}
-							outline={true}
-							className="mx-2"
+						<button
+							style={{
+								borderRadius: "40px",
+								background:"linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+								// Fonts
+								fontStyle: "normal",
+								padding: "10px",
+								fontWeight: "700",
+								fontSize: "14px",
+								lineHeight: "24px",
+								letterSpacing: "1px",
+								textTransform: "uppercase",
+								color: "black",
+							}}
+							onClick={() =>withdraw()}
 						>
-							Continue
-						</FormActionButton>
+							{loading ? "Processing...." : "Continue"}
+						</button>
 					</div>
 				</div>
 			</div>

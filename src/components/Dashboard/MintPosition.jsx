@@ -20,12 +20,11 @@ import TradeTab from '../Future/TradeTab';
 import { useEffect, useState, useRef } from 'react';
 import Toltip from "../buttons/toltip";
 import Utils from "../../utilities";
-import { DAI, ETH } from "../../constant";
 
 
 export const MintPosition = () => {
-	const [collateralRatio, setcollateralRatio] = useState(null);
-	const [liquidationRatio, setLiquidationRatio] = useState(null);
+	const [collateralRatio, setcollateralRatio] = useState(0);
+	const [liquidationRatio, setLiquidationRatio] = useState(0);
 	const [data, setData] = useState(
 		document.querySelectorAll("#status_wrapper tbody tr")
 	);
@@ -66,7 +65,7 @@ export const MintPosition = () => {
 
 	useEffect(() => {
 		Utils.getMintPositions().then(function (data) {
-			setposition(data);
+			setposition(data)
 		});
 
 		Utils.getFeed("CHC").then(function (data) {
@@ -102,17 +101,7 @@ export const MintPosition = () => {
 		settest(i);
 	};
 
-	const checkCollateral = (address) => {
-		if (address == DAI) {
-			return "DAI";
-		}
-		return "ETH";
-	}
-
-	// function myFunction() {
-	// 	document.getElementById("myBtn").disabled = true;
-	// }
-
+	
 	const Dais = [
 		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", liquidation: "123" },
 	];
@@ -151,48 +140,31 @@ export const MintPosition = () => {
 													<tbody className='text-white'>
 														{position.map((item, index) => (
 															<tr key={index}>
-																<td>{checkCollateral(item.collateral)}</td>
-																<td>{Number(item.deposited) / 1e18}</td>
+																<td>{item.col}</td>
+																<td>{(Number(item.deposited)/ 1e18).toFixedNoRounding(3)}</td>
 																<td>{(Number(item.minted) / 1e18).toFixedNoRounding(3)}</td>
 																<td>{"$" + ((Number(item.minted) / 1e18).toFixedNoRounding(3) * feed).toFixedNoRounding(2)}</td>
 																<td>
-																	{collateralRatio < liquidationRatio ?
-																		(<>
-																			<span className="badge"
-																				style={{
-																					height: "22px",
-																					width: "80px",
-																					color: "#846424",
-																					textTransform: "uppercase",
-																					fontStyle: "normal",
-																					fontWeight: "700",
-																					fontSize: "10px",
-																					backgroundColor: "#1A1917",
-																					borderRadius: "16px",
-																					border: "1px solid transparent",
-																					borderColor: "#846424",
+																	
+																<Link to={"/accounts/liquidate"} 
+																state={{collateral: item.col , userToLiquidate: item.user}}>
+																	<button className="badge cursor-pointer"
+																		disabled = {collateralRatio > liquidationRatio ? true : false}
+																		style={{
+																			height: "22px",
+																			width: "80px",
+																			color: "#846424",
+																			textTransform: "uppercase",
+																			fontStyle: "normal",
+																			fontWeight: "700",
+																			fontSize: "10px",
+																			backgroundColor: "#1A1917",
+																			borderRadius: "16px",
+																			border: "1px solid transparent",
+																			borderColor: "#846424",
 
-																				}}>Liquidate</span>
-																		</>
-																		) : (
-																			<Link to={"/accounts/liquidate"}>
-																				<span className="badge cursor-pointer"
-																					style={{
-																						height: "22px",
-																						width: "80px",
-																						color: "#846424",
-																						textTransform: "uppercase",
-																						fontStyle: "normal",
-																						fontWeight: "700",
-																						fontSize: "10px",
-																						backgroundColor: "#1A1917",
-																						borderRadius: "16px",
-																						border: "1px solid transparent",
-																						borderColor: "#846424",
-
-																					}}>Liquidate</span>
-																			</Link>
-																		)}
+																		}}>Liquidate</button>
+																</Link>
 																	{/* <Link to={"/accounts/loan/dai"}>
 																		<span className="badge cursor-pointer ml-3"
 																			style={{
