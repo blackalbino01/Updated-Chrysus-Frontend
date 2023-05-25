@@ -24,11 +24,11 @@ export const DAIDeposite = () => {
 	const [modalShows, setModalShows] = useState(false);
 	const [amount, setAmount] = useState(0);
 
-	useEffect(() => {
+	if(DAIamount){
 		Utils.generate(ethers.utils.parseUnits(DAIamount.toString()), "DAI").then(function(data){
             setAmount(Utils.toFixedNoRounding(data, 3));
         });
-	})
+	}
 
 	const DAIApprove = async () => {
 		//setloading(true)
@@ -155,8 +155,8 @@ export const DAIDeposite = () => {
 																		<div className="d-flex flex-column align-items-center mt-4">
 																			<H4>Confirm Mint Details</H4>
 																			<div className="d-flex flex-column align-items-center justify-content-center col-5">
-																				<ConfirmationItem title="Depositing" value={DAIamount} />
-																				<ConfirmationItem title="Generating" value={ amount + "CHC"} />
+																				<ConfirmationItem title="Depositing   " value={DAIamount + "DAI"} />
+																				<ConfirmationItem title="Generating    " value={ amount + "CHC"} />
 																				
 																				{/* <div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
 																					<input

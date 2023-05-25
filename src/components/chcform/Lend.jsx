@@ -66,6 +66,7 @@ export const Lend = () => {
 				window.location.reload();
 			}
 		} catch (error) {
+			setLoading(false);
 			console.error('Error:', error);
 		}
 	}
@@ -89,7 +90,7 @@ export const Lend = () => {
 								How much would you like to Lend?
 							</P>
 							<div className="my-3"></div>
-							<label className="form-label text-primary">Avaliable to Lend {Utils.toFixedNoRounding(balance, 3)}</label>
+							<label className="form-label text-primary">Avaliable to Lend : {Utils.toFixedNoRounding(balance, 3)}CHC</label>
 							<div className="input-group" style={{
 								backgroundColor: "#1A1917",
 								color: "#846424",

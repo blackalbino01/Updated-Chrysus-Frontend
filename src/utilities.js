@@ -64,10 +64,16 @@ const volume = async () => {
     return await loanContract.getVolume();
 };
 
-const collateralAmount = async (_amount, collateral) => {
-    const amount = collateral == "ETH" ?  await loanContract.calculateCollateralAmount(_amount, ETH)
-    : await loanContract.calculateCollateralAmount(_amount, DAI);
-    return amount;
+const collateralAmount = async (amount, token) => {
+    const oracleD = new ethers.Contract(oracleDAI, mockOracle.abi, provider)
+    const D = await oracleD.latestRoundData();
+    const oracleE = new ethers.Contract(oracleETH, mockOracle.abi, provider)
+    const E = await oracleE.latestRoundData();
+    const oracleC = new ethers.Contract(oracleCHC, mockOracle.abi, provider)
+    const C = await oracleC.latestRoundData();
+ 
+    const collateral = token == "DAI" ? Number(D[1]) : Number(E[1]);
+    return ((amount * collateral) /1e8) / (Number(C[1]) / 1e18);
 };
 
 const generate = async (amount, token) => {

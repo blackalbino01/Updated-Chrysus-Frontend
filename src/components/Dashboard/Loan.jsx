@@ -3,6 +3,7 @@ import styled from "styled-components";
 import scrollreveal from "scrollreveal";
 import { CHCForm } from "../chcform";
 import Utils from "../../utilities";
+import { Util } from "reactstrap";
 
 export default function Loan() {
   const [interestRate, setInterestRate] = useState(0);
@@ -68,13 +69,13 @@ export default function Loan() {
 									<div className="px-2 info-group">
 										<p className="fs-18 mb-1"> Interest Rate</p>
 										<h2 className="fs-28 font-w600 text-white">
-											{interestRate * 100 / 1e18 + "%"}
+											{Utils.toFixedNoRounding(interestRate * 100 / 1e18,2) + "%"}
 										</h2>
 									</div>
 									<div className="px-2 info-group">
 										<p className="fs-14 mb-1" >Utilization Rate</p>
 										<h3 className="fs-20 font-w600 text-white">
-											{utilRate + "%"}
+											{Utils.toFixedNoRounding(utilRate * 100 / 1e18,2) + "%"}
 											{/* <svg
 												width={14}
 												height={14}

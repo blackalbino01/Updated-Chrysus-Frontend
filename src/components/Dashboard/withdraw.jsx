@@ -90,8 +90,8 @@ export const Withdraw = () => {
 						Please Enter the CHC amount you would like to Withdraw
 						</Body>
 						<div className="my-3"></div>
-						<label className="form-label text-primary">Avaliable to Withdraw 
-						{ collateral== "DAI" ?  Utils.toFixedNoRounding(dai_chcBalance,3): Utils.toFixedNoRounding(eth_chcBalance,3)}</label>
+						<label className="form-label text-primary">Avaliable to Withdraw : {}
+						{ collateral== "DAI" ?  Utils.toFixedNoRounding(dai_chcBalance,3): Utils.toFixedNoRounding(eth_chcBalance,3)}CHC</label>
 						<div className="input-group" style={{
 							backgroundColor: "#1A1917",
 							color: "#846424",}}>

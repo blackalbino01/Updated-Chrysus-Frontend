@@ -168,7 +168,7 @@ export const Lending = () => {
                                                                     <td>${item.current_value}</td>
                                                                     <td>${item.lend_value}</td>
                                                                     <td>
-                                                                        <Link to={"/accounts/wthdrawLending"}>
+                                                                        <Link to={"/accounts/wthdrawLending"} state={{collateral: "ETH"}}>
                                                                             <span className="badge cursor-pointer"
                                                                                 // onClick={() => setModalShowDAI(true)}
                                                                                 style={{
@@ -211,7 +211,7 @@ export const Lending = () => {
                                                                     <td>${item.current_value}</td>
                                                                     <td>${item.lend_value}</td>
                                                                     <td>
-                                                                    <Link to={"/accounts/wthdrawLending"}>
+                                                                    <Link to={"/accounts/wthdrawLending"} state={{collateral: "DAI"}}>
                                                                             <span className="badge cursor-pointer"
                                                                                 // onClick={() => setModalShowDAI(true)}
                                                                                 style={{

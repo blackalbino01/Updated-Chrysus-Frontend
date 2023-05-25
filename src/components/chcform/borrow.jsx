@@ -12,21 +12,9 @@ import TradeTab from '../Future/TradeTab';
 import { useEffect, useState, useRef } from 'react';
 import { Button } from "react-bootstrap";
 import Toltip from "../buttons/toltip";
-// import { FiAlertCircle } from "react-icons/fi";
-
-const Eth = [
-    { Collateral: 'aETH', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
-];
-
-const Dai = [
-    { Collateral: 'aETH', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
-];
+import Utils from "../../utilities";
 
 
-// const tabDataBlog = [
-// 	{ Date: 'ETH', Trade: '%', Status: '110%', Price: '%', Amount: '0' },
-// 	{ Date: 'DAI', Trade: '%', Status: '110%', Price: '%', Amount: '0' }
-// ];
 export const Borrow = () => {
     const [visible, setvisible] = useState(false);
     const [data, setData] = useState(
@@ -35,6 +23,12 @@ export const Borrow = () => {
     const sort = 6;
     const activePag = useRef(0);
     const [test, settest] = useState(0);
+	const [dai_chcBalance, setDai_chcBalance] = useState(0);
+	const [eth_chcBalance, setEth_chcBalance] = useState(0);
+	const [eth_lend, setEth_Lend] = useState(0);
+    const [dai_lend, setDai_Lend] = useState(0);
+    const [feed, setFeed] = useState(0);
+    const addrees = localStorage.getItem("accounts");
 
     // Active data
     const chageData = (frist, sec) => {
@@ -51,6 +45,23 @@ export const Borrow = () => {
         setData(document.querySelectorAll("#status_wrapper tbody tr"));
         //chackboxFun();
     }, [test]);
+
+
+    useEffect(() => {
+		Utils.getLendPosition(addrees, "DAI").then(function (data) {
+			setDai_chcBalance(Utils.toFixedNoRounding(Number(data.borrowedAmount)/ 1e18,3));
+            setDai_Lend(Utils.toFixedNoRounding(Number(data.lendAmount)/ 1e18,3));
+		});
+
+		Utils.getLendPosition(addrees, "ETH").then(function (data) {
+			setEth_chcBalance(Utils.toFixedNoRounding(Number(data.borrowedAmount)/ 1e18,3));
+            setEth_Lend(Utils.toFixedNoRounding(Number(data.lendAmount)/ 1e18,3));
+		});
+
+        Utils.getFeed("CHC").then(function (data) {
+			setFeed(Utils.toFixedNoRounding(Number(data[1]) / 1E18,2));
+		});
+	});
 
 
     // Active pagginarion
@@ -94,11 +105,21 @@ export const Borrow = () => {
 
 
     const Eth = [
-        { Collateral: 'CHC/ETH', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
+        { 
+            Collateral: 'CHC/ETH', 
+            borrow: eth_chcBalance, 
+            current_value: Utils.toFixedNoRounding(feed * eth_chcBalance, 2), 
+            borrow_value: eth_lend 
+        },
     ];
 
     const Dai = [
-        { Collateral: 'CHC/DAI', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
+        { 
+            Collateral: 'CHC/DAI', 
+            borrow: dai_chcBalance, 
+            current_value: Utils.toFixedNoRounding(dai_chcBalance * feed, 2), 
+            borrow_value: dai_lend
+        },
     ];
 
     return (
@@ -156,22 +177,20 @@ export const Borrow = () => {
 																</th> */}
                                                                 <th>Pool</th>
                                                                 <th>Borrow</th>
-                                                                <th>CHC Balance</th>
                                                                 <th>Current Value</th>
-                                                                <th>Borrow Value</th>
+                                                                <th>Available Loan(CHC)</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody className='text-white'>
-                                                                                                                       {Eth.map((item, index) => (
+                                                            {Eth.map((item, index) => (
                                                                 <tr key={index}>
                                                                     <td>{item.Collateral}</td>
-                                                                    <td>{item.Interest}</td>
-                                                                    <td>{item.LIQ}</td>
-                                                                    <td>{item.Utilization}</td>
-                                                                    <td>{item.Balance}</td>
+                                                                    <td>{item.borrow}</td>
+                                                                    <td>${item.current_value}</td>
+                                                                    <td>{item.borrow_value}</td>
                                                                     <td>
-                                                                        <Link to={"/accounts/loan/borrowchc"}>
+                                                                        <Link to={"/accounts/loan/borrowchc"} state={{collateral: "ETH"}}>
                                                                             <span className="badge cursor-pointer"
                                                                                 style={{
                                                                                     height: "22px",
@@ -187,7 +206,7 @@ export const Borrow = () => {
                                                                                     borderColor: "#846424",
                                                                                 }}>Borrow</span>
                                                                         </Link>
-                                                                        <Link to={"/accounts/loan/repay"}>
+                                                                        <Link to={"/accounts/loan/repay"} state={{collateral: "ETH"}} >
                                                                             <span className="badge cursor-pointer ml-2"
                                                                                 style={{
                                                                                     height: "22px",
@@ -207,10 +226,9 @@ export const Borrow = () => {
                                                             {Dai.map((item, index) => (
                                                                 <tr key={index}>
                                                                     <td>{item.Collateral}</td>
-                                                                    <td>{item.Interest}</td>
-                                                                    <td>{item.LIQ}</td>
-                                                                    <td>{item.Utilization}</td>
-                                                                    <td>{item.Balance}</td>
+                                                                    <td>{item.borrow}</td>
+                                                                    <td>${item.current_value}</td>
+                                                                    <td>{item.borrow_value}</td>
                                                                     {/* <td>
                                                                         <Link to={"/accounts/loan/dai"}>
                                                                             <span className="badge cursor-pointer"
@@ -228,7 +246,7 @@ export const Borrow = () => {
                                                                         </Link>
                                                                     </td> */}
                                                                     <td>
-                                                                        <Link to={"/accounts/loan/borrowchc"}>
+                                                                        <Link to={"/accounts/loan/borrowchc"} state={{collateral: "DAI"}}>
                                                                             <span className="badge cursor-pointer"
                                                                                 style={{
                                                                                     height: "22px",
@@ -244,7 +262,7 @@ export const Borrow = () => {
                                                                                     borderColor: "#846424",
                                                                                 }}>Borrow</span>
                                                                         </Link>
-                                                                        <Link to={"/accounts/loan/repay"}>
+                                                                        <Link to={"/accounts/loan/repay"} state={{collateral: "DAI"}}>
                                                                             <span className="badge cursor-pointer ml-2"
                                                                                 style={{
                                                                                     height: "22px",
