@@ -62,6 +62,7 @@ export const Liquidate = () => {
 			  window.location.reload();
 			}
 		  } catch (error) {
+            setLoading(false);
 			console.error('Error:', error);
 		  }
 	}

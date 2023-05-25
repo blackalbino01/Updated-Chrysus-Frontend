@@ -12,6 +12,8 @@ import { CHRYSUS, DAI } from '../../constant';
 import Modal from 'react-bootstrap/Modal';
 import { ConfirmationItem } from "../confirmation_item";
 import Utils from "../../utilities";
+import ERC20 from "../../abis/ERC20.json";
+import chrysus from "../../abis/Chrysus.json";
 
 
 
@@ -19,7 +21,6 @@ export const DAIDeposite = () => {
 	const [modalShow, setModalShow] = useState(false);
 	const [isApprove, setisApprove] = useState(false);
 	const [loading, setloading] = useState(false);
-	const { web3, contract, accounts, DAIContract } = useAppSelector((state) => state.web3Connect);
 	const [DAIamount, setDAIamount] = useState(0);
 	const [modalShows, setModalShows] = useState(false);
 	const [amount, setAmount] = useState(0);
@@ -31,46 +32,64 @@ export const DAIDeposite = () => {
 	}
 
 	const DAIApprove = async () => {
-		//setloading(true)
-		//setModalShow(true)
-		// if(isApprove === false){
 		try {
-			await DAIContract?.methods.approve(CHRYSUS, web3.utils.toWei(DAIamount, 'ether')).send({ from: accounts[0] })
-			.then(function(){
-				setloading(true)
-				setisApprove(true);
-			});
-			setloading(false);
-			//setModalShow(false);
+			const { ethereum } = window;
+	  
+			if (ethereum) {
+			  let chainId = await ethereum.request({ method: "eth_chainId" });
+			  console.log("Connecteds to chains " + chainId);
+			  const provider = new ethers.providers.Web3Provider(ethereum);
+			  const _signer = provider.getSigner();
+			  const token = new ethers.Contract(
+				DAI,
+				ERC20.abi,
+				_signer 
+				);
+					  
+			  let Txn = await token.approve(
+				CHRYSUS,
+				ethers.utils.parseUnits(String(DAIamount))
+			  );
+			  setloading(true);
+			  await Txn.wait();
+			  setloading(false);
+			  setisApprove(true)
+			  window.location.reload();
+			}
 		} catch (error) {
-			console.log("First Approve Error", error)
-			setModalShow(false)
+			setloading(false);
+		console.error('Error:', error);
 		}
 
 	}
 	console.log("DAI amount", DAIamount)
-	console.log("chrysus contract", contract)
 
 	const DepositDAICollateral = async () => {
-		//setloading(true)
-		//setModalShow(true)
 		try {
-			await contract?.methods.depositCollateral(DAI, web3.utils.toWei(DAIamount, 'ether'))
-				.send({ from: accounts[0] }).then(function (receipt) {
-					//console.log(receipt);
-					setloading(true);
-					/*alert(`You Have succefully minted Chrysus Coin,
-                See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);*/
-					//setloading(true)
-					//setisApprove(true);
-					//setModalShow(false);
-				});
-				setloading(false);
-
-			window.location.reload();
+			const { ethereum } = window;
+	  
+			if (ethereum) {
+			  let chainId = await ethereum.request({ method: "eth_chainId" });
+			  console.log("Connecteds to chains " + chainId);
+			  const provider = new ethers.providers.Web3Provider(ethereum);
+			  const _signer = provider.getSigner();
+			  const contract = new ethers.Contract(
+				CHRYSUS,
+				chrysus.abi,
+				_signer 
+				);
+					  
+			  let Txn = await contract.depositCollateral(
+				DAI,
+				ethers.utils.parseUnits(String(DAIamount))
+			  );
+			  setloading(true);
+			  await Txn.wait();
+			  setloading(false);
+			}
 		} catch (error) {
-			console.log("Send DAI Error", error)
-			setModalShow(false)
+			setloading(false);
+		console.error('Error:', error);
 		}
 	}
 

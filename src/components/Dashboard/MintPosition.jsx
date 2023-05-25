@@ -101,10 +101,7 @@ export const MintPosition = () => {
 		settest(i);
 	};
 
-	
-	const Dais = [
-		{ Pool: 'DAI', Borrow: '267', Value: "$152.7", liquidation: "123" },
-	];
+
 	return (
 		<Section>
 			<div className="row">

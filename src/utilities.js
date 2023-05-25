@@ -9,15 +9,15 @@ import { DAI, ETH } from "./constant";
 
 
 const PROVIDER = "https://rpc.sepolia.org";
-const LOAN = "0x5b3601c9b113bd4b9e51E6E5e2477c498dFf6e7D";
-const CHRYSUS = "0xc092e6FBae748162B23584cbAc4F03437596B760";
-const GOVERNANCE = "0x968976D1a1f1E45e290Ad8E30E10Eec3c7e6A6f5";
+const LOAN = "0x4254F2Fe8c0113E20906f343e6439Fbdf5BAC4C1";
+const CHRYSUS = "0xb96FF280D8fc4D416fFfACf362917af6425a978e";
+const GOVERNANCE = "0xb797A1F78aC53a7e8ece0E76ccdbF95b27b25AcB";
 const SWAP = "0xAd0353208Ea03736469bcA4d26593C24f4255cD2";
 const oracleDAI = "0x14866185B1962B63C3Ea9E03Bc1da838bab34C19";
 const oracleETH = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
-const oracleCHC = "0x844313B43f751adfaA749dc2005BbeE3F0C8F068";
+const oracleCHC = "0x8dD1B31E9C1bD58Ca47db6Db6d22A3EE00026766";
 const oracleXAU = "0xC5981F461d74c46eB4b0CF3f4Ec79f025573B0Ea";
-const stake = "0xEcbA3b5d9aF813c72C45Fc2fCf271024Dd882A2e";
+const stake = "0x581270AC3d86d65685B7EbF9C3F67fa75b6B769A";
 const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
 const chrysusContract = new ethers.Contract(
     CHRYSUS,

@@ -12,12 +12,14 @@ import { CCheckbox } from "../inputs/ccheckbox";
 import { ConfirmationItem } from "../confirmation_item";
 import { Button, Util } from "reactstrap";
 import Utils from "../../utilities";
+import chrysus from "../../abis/Chrysus.json";
+import { CHRYSUS, ETH } from '../../constant';
 
 export const ETHDeposite = () => {
-    const { web3, contract, accounts, socketContract } = useAppSelector((state) => state.web3Connect);
     const [ethamount, setethamount] = useState(0);
     const [modalShow, setModalShow] = useState(false);
     const [amount, setAmount] = useState(0);
+    const [loading, setloading] = useState(false);
 
 
     useEffect(() => {
@@ -29,25 +31,34 @@ export const ETHDeposite = () => {
 
     const DepositCollateral = async () => {
         try {
-            let valueToSend = web3.utils.toWei(ethamount, 'ether');
-            let zeroAddress = "0x0000000000000000000000000000000000000000"
-            await contract?.methods.depositCollateral(zeroAddress, valueToSend)
-                .send({ from: accounts[0], value: valueToSend }).then(function (receipt) {
-                    console.log(receipt);
-                    alert(`You Have succefully minted Chrysus Coin,
-                See transaciton in https://sepolia.etherscan.io/tx/${receipt.transactionHash}`);
-                });
-
-            window.location.reload();
-
-        } catch (error) {
-            console.log("Send Eth Error", error)
-        }
+			const { ethereum } = window;
+	  
+			if (ethereum) {
+			  let chainId = await ethereum.request({ method: "eth_chainId" });
+			  console.log("Connecteds to chains " + chainId);
+			  const provider = new ethers.providers.Web3Provider(ethereum);
+			  const _signer = provider.getSigner();
+			  const contract = new ethers.Contract(
+				CHRYSUS,
+				chrysus.abi,
+				_signer 
+				);
+					  
+			  let Txn = await contract.depositCollateral(
+				ETH,
+				ethers.utils.parseUnits(String(ethamount)), {from: _signer.address , value : ethers.utils.parseUnits(String(ethamount))}
+			  );
+			  setloading(true);
+			  await Txn.wait();
+			  setloading(false);
+              window.location.reload();
+			}
+		} catch (error) {
+			setloading(false);
+		console.error('Error:', error);
+		}
     }
 
-    console.log("eth amount", ethamount)
-    console.log("contract", contract)
-    console.log("web3", web3)
     return (
         <>
             <div className="d-flex justify-content-center">
@@ -189,7 +200,7 @@ export const ETHDeposite = () => {
                                                             // onClick={() => setShowModal(false)}
                                                             onClick={() => DepositCollateral()}
                                                             >
-                                                               Deposit
+                                                               {loading ? "Processing..." : "Deposit"}
                                                             </button>
                                                         </div>
                                                     </div>
