@@ -38,6 +38,7 @@ import { Liquidate } from './components/Dashboard/Liquidate';
 import { MintPosition } from './components/Dashboard/MintPosition';
 import { Withdraw } from './components/Dashboard/withdraw';
 import { WthdrawLending } from './components/chcform/wthdrawLending';
+import ScrollToTop from './components/ScrolltoTop';
 const Home = lazy(() => import('./components/Home'));
 
 const App = () => {
@@ -115,6 +116,7 @@ const App = () => {
             <Footer />
           </div>
         </div> */}
+         <ScrollToTop/>
       </BrowserRouter>
     </div>
   )

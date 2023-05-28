@@ -36,7 +36,7 @@ const navigates = async () => {
 
 const Ecosystems = () => {
     return (
-        <>
+        <div>
             <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
                     <Navbar />
@@ -109,7 +109,7 @@ const Ecosystems = () => {
                     <Footer />
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

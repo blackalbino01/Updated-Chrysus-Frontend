@@ -114,7 +114,7 @@ export const footerLinks = [
     links: [
       {
         name: "Governance",
-        path: "/governance",
+        path: "/ecosystems",
       },
       {
         name: "FAQ",
