@@ -70,7 +70,7 @@ const CreateProposal = () => {
             <div>
                 <Tab.Container defaultActiveKey="Navbuy">
                     <div className="row">
-                        <div className="col-xl-3">
+                        {/* <div className="col-xl-3">
                             <div className="card"
                                 style={{
                                     backgroundColor: "#211f21",
@@ -131,8 +131,8 @@ const CreateProposal = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-xl-9">
+                        </div> */}
+                        <div className="col-xl-12">
                             <div className="card"
                                 style={{
                                     backgroundColor: "#211f21",

@@ -94,11 +94,10 @@ const chageData = (frist, sec) => {
     console.log("addrees of wallet", addrees);
 
     return (
-        <Section>
             <div>
                 <Tab.Container defaultActiveKey="Navbuy">
                     <div className="row">
-                        <div className="col-xl-3">
+                        {/* <div className="col-xl-3">
                             <div className="card"
                                 style={{
                                     backgroundColor: "#211f21",
@@ -158,8 +157,8 @@ const chageData = (frist, sec) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-xl-9">
+                        </div> */}
+                        <div className="col-xl-12">
                             <div className="card"
                                 style={{
                                     backgroundColor: "#211f21",
@@ -472,7 +471,6 @@ const chageData = (frist, sec) => {
                     </div>
                 </Tab.Container>
             </div>
-        </Section >
     )
 }
 export default Staking;
