@@ -28,7 +28,6 @@ const DaoLandPage = () => {
                         <Tab.Container defaultActiveKey="Navbuy">
                             <div className={`${styles.flexCenter}`}>
                                 {/* <div className="buy-sell"> */}
-                                {/* nav-tabs */}
                                     <Nav className="nav nav-tabs" eventKey="nav-tab2">
                                         <Nav.Link  style={{ color: "#846424", fontSize:"20px" }} as="button" className="nav-link" eventKey="Navbuy" type="button">Overview</Nav.Link>
                                         <Nav.Link  style={{ color: "#846424",fontSize:"20px"  }} as="button" className="nav-link" eventKey="Navstake" type="button">Staking</Nav.Link>
