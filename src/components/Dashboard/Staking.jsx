@@ -9,15 +9,35 @@ import { useAppDispatch, useAppSelector } from '../../reducer/store';
 // import Utils from "../../../utilities";
 import styled from "styled-components";
 import { Button } from 'react-bootstrap';
-
+import { ethers } from "ethers";
+import Utils from "../../utilities";
+import stake from "../../utilities";
+import { MockStabilityModule, CHRYSUS, GOVERNANCE } from "../../constant"
+import { StakeABI } from "../../abis/MockStabilityModule";
+// const oracleCHC = "0x8dD1B31E9C1bD58Ca47db6Db6d22A3EE00026766";
+// const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
+// import mockOracle from "../../abis/MockOracle.json";
+// import chrysus from "../../abis/Chrysus.json";
+import governance from "../../abis/Governance.json";
 
 
 const Staking = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch()
     const [currentLink, setCurrentLink] = useState(1);
-    const { web3, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
+    const { web3, accounts } = useAppSelector((state) => state.web3Connect);
     const [action, setaction] = useState({});
+    // const [loading, setloading] = useState(false);
+    const [Stakeamount, setStakeamount] = useState(0);
+    const [TotalStake, setTotalStake] = useState(0);
+    const [GovernanceStakeamount, setGovernanceStakeamount] = useState(0);
+    const [start, setstart] = useState();
+    const [endDate, setendDate] = useState();
+    const [chcBalance, setchcBalance] = useState(0);
+    const [chcFeed, setChcFeed] = useState(0);
+    const [isApprove, setisApprove] = useState(false);
+    const [CheckToken, setCheckToken] = useState({});
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState(
         document.querySelectorAll("#status_wrapper tbody tr")
     );
@@ -27,36 +47,36 @@ const Staking = () => {
 
     console.log("Proposal action", action)
 
-// Active data
-const chageData = (frist, sec) => {
-    for (var i = 0; i < data.length; ++i) {
-        if (i >= frist && i < sec) {
-            data[i].classList.remove("d-none");
-        } else {
-            data[i].classList.add("d-none");
+    // Active data
+    const chageData = (frist, sec) => {
+        for (var i = 0; i < data.length; ++i) {
+            if (i >= frist && i < sec) {
+                data[i].classList.remove("d-none");
+            } else {
+                data[i].classList.add("d-none");
+            }
         }
-    }
-};
-    	// use effect
-	useEffect(() => {
-		setData(document.querySelectorAll("#status_wrapper tbody tr"));
-		//chackboxFun();
-	}, [test]);
+    };
+    // use effect
+    useEffect(() => {
+        setData(document.querySelectorAll("#status_wrapper tbody tr"));
+        //chackboxFun();
+    }, [test]);
 
 
-	// Active pagginarion
-	activePag.current === 0 && chageData(0, sort);
-	// paggination
-	let paggination = Array(Math.ceil(data.length / sort))
-		.fill()
-		.map((_, i) => i + 1);
+    // Active pagginarion
+    activePag.current === 0 && chageData(0, sort);
+    // paggination
+    let paggination = Array(Math.ceil(data.length / sort))
+        .fill()
+        .map((_, i) => i + 1);
 
-	// Active paggination & chage data
-	const onClick = (i) => {
-		activePag.current = i;
-		chageData(activePag.current * sort, (activePag.current + 1) * sort);
-		settest(i);
-	};
+    // Active paggination & chage data
+    const onClick = (i) => {
+        activePag.current = i;
+        chageData(activePag.current * sort, (activePag.current + 1) * sort);
+        settest(i);
+    };
 
 
     // Account Switching
@@ -73,31 +93,108 @@ const chageData = (frist, sec) => {
         navigate("/accounts/governance")
     }
 
-    const DisconnectWallet = async () => {
-        if (window.ethereum) {
-            localStorage.clear();
-            if (Provider.isMetaMask) {
-                Provider._handleDisconnect();
-                web3.setProvider(null);
-                if (addrees !== null) {
-                    localStorage.clear();
-                }
+
+    const StakeCHC = async () => {
+        try {
+            const { ethereum } = window;
+
+            if (ethereum) {
+                let chainId = await ethereum.request({ method: "eth_chainId" });
+                console.log("Connecteds to chains " + chainId);
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const _signer = provider.getSigner();
+                const Stakecontract = new ethers.Contract(
+                    MockStabilityModule,
+                    StakeABI,
+                    _signer
+                );
+                const GovernanceContract = new ethers.Contract(
+                    GOVERNANCE,
+                    governance.abi,
+                    _signer
+                );
+                let Txn = await GovernanceContract.approve(
+                    MockStabilityModule, ethers.utils.parseUnits(String(Stakeamount)));
+                setLoading(true);
+                await Txn.wait();
+                Txn = await Stakecontract.stake(ethers.utils.parseUnits(String(Stakeamount)));
+                await Txn.wait();
+                setLoading(false);
+                console.log('stake successfully!');
+                // window.location.reload();
             }
-            if (Provider.connected) {
-                Provider.disconnect();
-                web3.setProvider(null)
-            }
+        } catch (error) {
+            setLoading(false);
+            console.error('Error:', error);
         }
-    };
+    }
+
+    console.log("Governace Stake value:", GovernanceStakeamount)
+    console.log("Stake value:", TotalStake)
+    console.log("Start Dtae:", start)
+    console.log("end Dtae:", endDate)
+
+
+    useEffect(() => {
+        const fetchGovernanceStake = async () => {
+            try {
+                const { ethereum } = window;
+                if (ethereum) {
+                    let chainId = await ethereum.request({ method: "eth_chainId" });
+                    console.log("Connecteds to chains " + chainId);
+                    const provider = new ethers.providers.Web3Provider(ethereum);
+                    const _signer = provider.getSigner();
+                    const contract = new ethers.Contract(
+                        MockStabilityModule,
+                        StakeABI,
+                        _signer
+                    );
+                    let GovStake = await contract.getGovernanceStake(accounts[0]);
+                    !GovernanceStakeamount & setGovernanceStakeamount((Number(GovStake.amount)).toFixed(2));
+                    setstart(new Date(GovStake.startTime).toDateString());
+                    setendDate(new Date(GovStake.endTime).toDateString());
+
+                    // {new Date(blogs.createdAt).toDateString()}
+                    // startTime
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        const fetchTotalStake = async () => {
+            try {
+                const { ethereum } = window;
+                if (ethereum) {
+                    let chainId = await ethereum.request({ method: "eth_chainId" });
+                    console.log("Connecteds to chains " + chainId);
+                    const provider = new ethers.providers.Web3Provider(ethereum);
+                    const _signer = provider.getSigner();
+                    const contract = new ethers.Contract(
+                        MockStabilityModule,
+                        StakeABI,
+                        _signer
+                    );
+                    let Stake = await contract.getTotalPoolAmount();
+                    !TotalStake & setTotalStake((Number(Stake)).toFixed(2));
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchGovernanceStake();
+        fetchTotalStake();
+        Utils.getUserBalance(addrees, "CHC").then(function (data) {
+            setchcBalance(Number(data) / 1E18);
+        });
+    }, [ethereum])
 
     const addrees = localStorage.getItem("accounts")
-    console.log("addrees of wallet", addrees);
 
     return (
-            <div>
-                <Tab.Container defaultActiveKey="Navbuy">
-                    <div className="row">
-                        {/* <div className="col-xl-3">
+        <div>
+            <Tab.Container defaultActiveKey="Navbuy">
+                <div className="row">
+                    {/* <div className="col-xl-3">
                             <div className="card"
                                 style={{
                                     backgroundColor: "#211f21",
@@ -158,62 +255,56 @@ const chageData = (frist, sec) => {
                                 </div>
                             </div>
                         </div> */}
-                        <div className="col-xl-12">
-                            <div className="card"
-                                style={{
-                                    backgroundColor: "#211f21",
-                                    borderRadius: "16px",
-                                    color: "#846424",
-                                }}>
-                                <div className="card-body pt-4">
-                                    <div className="w-100">
-                                        <div className="d-flex flex-row align-items-center justify-content-between mb-4">
-                                            <H4>Staking Dashboard</H4>
-                                        </div>
-                                        <div className="card"
-                                            style={{
-                                                backgroundColor: "#121112",
-                                                borderRadius: "16px",
-                                                color: "#846424",
-                                            }}>
-                                            <div className="card-body">
-                                                <div className="row sp20 mb-4 align-items-center">
-                                                    <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
-                                                        <div className="px-1 info-group">
-                                                            <p className="fs-10 mb-1">WALLET <br />BALANCE</p>
-                                                            <h2 className="fs-10 font-w400 text-white">
-                                                                90.00
-                                                            </h2>
-                                                        </div>
-                                                        <div className="px-1 info-group">
-                                                            <p className="fs-10 mb-1" >CURRENT STAKED <br />AMOUNT</p>
-                                                            <h3 className="fs-10 font-w400 text-white">
-                                                                00.0
-                                                            </h3>
-                                                        </div>
-                                                        <div className="px-1 info-group">
-                                                            <p className="fs-10 mb-1">REAL TIME <br />ACCRUALS</p>
-                                                            <h3 className="fs-10 font-w400 text-white">
-                                                                0.00
-                                                            </h3>
-                                                        </div>
-                                                        <div className="px-1 info-group">
-                                                            <p className="fs-10 mb-1">TOTAL STAKED <br /> AMOUNT</p>
-                                                            <h3 className="fs-10 font-w300 text-white">
-                                                                0.00
-                                                            </h3>
-                                                        </div>
+                    <div className="col-xl-12">
+                        <div className="card"
+                            style={{
+                                backgroundColor: "#211f21",
+                                borderRadius: "16px",
+                                color: "#846424",
+                            }}>
+                            <div className="card-body pt-4">
+                                <div className="w-100">
+                                    <div className="d-flex flex-row align-items-center justify-content-between mb-4">
+                                        <H4>Staking Dashboard</H4>
+                                    </div>
+                                    <div className="card"
+                                        style={{
+                                            backgroundColor: "#121112",
+                                            borderRadius: "16px",
+                                            color: "#846424",
+                                        }}>
+                                        <div className="card-body">
+                                            <div className="row sp20 mb-4 align-items-center">
+                                                <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
+                                                    <div className="px-1 info-group">
+                                                        <p className="fs-10 mb-1">WALLET <br />BALANCE</p>
+                                                        <h2 className="fs-10 font-w400 text-white">
+                                                            {chcBalance.toFixed(2)}
+                                                        </h2>
+                                                    </div>
+                                                    <div className="px-1 info-group">
+                                                        <p className="fs-10 mb-1" >CURRENT STAKED <br />AMOUNT</p>
+                                                        <h3 className="fs-10 font-w400 text-white">
+                                                            {GovernanceStakeamount}
+                                                        </h3>
+                                                    </div>
+                                                    <div className="px-1 info-group">
+                                                        <p className="fs-10 mb-1">TOTAL POOL<br /> STAKED</p>
+                                                        <h3 className="fs-10 font-w300 text-white">
+                                                            {TotalStake}
+                                                        </h3>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {/* <div className="input-group">
+                                    </div>
+                                    {/* <div className="input-group">
                                             <select className=''
                                                 style={{
                                                     backgroundColor: "#1A1917",
                                                     color: "#846424",
                                                 }}
-                                                onChange={(e) => setaction(e.target.value)}
+                                                // onChange={(e) => setaction(e.target.value)}
                                             >
                                                 <option value="">Select Proposal Action</option>
                                                 <option value="Contract Burn" >Contract Burn</option>
@@ -222,28 +313,28 @@ const chageData = (frist, sec) => {
                                                 <option value="Sell Investment">Sell Investment</option>
                                             </select>
                                         </div> */}
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xl-12">
-                            <div className="card"
-                                style={{
-                                    backgroundColor: "#211f21",
-                                    borderRadius: "16px",
-                                    color: "#846424",
-                                }}>
-                                <div>
-                                    <div className="card-body">
-                                        <div className="card"
-                                            style={{
-                                                backgroundColor: "#121112",
-                                                borderRadius: "16px",
-                                                color: "#846424",
-                                            }}>
-                                            <h4 className='text-center mt-5'>Lock Tokens For</h4>
-                                            <div className='card-body'>
-                                                <div className="input-group mt-4" style={{
+                    </div>
+                    <div className="col-xl-12">
+                        <div className="card"
+                            style={{
+                                backgroundColor: "#211f21",
+                                borderRadius: "16px",
+                                color: "#846424",
+                            }}>
+                            <div>
+                                <div className="card-body">
+                                    <div className="card"
+                                        style={{
+                                            backgroundColor: "#121112",
+                                            borderRadius: "16px",
+                                            color: "#846424",
+                                        }}>
+                                        <h2 className='text-center mt-5'>Lock Tokens</h2>
+                                        <div className='card-body'>
+                                            {/* <div className="input-group mt-4" style={{
                                                     backgroundColor: "#1A1917",
                                                     color: "#846424",
                                                 }}>
@@ -258,11 +349,11 @@ const chageData = (frist, sec) => {
                                                         backgroundColor: "#1A1917",
                                                         color: "#846424",
                                                     }} className="input-group-text">
-                                                        {/* <img loading="lazy" src={Chrysus} alt="meta" /> */}
+                                                        <img loading="lazy" src={Chrysus} alt="meta" />
                                                         <a>Max</a>
                                                     </span>
-                                                </div>
-                                                <div className="card-body">
+                                                </div> */}
+                                            {/* <div className="card-body">
                                                     <div className="row sp20 mb-4 align-items-center">
                                                         <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
                                                             <div className="px-1 info-group">
@@ -299,7 +390,7 @@ const chageData = (frist, sec) => {
                                                                         }}
                                                                         // onClick={() => ProposalButton()}
                                                                         className=" font-thin
-                                                        rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+                                                                         rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
                                                                         <a>3 Month</a>
                                                                     </Button>
                                                                 </div>
@@ -326,28 +417,30 @@ const chageData = (frist, sec) => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="input-group mt-4" style={{
+                                                </div> */}
+                                            <div className="input-group mt-4" style={{
+                                                backgroundColor: "#1A1917",
+                                                color: "#846424",
+                                            }}>
+                                                <input type="number" className="form-control"
+                                                    style={{
+                                                        backgroundColor: "#1A1917",
+                                                        borderRadius: "6px",
+                                                        color: "#846424",
+                                                    }}
+                                                    onChange={(e) => setStakeamount(e.target.value)}
+                                                    placeholder="0.00" />
+                                                <span style={{
                                                     backgroundColor: "#1A1917",
                                                     color: "#846424",
-                                                }}>
-                                                    <input type="number" className="form-control"
-                                                        style={{
-                                                            backgroundColor: "#1A1917",
-                                                            borderRadius: "6px",
-                                                            color: "#846424",
-                                                        }}
-                                                        placeholder="0.00" />
-                                                    <span style={{
-                                                        backgroundColor: "#1A1917",
-                                                        color: "#846424",
-                                                    }} className="input-group-text">
-                                                        <img loading="lazy" src={Chrysus} alt="meta" />
+                                                }} className="input-group-text">
+                                                    <img loading="lazy" src={Chrysus} alt="meta" />
 
-                                                    </span>
-                                                </div>
+                                                </span>
                                             </div>
-                                            <div className="text-center mb-5">
+                                        </div>
+                                        <div className="text-center mb-5">
+                                            {/* {isApprove === false ? (
                                                 <Button
                                                     type="button"
                                                     style={{
@@ -359,118 +452,214 @@ const chageData = (frist, sec) => {
                                                         fontWeight: "700",
                                                         fontSize: "15px",
                                                     }}
-                                                    // onClick={() => ProposalButton()}
+                                                    onClick={() => CHCApprove()}
                                                     className=" font-thin
-                                                        rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+                                                   rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
                                                     <a>Stake</a>
                                                 </Button>
-                                            </div>
+                                            ) : (
+                                                <Button
+                                                    type="button"
+                                                    style={{
+                                                        backgroundColor: "#1A1917",
+                                                        borderRadius: "16px",
+                                                        color: "#846424",
+                                                        height: "32px",
+                                                        width: "180px",
+                                                        fontWeight: "700",
+                                                        fontSize: "15px",
+                                                    }}
+                                                    onClick={() => StakeCHC()}
+                                                    className=" font-thin
+                                                        rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+                                                    <a>Confirm</a>
+                                                </Button>
+                                            )} */}
+                                            <Button
+                                                type="button"
+                                                style={{
+                                                    backgroundColor: "#1A1917",
+                                                    borderRadius: "16px",
+                                                    color: "#846424",
+                                                    height: "32px",
+                                                    width: "180px",
+                                                    fontWeight: "700",
+                                                    fontSize: "15px",
+                                                }}
+                                                onClick={() => StakeCHC()}
+                                                className=" font-thin
+                                                        rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+                                                <a>Stake</a>
+                                            </Button>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xl-12">
-                            <div className="card"
-                                style={{
-                                    backgroundColor: "#211f21",
-                                    borderRadius: "16px",
-                                    color: "#846424",
-                                }}>
-                                <Tab.Container defaultActiveKey="All">
-                                    <div className="card-header border-0 pb-2 flex-wrap">
-                                        <h4 className="heading ">Your Stakes</h4>
-                                    </div>
-                                    <div className="card-body pt-0 pb-0">
-                                        <Tab.Content >
-                                            <Tab.Pane eventKey="All">
-                                                <div className="table-responsive dataTabletrade ">
-                                                    <div id="status_wrapper" className="dataTables_wrapper no-footer">
-                                                        <table id="example" className="table display dataTable no-footer" style={{ minWidth: "845px" }}>
-                                                            <thead>
-                                                                <tr className='text-white'>
-                                                                    <th>Staked</th>
-                                                                    <th>REWARD</th>
-                                                                    <th>WITHDRAWAL TIME</th>
-                                                                    <th>UNSTAKE</th>
-                                                                    <th className="text-end">WITHDRAW </th>
-                                                                </tr>
-                                                            </thead>
+                    </div>
+                    <div className="col-xl-12">
+                        <div className="card"
+                            style={{
+                                backgroundColor: "#211f21",
+                                borderRadius: "16px",
+                                color: "#846424",
+                            }}>
+                            <Tab.Container defaultActiveKey="All">
+                                <div className="card-header border-0 pb-2 flex-wrap">
+                                    <h4 className="heading ">Your Stakes</h4>
+                                </div>
+                                <div className="card-body pt-0 pb-0">
+                                    <Tab.Content >
+                                        <Tab.Pane eventKey="All">
+                                            <div className="table-responsive dataTabletrade ">
+                                                <div id="status_wrapper" className="dataTables_wrapper no-footer">
+                                                    <table id="example" className="table display dataTable no-footer" style={{ minWidth: "845px" }}>
+                                                        <thead>
+                                                            <tr className='text-white'>
+                                                                <th>Staked</th>
+                                                                <th>REWARD</th>
+                                                                <th>WITHDRAWAL Date</th>
+                                                                <th>UNSTAKE</th>
+                                                                <th>WITHDRAW </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div
+                                                                        style={{
+                                                                            fontStyle: "normal",
+                                                                            fontWeight: "400",
+                                                                            fontSize: "12px",
+                                                                            lineHeight: "15px",
+                                                                            color: "#FFFFFF",
+                                                                        }}
+                                                                    >
+                                                                        {GovernanceStakeamount}
+                                                                    </div>                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        style={{
+                                                                            fontStyle: "normal",
+                                                                            fontWeight: "400",
+                                                                            fontSize: "12px",
+                                                                            lineHeight: "15px",
+                                                                            color: "#FFFFFF",
+                                                                        }}
+                                                                    >
+                                                                        0.00
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        style={{
+                                                                            fontStyle: "normal",
+                                                                            fontWeight: "400",
+                                                                            fontSize: "12px",
+                                                                            lineHeight: "15px",
+                                                                            color: "#FFFFFF",
+                                                                        }}
+                                                                    >
+                                                                        {/* {endDate} */}
+                                                                        30 Days
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        style={{
+                                                                            fontStyle: "normal",
+                                                                            fontWeight: "400",
+                                                                            fontSize: "12px",
+                                                                            lineHeight: "15px",
+                                                                            color: "#FFFFFF",
+                                                                        }}
+                                                                    >
+                                                                        0.00
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <Link to={"/accounts/withdrawstake"}>
+                                                                        <span className="badge cursor-pointer"
+                                                                            style={{
+                                                                                height: "22px",
+                                                                                width: "80px",
+                                                                                color: "#846424",
+                                                                                textTransform: "uppercase",
+                                                                                fontStyle: "normal",
+                                                                                fontWeight: "700",
+                                                                                fontSize: "10px",
+                                                                                backgroundColor: "#1A1917",
+                                                                                borderRadius: "16px",
+                                                                                border: "1px solid transparent",
+                                                                                borderColor: "#846424",
 
-                                                        </table>
-                                                        <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
-                                                            <div className="dataTables_info">
-                                                                Showing {activePag.current * sort + 1} to{" "}
-                                                                {data.length > (activePag.current + 1) * sort
-                                                                    ? (activePag.current + 1) * sort
-                                                                    : data.length}{" "}
-                                                                of {data.length} entries
-                                                            </div>
-                                                            <div
-                                                                className="dataTables_paginate paging_simple_numbers mb-0"
-                                                                id="application-tbl1_paginate"
-                                                            >
-                                                                <Link
-                                                                    className="paginate_button previous text-white mt-2"
-                                                                    // to="/future"
-                                                                    // style={{
-                                                                    // 	backgroundColor: "#757375",
-                                                                    // 	borderRadius: "16px",
-                                                                    // }}
-                                                                    onClick={() =>
-                                                                        activePag.current > 0 &&
-                                                                        onClick(activePag.current - 1)
-                                                                    }
-                                                                >
-                                                                    {/* <i className="fa fa-angle-double-left" ></i> */}
-                                                                    <i>
-                                                                        <svg style={{ width: "20px", height: "20px", marginTop: "12" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
-                                                                    </i>
-                                                                </Link>
-                                                                <span className='text-white'>
-                                                                    {paggination.map((number, i) => (
-                                                                        <Link
-                                                                            key={i}
-                                                                            // to="/future"
-                                                                            className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                                                                } `}
-                                                                            onClick={() => onClick(i)}
-                                                                        >
-                                                                            {number}
-                                                                        </Link>
-                                                                    ))}
-                                                                </span>
-
-                                                                <Link
-                                                                    className="paginate_button next text-white mt-2"
-                                                                    // to="/future"
-                                                                    // style={{
-                                                                    // 	backgroundColor: "#757375",
-                                                                    // 	borderRadius: "16px",
-                                                                    // }}
-                                                                    onClick={() =>
-                                                                        activePag.current + 1 < paggination.length &&
-                                                                        onClick(activePag.current + 1)
-                                                                    }
-                                                                >
-                                                                    {/* <i className="fa fa-angle-double-right" ></i> */}
-                                                                    <i>
-                                                                        <svg style={{ width: "20px", height: "20px", marginTop: "10" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
-                                                                    </i>
-                                                                </Link>
-                                                            </div>
+                                                                            }}>Withdraw</span>
+                                                                    </Link>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
+                                                        {/* <div className="dataTables_info">
+                                                            Showing {activePag.current * sort + 1} to{" "}
+                                                            {data.length > (activePag.current + 1) * sort
+                                                                ? (activePag.current + 1) * sort
+                                                                : data.length}{" "}
+                                                            of {data.length} entries
                                                         </div>
+                                                        <div
+                                                            className="dataTables_paginate paging_simple_numbers mb-0"
+                                                            id="application-tbl1_paginate"
+                                                        >
+                                                            <Link
+                                                                className="paginate_button previous text-white mt-2"
+                                                                onClick={() =>
+                                                                    activePag.current > 0 &&
+                                                                    onClick(activePag.current - 1)
+                                                                }
+                                                            >
+                                                                <i>
+                                                                    <svg style={{ width: "20px", height: "20px", marginTop: "12" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
+                                                                </i>
+                                                            </Link>
+                                                            <span className='text-white'>
+                                                                {paggination.map((number, i) => (
+                                                                    <Link
+                                                                        key={i}
+                                                                        className={`paginate_button  ${activePag.current === i ? "current" : ""
+                                                                            } `}
+                                                                        onClick={() => onClick(i)}
+                                                                    >
+                                                                        {number}
+                                                                    </Link>
+                                                                ))}
+                                                            </span>
+
+                                                            <Link
+                                                                className="paginate_button next text-white mt-2"
+                                                                onClick={() =>
+                                                                    activePag.current + 1 < paggination.length &&
+                                                                    onClick(activePag.current + 1)
+                                                                }
+                                                            >
+                                                                <i>
+                                                                    <svg style={{ width: "20px", height: "20px", marginTop: "10" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
+                                                                </i>
+                                                            </Link>
+                                                        </div> */}
                                                     </div>
                                                 </div>
-                                            </Tab.Pane>
-                                        </Tab.Content>
-                                    </div>
-                                </Tab.Container>
-                            </div>
+                                            </div>
+                                        </Tab.Pane>
+                                    </Tab.Content>
+                                </div>
+                            </Tab.Container>
                         </div>
                     </div>
-                </Tab.Container>
-            </div>
+                </div>
+            </Tab.Container>
+        </div>
     )
 }
 export default Staking;
