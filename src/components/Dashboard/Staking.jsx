@@ -518,10 +518,10 @@ const Staking = () => {
                                                         <thead>
                                                             <tr className='text-white'>
                                                                 <th>Staked</th>
-                                                                <th>REWARD</th>
-                                                                <th>WITHDRAWAL Date</th>
-                                                                <th>UNSTAKE</th>
-                                                                <th>WITHDRAW </th>
+                                                                <th>Reward</th>
+                                                                <th>Withdrawal Date</th>
+                                                                <th>UnStake</th>
+                                                                <th>Withdraw </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
