@@ -18,7 +18,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
     // }}
     className={`flex flex-row p-6  items-center py-[6px] px-4 rounded-[12px] ${index !== Service.length - 1 ? "mb-6" : "mb-0"} feature-card`}>
         <div
-        className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter}`}
+        className={`w-[40px] h-[40px] rounded-full ${styles.flexCenter}`}
         style={{background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",}}
         >
             <img loading="lazy" src={icon} alt="star" className="w-[50%] h-[50%] object-contain" />
