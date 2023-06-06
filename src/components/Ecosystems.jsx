@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { EcosystemImage, pic6, pic3, pic4, pic5, G1,G2,G3,G4 } from '../assets'
+import { EcosystemImage, pic6, pic3, pic4, pic5, G1, G2, G3, G4, walet1, meta1, } from '../assets'
 import Navbar from './Navbar'
 import styles from "../style";
 import Footer from './Footer';
 import { Button } from 'react-bootstrap';
-import {useAppSelector } from '../reducer/store';
-
+import { useAppDispatch, useAppSelector } from '../reducer/store';
+import { updatAccount } from '../slices/web3ContractSlice';
+import { Body, H4, P } from "./typography";
 
 const ImageBox = ({ image, changeClass }) => {
     const { web3, balance, contract, accounts, socketContract, Provider, status } = useAppSelector((state) => state.web3Connect);
@@ -24,17 +25,33 @@ const ImageBox = ({ image, changeClass }) => {
 
 const navigates = async () => {
     if (window.ethereum) {
-      if (web3) {
- 
-      }
-      if (Provider.connected) {
-        Provider.disconnect();
-        web3.setProvider(null)
-      }
+        if (web3) {
+
+        }
+        if (Provider.connected) {
+            Provider.disconnect();
+            web3.setProvider(null)
+        }
     }
-  };
+};
+
+
 
 const Ecosystems = () => {
+    const dispatch = useAppDispatch();
+    const [modalShow, setModalShow] = useState(false);
+    const [modalShows, setModalShows] = useState(false);
+    const [navi, setnavi] = useState(false);
+    // Account Switching
+    useEffect(() => {
+        if (window.ethereum) {
+            window.ethereum.on('accountsChanged', async (data) => {
+                dispatch(updatAccount(data));
+                console.log("updated Account", data);
+            })
+        }
+    })
+    const addrees = localStorage.getItem("accounts")
     return (
         <div>
             <div className={`${styles.paddingX} ${styles.flexCenter}`}>
@@ -86,17 +103,99 @@ const Ecosystems = () => {
                                         }}>Get Started with ChrysusDAO</h2>
                                         <p className="m-0 lh-base">ChrysusDAO was founded with a simple mission of making everyone a part of a fair and inclusive Chrysus ecosystem</p>
                                     </div>
+                                    {addrees !== null ? (
+                                        <Link to={"/accounts/governance"} className="btn btn-lg btn-primary btn-shadow"
+                                            style={{
+                                                backgroundColor: "#211f21",
+                                                borderRadius: "16px",
+                                                color: "#846424",
+                                            }}
+                                            onClick={() => setModalShows(true)}
+                                        >
+                                            {/* <Button>ChysusDAO</Button> */}
+                                            ChysusDAO
+                                        </Link>
+                                    ) :
+                                        <>
+                                            <Button className="btn btn-lg btn-primary btn-shadow"
+                                                data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                                style={{
+                                                    backgroundColor: "#211f21",
+                                                    borderRadius: "16px",
+                                                    color: "#846424",
+                                                }}
+                                                onClick={() => setModalShows(true)} >
+                                                ChysusDAO
+                                            </Button>
+                                            {modalShows ? (
+                                                <>
+                                                    <div
+                                                        onClick={() => setModalShows(false)}
+                                                        className="justify-center bg-black items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                                                        style={{
+                                                            // paddingLeft:"220px"
+                                                            // background:""
+                                                            opacity: "0.9"
+                                                        }}>
+                                                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                                            <div className="border-0 relative flex flex-col w-full outline-none focus:outline-none">
+                                                                <div className="flex items-start justify-between">
+                                                                    <div
+                                                                        className="justify-center items-center flex  fixed inset-0  outline-none focus:outline-none"
+                                                                    >
+                                                                        <div className="relative w-auto my-6 mx-auto max-w-2xl"
+                                                                            style={{
+                                                                                // backgroundColor: "#7a7a79",
+                                                                                // color: "black",
+                                                                                backgroundColor: "#211f21",
+                                                                                borderRadius: "16px",
+                                                                                color: "#846424",
+                                                                            }}>
 
-                                    <Link to={"/accounts/governance"} className="btn btn-lg btn-primary btn-shadow"
-                                        style={{
-                                            backgroundColor: "#211f21",
-                                            borderRadius: "16px",
-                                            color: "#846424",
-                                        }}
-                                    >
-                                        {/* <Button>ChysusDAO</Button> */}
-                                        ChysusDAO
-                                    </Link>
+                                                                            <div
+                                                                                className="row w-150"
+                                                                            >
+                                                                                <div className="col-12">
+                                                                                    <div className="d-flex flex-column align-items-center mt-4">
+                                                                                        <H4>Please Connect Wallet</H4>
+                                                                                        <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div className="mt-2"></div>
+                                                                                <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
+
+                                                                            </div>
+                                                                            <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                                                                <Button
+                                                                                    className="text-white text-center background-transparent font-bold uppercase  text-sm outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150"
+                                                                                    style={{
+                                                                                        backgroundColor: "#1A1917",
+                                                                                        fontFamily: "'Montserrat'",
+                                                                                        fontStyle: "normal",
+                                                                                        fontWeight: "600",
+                                                                                        fontSize: "14px",
+                                                                                        lineHeight: "24px",
+                                                                                        color: "#846424",
+                                                                                        borderRadius: "16px",
+                                                                                        display: "flex",
+
+                                                                                    }}
+                                                                                    onClick={() => setModalShows(false)}
+                                                                                >
+                                                                                    Close
+                                                                                </Button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            ) : null}
+                                        </>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -114,3 +213,4 @@ const Ecosystems = () => {
 }
 
 export default Ecosystems
+
