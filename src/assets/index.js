@@ -83,7 +83,16 @@ import ero from './ero.png'
 import ero2 from './ero2.png'
 import dai from './dai.png'
 import eths from './eths.png'
+import Loan from './Loan.png'
+import Mint from './Mint.png'
+import Shop from './Shop.png'
+import Swap from './Swap.png'
+
 export {
+  Swap,
+  Shop,
+  Mint,
+  Loan,
   eths,
   dai,
   ero2,

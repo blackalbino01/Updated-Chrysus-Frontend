@@ -76,7 +76,36 @@ export const features = [
   },
 ];
 
-
+export const Service = [
+  {
+    id: "feature-4",
+    icon: LeafGold,
+    title: "Mint",
+    content:
+      "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
+  },
+  {
+    id: "feature-2",
+    icon: SwapGold,
+    title: "Swap CHC",
+    content:
+      "Connect your wallet, Swap your CHC tokens with other cryptocurrencies",
+  },
+  {
+    id: "feature-3",
+    icon: UmbrellaGold,
+    title: "Loan with CHC",
+    content:
+      "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
+  },
+  {
+    id: "feature-1",
+    icon: CartGold,
+    title: "Buy with CHC",
+    content:
+      "With the ever increasing use of the internet and its popularity among all demographic segments, electronic commerce is by all means the way to go for virtually all businesses.",
+  },
+];
 
 export const footerLinks = [
   {

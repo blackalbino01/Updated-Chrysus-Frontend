@@ -159,10 +159,10 @@ const UserDashboard = () => {
 
 	return (
 		<>
-			<Nav>
-				<div className="title">
+			{/* <Nav> */}
+				{/* <div className="title">
 					<H4>Welcome!</H4>
-				</div>
+				</div> */}
 				{/* <img loading="lazy" width="50" height="50" src={home} alt="meta"
 					className=" mr-2 object-contain cursor-pointer"
 				/> */}
@@ -195,7 +195,7 @@ const UserDashboard = () => {
 				{/* <div>
 					<img loading="lazy" src={home} alt="discount" />
 				</div> */}
-			</Nav>
+			{/* </Nav> */}
 			<div className="row">
 
 				<div className="col-xl-12">
@@ -205,8 +205,11 @@ const UserDashboard = () => {
 							borderRadius: "16px",
 							color: "#846424",
 						}}>
+						<div className="mt-4 text-center">
+							<H4><h2>WELCOME</h2></H4>
+						</div>
 						<div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
-							<div className="me-auto mb-3">
+							<div className="me-auto">
 								<h2 className="fs-28 font-w600 text-white">
 									{/* {usdprice * web3.utils.fromWei(balance, 'ether')?.substring(0, 7) + "...."} */}
 

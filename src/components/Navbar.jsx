@@ -12,7 +12,7 @@ import { loadBlockchain, loadWalletConnect, updatAccount } from '../slices/web3C
 
 
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
+  const [active, setActive] = useState("");
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [modalShow, setModalShow] = useState(false);
@@ -34,11 +34,6 @@ const Navbar = () => {
 
   console.log("status", status)
   console.log("web3", web3)
-  // useEffect(() => {
-  //   if(status === true){
-  //     navigate("/accounts");
-  //   }
-  // }, [navigate,statuss])
 
 
 
@@ -67,25 +62,40 @@ const Navbar = () => {
         <img src={logoo} alt="hoobank" className="w-[200px] h-[55px]" onClick={() => setToggle(false)} />
 
       </Link>
-      <ul className="list-none  sm:flex hidden justify-end items-center flex-1">
-        {navLinks.map((nav, index) => (
+      <ul className="list-none  sm:flex hidden justify-end items-center flex-1 ">
+        {/* {navLinks.map((nav, index) => (
           <li
             key={nav.path}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${active === nav.name ? "text-yellow-400" : "text-dimWhite"
-              } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+            className={`font-poppins font-normal cursor-pointer text-[16px] ${active === nav.name ? "text-yellow-400" : "text-dimWhite"}
+             ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.name)}
           >
-            <NavLink to={nav.path}>{nav.name}</NavLink>
-            {/* style={{color: "#846424",}} */}
+            <NavLink onClick={() => setActive(nav.name)} to={nav.path}>{nav.name}</NavLink>
+            style={{color: "#846424",}}
           </li>
-        ))}
-        <li className="text-dimWhite text-[16px] font-poppins mr-4  cursor-pointer" style={{ marginLeft: "35px" }} href="#" onClick={() => window.open(Pdf)}>
+        ))} */}
+         <li className={`text-[16px] font-poppins mr-4  cursor-pointer`}>
+          <NavLink onClick={() => setActive("Home")} className={`${active === "Home" ?  "" : "text-yellow-600"}`} to="/">Home</NavLink>
+        </li>
+        <li className={`text-[16px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px" }}>
+          <NavLink onClick={() => setActive("About")} className={`${active === "About" ?  "" : "text-yellow-600"}`} to="/about">About</NavLink>
+        </li>
+        <li className={`text-[16px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px" }}>
+          <NavLink onClick={() => setActive("Services")} className={`${active === "Services" ? "" : "text-yellow-600"}`} to="/services">Services</NavLink>
+        </li>
+        <li className={`text-[16px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px" }}>
+          <NavLink onClick={() => setActive("Governance")} className={`${active === "Governance" ? "" : "text-yellow-600"}`} to="/ecosystems">Governance</NavLink>
+        </li>
+        <li className={`text-[16px] font-poppins mr-4  cursor-pointer `} style={{ marginLeft: "35px" }}>
+          <NavLink onClick={() => setActive("FAQ")} className={`${active === "FAQ" ? "" : "text-yellow-600"}`} to="/faq">FAQ</NavLink>
+        </li>
+        <li className="text-yellow-600 text-[16px] font-poppins mr-4  cursor-pointer" style={{ marginLeft: "35px" }} href="#" onClick={() => window.open(Pdf)}>
           WhitePaper
         </li>
         {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
         {addrees !== null ? (
-          <li className="text-dimWhite text-[16px] font-poppins cursor-pointer">
-            <NavLink to="/accounts">Dashboard</NavLink>
+          <li className="text-[16px] font-poppins cursor-pointer">
+            <NavLink onClick={() => setActive("Dashboard")} className={`${active === "Dashboard" ? "" : "text-yellow-600"}`} to="/accounts">Dashboard</NavLink>
           </li>
         ) : ""}
         <li style={{ marginLeft: "45px" }}
@@ -93,7 +103,7 @@ const Navbar = () => {
           onClick={() => setShowMenu(!showMenu)}>
 
           {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
-          { addrees !== null ? (
+          {addrees !== null ? (
             <div className="dropdown">
               <Button
                 type="button" data-toggle="dropdown"
@@ -237,7 +247,7 @@ const Navbar = () => {
               onClick={() => setShowMenu(!showMenu)}>
 
               {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
-              { addrees !== null ? (
+              {addrees !== null ? (
                 <div className="dropdown">
                   <Button
                     type="button" data-toggle="dropdown"

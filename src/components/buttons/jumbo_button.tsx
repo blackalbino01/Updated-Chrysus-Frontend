@@ -24,8 +24,7 @@ export const JumboButton = ({
 			onMouseLeave={(e: any) => setHover(false)}
 			className={className}
 			style={{
-				backgroundColor:
-					"linear-gradient(153.13deg, #846424 17.05%, #EDC452 49.23%, #846424 82.83%)",
+				backgroundColor:"linear-gradient(153.13deg, #846424 17.05%, #EDC452 49.23%, #846424 82.83%)",
 				padding: "1px",
 				borderRadius: "16px",
 			}}
