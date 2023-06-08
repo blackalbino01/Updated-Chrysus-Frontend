@@ -38,7 +38,7 @@ import { Liquidate } from './components/Dashboard/Liquidate';
 import { MintPosition } from './components/Dashboard/MintPosition';
 import { Withdraw } from './components/Dashboard/withdraw';
 import { WthdrawLending } from './components/chcform/wthdrawLending';
-import ScrollToTop from './components/ScrolltoTop';
+import ScrollToTop from './components/ScrollToTop';
 import { WithdrawStake } from './components/Dashboard/withdrawStke';
 const Home = lazy(() => import('./components/Home'));
 

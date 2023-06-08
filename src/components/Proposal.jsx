@@ -150,13 +150,13 @@ const Proposal = () => {
                                                     </thead>
                                                     <tbody className='text-white'>
                                                         <tr>
-                                                            <td>PID-1: LID-7: ADD Treasury Funds to the LEAG USDC Sushiswap Liquidity Pool</td>
                                                             <td></td>
                                                             <td></td>
                                                             <td></td>
                                                             <td></td>
                                                             <td></td>
-                                                            <td>98%</td>
+                                                            <td></td>
+                                                            <td></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
