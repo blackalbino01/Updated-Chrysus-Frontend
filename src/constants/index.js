@@ -1,4 +1,4 @@
-import { facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold,mb,sb,lb,bb } from "../assets";
+import { facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold,mb,sb,lb,bb,Linkedin } from "../assets";
 
 export const navLinks = [
   {
@@ -176,7 +176,7 @@ export const socialMedia = [
   },
   {
     id: "social-media-4",
-    icon: linkedin,
+    icon: Linkedin,
     link: "https://www.linkedin.com/company/chrysus-gold-coin/",
   },
 ];

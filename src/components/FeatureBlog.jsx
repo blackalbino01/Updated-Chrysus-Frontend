@@ -12,7 +12,7 @@ const FeatureBlog = () => {
     const [width, height] = useWindowSize();
 
     return (
-        <div className="page-content ">
+        <div className="page-content">
             <section className="content-inner bg-black">
                 <div className="container">
                     <div className="row ">

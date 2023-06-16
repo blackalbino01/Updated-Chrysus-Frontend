@@ -43,6 +43,7 @@ import FacebookGoldIcon from './facebook-gold.svg';
 import FacebookWhiteIcon from './facebook-white.svg';
 import Linkd from './linkd.svg';
 import Linkdin from './linkedin.svg';
+import Linkedin from './linkdin.svg';
 import Dash from './dash.svg'
 import C from './c.svg'
 import Ether from './ether.svg'
@@ -142,6 +143,7 @@ export {
   C,
   Dash,
   Wallets,
+  Linkedin,
   Linkdin,
   Linkd,
   FacebookWhiteIcon,
