@@ -62,7 +62,6 @@ const Overview = () => {
                             }}
                         >
                             <div className=" justify-between items-center">
-                                {/* <img src={data.image} alt="" /> */}
                                 <div className="icon-info">
                                     <h5 className="title">Staked</h5>
                                 </div>
@@ -111,29 +110,10 @@ const Overview = () => {
                         }}
                     >
                         <div className=" justify-between items-center">
-                            {/* <img src={data.image} alt="" /> */}
-                            {/* <div className="icon-info">
-                            <h5 className="title">Voter Weights</h5>
-                        </div> */}
                         </div>
-                        {/* <div className="icon-content">
-                        <ul className="price ">
-                            <li>
-                                <p className="mb-0 amount">Average Time</p>
-                                <span className='text-white'>5mo 15d 7h 44m 21s</span>
-                            </li>
-                        </ul>
-                    </div> */}
                         <Tab.Container defaultActiveKey="All">
                             <div className="card-header border-0 pb-2 flex-wrap">
                                 <h4 className="heading ">Voter Weights</h4>
-                                {/* <>
-									<Nav className="order nav nav-tabs">
-										<Nav.Link as="button" eventKey="All" type="button">Order</Nav.Link>
-										<Nav.Link as="button" eventKey="Order" type="button">Order History</Nav.Link>
-										<Nav.Link as="button" eventKey="Trade" type="button">Trade Histroy</Nav.Link>
-									</Nav>
-								</> */}
                             </div>
                             <div className="card-body pt-0 pb-0">
                                 <Tab.Content >
@@ -166,11 +146,6 @@ const Overview = () => {
                                                     >
                                                         <Link
                                                             className="paginate_button previous text-white mt-2"
-                                                            // to="/future"
-                                                            // style={{
-                                                            //     backgroundColor: "#757375",
-                                                            //     borderRadius: "16px",
-                                                            // }}
                                                             onClick={() =>
                                                                 activePag.current > 0 &&
                                                                 onClick(activePag.current - 1)
@@ -179,15 +154,13 @@ const Overview = () => {
                                                             <i>
                                                                 <svg style={{ width: "15px", height: "15px", marginTop: "12" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
                                                             </i>
-                                                            {/* <i className="fa fa-angle-double-left" ></i> */}
-                                                            {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg> */}
                                                         </Link>
                                                         <span className='text-white'>
                                                             {paggination.map((number, i) => (
                                                                 <Link
-                                                                style={{
-                                                                    fontSize:"10px",
-                                                                }}
+                                                                    style={{
+                                                                        fontSize: "10px",
+                                                                    }}
                                                                     key={i}
                                                                     // to="/future"
                                                                     className={`paginate_button  ${activePag.current === i ? "current" : ""
@@ -201,22 +174,14 @@ const Overview = () => {
 
                                                         <Link
                                                             className="paginate_button next text-white mt-2"
-                                                            // to="/future"
-                                                            // style={{
-                                                            //     backgroundColor: "#757375",
-                                                            //     borderRadius: "16px",
-                                                            // }}
                                                             onClick={() =>
                                                                 activePag.current + 1 < paggination.length &&
                                                                 onClick(activePag.current + 1)
                                                             }
                                                         >
                                                             <i>
-                                                                <svg style={{ width: "15px", height: "15px", marginTop: "12", marginLeft:"10px"  }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
+                                                                <svg style={{ width: "15px", height: "15px", marginTop: "12", marginLeft: "10px" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
                                                             </i>
-                                                            {/* <i className="fa fa-angle-double-right" ></i> */}
-                                                            {/* <FontAwesomeIcon icon="fas fa-angle-double-right" /> */}
-                                                            {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg> */}
                                                         </Link>
                                                     </div>
                                                 </div>
@@ -236,11 +201,6 @@ const Overview = () => {
                 </div>
             </div>
             <div className="mt-5"></div>
-            {/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
-                <div className={`${styles.boxWidth}`}>
-                    <Footer />
-                </div>
-            </div> */}
         </>
     )
 }

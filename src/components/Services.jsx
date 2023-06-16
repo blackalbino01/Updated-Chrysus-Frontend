@@ -18,10 +18,10 @@ const FeatureCard = ({ icon, title, content, index }) => (
     // }}
     className={`flex flex-row p-6  items-center py-[6px] px-4 rounded-[12px] ${index !== Service.length - 1 ? "mb-6" : "mb-0"} feature-card`}>
         <div
-        className={`w-[40px] h-[40px] rounded-full ${styles.flexCenter}`}
+        className={`w-[50px] h-[50px] rounded-full ${styles.flexCenter}`}
         style={{background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",}}
         >
-            <img loading="lazy" src={icon} alt="star" className="w-[50%] h-[50%] object-contain" />
+            <img loading="lazy" src={icon} alt="star" className="w-[60%] h-[60%] object-contain text-black" />
         </div>
         <div className="flex-1 flex flex-col ml-3 mt-3">
             <h4 className="font-poppins font-semibold text-white text-[18px] leading-[23.4px] mb-1">

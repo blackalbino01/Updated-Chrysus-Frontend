@@ -15,8 +15,7 @@
 * {
   scroll-behavior: smooth;
 }
-
-.text-gradient {
+/* .text-gradient {
   background: radial-gradient(64.18% 64.18% at 71.16% 35.69%,
       #eecc88 0.89%,
       #f1d57a 17.23%,
@@ -24,6 +23,17 @@
       #e8cb39 55.12%,
       #a38c30 71.54%,
       #6f5c1e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+} */
+
+.text-gradient {
+  background: radial-gradient(64.18% 64.18% at 71.16% 35.69%,
+      #e8c851 42.04%,
+      #EDC452 55.12%,
+      #846424 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

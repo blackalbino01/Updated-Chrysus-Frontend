@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // import { toast } from "react-toastify";
 // import styles from "../style";
-import { Link, NavLink,useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { close, logoo, menu, Wallets, walet, walet1, meta1, logo, Gov } from "../assets";
 import { daoNavLinks } from "../constants";
 import styled from "styled-components";
@@ -54,7 +54,7 @@ const DaoNav = () => {
     }
   };
 
-  const ProposalButton = async () =>{
+  const ProposalButton = async () => {
     navigate("/accounts/createproposal")
   }
 
@@ -67,138 +67,12 @@ const DaoNav = () => {
   return (
     <nav className="w-full flex justify-between items-center navbar">
       <Link to="/">
-        {/* <img src={Gov} alt="hoobank" className="w-[250px] h-[55px]" onClick={() => setToggle(false)} /> */}
         <h3 className="text-white">Governance</h3>
       </Link>
       <ul className="list-none  sm:flex hidden justify-end items-center flex-1">
-        {/* {daoNavLinks.map((nav, index) => (
-          <li
-            key={nav.path}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${active === nav.name ? "text-yellow-400" : "text-dimWhite"
-              } ${index === daoNavLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.name)}
-          >
-            <NavLink to={nav.path}>{nav.name}</NavLink>
-          </li>
-        ))} */}
-        {/* <li style={{ marginLeft: "45px" }}
-          className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
-          onClick={() => setShowMenu(!showMenu)}>
-          {addrees !== null ? (
-            <div className="dropdown">
-              <Button
-                type="button" data-toggle="dropdown"
-                style={{
-                  backgroundColor: "#1A1917",
-                  borderRadius: "16px",
-                  color: "#846424",
-                }}
-                className=" font-medium
-             rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
-             dropdown-toggle">
-                <a>{addrees?.substring(0, 7) + "...."}</a>
-              </Button>
-              <ul className="dropdown-menu text-black mt-2 bg-white">
-                <div className="mr-3 ml-5">
-                  <h4>Wallet</h4>
-                  <a className="inline-flex text-sm  py-2.5 items-center font-medium">
-                    <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
-                    <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
-                  </a>
-                  <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
-                    <FiLogOut />
-                    <Link className="ml-2"
-                      onClick={() => DisconnectWallet()}
-                    >Disconnect</Link>
-                  </li>
-                </div>
-              </ul>
-            </div>
-          ) : (
-            <>
-              <Button
-                style={{
-                  backgroundColor: "#1A1917",
-                  borderRadius: "16px",
-                  color: "#846424",
-                }}
-                onClick={() => setModalShow(true)}
-                className=" font-medium 
-                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                <img src={Wallets} alt="wallets" className="w-[20px] h-[25px] mr-3" />
-                <a style={{
-                  fontStyle: "normal",
-                  fontWeight: "700",
-                  fontSize: "12px",
-                  lineHeight: "24px",
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                  color: "#846424",
-                }}>Connect</a>
-              </Button>
-              <WalletConnect show={modalShow}
-                onHide={() => setModalShow(false)} />
-            </>
-          )}
-        </li> */}
-        <li style={{ marginLeft: "45px" }}
-        // className={`sub-menu-down  ${showMenu ? "open" : ""}`} id="menushow"
-        // onClick={() => setShowMenu(!showMenu)}
-        >
-          {/* {addrees !== null ? (
-            <div className="">
-              <Button
-                type="button" 
-                style={{
-                  backgroundColor: "#1A1917",
-                  borderRadius: "16px",
-                  color: "#846424",
-                }}
-                className=" font-medium
-             rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
-             dropdown-toggle">
-                <a>Create Proposal</a>
-              </Button>
-              <ul className="dropdown-menu text-black mt-2 bg-white">
-                <div className="mr-3 ml-5">
-                  <h4>Wallet</h4>
-                  <a className="inline-flex text-sm  py-2.5 items-center font-medium">
-                    <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
-                    <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
-                  </a>
-                  <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
-                    <FiLogOut />
-                    <Link className="ml-2"
-                      onClick={() => DisconnectWallet()}
-                    >Disconnect</Link>
-                  </li>
-                </div>
-              </ul>
-            </div>
-          ) : (
-            <>
-              <Button
-                style={{
-                  backgroundColor: "#1A1917",
-                  borderRadius: "16px",
-                  color: "#846424",
-                }}
-                // onClick={() => setModalShow(true)}
-                className=" font-medium 
-                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                <img src={Wallets} alt="wallets" className="w-[20px] h-[25px] mr-3" />
-                <a style={{
-                  fontStyle: "normal",
-                  fontWeight: "700",
-                  fontSize: "12px",
-                  lineHeight: "24px",
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                  color: "#846424",
-                }}>Connect</a>
-              </Button>
-            </>
-          )} */}
+
+        <li style={{ marginLeft: "45px" }}>
+
           <div className="">
             <Button
               type="button"
@@ -212,21 +86,6 @@ const DaoNav = () => {
              rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
               <a>Create Proposal</a>
             </Button>
-            {/* <ul className="dropdown-menu text-black mt-2 bg-white">
-              <div className="mr-3 ml-5">
-                <h4>Wallet</h4>
-                <a className="inline-flex text-sm  py-2.5 items-center font-medium">
-                  <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
-                  <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
-                </a>
-                <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
-                  <FiLogOut />
-                  <Link className="ml-2"
-                    // onClick={() => DisconnectWallet()}
-                  >Disconnect</Link>
-                </li>
-              </div>
-            </ul> */}
           </div>
         </li>
       </ul>
@@ -246,19 +105,6 @@ const DaoNav = () => {
             }  p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-lg sidebar`} style={{ zIndex: 6 }}
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
-
-            {/* {daoNavLinks.map((nav, index) => (
-              <li
-                key={nav.path}
-
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.name ? "text-white" : "text-dimWhite"
-                  } ${index === daoNavLinks.length - 1 ? "mb-0" : "mb-4"}`}
-                onClick={() => setActive(nav.name)}
-              >
-                <NavLink to={nav.path} onClick={() => setToggle(prev => !prev)}>{nav.name}</NavLink>
-
-              </li>
-            ))} */}
             <li style={{
               marginTop: "20px",
               zIndex: '1',
@@ -386,10 +232,6 @@ const WalletConnect = (props) => {
           <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
         </Modal.Header>
         <Modal.Body className="items-center bg-discount-gradient  rounded-b-[12px]">
-          {/* <img loading="lazy" src={logoo} alt="discount" className="w-[172px] h-[52px]" />
-          <p className="text-white">
-            Chose your Perferred Wallet
-          </p> */}
           <div onClick={() => handleblockchain()}>
             <Link onClick={props.onHide} className="flex flex-row text-center cursor-pointer flex-wrap  items-center py-[6px] rounded-[12px]"
               style={{

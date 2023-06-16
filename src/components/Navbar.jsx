@@ -59,43 +59,28 @@ const Navbar = () => {
   return (
     <nav className="w-full flex  py-6 justify-between items-center navbar">
       <Link to="/">
-        <img src={logoo} alt="hoobank" className="w-[200px] h-[55px]" onClick={() => setToggle(false)} />
-
+        <img src={logoo} alt="hoobank" className="w-[137px] h-[33px]" onClick={() => setToggle(false)} />
       </Link>
       <ul className="list-none  sm:flex hidden justify-end items-center flex-1 ">
-        {/* {navLinks.map((nav, index) => (
-          <li
-            key={nav.path}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${active === nav.name ? "text-yellow-400" : "text-dimWhite"}
-             ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.name)}
-          >
-            <NavLink onClick={() => setActive(nav.name)} to={nav.path}>{nav.name}</NavLink>
-            style={{color: "#846424",}}
-          </li>
-        ))} */}
-         <li className={`text-[16px] font-poppins mr-4  cursor-pointer`}>
-          <NavLink onClick={() => setActive("Home")} className={`${active === "Home" ?  "" : "text-yellow-600"}`} to="/">Home</NavLink>
+        <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424"}}>
+          <NavLink onClick={() => setActive("About")} className={`${active === "About" ?  "" : "text-slate-50"}`} to="/about">About</NavLink>
         </li>
-        <li className={`text-[16px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px" }}>
-          <NavLink onClick={() => setActive("About")} className={`${active === "About" ?  "" : "text-yellow-600"}`} to="/about">About</NavLink>
+        <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424" }}>
+          <NavLink onClick={() => setActive("Services")} className={`${active === "Services" ? "" : "text-slate-50"}`} to="/services">Services</NavLink>
         </li>
-        <li className={`text-[16px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px" }}>
-          <NavLink onClick={() => setActive("Services")} className={`${active === "Services" ? "" : "text-yellow-600"}`} to="/services">Services</NavLink>
+        <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424" }}>
+          <NavLink onClick={() => setActive("Governance")} className={`${active === "Governance" ? "" : "text-slate-50"}`} to="/ecosystems">Governance</NavLink>
         </li>
-        <li className={`text-[16px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px" }}>
-          <NavLink onClick={() => setActive("Governance")} className={`${active === "Governance" ? "" : "text-yellow-600"}`} to="/ecosystems">Governance</NavLink>
+        <li className={`text-[14px] font-poppins mr-4  cursor-pointer `} style={{ marginLeft: "35px", color: "#846424" }}>
+          <NavLink onClick={() => setActive("FAQ")} className={`${active === "FAQ" ? "" : "text-slate-50"}`} to="/faq">FAQ</NavLink>
         </li>
-        <li className={`text-[16px] font-poppins mr-4  cursor-pointer `} style={{ marginLeft: "35px" }}>
-          <NavLink onClick={() => setActive("FAQ")} className={`${active === "FAQ" ? "" : "text-yellow-600"}`} to="/faq">FAQ</NavLink>
-        </li>
-        <li className="text-yellow-600 text-[16px] font-poppins mr-4  cursor-pointer" style={{ marginLeft: "35px" }} href="#" onClick={() => window.open(Pdf)}>
-          WhitePaper
+        <li className="text-slate-50 text-[14px] font-poppins mr-4  cursor-pointer text-slate-50" style={{ marginLeft: "35px" }} href="#" onClick={() => window.open(Pdf)}>
+          whitePaper
         </li>
         {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
         {addrees !== null ? (
-          <li className="text-[16px] font-poppins cursor-pointer">
-            <NavLink onClick={() => setActive("Dashboard")} className={`${active === "Dashboard" ? "" : "text-yellow-600"}`} to="/accounts">Dashboard</NavLink>
+          <li className="text-[14px] ml-4 font-poppins cursor-pointer" style={{color: "#846424" }}>
+            <NavLink onClick={() => setActive("Dashboard")} className={`${active === "Dashboard" ? "" : "text-slate-50"}`} to="/accounts">Dashboard</NavLink>
           </li>
         ) : ""}
         <li style={{ marginLeft: "45px" }}
@@ -209,36 +194,7 @@ const Navbar = () => {
                 <NavLink to="/accounts">Dashboard</NavLink>
               </li>
             ) : ""}
-            {/* <li style={{ marginTop: "20px" }}>
-                <Button
-                  style={{
-                    backgroundColor: "#1A1917",
-                    borderRadius: "16px",
-                    color: "#846424",
-                  }}
-                  onClick={() => setModalShow(true)}
-                  className=" font-medium 
-          rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center ">
-                  {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null)? (
-                    <a>{accounts[0]?.substring(0, 7) + "...."}</a>
-                  ) : (
-                    <>
-                      <img src={Wallets} alt="wallets" className="w-[20px] h-[25px] mr-3" />
-                      <a style={{
-                        fontStyle: "normal",
-                        fontWeight: "700",
-                        fontSize: "12px",
-                        lineHeight: "24px",
-                        letterSpacing: "1px",
-                        textTransform: "uppercase",
-                        color: "#846424",
-                      }}>Connect</a>
-                    </>
-                  )}
-                </Button>
-                <WalletConnect show={modalShow}
-                  onHide={() => setModalShow(false)} />
-              </li> */}
+           
             <li style={{
               marginTop: "20px",
               zIndex: '1',

@@ -45,7 +45,7 @@ export default function Loan() {
 
   
 
-
+ 
   return (
     <Section>
       <div className="grid">
@@ -96,7 +96,7 @@ export default function Loan() {
 											 {Utils.toFixedNoRounding(Number(volume.totalSupplied) / 1e18, 3)}
 										</h3>
 									</div>
-                  <div className="px-2 info-group">
+                                        <div className="px-2 info-group">
 										<p className="fs-14 mb-1">Total Borrowed</p>
 										<h3 className="fs-20 font-w600 text-white">
 											 {Utils.toFixedNoRounding(Number(volume.totalBorrowed) / 1e18, 2)}

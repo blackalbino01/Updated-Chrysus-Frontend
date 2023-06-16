@@ -70,68 +70,7 @@ const CreateProposal = () => {
             <div>
                 <Tab.Container defaultActiveKey="Navbuy">
                     <div className="row">
-                        {/* <div className="col-xl-3">
-                            <div className="card"
-                                style={{
-                                    backgroundColor: "#211f21",
-                                    borderRadius: "16px",
-                                    color: "#846424",
-                                }}>
-                                <div className="card-body">
-                                    <div className="w-100">
-                                        <div className="d-flex flex-row justify-content-start align-items-center w-100">
-                                            <H4>Chrysus Governance</H4>
-                                        </div>
-                                        <div className="links">
-                                            <ul style={{
-                                                marginTop: "25px"
-                                            }}>
-                                                <Link to={"/accounts/createproposal"}>
-                                                    <li
-                                                        className={currentLink === 1 ? "active" : "none"}
-                                                        onClick={() => setCurrentLink(1)} >
-                                                        <img width="150" height="150"
-                                                            className="jumbo-button-icon"
-                                                            src={ero}
-                                                            alt="DashboardIcon"
-                                                        />
-                                                    </li>
-                                                </Link>
-                                                <Link to={"/accounts/staking"}>
-                                                    <li
-                                                        className={currentLink === 2 ? "active" : "none"}
-                                                        // onClick={() => setCurrentLink(2)} 
-                                                        >
-                                                        <img width="95" height="95"
-                                                            className="jumbo-button-icon"
-                                                            src={ero2}
-                                                            alt="DashboardIcon"
-                                                        />
-                                                    </li>
-                                                </Link>
-                                                <Button
-                                                    type="button"
-                                                    style={{
-                                                        backgroundColor: "#1A1917",
-                                                        borderRadius: "16px",
-                                                        color: "#846424",
-                                                        height: "22px",
-                                                        width: "100px",
-                                                        fontWeight: "700",
-                                                        fontSize: "10px",
-                                                        marginTop: "45px"
-                                                    }}
-                                                    onClick={() => more()}
-                                                    className=" font-thin
-                                                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                                    <a>Read More</a>
-                                                </Button>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
+                       
                         <div className="col-xl-12">
                             <div className="card"
                                 style={{
@@ -263,30 +202,6 @@ const CreateProposal = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        {/* <div className="card-body">
-                                            <div className=""
-                                                style={{
-                                                    backgroundColor: "#121112",
-                                                    borderRadius: "16px",
-                                                    color: "#846424",
-                                                }}>
-                                                <div className='card-body'>
-                                                    <label className="form-label text-primary"></label>
-                                                    <div className="input-group" style={{
-                                                        backgroundColor: "#1A1917",
-                                                        color: "#846424",
-                                                    }}>
-                                                        <textarea className="form-control"
-                                                            style={{
-                                                                backgroundColor: "#1A1917",
-                                                                borderRadius: "16px",
-                                                                color: "#846424",
-                                                            }}
-                                                            placeholder="Enter your Description Here" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> */}
                                     </div>
                                 ) : (
                                     action === "Change DAO tax" ? (

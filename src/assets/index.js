@@ -42,7 +42,7 @@ import DiscordWhiteIcon from './discord-white.svg';
 import FacebookGoldIcon from './facebook-gold.svg';
 import FacebookWhiteIcon from './facebook-white.svg';
 import Linkd from './linkd.svg';
-import Linkdin from './linkdin.svg';
+import Linkdin from './linkedin.svg';
 import Dash from './dash.svg'
 import C from './c.svg'
 import Ether from './ether.svg'
@@ -87,8 +87,15 @@ import Loan from './Loan.png'
 import Mint from './Mint.png'
 import Shop from './Shop.png'
 import Swap from './Swap.png'
-
+import mb from './mb.svg'
+import lb from "./lb.svg"
+import sb from "./sb.svg"
+import bb from "./bb.svg"
 export {
+  mb,
+  lb,
+  sb,
+  bb,
   Swap,
   Shop,
   Mint,

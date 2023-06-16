@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { loadBlockchain, loadWalletConnect, updatAccount } from '../../slices/web3ContractSlice';
 import { useAppDispatch, useAppSelector } from '../../reducer/store';
-// import Utils from "../../../utilities";
 import styled from "styled-components";
 import { Button } from 'react-bootstrap';
 import { ethers } from "ethers";
@@ -14,10 +13,6 @@ import Utils from "../../utilities";
 import stake from "../../utilities";
 import { MockStabilityModule, CHRYSUS, GOVERNANCE } from "../../constant"
 import { StakeABI } from "../../abis/MockStabilityModule";
-// const oracleCHC = "0x8dD1B31E9C1bD58Ca47db6Db6d22A3EE00026766";
-// const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
-// import mockOracle from "../../abis/MockOracle.json";
-// import chrysus from "../../abis/Chrysus.json";
 import governance from "../../abis/Governance.json";
 
 
@@ -27,7 +22,6 @@ const Staking = () => {
     const [currentLink, setCurrentLink] = useState(1);
     const { web3, accounts } = useAppSelector((state) => state.web3Connect);
     const [action, setaction] = useState({});
-    // const [loading, setloading] = useState(false);
     const [Stakeamount, setStakeamount] = useState(0);
     const [TotalStake, setTotalStake] = useState(0);
     const [GovernanceStakeamount, setGovernanceStakeamount] = useState(0);
@@ -194,67 +188,6 @@ const Staking = () => {
         <div>
             <Tab.Container defaultActiveKey="Navbuy">
                 <div className="row">
-                    {/* <div className="col-xl-3">
-                            <div className="card"
-                                style={{
-                                    backgroundColor: "#211f21",
-                                    borderRadius: "16px",
-                                    color: "#846424",
-                                }}>
-                                <div className="card-body">
-                                    <div className="w-100">
-                                        <div className="d-flex flex-row justify-content-start align-items-center w-100">
-                                            <H4>Chrysus Governance</H4>
-                                        </div>
-                                        <div className="links">
-                                            <ul style={{
-                                                marginTop: "25px"
-                                            }}>
-                                                <Link to={"/accounts/createproposal"}>
-                                                    <li
-                                                        className={currentLink === 1 ? "active" : "none"}
-                                                        onClick={() => setCurrentLink(1)} >
-                                                        <img width="150" height="150"
-                                                            className="jumbo-button-icon"
-                                                            src={ero}
-                                                            alt="DashboardIcon"
-                                                        />
-                                                    </li>
-                                                </Link>
-                                                <Link to={"/accounts/staking"}>
-                                                    <li
-                                                        className={currentLink === 2 ? "active" : "none"}
-                                                        onClick={() => setCurrentLink(2)} >
-                                                        <img width="95" height="95"
-                                                            className="jumbo-button-icon"
-                                                            src={ero2}
-                                                            alt="DashboardIcon"
-                                                        />
-                                                    </li>
-                                                </Link>
-                                                <Button
-                                                    type="button"
-                                                    style={{
-                                                        backgroundColor: "#1A1917",
-                                                        borderRadius: "16px",
-                                                        color: "#846424",
-                                                        height: "22px",
-                                                        width: "100px",
-                                                        fontWeight: "700",
-                                                        fontSize: "10px",
-                                                        marginTop: "45px"
-                                                    }}
-                                                    onClick={() => more()}
-                                                    className=" font-thin
-                                                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                                    <a>Read More</a>
-                                                </Button>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
                     <div className="col-xl-12">
                         <div className="card"
                             style={{
@@ -298,21 +231,6 @@ const Staking = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* <div className="input-group">
-                                            <select className=''
-                                                style={{
-                                                    backgroundColor: "#1A1917",
-                                                    color: "#846424",
-                                                }}
-                                                // onChange={(e) => setaction(e.target.value)}
-                                            >
-                                                <option value="">Select Proposal Action</option>
-                                                <option value="Contract Burn" >Contract Burn</option>
-                                                <option value="Change DAO tax">Change DAO tax</option>
-                                                <option value="Invest Fund">Invest Fund</option>
-                                                <option value="Sell Investment">Sell Investment</option>
-                                            </select>
-                                        </div> */}
                                 </div>
                             </div>
                         </div>
@@ -334,90 +252,6 @@ const Staking = () => {
                                         }}>
                                         <h2 className='text-center mt-5'>Lock Tokens</h2>
                                         <div className='card-body'>
-                                            {/* <div className="input-group mt-4" style={{
-                                                    backgroundColor: "#1A1917",
-                                                    color: "#846424",
-                                                }}>
-                                                    <input type="number" className="form-control"
-                                                        style={{
-                                                            backgroundColor: "#1A1917",
-                                                            borderRadius: "6px",
-                                                            color: "#846424",
-                                                        }}
-                                                        placeholder="Stake Amount" />
-                                                    <span style={{
-                                                        backgroundColor: "#1A1917",
-                                                        color: "#846424",
-                                                    }} className="input-group-text">
-                                                        <img loading="lazy" src={Chrysus} alt="meta" />
-                                                        <a>Max</a>
-                                                    </span>
-                                                </div> */}
-                                            {/* <div className="card-body">
-                                                    <div className="row sp20 mb-4 align-items-center">
-                                                        <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
-                                                            <div className="px-1 info-group">
-                                                                <div className="text-center">
-                                                                    <Button
-                                                                        type="button"
-                                                                        style={{
-                                                                            backgroundColor: "#1A1917",
-                                                                            borderRadius: "16px",
-                                                                            color: "#846424",
-                                                                            height: "32px",
-                                                                            width: "180px",
-                                                                            fontWeight: "700",
-                                                                            fontSize: "15px",
-                                                                        }}
-                                                                        className=" font-thin
-                                                                         rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                                                        <a>1 Month</a>
-                                                                    </Button>
-                                                                </div>
-                                                            </div>
-                                                            <div className="px-1 info-group">
-                                                                <div className="text-center">
-                                                                    <Button
-                                                                        type="button"
-                                                                        style={{
-                                                                            backgroundColor: "#1A1917",
-                                                                            borderRadius: "16px",
-                                                                            color: "#846424",
-                                                                            height: "32px",
-                                                                            width: "180px",
-                                                                            fontWeight: "700",
-                                                                            fontSize: "15px",
-                                                                        }}
-                                                                        // onClick={() => ProposalButton()}
-                                                                        className=" font-thin
-                                                                         rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                                                        <a>3 Month</a>
-                                                                    </Button>
-                                                                </div>
-                                                            </div>
-                                                            <div className="px-1 info-group">
-                                                                <div className="text-center">
-                                                                    <Button
-                                                                        type="button"
-                                                                        style={{
-                                                                            backgroundColor: "#1A1917",
-                                                                            borderRadius: "16px",
-                                                                            color: "#846424",
-                                                                            height: "32px",
-                                                                            width: "180px",
-                                                                            fontWeight: "700",
-                                                                            fontSize: "15px",
-                                                                        }}
-                                                                        // onClick={() => ProposalButton()}
-                                                                        className=" font-thin
-                                                        rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                                                        <a>6 Month</a>
-                                                                    </Button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> */}
                                             <div className="input-group mt-4" style={{
                                                 backgroundColor: "#1A1917",
                                                 color: "#846424",
@@ -440,41 +274,6 @@ const Staking = () => {
                                             </div>
                                         </div>
                                         <div className="text-center mb-5">
-                                            {/* {isApprove === false ? (
-                                                <Button
-                                                    type="button"
-                                                    style={{
-                                                        backgroundColor: "#1A1917",
-                                                        borderRadius: "16px",
-                                                        color: "#846424",
-                                                        height: "32px",
-                                                        width: "180px",
-                                                        fontWeight: "700",
-                                                        fontSize: "15px",
-                                                    }}
-                                                    onClick={() => CHCApprove()}
-                                                    className=" font-thin
-                                                   rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                                    <a>Stake</a>
-                                                </Button>
-                                            ) : (
-                                                <Button
-                                                    type="button"
-                                                    style={{
-                                                        backgroundColor: "#1A1917",
-                                                        borderRadius: "16px",
-                                                        color: "#846424",
-                                                        height: "32px",
-                                                        width: "180px",
-                                                        fontWeight: "700",
-                                                        fontSize: "15px",
-                                                    }}
-                                                    onClick={() => StakeCHC()}
-                                                    className=" font-thin
-                                                        rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                                    <a>Confirm</a>
-                                                </Button>
-                                            )} */}
                                             <Button
                                                 type="button"
                                                 style={{
@@ -537,7 +336,8 @@ const Staking = () => {
                                                                         }}
                                                                     >
                                                                         {GovernanceStakeamount}
-                                                                    </div>                                                                </td>
+                                                                    </div>
+                                                                </td>
                                                                 <td>
                                                                     <div
                                                                         style={{
@@ -601,53 +401,7 @@ const Staking = () => {
                                                         </tbody>
                                                     </table>
                                                     <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
-                                                        {/* <div className="dataTables_info">
-                                                            Showing {activePag.current * sort + 1} to{" "}
-                                                            {data.length > (activePag.current + 1) * sort
-                                                                ? (activePag.current + 1) * sort
-                                                                : data.length}{" "}
-                                                            of {data.length} entries
-                                                        </div>
-                                                        <div
-                                                            className="dataTables_paginate paging_simple_numbers mb-0"
-                                                            id="application-tbl1_paginate"
-                                                        >
-                                                            <Link
-                                                                className="paginate_button previous text-white mt-2"
-                                                                onClick={() =>
-                                                                    activePag.current > 0 &&
-                                                                    onClick(activePag.current - 1)
-                                                                }
-                                                            >
-                                                                <i>
-                                                                    <svg style={{ width: "20px", height: "20px", marginTop: "12" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" /></svg>
-                                                                </i>
-                                                            </Link>
-                                                            <span className='text-white'>
-                                                                {paggination.map((number, i) => (
-                                                                    <Link
-                                                                        key={i}
-                                                                        className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                                                            } `}
-                                                                        onClick={() => onClick(i)}
-                                                                    >
-                                                                        {number}
-                                                                    </Link>
-                                                                ))}
-                                                            </span>
 
-                                                            <Link
-                                                                className="paginate_button next text-white mt-2"
-                                                                onClick={() =>
-                                                                    activePag.current + 1 < paggination.length &&
-                                                                    onClick(activePag.current + 1)
-                                                                }
-                                                            >
-                                                                <i>
-                                                                    <svg style={{ width: "20px", height: "20px", marginTop: "10" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" /></svg>
-                                                                </i>
-                                                            </Link>
-                                                        </div> */}
                                                     </div>
                                                 </div>
                                             </div>

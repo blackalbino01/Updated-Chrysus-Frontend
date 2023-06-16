@@ -34,7 +34,7 @@ export const JumboButton = ({
 				color="primary"
 				className="jumbo-buttond-flex flex-column align-items-center justify-content-center"
 				style={{
-					backgroundColor: "#1A1917",
+					// backgroundColor: "#1A1917",
 					fontFamily: "'Montserrat'",
 					fontStyle: "normal",
 					fontWeight: "600",
@@ -44,14 +44,12 @@ export const JumboButton = ({
 					borderRadius: "16px",
 					display: "flex",
 					padding: "2em 3em",
-			
 				}}
 			>
 				<span
 					className="jumbo-transition "
 					style={{
 						transform: hover ? "scale(1.5)" : "scale(1)",
-
 					}}
 				>
 					{icon}

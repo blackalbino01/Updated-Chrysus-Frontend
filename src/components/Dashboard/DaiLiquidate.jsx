@@ -1,10 +1,6 @@
 import React from "react";
 import { FormActionButton } from "../buttons/form_action_button";
-// import { Table } from "../table";
 import { Body, H4, P } from "../typography";
-// import { Info } from "react-feather";
-// import { COLORS } from "src/assets/styles/theme";
-// import { CInput } from "../inputs/cinput";
 import { Link } from "react-router-dom";
 import { Chrysus } from "../../assets";
 import styles from "../../style";
@@ -56,7 +52,6 @@ export const DaiLiquidate = () => {
                                             color: "#846424",
                                             height: "55px",
                                         }}
-                                    // onChange={(e) => setlocation(e.target.value)}
                                     >
                                         <option value="Ethreum">ETH</option>
                                         <option value="DAI">DAI</option>
@@ -64,49 +59,7 @@ export const DaiLiquidate = () => {
 
                                 </span>
                             </div>
-                            {/* <a style={{
-                                paddingLeft:"130px",
-                                paddingBottom:"10px",
-                                color:"white"
-                            }}>+</a>
-                            <label className="form-label text-primary">Avaliable to Borrow 00.0</label>
-                            <div className="input-group" style={{
-                                backgroundColor: "#1A1917",
-                                color: "#846424",
-                            }}>
-                                <input type="text" className="form-control"
-                                    style={{
-                                        backgroundColor: "#1A1917",
-                                        color: "#846424",
-                                    }}
-                                    placeholder="0.00" />
-                                <span style={{
-                                    backgroundColor: "#1A1917",
-                                    color: "#846424",
-                                }} className="input-group-text"><img loading="lazy" src={Chrysus} alt="meta" /></span>
-                            </div> */}
                             <div className="my-1"></div>
-                            {/* <P className="m-0">Please Enter an amount would you like to Borrow</P>
-						<Body className="m-0">
-							Generate an amount that is safety above the liquidation ratio.
-						</Body> */}
-                            {/* <div className="my-3"></div> */}
-                            {/* <label className="form-label text-primary">Your Blanace 0.123</label>
-                            <div className="input-group" style={{
-                                backgroundColor: "#1A1917",
-                                color: "#846424",
-                            }}>
-                                <input type="text" className="form-control"
-                                    style={{
-                                        backgroundColor: "#1A1917",
-                                        color: "#846424",
-                                    }}
-                                    placeholder="0.00" />
-                                <span style={{
-                                    backgroundColor: "#1A1917",
-                                    color: "#846424",
-                                }} className="input-group-text">Amount</span>
-                            </div> */}
                         </div>
                         <div
                             className="w-100"

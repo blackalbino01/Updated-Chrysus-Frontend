@@ -27,7 +27,7 @@ export const CircleExpandButton = ({
 			style={{ color: "#846424", borderRadius: "40px" }}
 		>
 			{hover ? hoverIcon : icon}
-			{hover ? <span className="mx-3 text-white">{text}</span> : ""}
+			{hover ? <span className="mx-3" style={{color: "#846424"}}>{text}</span> : ""}
 		</Button>
 	);
 };

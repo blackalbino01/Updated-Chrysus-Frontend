@@ -4,7 +4,7 @@ import { TelegramGoldIcon,TelegramWhiteIcon, TwitterGoldIcon, TwitterWhiteIcon, 
 
 const Community = () => {
     return (
-        <div className="row my-5 p-lg-5" style={{ paddingLeft: "3em", paddingRight: "3em" }}>
+        <div className="row">
             <div className="col-lg-6">
                 <div className="w-100">
                     <span
@@ -29,20 +29,20 @@ const Community = () => {
                             color: "#FFFFFF",
                         }}
                     >
-                        Our community is vibrant and welcoming to all who share our passions. We foster
-                        meaningful relationships, learn from each other, and provide support and
-                        resources to help everyone achieve their goals. Join us in improving the future.{" "}
+                        Our community is vibrant and welcoming to all who share our passions. <br/>
+                        We foster meaningful relationships, learn from each other, and provide support 
+                        and resources to help everyone achieve their goals. Join us in improving future.{" "}
                     </p>
                 </div>
             </div>
             <div className="col-lg-6 text-center">
-                <div className="my-4"></div>
+                <div className="my-2"></div>
                 <a target="_blank" href="https://t.me/chrysusofficial">
                     <CircleExpandButton
                         color="primary"
                         outline={true}
                         icon={<img src={TelegramGoldIcon} alt="telegram-gold.svg" />}
-                        hoverIcon={<img src={TelegramWhiteIcon} alt="telegram-white.svg" />}
+                        hoverIcon={<img src={TelegramGoldIcon} alt="telegram-white.svg" />}
                         text={"Telegram"}
                     />
                 </a>
@@ -51,7 +51,7 @@ const Community = () => {
                         color="primary"
                         outline={true}
                         icon={<img src={TwitterGoldIcon} alt="twitter-gold.svg" />}
-                        hoverIcon={<img src={TwitterWhiteIcon} alt="twitter-white.svg" />}
+                        hoverIcon={<img src={TwitterGoldIcon} alt="twitter-white.svg" />}
                         text="Twitter"
 
                     />
@@ -61,7 +61,7 @@ const Community = () => {
                         color="primary"
                         outline={true}
                         icon={<img src={FacebookGoldIcon} alt="facebook-gold.svg" />}
-                        hoverIcon={<img src={FacebookWhiteIcon} alt="facebook-white.svg" />}
+                        hoverIcon={<img src={FacebookGoldIcon} alt="facebook-white.svg" />}
                         text="Facebook"
                     />
                 </a>
@@ -70,7 +70,7 @@ const Community = () => {
                         color="primary"
                         outline={true}
                         icon={<img src={DiscordGoldIcon} alt="discord-gold.svg" />}
-                        hoverIcon={<img src={DiscordWhiteIcon} alt="discord-white.svg" />}
+                        hoverIcon={<img src={DiscordGoldIcon} alt="discord-white.svg" />}
                         text="Discord"
                     />
                 </a>
@@ -78,7 +78,7 @@ const Community = () => {
                     <CircleExpandButton
                         color="primary"
                         outline={true}
-                        icon={<img style={{ width: "30px", height: "20px" }} src={Linkd} alt="linkd.svg" />}
+                        icon={<img style={{ width: "30px", height: "20px" }} src={Linkdin} alt="linkd.svg" />}
                         hoverIcon={<img src={Linkdin} style={{ width: "30px", height: "20px" }} alt="linkdin.svg" />}
                         text="Linkdin"
                     />

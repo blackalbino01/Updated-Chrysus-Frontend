@@ -20,21 +20,11 @@ import * as FaIcons from 'react-icons/fa';
 import SubMenu from "../dropdowns/SubMenu";
 import { IconContext } from 'react-icons/lib';
 
-// import SubMenu from "../dropdowns/wallet_dropdown.jsx";
-// DashboardIcon,
-
-// LoanIcon,
-// MintIcon,
-// SwapIcon,
-
-
 const MenuList = [
   {
     title: 'Overview',
     path: '/overview',
     icon: <AiIcons.AiFillHome />,
-    // iconClosed: <RiIcons.RiArrowDownSFill />,
-    // iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
@@ -52,8 +42,6 @@ const MenuList = [
 ]
 
 export default function UserSideBar() {
-  // const dispatch = useDispatch();
-  // const [swapModal, setSwapModal] = useState(false);
   const navigate = useNavigate();
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
@@ -67,27 +55,6 @@ export default function UserSideBar() {
   const [drop, setdrop] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
-
-  // const MenuList = [
-  //   {
-  //     title: 'Overview',
-  //     path: '/overview',
-
-  //     subNav: [
-  //       {
-  //         title: 'Users',
-  //         path: '/overview/users',
-  //         // icon: <IoIcons.IoIosPaper />
-  //       },
-  //       {
-  //         title: 'Revenue',
-  //         path: '/overview/revenue',
-  //         // icon: <IoIcons.IoIosPaper />
-  //       }
-  //     ]
-  //   }
-  // ]
-
 
   const DisconnectWallet = async () => {
     if (window.ethereum) {
@@ -108,10 +75,6 @@ export default function UserSideBar() {
     }
   };
 
-  // <SwapModal showSwapModal={swapModal} />
-  // useEffect(() => {
-  //     dispatch(loadUser(null));
-  // }, [dispatch]);
 
   useEffect(() => {
     const sr = scrollreveal({
@@ -227,8 +190,6 @@ export default function UserSideBar() {
                       <span>Swap</span>
                     </Link>
                   </a>
-
-                  {/* <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} /> */}
                 </li>
               </Link>
               <Link to={"loan"}>
@@ -256,87 +217,6 @@ export default function UserSideBar() {
                   </Link>
                 </li>
               </Link>
-              {/* <div
-              onMouseEnter={() => setvisible(true)}
-              onMouseLeave={() => setvisible(false)}
-              > */}
-              {/* {drop === false ? (
-                  <>
-                    <Link
-                      onClick={() => setdrop(true)}>
-                      <li
-                        className={currentLink === 7 ? "active" : "none"}
-                        onClick={() => setCurrentLink(7)}
-                      >
-                        <Link >
-                          <img width="15" height="15"
-                            className="jumbo-button-icon"
-                            src={A}
-                            alt="umbrella-gold"
-                          />
-                          <span className="dropdown-toggle"> All Positions </span>
-                        </Link>
-                      </li>
-                    </Link>
-                  </>)
-                  : (
-                    <>
-                      <Link
-                        onClick={() => setdrop(false)}>
-                        <li
-                          className={currentLink === 7 ? "active" : "none"}
-                          onClick={() => setCurrentLink(7)}
-                        >
-                          <Link >
-                            <img width="15" height="15"
-                              className="jumbo-button-icon"
-                              src={A}
-                              alt="umbrella-gold"
-                            />
-                            <span className="dropdown-toggle"> All Positions </span>
-                          </Link>
-                        </li>
-                      </Link>
-                    </>)} */}
-              {/* {drop === true ? (
-                  <div className="mt-2">
-                    <Link to={"mintposition"}
-                      onClick={() => setdrop(false)}>
-                      <li
-                        className={currentLink === 8 ? "active" : "none"}
-                        onClick={() => setCurrentLink(8)}
-                      >
-                        <Link to={"mintposition"}>
-                          <img width="15" height="15"
-                            className="jumbo-button-icon"
-                            src={GI}
-                            alt="umbrella-gold"
-                          />
-                          <FiLogOut />
-                          <span> Mint Position </span>
-                        </Link>
-                      </li>
-                    </Link>
-                    <Link to={"loanpositions"}
-                      onClick={() => setdrop(false)}>
-                      <li
-                        className={currentLink === 9 ? "active" : "none"}
-                        onClick={() => setCurrentLink(9)}
-                      >
-                        <Link to={"loanpositions"}>
-                          <img width="15" height="15"
-                            className="jumbo-button-icon"
-                            src={GI}
-                            alt="umbrella-gold"
-                          />
-                          <FiLogOut />
-                          <span> Loan Position </span>
-                        </Link>
-                      </li>
-                    </Link>
-                  </div>
-                ) : ("")} */}
-              {/* </div> */}
               <Link to={"mintposition"}>
                 <li
                   className={currentLink === 7 ? "active" : "none"}
@@ -531,194 +411,7 @@ const SidebarWrap = styled.div`
 
 
 
-// const Mint = (props) => {
 
-//   return (
-//     <div className="">
-//       <Modal className="items-center"
-//         {...props}
-//         size="lg"
-//         aria-labelledby="contained-modal-title-vcenter"
-//         centered
-//       >
-//         {/* closeButton */}
-//         <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">
-//           <div
-//             style={{
-//               width: "100%",
-//               height: "3px",
-//               background:
-//                 "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-//               borderRadius: "40px",
-//             }}></div>
-//           <Modal.Title >
-//             <h4 className="primary-gradient-text">Mint Chrysus Coin (CHC)</h4>
-//           </Modal.Title>
-//           <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
-//         </Modal.Header>
-//         <Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
-//           <div className="options">
-//             <select className=''
-//               style={{
-//                 backgroundColor: "#1A1917",
-//                 borderRadius: "16px",
-//                 color: "#846424",
-//               }}
-//             // onChange={(e) => setlocation(e.target.value)}
-//             >
-//               <option value="">Select Token</option>
-//               <option value="Ethreum">ETH</option>
-//               <option value="DAI">DAI</option>
-//             </select>
-//           </div>
-//           <div className="sell-blance" style={{
-//             color: "#846424",
-//           }}>
-//             <label className="form-label text-primary">Enter Amount</label>
-//             <div className="input-group" style={{
-//               backgroundColor: "#1A1917",
-//               color: "#846424",
-//             }}>
-//               <input type="text" className="form-control"
-//                 style={{
-//                   backgroundColor: "#1A1917",
-//                   color: "#846424",
-//                 }}
-//                 placeholder="0.00" />
-//               <span style={{
-//                 backgroundColor: "#1A1917",
-//                 color: "#846424",
-//               }} className="input-group-text">Amount</span>
-//             </div>
-//           </div>
-
-//           <div className="text-center">
-//             <MintButton />
-//           </div>
-//         </Modal.Body>
-//         {/* <Modal.Footer>
-//         <Button onClick={props.onHide}>Close</Button>
-//       </Modal.Footer> */}
-//       </Modal>
-//     </div>
-//   )
-// }
-
-
-
-// const Swap = (props) => {
-
-//   return (
-
-//     <Modal
-//       {...props}
-//       size="lg"
-//       aria-labelledby="contained-modal-title-vcenter"
-//       centered
-//       style={{
-//         background: "black ",
-//         opacity: "2%",
-//       }}
-//     >
-//       {/* closeButton */}
-//       <Modal.Header className=" flex flex-row flex-wrap text-center items-center py-[6px] px-4 bg-discount-gradient ">
-//         <div
-//           style={{
-//             width: "100%",
-//             height: "3px",
-//             background:
-//               "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-//             borderRadius: "40px",
-//           }}></div>
-//         <Modal.Title >
-//           <h4 className="primary-gradient-text">Swap Chrysus Coin (CHC)</h4>
-//         </Modal.Title>
-//         <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
-//       </Modal.Header>
-//       <Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
-//         <div className="sell-blance" style={{
-//           color: "#846424",
-//         }}>
-//           <label className="form-label text-primary">Amount Available</label>
-//           <span className="ml-5">CHC{""} 0.123</span>
-//           <div className="input-group" style={{
-//             backgroundColor: "#1A1917",
-//             color: "#846424",
-//           }}>
-//             <input type="text" className="form-control"
-//               style={{
-//                 backgroundColor: "#1A1917",
-//                 color: "#846424",
-//               }}
-//               placeholder="0.00" />
-//             <span style={{
-//               backgroundColor: "#1A1917",
-//               color: "#846424",
-//             }} className="input-group-text"><img loading="lazy" src={Chrysus} alt="meta" /></span>
-//           </div>
-//         </div>
-//         <div className="sell-blance" style={{
-//           color: "#846424",
-//         }}>
-//           <label className="form-label text-primary">Enter Amount</label>
-//           <div className="input-group" style={{
-//             backgroundColor: "#1A1917",
-//             color: "#846424",
-//           }}>
-//             <input type="text" className="form-control"
-//               style={{
-//                 backgroundColor: "#1A1917",
-//                 color: "#846424",
-//               }}
-//               placeholder="0.00" />
-//             <span style={{
-//               backgroundColor: "#1A1917",
-//               color: "#846424",
-//             }} className="input-group-text">Amount</span>
-//           </div>
-//         </div>
-//         <div className="options">
-//           <select className=''
-//             style={{
-//               backgroundColor: "#1A1917",
-//               borderRadius: "16px",
-//               color: "#846424",
-//             }}
-//           // onChange={(e) => setlocation(e.target.value)}
-//           >
-//             <option value="">Swap To</option>
-//             <option value="Ethreum">ETH</option>
-//             <option value="DAI">DAI</option>
-//             <option value="BCH">BCH</option>
-//             <option value="XRP">XRP</option>
-//           </select>
-//         </div>
-
-
-//         <div className="text-center">
-//           <PrimaryGradientButton className="mt-3">
-//             <div className="d-flex flex-row align-items-center justify-content-center">
-//               Swap CHC
-//               <img
-//                 className="mx-2"
-//                 src={Transferblack}
-//                 alt="transfer-black.svg"
-//               />
-//             </div>
-//           </PrimaryGradientButton>
-//         </div>
-//       </Modal.Body>
-//       {/* <Modal.Footer>
-//         <Button onClick={props.onHide}>Close</Button>
-//       </Modal.Footer> */}
-//     </Modal>
-//   )
-// }
-
-
-// position: fixed;
-
-// height: 100vh;
 const Section = styled.section`
   position: fixed;
   z-index: 99;

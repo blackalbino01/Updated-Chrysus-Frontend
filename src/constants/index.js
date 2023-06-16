@@ -1,4 +1,4 @@
-import { facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold } from "../assets";
+import { facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold,mb,sb,lb,bb } from "../assets";
 
 export const navLinks = [
   {
@@ -48,59 +48,64 @@ export const descone = [
 export const features = [
   {
     id: "feature-1",
-    icon: CartGold,
+    // icon: CartGold,
+    icon: bb,
     title: "Buy with CHC",
     content:
       "With the ever increasing use of the internet and its popularity among all demographic segments, electronic commerce is by all means the way to go for virtually all businesses.",
   },
   {
     id: "feature-2",
-    icon: SwapGold,
+    // icon: SwapGold,
+    icon: sb,
     title: "Swap CHC",
     content:
       "Connect your wallet, Swap your CHC tokens with other cryptocurrencies",
   },
   {
     id: "feature-3",
-    icon: UmbrellaGold,
+    // icon: UmbrellaGold,
+    icon: lb,
     title: "Loan with CHC",
     content:
       "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
   },
   {
     id: "feature-4",
-    icon: LeafGold,
+    // icon: LeafGold,
+    icon: mb,
     title: "Mint",
     content:
-      "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
+    "To mint CHC: Deposit ETH or DAI as collateral to the CHC contract. Based on asset collateralization ratios and CHC tokens are issued to the user."
   },
 ];
 
 export const Service = [
   {
     id: "feature-4",
-    icon: LeafGold,
+    icon: mb,
     title: "Mint",
     content:
       "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
   },
   {
     id: "feature-2",
-    icon: SwapGold,
+    icon: sb,
     title: "Swap CHC",
     content:
       "Connect your wallet, Swap your CHC tokens with other cryptocurrencies",
   },
   {
     id: "feature-3",
-    icon: UmbrellaGold,
+    // icon: UmbrellaGold,
+    icon: lb,
     title: "Loan with CHC",
     content:
       "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
   },
   {
     id: "feature-1",
-    icon: CartGold,
+    icon: bb,
     title: "Buy with CHC",
     content:
       "With the ever increasing use of the internet and its popularity among all demographic segments, electronic commerce is by all means the way to go for virtually all businesses.",

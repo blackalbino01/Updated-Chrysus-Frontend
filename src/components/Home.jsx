@@ -18,16 +18,14 @@ const Home = () => {
           <Navbar />
         </div>
       </div>
-      <div className={`bg-black ${styles.flexStart}`}>
+      <div className={` ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Suspense>
             <Hero />
           </Suspense>
         </div>
       </div>
-
-
-      <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+      <div className={`${styles.paddingX}  ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Suspense>
             <Coin />
@@ -41,12 +39,9 @@ const Home = () => {
           <Suspense>
             <FeatureBlog />
           </Suspense>
-          {/* <Suspense>
-            <Footer />
-          </Suspense> */}
         </div>
       </div>
-      <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
+      <div className={` ${styles.paddingX}  ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Footer />
         </div>
