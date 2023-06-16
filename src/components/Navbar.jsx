@@ -75,7 +75,7 @@ const Navbar = () => {
           <NavLink onClick={() => setActive("FAQ")} className={`${active === "FAQ" ? "" : "text-slate-50"}`} to="/faq">FAQ</NavLink>
         </li>
         <li className="text-slate-50 text-[14px] font-poppins mr-4  cursor-pointer text-slate-50" style={{ marginLeft: "35px" }} href="#" onClick={() => window.open(Pdf)}>
-          whitePaper
+          WhitePaper
         </li>
         {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
         {addrees !== null ? (

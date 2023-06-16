@@ -19,7 +19,7 @@ const Community = () => {
                         Join Our Community
                     </span>
                 </div>
-                <div className="w-100 my-5">
+                <div className="w-100 my-3">
                     <p
                         style={{
                             fontStyle: "normal",
