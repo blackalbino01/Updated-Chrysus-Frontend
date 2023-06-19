@@ -62,8 +62,8 @@ const Navbar = () => {
         <img src={logoo} alt="hoobank" className="w-[137px] h-[33px]" onClick={() => setToggle(false)} />
       </Link>
       <ul className="list-none  sm:flex hidden justify-end items-center flex-1 ">
-        <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424"}}>
-          <NavLink onClick={() => setActive("About")} className={`${active === "About" ?  "" : "text-slate-50"}`} to="/about">About</NavLink>
+        <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424" }}>
+          <NavLink onClick={() => setActive("About")} className={`${active === "About" ? "" : "text-slate-50"}`} to="/about">About</NavLink>
         </li>
         <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424" }}>
           <NavLink onClick={() => setActive("Services")} className={`${active === "Services" ? "" : "text-slate-50"}`} to="/services">Services</NavLink>
@@ -79,7 +79,7 @@ const Navbar = () => {
         </li>
         {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
         {addrees !== null ? (
-          <li className="text-[14px] ml-4 font-poppins cursor-pointer" style={{color: "#846424" }}>
+          <li className="text-[14px] ml-4 font-poppins cursor-pointer" style={{ color: "#846424" }}>
             <NavLink onClick={() => setActive("Dashboard")} className={`${active === "Dashboard" ? "" : "text-slate-50"}`} to="/accounts">Dashboard</NavLink>
           </li>
         ) : ""}
@@ -100,7 +100,8 @@ const Navbar = () => {
                 className=" font-medium
                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
                dropdown-toggle">
-                <a>{addrees?.substring(0, 7) + "...."}</a>
+                <img loading="lazy" width="25" height="25" src={meta1} alt="meta" />
+                <a className="mr-2 ml-2">{addrees?.substring(0, 7) + "...."}</a>
               </Button>
               <ul className="dropdown-menu text-black mt-2"
                 style={{
@@ -111,17 +112,35 @@ const Navbar = () => {
                   borderEndEndRadius: "16px",
                   color: "#846424",
                 }}>
-                <div className="mr-3 ml-5">
-                  <h4>Wallet</h4>
-                  <a className="inline-flex text-sm  py-2.5 items-center font-medium">
-                    <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
-                    <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
+                <div className="mr-3 ml-5 text-center">
+                  <h5 className="text-center">Network</h5>
+                  <a className="inline-flex text-sm  items-center text-center font-medium">
+                    <div class="spinner-grow text-info spinner-grow" style={{ width: "0.4rem", height: "0.4rem " }} role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <a className="text-center ml-1">Ethereum</a>
+                    {/* <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" /> */}
+                    {/* <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span> */}
                   </a>
                   <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
-                    <FiLogOut />
-                    <Link className="ml-2"
+                    {/* <FiLogOut /> */}
+                    {/* <Link className="ml-2"
                       onClick={() => DisconnectWallet()}
-                    >Disconnect</Link>
+                    >Disconnect</Link> */}
+                    <Link className="btn btn-lg btn-primary btn-shadow"
+                      style={{
+                        backgroundColor: "#211f21",
+                        borderRadius: "16px",
+                        color: "#846424",
+                        width: "7rem",
+                        height: "2rem ",
+                        fontWeight: "700",
+                        fontSize: "12px",
+                      }}
+                      onClick={() => DisconnectWallet()}
+                    >
+                      Disconnect
+                    </Link>
                   </li>
                 </div>
               </ul>
@@ -194,7 +213,7 @@ const Navbar = () => {
                 <NavLink to="/accounts">Dashboard</NavLink>
               </li>
             ) : ""}
-           
+
             <li style={{
               marginTop: "20px",
               zIndex: '1',
@@ -225,7 +244,7 @@ const Navbar = () => {
                       color: "#846424",
                     }}>
                     <div className="mr-3 ml-5">
-                      <h4>Wallet</h4>
+                      <h4 className="text-center">Wallet</h4>
                       <a className="inline-flex text-sm  py-2.5 items-center font-medium">
                         <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" />
                         <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span>
