@@ -115,8 +115,8 @@ const Navbar = () => {
                 <div className="mr-3 ml-5 text-center">
                   <h5 className="text-center">Network</h5>
                   <a className="inline-flex text-sm  items-center text-center font-medium">
-                    <div class="spinner-grow text-info spinner-grow" style={{ width: "0.4rem", height: "0.4rem " }} role="status">
-                      <span class="visually-hidden">Loading...</span>
+                    <div className="spinner-grow text-info spinner-grow" style={{ width: "0.4rem", height: "0.4rem " }} role="status">
+                      <span className="visually-hidden">Loading...</span>
                     </div>
                     <a className="text-center ml-1">Ethereum</a>
                     {/* <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" /> */}
