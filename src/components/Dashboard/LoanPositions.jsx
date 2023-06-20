@@ -1,17 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import styles from "../../style";
-import { Tab } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import OrderTab from '../Future/OrderTab';
-import TradeTab from '../Future/TradeTab';
-import Footer from '../Footer';
+import { Tab } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import OrderTab from "../Future/OrderTab";
+import TradeTab from "../Future/TradeTab";
+import Footer from "../Footer";
 import { B, CP, D } from "../../assets";
 
-
-
 const LoanPositions = () => {
-
   const [data, setData] = useState(
     document.querySelectorAll("#status_wrapper tbody tr")
   );
@@ -36,7 +33,6 @@ const LoanPositions = () => {
     //chackboxFun();
   }, [test]);
 
-
   // Active pagginarion
   activePag.current === 0 && chageData(0, sort);
   // paggination
@@ -55,11 +51,23 @@ const LoanPositions = () => {
   //   { Pool: 'DAI', Collateral: '267%', Browser: "$152.7", Credit: "123%", Debt: "123%" },
   // ];
   const Dai = [
-    { Collateral: 'CHC/DAI', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
-];
-const Eth = [
-  { Collateral: 'CHC/ETH', Interest: '%', LIQ: '110%', Utilization: '%', Balance: '0' },
-];
+    {
+      Collateral: "CHC/DAI",
+      Interest: "%",
+      LIQ: "110%",
+      Utilization: "%",
+      Balance: "0",
+    },
+  ];
+  const Eth = [
+    {
+      Collateral: "CHC/ETH",
+      Interest: "%",
+      LIQ: "110%",
+      Utilization: "%",
+      Balance: "0",
+    },
+  ];
   return (
     <Section>
       {/* <div className="page-content mt-5">
@@ -189,36 +197,47 @@ const Eth = [
         </div>
       </div> */}
       <div className="col-xl-12">
-        <div className="card" style={{
-          backgroundColor: "#211f21",
-          borderRadius: "16px",
-          color: "#846424",
-        }}>
+        <div
+          className="card"
+          style={{
+            backgroundColor: "#211f21",
+            borderRadius: "16px",
+            color: "#846424",
+          }}
+        >
           <div className="card-body">
             <Tab.Container defaultActiveKey="All">
               <div className="card-header border-0 pb-2 flex-wrap">
                 <h4 className="heading ">Lending</h4>
               </div>
               <div className="card-body pt-0 pb-0">
-                <Tab.Content >
+                <Tab.Content>
                   <Tab.Pane eventKey="All">
                     <div className="table-responsive dataTabletrade ">
-                      <div id="status_wrapper" className="dataTables_wrapper no-footer">
-                        <table id="example" className="table display dataTable no-footer" style={{ minWidth: "845px" }}>
+                      <div
+                        id="status_wrapper"
+                        className="dataTables_wrapper no-footer"
+                      >
+                        <table
+                          id="example"
+                          className="table display dataTable no-footer"
+                          style={{ minWidth: "845px" }}
+                        >
                           <thead>
                             <tr
                               style={{
                                 color: "#846424",
-                              }}>
+                              }}
+                            >
                               <th>Pool</th>
                               <th>Borrow</th>
                               <th>Current Value</th>
                               <th>Debit Ratio</th>
                               <th>APY</th>
-                              <th className='text-center'>Action</th>
+                              <th className="text-center">Action</th>
                             </tr>
                           </thead>
-                          <tbody className='text-white'>
+                          <tbody className="text-white">
                             {Eth.map((item, index) => (
                               <tr key={index}>
                                 <td>{item.Collateral}</td>
@@ -228,7 +247,8 @@ const Eth = [
                                 <td>{item.Balance}</td>
                                 <td>
                                   <Link>
-                                    <span className="badge cursor-pointer"
+                                    <span
+                                      className="badge cursor-pointer"
                                       // onClick={() => setModalShowDAI(true)}
                                       style={{
                                         height: "22px",
@@ -242,11 +262,14 @@ const Eth = [
                                         borderRadius: "16px",
                                         border: "1px solid transparent",
                                         borderColor: "#846424",
-
-                                      }}>Withdraw</span>
+                                      }}
+                                    >
+                                      Withdraw
+                                    </span>
                                   </Link>
                                   <Link to={"/accounts/loan/lend"}>
-                                    <span className="badge cursor-pointer ml-2"
+                                    <span
+                                      className="badge cursor-pointer ml-2"
                                       style={{
                                         height: "22px",
                                         width: "80px",
@@ -255,9 +278,13 @@ const Eth = [
                                         fontStyle: "normal",
                                         fontWeight: "700",
                                         fontSize: "10px",
-                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                        background:
+                                          "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
                                         borderRadius: "40px",
-                                      }}>Lend</span>
+                                      }}
+                                    >
+                                      Lend
+                                    </span>
                                   </Link>
                                 </td>
                               </tr>
@@ -271,7 +298,8 @@ const Eth = [
                                 <td>{item.Balance}</td>
                                 <td>
                                   <Link>
-                                    <span className="badge cursor-pointer"
+                                    <span
+                                      className="badge cursor-pointer"
                                       // onClick={() => setModalShowDAI(true)}
                                       style={{
                                         height: "22px",
@@ -285,11 +313,14 @@ const Eth = [
                                         borderRadius: "16px",
                                         border: "1px solid transparent",
                                         borderColor: "#846424",
-
-                                      }}>Withdraw</span>
+                                      }}
+                                    >
+                                      Withdraw
+                                    </span>
                                   </Link>
                                   <Link to={"/accounts/loan/lend"}>
-                                    <span className="badge cursor-pointer ml-2"
+                                    <span
+                                      className="badge cursor-pointer ml-2"
                                       style={{
                                         height: "22px",
                                         width: "80px",
@@ -298,9 +329,13 @@ const Eth = [
                                         fontStyle: "normal",
                                         fontWeight: "700",
                                         fontSize: "10px",
-                                        background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                        background:
+                                          "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
                                         borderRadius: "40px",
-                                      }}>Lend</span>
+                                      }}
+                                    >
+                                      Lend
+                                    </span>
                                   </Link>
                                 </td>
                               </tr>
@@ -330,16 +365,16 @@ const Eth = [
       <div className="pt-5" />
       <div className="pb-5" />
     </Section>
-  )
-}
+  );
+};
 
-export default LoanPositions
+export default LoanPositions;
 
 const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  #121212;
+  background-color: #121212;
   .grid {
     display: flex;
     flex-direction: column;

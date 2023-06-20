@@ -3,144 +3,146 @@ import { FormActionButton } from "../buttons/form_action_button";
 import { Table } from "../table";
 import { Body, H4, P } from "../typography";
 import { Info } from "react-feather";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 // import { COLORS } from "src/assets/styles/theme";
 import styles from "../../style";
-import { Dropdown, Tab, Nav } from 'react-bootstrap';
-import OrderTab from '../Future/OrderTab';
-import TradeTab from '../Future/TradeTab';
-import { useEffect, useState, useRef } from 'react';
+import { Dropdown, Tab, Nav } from "react-bootstrap";
+import OrderTab from "../Future/OrderTab";
+import TradeTab from "../Future/TradeTab";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "react-bootstrap";
 import Toltip from "../buttons/toltip";
 import Utils from "../../utilities";
 
-
 export const Borrow = () => {
-    const [visible, setvisible] = useState(false);
-    const [data, setData] = useState(
-        document.querySelectorAll("#status_wrapper tbody tr")
-    );
-    const sort = 6;
-    const activePag = useRef(0);
-    const [test, settest] = useState(0);
-	const [dai_chcBalance, setDai_chcBalance] = useState(0);
-	const [eth_chcBalance, setEth_chcBalance] = useState(0);
-	const [eth_lend, setEth_Lend] = useState(0);
-    const [dai_lend, setDai_Lend] = useState(0);
-    const [feed, setFeed] = useState(0);
-    const addrees = localStorage.getItem("accounts");
+  const [visible, setvisible] = useState(false);
+  const [data, setData] = useState(
+    document.querySelectorAll("#status_wrapper tbody tr")
+  );
+  const sort = 6;
+  const activePag = useRef(0);
+  const [test, settest] = useState(0);
+  const [dai_chcBalance, setDai_chcBalance] = useState(0);
+  const [eth_chcBalance, setEth_chcBalance] = useState(0);
+  const [eth_lend, setEth_Lend] = useState(0);
+  const [dai_lend, setDai_Lend] = useState(0);
+  const [feed, setFeed] = useState(0);
+  const addrees = localStorage.getItem("accounts");
 
-    // Active data
-    const chageData = (frist, sec) => {
-        for (var i = 0; i < data.length; ++i) {
-            if (i >= frist && i < sec) {
-                data[i].classList.remove("d-none");
-            } else {
-                data[i].classList.add("d-none");
-            }
-        }
-    };
-    // use effect
-    useEffect(() => {
-        setData(document.querySelectorAll("#status_wrapper tbody tr"));
-        //chackboxFun();
-    }, [test]);
-
-
-    useEffect(() => {
-		Utils.getLendPosition(addrees, "DAI").then(function (data) {
-			setDai_chcBalance(Utils.toFixedNoRounding(Number(data.borrowedAmount)/ 1e18,3));
-            setDai_Lend(Utils.toFixedNoRounding(Number(data.lendAmount)/ 1e18,3));
-		});
-
-		Utils.getLendPosition(addrees, "ETH").then(function (data) {
-			setEth_chcBalance(Utils.toFixedNoRounding(Number(data.borrowedAmount)/ 1e18,3));
-            setEth_Lend(Utils.toFixedNoRounding(Number(data.lendAmount)/ 1e18,3));
-		});
-
-        Utils.getFeed("CHC").then(function (data) {
-			setFeed(Utils.toFixedNoRounding(Number(data[1]) / 1E18,2));
-		});
-	});
-
-
-    // Active pagginarion
-    activePag.current === 0 && chageData(0, sort);
-    // paggination
-    let paggination = Array(Math.ceil(data.length / sort))
-        .fill()
-        .map((_, i) => i + 1);
-
-    // Active paggination & chage data
-    const onClick = (i) => {
-        activePag.current = i;
-        chageData(activePag.current * sort, (activePag.current + 1) * sort);
-        settest(i);
-    };
-
-    const checkboxFun = (type) => {
-        setTimeout(() => {
-            const checkbox = document.querySelectorAll('.order-history input');
-            const motherCheckBox = document.querySelector('.sorting_asc input');
-            for (let i = 0; i < checkbox.length; i++) {
-                const element = checkbox[i]
-                if (type === 'all') {
-                    if (motherCheckBox.checked) {
-                        element.checked = true
-                    } else {
-                        element.checked = false
-                    }
-                } else {
-                    if (!element.checked) {
-                        motherCheckBox.checked = false
-                        break
-                    } else {
-                        motherCheckBox.checked = true
-                    }
-                }
-            }
-        }, 200);
+  // Active data
+  const chageData = (frist, sec) => {
+    for (var i = 0; i < data.length; ++i) {
+      if (i >= frist && i < sec) {
+        data[i].classList.remove("d-none");
+      } else {
+        data[i].classList.add("d-none");
+      }
     }
+  };
+  // use effect
+  useEffect(() => {
+    setData(document.querySelectorAll("#status_wrapper tbody tr"));
+    //chackboxFun();
+  }, [test]);
 
+  useEffect(() => {
+    Utils.getLendPosition(addrees, "DAI").then(function (data) {
+      setDai_chcBalance(
+        Utils.toFixedNoRounding(Number(data.borrowedAmount) / 1e18, 3)
+      );
+      setDai_Lend(Utils.toFixedNoRounding(Number(data.lendAmount) / 1e18, 3));
+    });
 
+    Utils.getLendPosition(addrees, "ETH").then(function (data) {
+      setEth_chcBalance(
+        Utils.toFixedNoRounding(Number(data.borrowedAmount) / 1e18, 3)
+      );
+      setEth_Lend(Utils.toFixedNoRounding(Number(data.lendAmount) / 1e18, 3));
+    });
 
-    const Eth = [
-        { 
-            Collateral: 'CHC/ETH', 
-            borrow: eth_chcBalance, 
-            current_value: Utils.toFixedNoRounding(feed * eth_chcBalance, 2), 
-            borrow_value: eth_lend 
-        },
-    ];
+    Utils.getFeed("CHC").then(function (data) {
+      setFeed(Utils.toFixedNoRounding(Number(data[1]) / 1e18, 2));
+    });
+  });
 
-    const Dai = [
-        { 
-            Collateral: 'CHC/DAI', 
-            borrow: dai_chcBalance, 
-            current_value: Utils.toFixedNoRounding(dai_chcBalance * feed, 2), 
-            borrow_value: dai_lend
-        },
-    ];
+  // Active pagginarion
+  activePag.current === 0 && chageData(0, sort);
+  // paggination
+  let paggination = Array(Math.ceil(data.length / sort))
+    .fill()
+    .map((_, i) => i + 1);
 
-    return (
-        <>
-            <div className="row">
-                <div className="col-xl-12">
-                    <div className="card" style={{
-                        backgroundColor: "#211f21",
-                        borderRadius: "16px",
-                        color: "#846424",
-                    }}>
-                        <div className="card-body">
-                            <Tab.Container defaultActiveKey="All">
-                                <div className="card-header border-0 pb-2 flex-wrap">
-                                    <h4 className="heading ">Borrow</h4>
-                                    {/* <div style={{ position: "absolute", right: 30, top: 30 }}>
+  // Active paggination & chage data
+  const onClick = (i) => {
+    activePag.current = i;
+    chageData(activePag.current * sort, (activePag.current + 1) * sort);
+    settest(i);
+  };
+
+  const checkboxFun = (type) => {
+    setTimeout(() => {
+      const checkbox = document.querySelectorAll(".order-history input");
+      const motherCheckBox = document.querySelector(".sorting_asc input");
+      for (let i = 0; i < checkbox.length; i++) {
+        const element = checkbox[i];
+        if (type === "all") {
+          if (motherCheckBox.checked) {
+            element.checked = true;
+          } else {
+            element.checked = false;
+          }
+        } else {
+          if (!element.checked) {
+            motherCheckBox.checked = false;
+            break;
+          } else {
+            motherCheckBox.checked = true;
+          }
+        }
+      }
+    }, 200);
+  };
+
+  const Eth = [
+    {
+      Collateral: "CHC/ETH",
+      borrow: eth_chcBalance,
+      current_value: Utils.toFixedNoRounding(feed * eth_chcBalance, 2),
+      borrow_value: eth_lend,
+    },
+  ];
+
+  const Dai = [
+    {
+      Collateral: "CHC/DAI",
+      borrow: dai_chcBalance,
+      current_value: Utils.toFixedNoRounding(dai_chcBalance * feed, 2),
+      borrow_value: dai_lend,
+    },
+  ];
+
+  return (
+    <>
+      <div className="row">
+        <div className="col-xl-12">
+          <div
+            className="card"
+            style={{
+              backgroundColor: "#211f21",
+              borderRadius: "16px",
+              color: "#846424",
+            }}
+          >
+            <div className="card-body">
+              <Tab.Container defaultActiveKey="All">
+                <div className="card-header border-0 pb-2 flex-wrap">
+                  <h4 className="heading ">Borrow</h4>
+                  {/* <div style={{ position: "absolute", right: 30, top: 30 }}>
                                         <Toltip style={{ position: "absolute", right: 30, top: 30 }}>
                                             <Info />
                                         </Toltip>
                                     </div> */}
-                                    {/* <Button
+                  {/* <Button
                                         type="button"
                                         style={{
                                             backgroundColor: "#1A1917",
@@ -151,85 +153,108 @@ export const Borrow = () => {
                                              rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
                                         <a>Deposite</a>
                                     </Button> */}
-                                    {/* <>
+                  {/* <>
 									<Nav className="order nav nav-tabs">
 										<Nav.Link as="button" eventKey="All" type="button">Order</Nav.Link>
 										<Nav.Link as="button" eventKey="Order" type="button">Order History</Nav.Link>
 										<Nav.Link as="button" eventKey="Trade" type="button">Trade Histroy</Nav.Link>
 									</Nav>
 								</> */}
-                                </div>
-                                <div className="card-body pt-0 pb-0">
-                                    <Tab.Content >
-                                        <Tab.Pane eventKey="All">
-                                            <div className="table-responsive dataTabletrade ">
-                                                <div id="status_wrapper" className="dataTables_wrapper no-footer">
-                                                    <table id="example" className="table display dataTable no-footer" style={{ minWidth: "845px" }}>
-                                                        <thead>
-                                                            <tr
-                                                                style={{
-                                                                    color: "#846424",
-                                                                }}>
-                                                                {/* <th className="sorting_asc">
+                </div>
+                <div className="card-body pt-0 pb-0">
+                  <Tab.Content>
+                    <Tab.Pane eventKey="All">
+                      <div className="table-responsive dataTabletrade ">
+                        <div
+                          id="status_wrapper"
+                          className="dataTables_wrapper no-footer"
+                        >
+                          <table
+                            id="example"
+                            className="table display dataTable no-footer"
+                            style={{ minWidth: "845px" }}
+                          >
+                            <thead>
+                              <tr
+                                style={{
+                                  color: "#846424",
+                                }}
+                              >
+                                {/* <th className="sorting_asc">
 																	<input type="checkbox" className="form-check-input" id="checkAll" required=""
 																		onClick={() => checkboxFun('all')}
 																	/>
 																</th> */}
-                                                                <th>Pool</th>
-                                                                <th>Borrow</th>
-                                                                <th>Current Value</th>
-                                                                <th>Available Loan(CHC)</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody className='text-white'>
-                                                            {Eth.map((item, index) => (
-                                                                <tr key={index}>
-                                                                    <td>{item.Collateral}</td>
-                                                                    <td>{item.borrow}</td>
-                                                                    <td>${item.current_value}</td>
-                                                                    <td>{item.borrow_value}</td>
-                                                                    <td>
-                                                                        <Link to={"/accounts/loan/borrowchc"} state={{collateral: "ETH"}}>
-                                                                            <span className="badge cursor-pointer"
-                                                                                style={{
-                                                                                    height: "22px",
-                                                                                    width: "80px",
-                                                                                    color: "#846424",
-                                                                                    textTransform: "uppercase",
-                                                                                    fontStyle: "normal",
-                                                                                    fontWeight: "700",
-                                                                                    fontSize: "10px",
-                                                                                    backgroundColor: "#1A1917",
-                                                                                    borderRadius: "16px",
-                                                                                    border: "1px solid transparent",
-                                                                                    borderColor: "#846424",
-                                                                                }}>Borrow</span>
-                                                                        </Link>
-                                                                        <Link to={"/accounts/loan/repay"} state={{collateral: "ETH"}} >
-                                                                            <span className="badge cursor-pointer ml-2"
-                                                                                style={{
-                                                                                    height: "22px",
-                                                                                    width: "80px",
-                                                                                    color: "black",
-                                                                                    textTransform: "uppercase",
-                                                                                    fontStyle: "normal",
-                                                                                    fontWeight: "700",
-                                                                                    fontSize: "10px",
-                                                                                    background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                                                                    borderRadius: "40px",
-                                                                                }}>Repay</span>
-                                                                        </Link>
-                                                                    </td>
-                                                                </tr>
-                                                            ))}
-                                                            {Dai.map((item, index) => (
-                                                                <tr key={index}>
-                                                                    <td>{item.Collateral}</td>
-                                                                    <td>{item.borrow}</td>
-                                                                    <td>${item.current_value}</td>
-                                                                    <td>{item.borrow_value}</td>
-                                                                    {/* <td>
+                                <th>Pool</th>
+                                <th>Borrow</th>
+                                <th>Current Value</th>
+                                <th>Available Loan(CHC)</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody className="text-white">
+                              {Eth.map((item, index) => (
+                                <tr key={index}>
+                                  <td>{item.Collateral}</td>
+                                  <td>{item.borrow}</td>
+                                  <td>${item.current_value}</td>
+                                  <td>{item.borrow_value}</td>
+                                  <td>
+                                    <Link
+                                      to={"/accounts/loan/borrowchc"}
+                                      state={{ collateral: "ETH" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "#846424",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          backgroundColor: "#1A1917",
+                                          borderRadius: "16px",
+                                          border: "1px solid transparent",
+                                          borderColor: "#846424",
+                                        }}
+                                      >
+                                        Borrow
+                                      </span>
+                                    </Link>
+                                    <Link
+                                      to={"/accounts/loan/repay"}
+                                      state={{ collateral: "ETH" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer ml-2"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "black",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          background:
+                                            "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                          borderRadius: "40px",
+                                        }}
+                                      >
+                                        Repay
+                                      </span>
+                                    </Link>
+                                  </td>
+                                </tr>
+                              ))}
+                              {Dai.map((item, index) => (
+                                <tr key={index}>
+                                  <td>{item.Collateral}</td>
+                                  <td>{item.borrow}</td>
+                                  <td>${item.current_value}</td>
+                                  <td>{item.borrow_value}</td>
+                                  {/* <td>
                                                                         <Link to={"/accounts/loan/dai"}>
                                                                             <span className="badge cursor-pointer"
                                                                                 style={{
@@ -245,43 +270,58 @@ export const Borrow = () => {
                                                                                 }}>Borrow</span>
                                                                         </Link>
                                                                     </td> */}
-                                                                    <td>
-                                                                        <Link to={"/accounts/loan/borrowchc"} state={{collateral: "DAI"}}>
-                                                                            <span className="badge cursor-pointer"
-                                                                                style={{
-                                                                                    height: "22px",
-                                                                                    width: "80px",
-                                                                                    color: "#846424",
-                                                                                    textTransform: "uppercase",
-                                                                                    fontStyle: "normal",
-                                                                                    fontWeight: "700",
-                                                                                    fontSize: "10px",
-                                                                                    backgroundColor: "#1A1917",
-                                                                                    borderRadius: "16px",
-                                                                                    border: "1px solid transparent",
-                                                                                    borderColor: "#846424",
-                                                                                }}>Borrow</span>
-                                                                        </Link>
-                                                                        <Link to={"/accounts/loan/repay"} state={{collateral: "DAI"}}>
-                                                                            <span className="badge cursor-pointer ml-2"
-                                                                                style={{
-                                                                                    height: "22px",
-                                                                                    width: "80px",
-                                                                                    color: "black",
-                                                                                    textTransform: "uppercase",
-                                                                                    fontStyle: "normal",
-                                                                                    fontWeight: "700",
-                                                                                    fontSize: "10px",
-                                                                                    background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                                                                    borderRadius: "40px",
-                                                                                }}>Repay</span>
-                                                                        </Link>
-                                                                    </td>
-                                                                </tr>
-                                                            ))}
-                                                        </tbody>
-                                                    </table>
-                                                    {/* <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
+                                  <td>
+                                    <Link
+                                      to={"/accounts/loan/borrowchc"}
+                                      state={{ collateral: "DAI" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "#846424",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          backgroundColor: "#1A1917",
+                                          borderRadius: "16px",
+                                          border: "1px solid transparent",
+                                          borderColor: "#846424",
+                                        }}
+                                      >
+                                        Borrow
+                                      </span>
+                                    </Link>
+                                    <Link
+                                      to={"/accounts/loan/repay"}
+                                      state={{ collateral: "DAI" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer ml-2"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "black",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          background:
+                                            "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                          borderRadius: "40px",
+                                        }}
+                                      >
+                                        Repay
+                                      </span>
+                                    </Link>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                          {/* <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
                                                         <div className="dataTables_info">
                                                             Showing {activePag.current * sort + 1} to{" "}
                                                             {data.length > (activePag.current + 1) * sort
@@ -340,26 +380,27 @@ export const Borrow = () => {
                                                             </Link>
                                                         </div>
                                                     </div> */}
-                                                </div>
-                                            </div>
-                                        </Tab.Pane>
-                                        <Tab.Pane eventKey="Order">
-                                            <OrderTab />
-                                        </Tab.Pane>
-                                        <Tab.Pane eventKey="Trade">
-                                            <TradeTab />
-                                        </Tab.Pane>
-                                    </Tab.Content>
-                                </div>
-                            </Tab.Container>
                         </div>
-                        <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }} />
-                        <div className="mt-4" />
-                        <div className="w-100 d-flex flex-row justify-content-start p-3" />
-                    </div>
+                      </div>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="Order">
+                      <OrderTab />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="Trade">
+                      <TradeTab />
+                    </Tab.Pane>
+                  </Tab.Content>
                 </div>
-
+              </Tab.Container>
             </div>
-        </>
-    );
+            <div
+              style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}
+            />
+            <div className="mt-4" />
+            <div className="w-100 d-flex flex-row justify-content-start p-3" />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
