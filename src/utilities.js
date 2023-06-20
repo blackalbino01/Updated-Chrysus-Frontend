@@ -7,7 +7,6 @@ import governance from "./abis/Governance.json";
 import mockOracle from "./abis/MockOracle.json";
 import { DAI, ETH } from "./constant";
 
-
 const PROVIDER = "https://rpc.sepolia.org";
 const LOAN = "0x83abAf05B065B1aD34919e5E121476670E796e3a";
 const CHRYSUS = "0x5Acf4e52FDB68b4928a215Af05771c23A7663CBF";
@@ -19,25 +18,13 @@ const oracleCHC = "0xCbA832148ABDa67DE754bF67d95AC1bb1FC630Ba";
 const oracleXAU = "0xC5981F461d74c46eB4b0CF3f4Ec79f025573B0Ea";
 const stake = "0x04a78c9FC9B3B5542c4ed26D1C42fb6462E71548";
 const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
-const chrysusContract = new ethers.Contract(
-    CHRYSUS,
-    chrysus.abi,
-    provider
-);
-const loanContract = new ethers.Contract(
-    LOAN,
-    loan.abi,
-    provider
-);
-const swapContract = new ethers.Contract(
-    SWAP,
-    swap.abi,
-    provider
-);
+const chrysusContract = new ethers.Contract(CHRYSUS, chrysus.abi, provider);
+const loanContract = new ethers.Contract(LOAN, loan.abi, provider);
+const swapContract = new ethers.Contract(SWAP, swap.abi, provider);
 const governanceContract = new ethers.Contract(
-    GOVERNANCE,
-    governance.abi,
-    provider
+  GOVERNANCE,
+  governance.abi,
+  provider
 );
 
 // const getGovStake = async (address) => {
@@ -49,56 +36,56 @@ const governanceContract = new ethers.Contract(
 // };
 
 const getCollateralizationRatio = async () => {
-    return chrysusContract.getCollateralizationRatio();
+  return chrysusContract.getCollateralizationRatio();
 };
 
 const getCDPCount = async () => {
-    return chrysusContract.getCdpCounter();
+  return chrysusContract.getCdpCounter();
 };
 
 const liqRatio = async () => {
-    return chrysusContract.liquidationRatio();
+  return chrysusContract.liquidationRatio();
 };
 
 const interestRate = async () => {
-    return loanContract.calculateInterestRate();
+  return loanContract.calculateInterestRate();
 };
 
 const utilizationRate = async () => {
-    return loanContract.calculateUtilizationRate();
+  return loanContract.calculateUtilizationRate();
 };
 
 const volume = async () => {
-    return loanContract.getVolume();
+  return loanContract.getVolume();
 };
 
 const collateralAmount = async (amount, token) => {
-    const oracleD = new ethers.Contract(oracleDAI, mockOracle.abi, provider)
-    const D = await oracleD.latestRoundData();
-    const oracleE = new ethers.Contract(oracleETH, mockOracle.abi, provider)
-    const E = await oracleE.latestRoundData();
-    const oracleC = new ethers.Contract(oracleCHC, mockOracle.abi, provider)
-    const C = await oracleC.latestRoundData();
+  const oracleD = new ethers.Contract(oracleDAI, mockOracle.abi, provider);
+  const D = await oracleD.latestRoundData();
+  const oracleE = new ethers.Contract(oracleETH, mockOracle.abi, provider);
+  const E = await oracleE.latestRoundData();
+  const oracleC = new ethers.Contract(oracleCHC, mockOracle.abi, provider);
+  const C = await oracleC.latestRoundData();
 
-    const collateral = token == "DAI" ? Number(D[1]) : Number(E[1]);
-    return ((amount * collateral) / 1e8) / (Number(C[1]) / 1e18);
+  const collateral = token == "DAI" ? Number(D[1]) : Number(E[1]);
+  return (amount * collateral) / 1e8 / (Number(C[1]) / 1e18);
 };
 
 const generate = async (amount, token) => {
-    const oracleD = new ethers.Contract(oracleDAI, mockOracle.abi, provider)
-    const D = await oracleD.latestRoundData();
-    const oracleE = new ethers.Contract(oracleETH, mockOracle.abi, provider)
-    const E = await oracleE.latestRoundData();
-    const oracleC = new ethers.Contract(oracleCHC, mockOracle.abi, provider)
-    const C = await oracleC.latestRoundData();
-    const oracleX = new ethers.Contract(oracleXAU, mockOracle.abi, provider)
-    const X = await oracleX.latestRoundData();
+  const oracleD = new ethers.Contract(oracleDAI, mockOracle.abi, provider);
+  const D = await oracleD.latestRoundData();
+  const oracleE = new ethers.Contract(oracleETH, mockOracle.abi, provider);
+  const E = await oracleE.latestRoundData();
+  const oracleC = new ethers.Contract(oracleCHC, mockOracle.abi, provider);
+  const C = await oracleC.latestRoundData();
+  const oracleX = new ethers.Contract(oracleXAU, mockOracle.abi, provider);
+  const X = await oracleX.latestRoundData();
 
-    const ratio = Number(C[1]) / Number(X[1]);
-    const collateral = token == "DAI" ? Number(D[1]) : Number(E[1]);
-    const min = token == "DAI" ? 267 : 120;
-    let mint = (amount * collateral) / Number(C[1]);
-    /*console.log(
+  const ratio = Number(C[1]) / Number(X[1]);
+  const collateral = token == "DAI" ? Number(D[1]) : Number(E[1]);
+  const min = token == "DAI" ? 267 : 120;
+  let mint = (amount * collateral) / Number(C[1]);
+  /*console.log(
         {"D":Number(D[1]), 
         "E":Number(E[1]),
         "C": Number(C[1]),
@@ -109,100 +96,91 @@ const generate = async (amount, token) => {
         "mint" :mint 
     }
     )*/
-    return (mint * 10000) / (ratio * min);
-}
+  return (mint * 10000) / (ratio * min);
+};
 
 const getLendPosition = async (user, collateral) => {
-    if (collateral == "DAI") {
-        return loanContract.getUserPositions(user, DAI);
-    }
-    else if (collateral == "ETH") {
-        return loanContract.getUserPositions(user, ETH);
-    }
-}
-
+  if (collateral == "DAI") {
+    return loanContract.getUserPositions(user, DAI);
+  } else if (collateral == "ETH") {
+    return loanContract.getUserPositions(user, ETH);
+  }
+};
 
 const getMintPosition = async (user, collateral) => {
-    if (collateral == "DAI") {
-        return chrysusContract.getUserPositions(user, DAI);
-    }
-    else if (collateral == "ETH") {
-        return chrysusContract.getUserPositions(user, ETH);
-    }
-}
+  if (collateral == "DAI") {
+    return chrysusContract.getUserPositions(user, DAI);
+  } else if (collateral == "ETH") {
+    return chrysusContract.getUserPositions(user, ETH);
+  }
+};
 
 const getMintPositions = async () => {
-    const positions = await chrysusContract.getPositions();
-    let arr = [];
-    let collateral = ["ETH", "DAI"];
+  const positions = await chrysusContract.getPositions();
+  let arr = [];
+  let collateral = ["ETH", "DAI"];
 
-    for (let i = 0; i < positions.length; i++) {
-        for (let j = 0; j < 2; j++) {
-            const c = await getMintPosition(positions[i], collateral[j]);
-            if (Number(c.minted) > 0) {
-                arr.push(
-                    {
-                        "minted": c.minted,
-                        "deposited": c.deposited,
-                        "col": collateral[j],
-                        "user": positions[i],
-                    }
-                );
-            }
-        }
+  for (let i = 0; i < positions.length; i++) {
+    for (let j = 0; j < 2; j++) {
+      const c = await getMintPosition(positions[i], collateral[j]);
+      if (Number(c.minted) > 0) {
+        arr.push({
+          minted: c.minted,
+          deposited: c.deposited,
+          col: collateral[j],
+          user: positions[i],
+        });
+      }
     }
+  }
 
-    return arr;
-}
+  return arr;
+};
 
 const getUserBalance = async (user, token) => {
-    if (token == "CHC") {
-        return chrysusContract.balanceOf(user);
-    }
-    else if (token == "DAI") {
-        const tokenContract = new ethers.Contract(DAI, ERC20.abi, provider);
-        return tokenContract.balanceOf(user);
-    }
-    else if (token == "ETH") {
-        return provider.getBalance(user);
-    }
+  if (token == "CHC") {
+    return chrysusContract.balanceOf(user);
+  } else if (token == "DAI") {
+    const tokenContract = new ethers.Contract(DAI, ERC20.abi, provider);
+    return tokenContract.balanceOf(user);
+  } else if (token == "ETH") {
+    return provider.getBalance(user);
+  }
 };
 
 const getFeed = async (token) => {
-    if (token == "DAI") {
-        const oracle = new ethers.Contract(oracleDAI, mockOracle.abi, provider)
-        return oracle.latestRoundData();
-    }
-    else if (token == "ETH") {
-        const oracle = new ethers.Contract(oracleETH, mockOracle.abi, provider)
-        return oracle.latestRoundData();
-    }
-    else if (token == "CHC") {
-        const oracle = new ethers.Contract(oracleCHC, mockOracle.abi, provider)
-        return oracle.latestRoundData();
-    }
+  if (token == "DAI") {
+    const oracle = new ethers.Contract(oracleDAI, mockOracle.abi, provider);
+    return oracle.latestRoundData();
+  } else if (token == "ETH") {
+    const oracle = new ethers.Contract(oracleETH, mockOracle.abi, provider);
+    return oracle.latestRoundData();
+  } else if (token == "CHC") {
+    const oracle = new ethers.Contract(oracleCHC, mockOracle.abi, provider);
+    return oracle.latestRoundData();
+  }
 };
 
 const toFixedNoRounding = function (number, n) {
-    const factor = Math.pow(10, n);
-    return Math.floor(number * factor) / factor;
-}
+  const factor = Math.pow(10, n);
+  return Math.floor(number * factor) / factor;
+};
 
 export default {
-    getCollateralizationRatio,
-    liqRatio,
-    getUserBalance,
-    getFeed,
-    getCDPCount,
-    getMintPosition,
-    getMintPositions,
-    getLendPosition,
-    collateralAmount,
-    volume,
-    utilizationRate,
-    interestRate,
-    toFixedNoRounding,
-    generate,
-    // getTotalPoolsAmount,
-    // getGovStake
-}
+  getCollateralizationRatio,
+  liqRatio,
+  getUserBalance,
+  getFeed,
+  getCDPCount,
+  getMintPosition,
+  getMintPositions,
+  getLendPosition,
+  collateralAmount,
+  volume,
+  utilizationRate,
+  interestRate,
+  toFixedNoRounding,
+  generate,
+  // getTotalPoolsAmount,
+  // getGovStake
+};
