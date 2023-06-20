@@ -154,7 +154,7 @@ export const Repay = () => {
             <div className="w-100 d-flex flex-row justify-content-start p-3">
               {/* Form Actions */}
               <Link to={"/accounts/loan"}>
-                <FormActionButton color="white" outline={true}>
+                <FormActionButton color="white" outline>
                   Back
                 </FormActionButton>
               </Link>

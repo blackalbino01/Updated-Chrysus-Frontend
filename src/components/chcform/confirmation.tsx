@@ -52,8 +52,8 @@ export const Confirmation = () => {
 
         <FormActionButton
           color="primary"
-          gradient={true}
-          outline={true}
+          gradient
+          outline
           className="mx-2"
         >
           Open Position

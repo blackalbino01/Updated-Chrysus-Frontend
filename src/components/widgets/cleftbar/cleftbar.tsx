@@ -98,7 +98,7 @@ export const CLeftBar = () => {
 							if (_.modal === "swap") setSwapModal(true);
 							if (_.modal === "shop") setShopModal(true);
 						}}
-						uppercase={true}
+						uppercase
 						key={key}
 						className={`icon-button ${_selected === _ ? "bg-primary" : ""}`}
 						Icon={_.icon}
@@ -108,7 +108,7 @@ export const CLeftBar = () => {
 			</div>
 			<div className="">
 				<IconButton
-					uppercase={true}
+					uppercase
 					className="icon-button"
 					// Icon={<CreditCard color="white" size={24} />}
 					Icon={

@@ -130,7 +130,7 @@ export const Withdraw = () => {
               <Link to={"/accounts/mint"}>
                 <FormActionButton
                   color="white"
-                  outline={true}
+                  outline
                   onClick={() => console.log("first")}
                 >
                   Back
