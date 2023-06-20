@@ -74,14 +74,14 @@ export const DaiLiquidate = () => {
             <div className="w-100 d-flex flex-row justify-content-start p-3">
               {/* Form Actions */}
               <Link to={"/accounts/mintposition"}>
-                <FormActionButton color="white" outline={true}>
+                <FormActionButton color="white" outline>
                   Back
                 </FormActionButton>
               </Link>
               <FormActionButton
                 color="primary"
-                gradient={true}
-                outline={true}
+                gradient
+                outline
                 className="mx-2"
               >
                 Continue

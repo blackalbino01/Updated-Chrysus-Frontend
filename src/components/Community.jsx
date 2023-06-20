@@ -53,7 +53,7 @@ const Community = () => {
         <a target="_blank" href="https://t.me/chrysusofficial">
           <CircleExpandButton
             color="primary"
-            outline={true}
+            outline
             icon={<img src={TelegramGoldIcon} alt="telegram-gold.svg" />}
             hoverIcon={<img src={TelegramGoldIcon} alt="telegram-white.svg" />}
             text={"Telegram"}
@@ -62,7 +62,7 @@ const Community = () => {
         <a target="_blank" href=" https://twitter.com/chrysus_coin01">
           <CircleExpandButton
             color="primary"
-            outline={true}
+            outline
             icon={<img src={TwitterGoldIcon} alt="twitter-gold.svg" />}
             hoverIcon={<img src={TwitterGoldIcon} alt="twitter-white.svg" />}
             text="Twitter"
@@ -71,7 +71,7 @@ const Community = () => {
         <a target="_blank" href="https://www.facebook.com/chrysuscoin">
           <CircleExpandButton
             color="primary"
-            outline={true}
+            outline
             icon={<img src={FacebookGoldIcon} alt="facebook-gold.svg" />}
             hoverIcon={<img src={FacebookGoldIcon} alt="facebook-white.svg" />}
             text="Facebook"
@@ -80,7 +80,7 @@ const Community = () => {
         <a target="_blank" href=" https://discord.gg/e7kfZPRa">
           <CircleExpandButton
             color="primary"
-            outline={true}
+            outline
             icon={<img src={DiscordGoldIcon} alt="discord-gold.svg" />}
             hoverIcon={<img src={DiscordGoldIcon} alt="discord-white.svg" />}
             text="Discord"
@@ -92,7 +92,7 @@ const Community = () => {
         >
           <CircleExpandButton
             color="primary"
-            outline={true}
+            outline
             icon={
               <img
                 style={{ width: "30px", height: "20px" }}

@@ -144,7 +144,7 @@ export const WithdrawStake = () => {
               <Link to={"/accounts/governance"}>
                 <FormActionButton
                   color="white"
-                  outline={true}
+                  outline
                   onClick={() => console.log("first")}
                 >
                   Back

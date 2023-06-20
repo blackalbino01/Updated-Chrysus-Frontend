@@ -50,12 +50,7 @@ export const Confirmation = () => {
         <Link to={"/accounts/loan"}>Back</Link>
         {/* </FormActionButton> */}
 
-        <FormActionButton
-          color="primary"
-          gradient={true}
-          outline={true}
-          className="mx-2"
-        >
+        <FormActionButton color="primary" gradient outline className="mx-2">
           Open Position
         </FormActionButton>
       </div>

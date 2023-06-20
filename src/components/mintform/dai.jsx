@@ -319,8 +319,8 @@ export const DAIDeposite = () => {
                   <FormActionButton
                     className="mx-2"
                     color="primary"
-                    gradient={true}
-                    outline={true}
+                    gradient
+                    outline
                   >
                     Back
                   </FormActionButton>
