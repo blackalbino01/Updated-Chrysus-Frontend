@@ -62,16 +62,16 @@ const Navbar = () => {
         <img src={logoo} alt="hoobank" className="w-[137px] h-[33px]" onClick={() => setToggle(false)} />
       </Link>
       <ul className="list-none  sm:flex hidden justify-end items-center flex-1 ">
-        <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424" }}>
+        <li className={"text-[14px] font-poppins mr-4  cursor-pointer"} style={{ marginLeft: "35px", color: "#846424" }}>
           <NavLink onClick={() => setActive("About")} className={`${active === "About" ? "" : "text-slate-50"}`} to="/about">About</NavLink>
         </li>
-        <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424" }}>
+        <li className={"text-[14px] font-poppins mr-4  cursor-pointer"} style={{ marginLeft: "35px", color: "#846424" }}>
           <NavLink onClick={() => setActive("Services")} className={`${active === "Services" ? "" : "text-slate-50"}`} to="/services">Services</NavLink>
         </li>
-        <li className={`text-[14px] font-poppins mr-4  cursor-pointer`} style={{ marginLeft: "35px", color: "#846424" }}>
+        <li className={"text-[14px] font-poppins mr-4  cursor-pointer"} style={{ marginLeft: "35px", color: "#846424" }}>
           <NavLink onClick={() => setActive("Governance")} className={`${active === "Governance" ? "" : "text-slate-50"}`} to="/ecosystems">Governance</NavLink>
         </li>
-        <li className={`text-[14px] font-poppins mr-4  cursor-pointer `} style={{ marginLeft: "35px", color: "#846424" }}>
+        <li className={"text-[14px] font-poppins mr-4  cursor-pointer "} style={{ marginLeft: "35px", color: "#846424" }}>
           <NavLink onClick={() => setActive("FAQ")} className={`${active === "FAQ" ? "" : "text-slate-50"}`} to="/faq">FAQ</NavLink>
         </li>
         <li className="text-slate-50 text-[14px] font-poppins mr-4  cursor-pointer text-slate-50" style={{ marginLeft: "35px" }} href="#" onClick={() => window.open(Pdf)}>

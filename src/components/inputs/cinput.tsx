@@ -43,7 +43,7 @@ export const CInput = ({
 	return (
 		<div className={`c-input ${className}`} style={style}>
 			<div
-				className={`mt-1 w-100`}
+				className={"mt-1 w-100"}
 				style={{
 					fontStyle: "normal",
 					fontWeight: "400",
@@ -116,7 +116,7 @@ export const CInput = ({
 				</span>
 			</div>
 			<div
-				className={`mt-1 w-100`}
+				className={"mt-1 w-100"}
 				style={{
 					fontStyle: "normal",
 					fontWeight: "400",
