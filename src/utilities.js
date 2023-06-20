@@ -49,27 +49,27 @@ const governanceContract = new ethers.Contract(
 // };
 
 const getCollateralizationRatio = async () => {
-    return await chrysusContract.getCollateralizationRatio();
+    return chrysusContract.getCollateralizationRatio();
 };
 
 const getCDPCount = async () => {
-    return await chrysusContract.getCdpCounter();
+    return chrysusContract.getCdpCounter();
 };
 
 const liqRatio = async () => {
-    return await chrysusContract.liquidationRatio();
+    return chrysusContract.liquidationRatio();
 };
 
 const interestRate = async () => {
-    return await loanContract.calculateInterestRate();
+    return loanContract.calculateInterestRate();
 };
 
 const utilizationRate = async () => {
-    return await loanContract.calculateUtilizationRate();
+    return loanContract.calculateUtilizationRate();
 };
 
 const volume = async () => {
-    return await loanContract.getVolume();
+    return loanContract.getVolume();
 };
 
 const collateralAmount = async (amount, token) => {
@@ -114,20 +114,20 @@ const generate = async (amount, token) => {
 
 const getLendPosition = async (user, collateral) => {
     if (collateral == "DAI") {
-        return await loanContract.getUserPositions(user, DAI);
+        return loanContract.getUserPositions(user, DAI);
     }
     else if (collateral == "ETH") {
-        return await loanContract.getUserPositions(user, ETH);
+        return loanContract.getUserPositions(user, ETH);
     }
 }
 
 
 const getMintPosition = async (user, collateral) => {
     if (collateral == "DAI") {
-        return await chrysusContract.getUserPositions(user, DAI);
+        return chrysusContract.getUserPositions(user, DAI);
     }
     else if (collateral == "ETH") {
-        return await chrysusContract.getUserPositions(user, ETH);
+        return chrysusContract.getUserPositions(user, ETH);
     }
 }
 
@@ -157,29 +157,29 @@ const getMintPositions = async () => {
 
 const getUserBalance = async (user, token) => {
     if (token == "CHC") {
-        return await chrysusContract.balanceOf(user);
+        return chrysusContract.balanceOf(user);
     }
     else if (token == "DAI") {
         const tokenContract = new ethers.Contract(DAI, ERC20.abi, provider);
-        return await tokenContract.balanceOf(user);
+        return tokenContract.balanceOf(user);
     }
     else if (token == "ETH") {
-        return await provider.getBalance(user);
+        return provider.getBalance(user);
     }
 };
 
 const getFeed = async (token) => {
     if (token == "DAI") {
         const oracle = new ethers.Contract(oracleDAI, mockOracle.abi, provider)
-        return await oracle.latestRoundData();
+        return oracle.latestRoundData();
     }
     else if (token == "ETH") {
         const oracle = new ethers.Contract(oracleETH, mockOracle.abi, provider)
-        return await oracle.latestRoundData();
+        return oracle.latestRoundData();
     }
     else if (token == "CHC") {
         const oracle = new ethers.Contract(oracleCHC, mockOracle.abi, provider)
-        return await oracle.latestRoundData();
+        return oracle.latestRoundData();
     }
 };
 
