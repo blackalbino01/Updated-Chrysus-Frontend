@@ -49,12 +49,7 @@ export const Confirmation = () => {
         <FormActionButton color="white" outline>
           Back
         </FormActionButton>
-        <FormActionButton
-          color="primary"
-          gradient
-          outline
-          className="mx-2"
-        >
+        <FormActionButton color="primary" gradient outline className="mx-2">
           Open Position
         </FormActionButton>
       </div>

@@ -75,12 +75,7 @@ export const Vault = () => {
         <FormActionButton color="white" outline>
           Cancel
         </FormActionButton>
-        <FormActionButton
-          color="primary"
-          gradient
-          outline
-          className="mx-2"
-        >
+        <FormActionButton color="primary" gradient outline className="mx-2">
           Continue
         </FormActionButton>
       </div>

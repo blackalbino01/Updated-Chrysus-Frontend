@@ -62,12 +62,7 @@ export const ETH = () => {
                 Back
               </FormActionButton>
             </Link>
-            <FormActionButton
-              color="primary"
-              gradient
-              outline
-              className="mx-2"
-            >
+            <FormActionButton color="primary" gradient outline className="mx-2">
               Continue
             </FormActionButton>
           </div>
