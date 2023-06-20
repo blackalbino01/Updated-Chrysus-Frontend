@@ -66,7 +66,7 @@ export const Borrow = () => {
   });
 
   // Active pagginarion
-  activePag.current === 0 && chageData(0, sort);
+
   // paggination
   let paggination = Array(Math.ceil(data.length / sort))
     .fill()
