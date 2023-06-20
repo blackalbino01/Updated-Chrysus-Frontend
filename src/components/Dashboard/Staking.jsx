@@ -75,7 +75,7 @@ const Staking = () => {
   }, [test]);
 
   // Active pagginarion
-  activePag.current === 0 && chageData(0, sort);
+  
   // paggination
   let paggination = Array(Math.ceil(data.length / sort))
     .fill()
@@ -161,8 +161,7 @@ const Staking = () => {
             _signer
           );
           let GovStake = await contract.getGovernanceStake(accounts[0]);
-          !GovernanceStakeamount &
-            setGovernanceStakeamount(Number(GovStake.amount).toFixed(2));
+          
           setstart(new Date(GovStake.startTime).toDateString());
           setendDate(new Date(GovStake.endTime).toDateString());
 
@@ -187,7 +186,7 @@ const Staking = () => {
             _signer
           );
           let Stake = await contract.getTotalPoolAmount();
-          !TotalStake & setTotalStake(Number(Stake).toFixed(2));
+          
         }
       } catch (error) {
         console.log(error);
