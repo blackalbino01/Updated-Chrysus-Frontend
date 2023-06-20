@@ -120,7 +120,7 @@ export const Collaterals = () => {
   ];
 
   // Active pagginarion
-  
+
   // paggination
   let paggination = Array(Math.ceil(data.length / sort))
     .fill()

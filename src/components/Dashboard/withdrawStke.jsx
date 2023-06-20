@@ -37,7 +37,6 @@ export const WithdrawStake = () => {
             _signer
           );
           let Stake = await contract.getTotalPoolAmount();
-          
         }
       } catch (error) {
         console.log(error);
