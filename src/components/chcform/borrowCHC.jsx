@@ -41,7 +41,7 @@ export const BorrowCHC = () => {
 	});
 
 
-	if(amount != null){
+	if(amount !== null){
 		const interestAmount = (amount * interestRate) / 1e18;
 		const totalAmount = Number(amount) + Number(interestAmount);
 		Utils.collateralAmount(totalAmount.toString(),collateral).then(function (data) {
