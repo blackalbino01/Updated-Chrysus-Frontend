@@ -19,7 +19,7 @@ export const ETH = () => {
 						color: "#846424",
 					}}
 				>
-					<div className="mt-5"></div>
+					<div className="mt-5" />
 					<H4>Deposit Ethereum and Generate CHC</H4>
 					<div className="d-flex flex-column align-items-start">
 						<P className="m-0">
@@ -29,19 +29,19 @@ export const ETH = () => {
 							The amount of Collateral you deposit determines how much CHC you can
 							generate.
 						</Body>
-						<div className="my-3"></div>
+						<div className="my-3" />
 						<CInput
 							type="text"
 							dir="rtl"
 							rightText="ETH"
 							bottomLineText="YOUR BALANCE 0"
 						/>
-						<div className="my-3"></div>
+						<div className="my-3" />
 						<P className="m-0">How much CHC would you like to generate?</P>
 						<Body className="m-0">
 							Generate an amount that is safety above the liquidation ratio.
 						</Body>
-						<div className="my-3"></div>
+						<div className="my-3" />
 						<CInput
 							type="text"
 							dir="rtl"
@@ -50,12 +50,12 @@ export const ETH = () => {
 						/>
 					</div>
 					{/* Last sections */}
-					<div className="mt-5"></div>
-					<div className="mt-4"></div>
+					<div className="mt-5" />
+					<div className="mt-4" />
 					<div
 						className="w-100"
 						style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
-					></div>
+					 />
 					<div className="w-100 d-flex flex-row justify-content-start p-3">
 						{/* Form Actions */}
 						<Link to={"/accounts/loan"}>

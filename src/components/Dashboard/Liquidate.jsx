@@ -81,13 +81,13 @@ export const Liquidate = () => {
                             color: "#846424",
                         }}
                     >
-                        <div className="mt-5"></div>
+                        <div className="mt-5" />
                         <H4>Liquidate</H4>
                         <div className="d-flex flex-column align-items-start">
                             <P className="m-0">
                                 How much would you like to Liquidate?
                             </P>
-                            <div className="my-3"></div>
+                            <div className="my-3" />
                             <label className="form-label text-primary">Your Balance {Utils.toFixedNoRounding(balance, 3)}</label>
                             <div className="input-group" style={{
                                 backgroundColor: "#1A1917",
@@ -107,12 +107,12 @@ export const Liquidate = () => {
                                     CHC
                                 </span>
                             </div>
-                            <div className="my-1"></div>
+                            <div className="my-1" />
                         </div>
                         <div
                             className="w-100"
                             style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
-                        ></div>
+                         />
                         <div className="w-100 d-flex flex-row justify-content-start p-3">
                             {/* Form Actions */}
                             <Link to={"/accounts/mintposition"}>
@@ -142,7 +142,7 @@ export const Liquidate = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-5"></div>
+            <div className="mt-5" />
         </Section>
 
     );

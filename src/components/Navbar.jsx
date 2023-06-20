@@ -358,7 +358,7 @@ const WalletConnect = (props) => {
 
           </Modal.Title>
           {/* <Button onClick={props.onHide}>Close</Button> */}
-          <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
+          <button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close" />
         </Modal.Header>
         <Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
           {/* <Link onClick={props.onHide} className="flex flex-row cursor-pointer flex-wrap  items-center py-[6px] bg-white rounded-[12px]">

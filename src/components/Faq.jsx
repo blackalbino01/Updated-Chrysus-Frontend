@@ -27,7 +27,7 @@ export const FAQ = () => {
 				<div className="col-8">
 					<div className="d-flex flex-column align-items-center justify-content-center">
 						<p style={{ fontWeight: "600", fontSize: "54px", color: "#846424", marginTop: "30px", marginBottom: "20px" }}>FAQ's </p>
-						<div className="mt-5"></div>
+						<div className="mt-5" />
 						<div className="w-100">
 							{questions.map((data, ind) => (
 								<div key={ind}>
@@ -41,7 +41,7 @@ export const FAQ = () => {
 					</div>
 				</div>
 			</div>
-			<div className="mt-5"></div>
+			<div className="mt-5" />
 			<div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
 				<div className={`${styles.boxWidth}`}>
 					<Footer/>

@@ -16,7 +16,7 @@ const Footer = () => (
         />
         <p className={`${styles.paragraph} mt-1 max-w-[450px] mt-3`}>
           Developed by BlocksGenie Technologies
-          <div className="mt-4"></div>
+          <div className="mt-4" />
           <div className="flex flex-row md:mt-0 mt-5">
             {socialMedia.map((social, index) => (
               <img loading="lazy"

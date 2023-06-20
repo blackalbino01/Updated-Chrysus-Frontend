@@ -261,11 +261,9 @@ export const Lending = () => {
                                 </div>
                             </Tab.Container>
                         </div>
-                        <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
-                        <div className="mt-4"></div>
-                        <div className="w-100 d-flex flex-row justify-content-start p-3">
-
-                        </div>
+                        <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }} />
+                        <div className="mt-4" />
+                        <div className="w-100 d-flex flex-row justify-content-start p-3" />
                     </div>
                 </div>
 

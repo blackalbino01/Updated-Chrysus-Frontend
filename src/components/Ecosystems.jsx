@@ -158,12 +158,11 @@ const Ecosystems = () => {
                                                                                 <div className="col-12">
                                                                                     <div className="d-flex flex-column align-items-center mt-4">
                                                                                         <H4>Please Connect Wallet</H4>
-                                                                                        <div className="d-flex flex-column align-items-center justify-content-center col-5">
-                                                                                        </div>
+                                                                                        <div className="d-flex flex-column align-items-center justify-content-center col-5" />
                                                                                     </div>
                                                                                 </div>
-                                                                                <div className="mt-2"></div>
-                                                                                <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
+                                                                                <div className="mt-2" />
+                                                                                <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }} />
 
                                                                             </div>
                                                                             <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

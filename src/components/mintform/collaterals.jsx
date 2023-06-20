@@ -303,10 +303,9 @@ export const Collaterals = () => {
 								</div>
 							</Tab.Container>
 						</div>
-						<div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
-						<div className="mt-4"></div>
-						<div className="w-100 d-flex flex-row justify-content-start p-3">
-						</div>
+						<div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }} />
+						<div className="mt-4" />
+						<div className="w-100 d-flex flex-row justify-content-start p-3" />
 					</div>
 				</div>
 			</div>
@@ -334,11 +333,11 @@ const DepositColletrals = (props) => {
 							background:
 								"linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 							borderRadius: "40px",
-						}}></div>
+						}} />
 					<Modal.Title>
 						<h4 className="primary-gradient-text">Deposit the ETH</h4>
 					</Modal.Title>
-					<button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
+					<button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close" />
 				</Modal.Header>
 				<Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
 					<div className="sell-blance" style={{
@@ -401,11 +400,11 @@ const DepositColletralsDAI = (props) => {
 							background:
 								"linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
 							borderRadius: "40px",
-						}}></div>
+						}} />
 					<Modal.Title>
 						<h4 className="primary-gradient-text">Deposit the DAI</h4>
 					</Modal.Title>
-					<button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close"></button>
+					<button onClick={props.onHide} type="button" className="btn-close btn-close-white" aria-label="Close" />
 				</Modal.Header>
 				<Modal.Body className="items-center bg-discount-gradient rounded-b-[12px]">
 					<div className="sell-blance" style={{

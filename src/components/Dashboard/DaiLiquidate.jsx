@@ -21,7 +21,7 @@ export const DaiLiquidate = () => {
                             color: "#846424",
                         }}
                     >
-                        <div className="mt-5"></div>
+                        <div className="mt-5" />
                         <H4>Add Liquidity</H4>
                         <div className="d-flex flex-column align-items-start">
                             <P className="m-0">
@@ -30,7 +30,7 @@ export const DaiLiquidate = () => {
                             <Body className="m-0">
                                 Please Enter an amount would you like to Borrow
                             </Body>
-                            <div className="my-3"></div>
+                            <div className="my-3" />
                             <label className="form-label text-primary">Your Blanace 0.123</label>
                             <div className="input-group" style={{
                                 backgroundColor: "#1A1917",
@@ -59,12 +59,12 @@ export const DaiLiquidate = () => {
 
                                 </span>
                             </div>
-                            <div className="my-1"></div>
+                            <div className="my-1" />
                         </div>
                         <div
                             className="w-100"
                             style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
-                        ></div>
+                         />
                         <div className="w-100 d-flex flex-row justify-content-start p-3">
                             {/* Form Actions */}
                             <Link to={"/accounts/mintposition"}>
@@ -84,7 +84,7 @@ export const DaiLiquidate = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-5"></div>
+            <div className="mt-5" />
         </Section>
 
     );

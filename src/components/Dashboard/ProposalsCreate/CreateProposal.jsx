@@ -165,7 +165,7 @@ const CreateProposal = () => {
                                                             color: "#846424",
                                                         }}>
                                                         <div className='card-body'>
-                                                            <label className="form-label text-primary"></label>
+                                                            <label className="form-label text-primary" />
                                                             <div className="input-group" style={{
                                                                 backgroundColor: "#1A1917",
                                                                 borderRadius: "16px",
@@ -249,7 +249,7 @@ const CreateProposal = () => {
                                                                 color: "#846424",
                                                             }}>
                                                             <div className='card-body'>
-                                                                <label className="form-label text-primary"></label>
+                                                                <label className="form-label text-primary" />
                                                                 <div className="input-group" style={{
                                                                     backgroundColor: "#1A1917",
                                                                     borderRadius: "16px",
@@ -340,7 +340,7 @@ const CreateProposal = () => {
                                                                     color: "#846424",
                                                                 }}>
                                                                 <div className='card-body'>
-                                                                    <label className="form-label text-primary"></label>
+                                                                    <label className="form-label text-primary" />
                                                                     <div className="input-group" style={{
                                                                         backgroundColor: "#1A1917",
                                                                         borderRadius: "16px",
@@ -431,7 +431,7 @@ const CreateProposal = () => {
                                                                         color: "#846424",
                                                                     }}>
                                                                     <div className='card-body'>
-                                                                        <label className="form-label text-primary"></label>
+                                                                        <label className="form-label text-primary" />
                                                                         <div className="input-group" style={{
                                                                             backgroundColor: "#1A1917",
                                                                             borderRadius: "16px",

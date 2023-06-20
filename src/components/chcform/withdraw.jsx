@@ -22,7 +22,7 @@ export const Withdraw = () => {
                             borderRadius: "16px",
                             color: "#846424",
                         }}>
-                        <div className="mt-5"></div>
+                        <div className="mt-5" />
                         <H4>Repay CHC Fund</H4>
                         <div className="d-flex flex-column align-items-start">
                             <P className="m-0">
@@ -31,7 +31,7 @@ export const Withdraw = () => {
                             <Body className="m-0">
                                 Please Enter an amount would you like to Repay
                             </Body>
-                            <div className="my-3"></div>
+                            <div className="my-3" />
                             <label className="form-label text-primary">Total Borrow 00.0</label>
                             <div className="input-group" style={{
                                 backgroundColor: "#1A1917",
@@ -48,7 +48,7 @@ export const Withdraw = () => {
                                     color: "#846424",
                                 }} className="input-group-text"><img loading="lazy" src={Chrysus} alt="meta" /></span>
                             </div>
-                            <div className="my-1"></div>
+                            <div className="my-1" />
                             {/* <P className="m-0">Please Enter an amount would you like to Borrow</P>
 						<Body className="m-0">
 							Generate an amount that is safety above the liquidation ratio.
@@ -74,7 +74,7 @@ export const Withdraw = () => {
                         <div
                             className="w-100"
                             style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
-                        ></div>
+                         />
                         <div className="w-100 d-flex flex-row justify-content-start p-3">
                             {/* Form Actions */}
                             <Link to={"/accounts/loan"}>
@@ -94,7 +94,7 @@ export const Withdraw = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-5"></div>
+            <div className="mt-5" />
         </>
 
     );

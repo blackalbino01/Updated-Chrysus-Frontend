@@ -38,7 +38,7 @@ export const Table = ({
 			<thead>
 				<tr>
 					{selection === true ? (
-						<th className="p-2" style={{ textAlign: "center" }}></th>
+						<th className="p-2" style={{ textAlign: "center" }} />
 					) : (
 						""
 					)}
@@ -48,7 +48,7 @@ export const Table = ({
 						</THead>
 					))}
 					{actions.length > 0 ? (
-						<th className="p-2" style={{ textAlign: "center" }}></th>
+						<th className="p-2" style={{ textAlign: "center" }} />
 					) : (
 						""
 					)}

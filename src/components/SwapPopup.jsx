@@ -22,7 +22,7 @@ const SwapPopup = () => {
                                         "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
                                     borderRadius: "40px",
                                     borderRadiusBottom: "40px"
-                                }}></div>
+                                }} />
                             <Modal.Title>
                                 <h4 className="primary-gradient-text">Swap Chrysus Coin (CHC)</h4>
                             </Modal.Title>
@@ -38,7 +38,7 @@ const SwapPopup = () => {
                                 color: "#846424",
                             }}
                         >
-                            <div className="mt-5"></div>
+                            <div className="mt-5" />
                             <H4>Chrysus Coin</H4>
                             <div className="d-flex flex-column">
                                 <P className="m-0">
@@ -47,7 +47,7 @@ const SwapPopup = () => {
                                 <Body className="m-0">
                                     Quickly swap to the growing asset.
                                 </Body>
-                                <div className="my-3"></div>
+                                <div className="my-3" />
                                 <label className="form-label text-primary">Available (CHC) 0.123</label>
                                 <div className="input-group" style={{
                                     backgroundColor: "#1A1917",
@@ -96,7 +96,7 @@ const SwapPopup = () => {
                                     </select>
                                 </div>
 
-                                <div className="my-3"></div>
+                                <div className="my-3" />
 
                             </div>
                             <div className="text-center">
@@ -111,7 +111,7 @@ const SwapPopup = () => {
                                     </div>
                                 </PrimaryGradientButton>
                             </div>
-                            <div className="mt-5"></div>
+                            <div className="mt-5" />
                         </div>
                     </div>
                 </div>

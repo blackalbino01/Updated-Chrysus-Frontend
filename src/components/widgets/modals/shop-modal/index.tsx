@@ -33,13 +33,13 @@ export const ShopModal = ({ showShopModal }: IShopModalProps) => {
 							/>
 						</div>
 					</PrimaryGradientButton>
-					<div className="mt-3"></div>
+					<div className="mt-3" />
 					<img
 						className="w-100"
 						src={ProductModalBanner}
 						alt="product-modal-banner"
 					/>
-					<div className="mt-4"></div>
+					<div className="mt-4" />
 				</div>
 			}
 		/>

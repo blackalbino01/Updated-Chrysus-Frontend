@@ -57,8 +57,7 @@ const Proposal = () => {
                             color: "#846424",
                         }}
                     >
-                        <div className=" justify-between items-center">
-                        </div>
+                        <div className=" justify-between items-center" />
                         <Tab.Container defaultActiveKey="All">
                             <div className=" border-0 pb-3 pt-4 flex-wrap">
                                 <h4 className="heading text-center ">Voter Weights</h4>
@@ -81,22 +80,22 @@ const Proposal = () => {
                                                         <tr className='text-white'>
                                                             <th>Proposal</th>
                                                             <th>{""}</th>
-                                                            <th></th>
-                                                            <th></th>
-                                                            <th></th>
-                                                            <th></th>
+                                                            <th />
+                                                            <th />
+                                                            <th />
+                                                            <th />
                                                             <th>Votes</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody className='text-white'>
                                                         <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            <td />
+                                                            <td />
+                                                            <td />
+                                                            <td />
+                                                            <td />
+                                                            <td />
+                                                            <td />
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -170,10 +169,10 @@ const Proposal = () => {
                                                         <tr className='text-white'>
                                                             <th>Proposal</th>
                                                             <th>{""}</th>
-                                                            <th></th>
-                                                            <th></th>
-                                                            <th></th>
-                                                            <th></th>
+                                                            <th />
+                                                            <th />
+                                                            <th />
+                                                            <th />
                                                             <th>Votes</th>
                                                         </tr>
                                                     </thead>
@@ -269,10 +268,10 @@ const Proposal = () => {
                                                         <tr className='text-white'>
                                                             <th>Proposal</th>
                                                             <th>{""}</th>
-                                                            <th></th>
-                                                            <th></th>
-                                                            <th></th>
-                                                            <th></th>
+                                                            <th />
+                                                            <th />
+                                                            <th />
+                                                            <th />
                                                             <th>Votes</th>
                                                         </tr>
                                                     </thead>
@@ -365,10 +364,10 @@ const Proposal = () => {
                                                         <tr className='text-white'>
                                                             <th>Proposal</th>
                                                             <th>{""}</th>
-                                                            <th></th>
-                                                            <th></th>
-                                                            <th></th>
-                                                            <th></th>
+                                                            <th />
+                                                            <th />
+                                                            <th />
+                                                            <th />
                                                             <th>Votes</th>
                                                         </tr>
                                                     </thead>
@@ -451,7 +450,7 @@ const Proposal = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-5"></div>
+            <div className="mt-5" />
         </>
     )
 }

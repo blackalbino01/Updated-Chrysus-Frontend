@@ -116,11 +116,11 @@ export const BorrowCHC = () => {
             color: "#846424",
           }}
         >
-          <div className="mt-5"></div>
+          <div className="mt-5" />
           <H4>Borrow</H4>
           <div className="d-flex flex-column align-items-start">
             <P className="m-0">How much would you like to Borrow?</P>
-            <div className="my-3"></div>
+            <div className="my-3" />
             <label className="form-label text-primary">
               Avaliable to Borrow : {}
               {collateral == "DAI" ? dai_lend : eth_lend}CHC
@@ -152,7 +152,7 @@ export const BorrowCHC = () => {
                 <img loading="lazy" src={Chrysus} alt="meta" />
               </span>
             </div>
-            <div className="my-1"></div>
+            <div className="my-1" />
             <label className="form-label text-primary">
               Estimated Collateral Amount To Pay
             </label>
@@ -187,7 +187,7 @@ export const BorrowCHC = () => {
           <div
             className="w-100"
             style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
-          ></div>
+           />
           <div className="w-100 d-flex flex-row justify-content-start p-3">
             {/* Form Actions */}
             <Link to={"/accounts/loan"}>

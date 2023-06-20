@@ -73,7 +73,7 @@ export const ETHDeposite = () => {
                                 color: "#846424",
                             }}
                         >
-                            <div className="mt-5"></div>
+                            <div className="mt-5" />
                             <H4>Deposit Ethereum</H4>
                             <div className="d-flex flex-column text-center">
                                 <P className="m-0">
@@ -83,7 +83,7 @@ export const ETHDeposite = () => {
                                     The amount of Collateral you deposit determines how much CHC you can
                                     generate.
                                 </Body>
-                                <div className="my-3"></div>
+                                <div className="my-3" />
                                 <input type="text" className="form-control"
                                     style={{
                                         backgroundColor: "#1A1917",
@@ -97,9 +97,9 @@ export const ETHDeposite = () => {
                                     bottomLineText="YOUR BALANCE 0"
                                     onChange={(e) => setethamount(e.target.value)}
                                 /> */}
-                                <div className="my-3"></div>
+                                <div className="my-3" />
                             </div>
-                            <div className="mt-2"></div>
+                            <div className="mt-2" />
                             <div className="w-100  p-3 text-center">
                                 <Button
                                     style={{
@@ -171,8 +171,8 @@ export const ETHDeposite = () => {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className="mt-2"></div>
-                                                            <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
+                                                            <div className="mt-2" />
+                                                            <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }} />
 
                                                         </div>
                                                         <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -206,7 +206,7 @@ export const ETHDeposite = () => {
                                                     </div>
                                                 </div>
                                             {/* </div> */}
-                                            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                                            <div className="opacity-25 fixed inset-0 z-40 bg-black" />
                                         </>
                                     </>
                                 ) : null}
@@ -223,7 +223,7 @@ export const ETHDeposite = () => {
                             <div
                                 className="w-100"
                                 style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
-                            ></div>
+                             />
                             <div className="w-100 d-flex flex-row justify-content-start p-3">
                                 {/* Form Actions */}
                                 <Link to={"/accounts/mint"}>
@@ -238,8 +238,8 @@ export const ETHDeposite = () => {
                     </div>
                 </div>
             </div>
-            <div className="pt-5"></div>
-            <div className="pt-2"></div>
+            <div className="pt-5" />
+            <div className="pt-2" />
         </>
     );
 };

@@ -49,7 +49,7 @@ export const Footer = ({ footerLinks, socialLinks }: IFooterProps) => {
 									opacity: "0.5",
 									width: "80%",
 								}}
-							></div>
+							 />
 							{/* Text */}
 							<span
 								className="my-2"

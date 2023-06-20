@@ -41,9 +41,9 @@ export const Confirmation = () => {
 					</div>
 				</div>
 			</div>
-			<div className="mt-2"></div>
-			<div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
-			<div className="mt-4"></div>
+			<div className="mt-2" />
+			<div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }} />
+			<div className="mt-4" />
 			<div className="w-100 d-flex flex-row justify-content-start p-3">
 				{/* Form Actions */}
 				{/* <FormActionButton  color="white" outline={true}> */}

@@ -96,7 +96,7 @@ const OrderTab = () =>{
                                     onClick(activePag.current - 1)
                                 }
                                 >
-                                <i className="fa fa-angle-double-left" ></i> 
+                                <i className="fa fa-angle-double-left"  /> 
                             </Link>
                             <span>
                                 {paggination.map((number, i) => (
@@ -121,7 +121,7 @@ const OrderTab = () =>{
                                     onClick(activePag.current + 1)
                                 }
                             >
-                                <i className="fa fa-angle-double-right" ></i>
+                                <i className="fa fa-angle-double-right"  />
                             </Link>
                         </div>
                     </div>

@@ -173,8 +173,7 @@ const UserDashboard = () => {
 						</div>
 						<div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
 							<div className="me-auto">
-								<h2 className="fs-28 font-w600 text-white">
-								</h2>
+								<h2 className="fs-28 font-w600 text-white" />
 							</div>
 						</div>
 						<div className="card-body">

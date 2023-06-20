@@ -148,8 +148,8 @@ export const Collateral = () => {
 					<Tab.Pane eventKey="Navbuy" >
 						<Tab.Container defaultActiveKey="Navbuymarket">
 							<Tab.Content id="nav-tabContent1">
-								<Tab.Pane eventKey="Navbuymarket"></Tab.Pane>
-								<Tab.Pane eventKey="Navbuylimit"></Tab.Pane>
+								<Tab.Pane eventKey="Navbuymarket" />
+								<Tab.Pane eventKey="Navbuylimit" />
 							</Tab.Content>
 							<div className="text-center">
 								<div className="sell-element">
@@ -161,8 +161,8 @@ export const Collateral = () => {
 					<Tab.Pane eventKey="Navsell">
 						<Tab.Container defaultActiveKey="Navsellmarket">
 							<Tab.Content id="nav-tabContent2">
-								<Tab.Pane id="Navsellmarket" ></Tab.Pane>
-								<Tab.Pane id="Navselllimit" ></Tab.Pane>
+								<Tab.Pane id="Navsellmarket"  />
+								<Tab.Pane id="Navselllimit"  />
 							</Tab.Content>
 							<div className="sell-element">
 								<Borrow />

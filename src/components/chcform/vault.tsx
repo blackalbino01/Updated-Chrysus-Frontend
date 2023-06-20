@@ -25,13 +25,13 @@ export const Vault = () => {
 							Configure your Vault for easy management. This only has to be done
 							once.
 						</Body>
-						<div className="mt-3"></div>
+						<div className="mt-3" />
 						<CheckButton
 							checked={false}
 							callback={setConfirmVault}
 							title="Confirm"
 						/>
-						<div className="mt-3"></div>
+						<div className="mt-3" />
 						<Body style={{ fontWeight: "300" }}>
 							THIS TRANSACTION IS TAKING LONGER THAN USUAL...{" "}
 							<Body>
@@ -49,7 +49,7 @@ export const Vault = () => {
 								</Link>
 							</Body>
 						</Body>
-						<div className="mt-3"></div>
+						<div className="mt-3" />
 						<Body className="mt-5" style={{ fontWeight: "600" }}>
 							Set allowance
 						</Body>
@@ -57,19 +57,19 @@ export const Vault = () => {
 							This permission allows Chrysus to interact with your ETH. This has
 							to be done once for each new collateral type.
 						</Body>
-						<div className="mt-3"></div>
+						<div className="mt-3" />
 						<CheckButton
 							checked={false}
 							callback={setConfirmAllowance}
 							title="Set"
 						/>
-						<div className="mt-3"></div>
+						<div className="mt-3" />
 					</div>
 				</div>
 			</div>
-			<div className="mt-2"></div>
-			<div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}></div>
-			<div className="mt-4"></div>
+			<div className="mt-2" />
+			<div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }} />
+			<div className="mt-4" />
 			<div className="w-100 d-flex flex-row justify-content-start p-3">
 				{/* Form Actions */}
 				<FormActionButton color="white" outline={true}>

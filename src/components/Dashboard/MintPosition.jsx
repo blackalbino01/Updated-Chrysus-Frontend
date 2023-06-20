@@ -181,9 +181,7 @@ export const MintPosition = () => {
 														))}
 													</tbody>
 												</table>
-												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
-
-												</div>
+												<div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3" />
 											</div>
 										</div>
 									</Tab.Pane>
@@ -195,7 +193,7 @@ export const MintPosition = () => {
 			</div>
 			<div style={{
 				paddingBottom: "220px"
-			}}></div>
+			}} />
 		</Section>
 	);
 };

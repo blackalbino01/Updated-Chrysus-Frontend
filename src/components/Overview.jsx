@@ -109,8 +109,7 @@ const Overview = () => {
                             color: "#846424",
                         }}
                     >
-                        <div className=" justify-between items-center">
-                        </div>
+                        <div className=" justify-between items-center" />
                         <Tab.Container defaultActiveKey="All">
                             <div className="card-header border-0 pb-2 flex-wrap">
                                 <h4 className="heading ">Voter Weights</h4>
@@ -200,7 +199,7 @@ const Overview = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-5"></div>
+            <div className="mt-5" />
         </>
     )
 }

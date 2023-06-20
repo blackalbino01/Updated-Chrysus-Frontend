@@ -24,7 +24,7 @@ export const Stepper = ({ steps, callback }: IStepperProps) => {
 							<p>
 								<>{step.title}</>
 							</p>
-							<span className="stepper-button-border-white w-100"></span>
+							<span className="stepper-button-border-white w-100" />
 						</div>
 					</Button>
 				) : (
@@ -41,7 +41,7 @@ export const Stepper = ({ steps, callback }: IStepperProps) => {
 							<p style={{ color: "gray" }}>
 								<>{step.title}</>
 							</p>
-							<span className="stepper-button-border-gray w-100"></span>
+							<span className="stepper-button-border-gray w-100" />
 						</div>
 					</Button>
 				)

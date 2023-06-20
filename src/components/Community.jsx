@@ -36,7 +36,7 @@ const Community = () => {
                 </div>
             </div>
             <div className="col-lg-6 text-center">
-                <div className="my-2"></div>
+                <div className="my-2" />
                 <a target="_blank" href="https://t.me/chrysusofficial">
                     <CircleExpandButton
                         color="primary"
