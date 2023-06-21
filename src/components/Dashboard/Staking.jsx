@@ -285,33 +285,43 @@ const Staking = () => {
                   >
                     <h2 className="text-center mt-5">Lock Tokens</h2>
                     <div className="card-body">
-                      <div
-                        className="input-group mt-4"
-                        style={{
-                          backgroundColor: "#1A1917",
-                          color: "#846424",
-                        }}
-                      >
-                        <input
-                          type="number"
-                          className="form-control"
-                          style={{
-                            backgroundColor: "#1A1917",
-                            borderRadius: "6px",
-                            color: "#846424",
-                          }}
-                          onChange={(e) => setStakeamount(e.target.value)}
-                          placeholder="0.00"
-                        />
-                        <span
-                          style={{
-                            backgroundColor: "#1A1917",
-                            color: "#846424",
-                          }}
-                          className="input-group-text"
-                        >
-                          <img loading="lazy" src={Chrysus} alt="meta" />
-                        </span>
+                      <div className="mr-5 ml-5">
+                        <div className="mr-5 ml-5">
+                          <div className="mr-5 ml-5">
+                            <div className="form-group mr-5 ml-5">
+                              <div
+                                className="input-group mt-4"
+                                style={{
+                                  backgroundColor: "#1A1917",
+                                  color: "#846424",
+                                }}
+                              >
+                                {/* <div className="form-group"> */}
+                                <input
+                                  type="number"
+                                  className="form-control input-sm"
+                                  style={{
+                                    backgroundColor: "#1A1917",
+                                    borderRadius: "6px",
+                                    color: "#846424",
+                                  }}
+                                  onChange={(e) => setStakeamount(e.target.value)}
+                                  placeholder="0.00"
+                                />
+                                {/* </div> */}
+                                <span
+                                  style={{
+                                    backgroundColor: "#1A1917",
+                                    color: "#846424",
+                                  }}
+                                  className="input-group-text"
+                                >
+                                  <img loading="lazy" src={Chrysus} alt="meta" />
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div className="text-center mb-5">
