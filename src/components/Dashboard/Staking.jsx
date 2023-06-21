@@ -1,26 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { H4 } from "../typography/h4";
 import {
-  Dash,
-  C,
-  Ether,
-  home,
-  meta1,
-  ero,
-  ero2,
-  HomeIcon,
-  LoanIcon,
-  MintIcon,
-  SwapIcon,
-  DashboardIcon,
-  Chrysus,
+  Chrysus
 } from "../../assets";
 import { Tab } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import {
-  loadBlockchain,
-  loadWalletConnect,
   updatAccount,
 } from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
@@ -28,66 +13,21 @@ import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import { ethers } from "ethers";
 import Utils from "../../utilities";
-import stake from "../../utilities";
-import { MockStabilityModule, CHRYSUS, GOVERNANCE } from "../../constant";
-import { StakeABI } from "../../abis/MockStabilityModule";
+import { MockStabilityModule, GOVERNANCE } from "../../constant";
+import StakeABI  from "../../abis/MockStabilityModule.json";
 import governance from "../../abis/Governance.json";
 
 const Staking = () => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [currentLink, setCurrentLink] = useState(1);
-  const { web3, accounts } = useAppSelector((state) => state.web3Connect);
-  const [action, setaction] = useState({});
   const [Stakeamount, setStakeamount] = useState(0);
   const [TotalStake, setTotalStake] = useState(0);
-  const [GovernanceStakeamount, setGovernanceStakeamount] = useState(0);
-  const [start, setstart] = useState();
-  const [endDate, setendDate] = useState();
-  const [chcBalance, setchcBalance] = useState(0);
-  const [chcFeed, setChcFeed] = useState(0);
+  const [ currentStakeamount, setCurrentStakeamount] = useState([]);
+  const [cgtBalance, setCGTBalance] = useState(0);
   const [isApprove, setisApprove] = useState(false);
-  const [CheckToken, setCheckToken] = useState({});
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
-  );
-  const sort = 6;
-  const activePag = useRef(0);
-  const [test, settest] = useState(0);
+ 
 
-  console.log("Proposal action", action);
-
-  // Active data
-  const chageData = (frist, sec) => {
-    for (var i = 0; i < data.length; ++i) {
-      if (i >= frist && i < sec) {
-        data[i].classList.remove("d-none");
-      } else {
-        data[i].classList.add("d-none");
-      }
-    }
-  };
-  // use effect
-  useEffect(() => {
-    setData(document.querySelectorAll("#status_wrapper tbody tr"));
-    //chackboxFun();
-  }, [test]);
-
-  // Active pagginarion
-
-  // paggination
-  let paggination = Array(Math.ceil(data.length / sort))
-    .fill()
-    .map((_, i) => i + 1);
-
-  // Active paggination & chage data
-  const onClick = (i) => {
-    activePag.current = i;
-    chageData(activePag.current * sort, (activePag.current + 1) * sort);
-    settest(i);
-  };
-
+ 
   // Account Switching
   useEffect(() => {
     if (window.ethereum) {
@@ -98,11 +38,7 @@ const Staking = () => {
     }
   });
 
-  const more = async () => {
-    navigate("/accounts/governance");
-  };
-
-  const StakeCHC = async () => {
+  const Stake = async () => {
     try {
       const { ethereum } = window;
 
@@ -113,7 +49,7 @@ const Staking = () => {
         const _signer = provider.getSigner();
         const Stakecontract = new ethers.Contract(
           MockStabilityModule,
-          StakeABI,
+          StakeABI.abi,
           _signer
         );
         const GovernanceContract = new ethers.Contract(
@@ -133,7 +69,7 @@ const Staking = () => {
         await Txn.wait();
         setLoading(false);
         console.log("stake successfully!");
-        // window.location.reload();
+        window.location.reload();
       }
     } catch (error) {
       setLoading(false);
@@ -141,64 +77,20 @@ const Staking = () => {
     }
   };
 
-  console.log("Governace Stake value:", GovernanceStakeamount);
-  console.log("Stake value:", TotalStake);
-  console.log("Start Dtae:", start);
-  console.log("end Dtae:", endDate);
-
   useEffect(() => {
-    const fetchGovernanceStake = async () => {
-      try {
-        const { ethereum } = window;
-        if (ethereum) {
-          let chainId = await ethereum.request({ method: "eth_chainId" });
-          console.log("Connecteds to chains " + chainId);
-          const provider = new ethers.providers.Web3Provider(ethereum);
-          const _signer = provider.getSigner();
-          const contract = new ethers.Contract(
-            MockStabilityModule,
-            StakeABI,
-            _signer
-          );
-          let GovStake = await contract.getGovernanceStake(accounts[0]);
+    Utils.getUserBalance(address, "CGT").then(function (data) {
+      setCGTBalance(Number(data) / 1e18);
+    });
+    Utils.getTotalStakeAmount().then(function(data){
+      setTotalStake(Number(data) / 1e18);
+    });
 
-          setstart(new Date(GovStake.startTime).toDateString());
-          setendDate(new Date(GovStake.endTime).toDateString());
-
-          // {new Date(blogs.createdAt).toDateString()}
-          // startTime
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const fetchTotalStake = async () => {
-      try {
-        const { ethereum } = window;
-        if (ethereum) {
-          let chainId = await ethereum.request({ method: "eth_chainId" });
-          console.log("Connecteds to chains " + chainId);
-          const provider = new ethers.providers.Web3Provider(ethereum);
-          const _signer = provider.getSigner();
-          const contract = new ethers.Contract(
-            MockStabilityModule,
-            StakeABI,
-            _signer
-          );
-          let Stake = await contract.getTotalPoolAmount();
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchGovernanceStake();
-    fetchTotalStake();
-    Utils.getUserBalance(addrees, "CHC").then(function (data) {
-      setchcBalance(Number(data) / 1e18);
+    Utils.getGovStake(address).then(function(data){
+      setCurrentStakeamount(Number(data.amount) / 1e18);
     });
   }, [ethereum]);
 
-  const addrees = localStorage.getItem("accounts");
+  const address = localStorage.getItem("accounts");
 
   return (
     <div>
@@ -235,7 +127,7 @@ const Staking = () => {
                               BALANCE
                             </p>
                             <h2 className="fs-10 font-w400 text-white">
-                              {chcBalance.toFixed(2)}
+                              {cgtBalance.toFixed(2)}
                             </h2>
                           </div>
                           <div className="px-1 info-group">
@@ -244,7 +136,7 @@ const Staking = () => {
                               AMOUNT
                             </p>
                             <h3 className="fs-10 font-w400 text-white">
-                              {GovernanceStakeamount}
+                              {currentStakeamount}
                             </h3>
                           </div>
                           <div className="px-1 info-group">
@@ -296,7 +188,6 @@ const Staking = () => {
                                   color: "#846424",
                                 }}
                               >
-                                {/* <div className="form-group"> */}
                                 <input
                                   type="number"
                                   className="form-control input-sm"
@@ -308,7 +199,6 @@ const Staking = () => {
                                   onChange={(e) => setStakeamount(e.target.value)}
                                   placeholder="0.00"
                                 />
-                                {/* </div> */}
                                 <span
                                   style={{
                                     backgroundColor: "#1A1917",
@@ -336,11 +226,11 @@ const Staking = () => {
                           fontWeight: "700",
                           fontSize: "15px",
                         }}
-                        onClick={() => StakeCHC()}
+                        onClick={() => Stake()}
                         className=" font-thin
                                                         rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
                       >
-                        <a>Stake</a>
+                        <a>{loading ? "Processing...." : "Stake"}</a>
                       </Button>
                     </div>
                   </div>
@@ -395,7 +285,7 @@ const Staking = () => {
                                       color: "#FFFFFF",
                                     }}
                                   >
-                                    {GovernanceStakeamount}
+                                    {currentStakeamount}
                                   </div>
                                 </td>
                                 <td>
@@ -421,7 +311,6 @@ const Staking = () => {
                                       color: "#FFFFFF",
                                     }}
                                   >
-                                    {/* {endDate} */}
                                     30 Days
                                   </div>
                                 </td>

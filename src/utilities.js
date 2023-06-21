@@ -3,7 +3,7 @@ import chrysus from "./abis/Chrysus.json";
 import ERC20 from "./abis/ERC20.json";
 import loan from "./abis/MockLending.json";
 import swap from "./abis/Swap.json";
-import governance from "./abis/Governance.json";
+import staking from "./abis/MockStabilityModule.json";
 import mockOracle from "./abis/MockOracle.json";
 import { DAI, ETH } from "./constant";
 
@@ -16,24 +16,24 @@ const oracleDAI = "0x14866185B1962B63C3Ea9E03Bc1da838bab34C19";
 const oracleETH = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
 const oracleCHC = "0xCbA832148ABDa67DE754bF67d95AC1bb1FC630Ba";
 const oracleXAU = "0xC5981F461d74c46eB4b0CF3f4Ec79f025573B0Ea";
-const stake = "0x04a78c9FC9B3B5542c4ed26D1C42fb6462E71548";
+const STAKE = "0x04a78c9FC9B3B5542c4ed26D1C42fb6462E71548";
 const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
 const chrysusContract = new ethers.Contract(CHRYSUS, chrysus.abi, provider);
 const loanContract = new ethers.Contract(LOAN, loan.abi, provider);
 const swapContract = new ethers.Contract(SWAP, swap.abi, provider);
-const governanceContract = new ethers.Contract(
-  GOVERNANCE,
-  governance.abi,
+const stakingContract = new ethers.Contract(
+  STAKE,
+  staking.abi,
   provider
 );
 
-// const getGovStake = async (address) => {
-//     return await governanceContract.getGovernanceStake(address);
-// };
+const getGovStake = async (address) => {
+  return stakingContract.getGovernanceStake(address);
+};
 
-// const getTotalPoolsAmount = async () => {
-//     return await governanceContract.getTotalPoolAmount();
-// };
+const getTotalStakeAmount = async () => {
+  return stakingContract.getTotalPoolAmount();
+};
 
 const getCollateralizationRatio = async () => {
   return chrysusContract.getCollateralizationRatio();
@@ -85,17 +85,7 @@ const generate = async (amount, token) => {
   const collateral = token == "DAI" ? Number(D[1]) : Number(E[1]);
   const min = token == "DAI" ? 267 : 120;
   let mint = (amount * collateral) / Number(C[1]);
-  /*console.log(
-        {"D":Number(D[1]), 
-        "E":Number(E[1]),
-        "C": Number(C[1]),
-        "X": Number(X[1]),
-        "ratio":ratio,
-        "collateral": collateral,
-        "min": min,
-        "mint" :mint 
-    }
-    )*/
+  
   return (mint * 10000) / (ratio * min);
 };
 
@@ -145,6 +135,9 @@ const getUserBalance = async (user, token) => {
     return tokenContract.balanceOf(user);
   } else if (token == "ETH") {
     return provider.getBalance(user);
+  } else if (token == "CGT") {
+    const tokenContract = new ethers.Contract(GOVERNANCE, ERC20.abi, provider);
+    return tokenContract.balanceOf(user);
   }
 };
 
@@ -181,6 +174,6 @@ export default {
   interestRate,
   toFixedNoRounding,
   generate,
-  // getTotalPoolsAmount,
-  // getGovStake
+  getTotalStakeAmount,
+  getGovStake
 };

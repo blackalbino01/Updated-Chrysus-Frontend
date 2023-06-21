@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Utils from "../../utilities";
 import { ethers } from "ethers";
 import { DAI, ETH,MockStabilityModule } from "../../constant";
-import { StakeABI } from "../../abis/MockStabilityModule";
+import StakeABI  from "../../abis/MockStabilityModule.json";
 
 export const WithdrawStake = () => {
     const [TotalStake, setTotalStake] = useState(0);
@@ -18,27 +18,6 @@ export const WithdrawStake = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const fetchTotalStake = async () => {
-            try {
-                const { ethereum } = window;
-                if (ethereum) {
-                    let chainId = await ethereum.request({ method: "eth_chainId" });
-                    console.log("Connecteds to chains " + chainId);
-                    const provider = new ethers.providers.Web3Provider(ethereum);
-                    const _signer = provider.getSigner();
-                    const contract = new ethers.Contract(
-                        MockStabilityModule,
-                        StakeABI,
-                        _signer
-                    );
-                    let Stake = await contract.getTotalPoolAmount();
-                    !TotalStake & setTotalStake((Number(Stake)).toFixed(2));
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchTotalStake()
     },[ethereum]);
     
 
