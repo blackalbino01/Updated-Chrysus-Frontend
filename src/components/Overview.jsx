@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import OrderTab from "./Future/OrderTab";
 import TradeTab from "./Future/TradeTab";
 import Footer from "./Footer";
+import Utils from "../utilities.js";
 
 const Overview = () => {
   const [data, setData] = useState(
@@ -15,6 +16,7 @@ const Overview = () => {
   const sort = 6;
   const activePag = useRef(0);
   const [test, settest] = useState(0);
+  const [TotalStake, setTotalStake] = useState(0);
 
   // Active data
   const chageData = (frist, sec) => {
@@ -46,6 +48,13 @@ const Overview = () => {
     settest(i);
   };
 
+  useEffect(() => {
+    Utils.getTotalStakeAmount().then(function(data){
+      setTotalStake(Number(data) / 1e18);
+    });
+
+  }, [ethereum]);
+
   return (
     <>
       <div className="page-content mt-5">
@@ -71,7 +80,7 @@ const Overview = () => {
                 <ul className="price ">
                   <li>
                     <p className="mb-0 amount">Tokens</p>
-                    <span className="text-white">180,8484</span>
+                    <span className="text-white">{TotalStake}</span>
                   </li>
                 </ul>
               </div>
@@ -99,7 +108,7 @@ const Overview = () => {
                 <ul className="price ">
                   <li>
                     <p className="mb-0 amount">Average Time</p>
-                    <span className="text-white">5mo 15d 7h 44m 21s</span>
+                    <span className="text-white">30Days</span>
                   </li>
                 </ul>
               </div>
