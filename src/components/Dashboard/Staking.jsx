@@ -23,8 +23,10 @@ const Staking = () => {
   const [TotalStake, setTotalStake] = useState(0);
   const [ currentStakeamount, setCurrentStakeamount] = useState([]);
   const [cgtBalance, setCGTBalance] = useState(0);
+  const [reward, setReward] = useState(0);
   const [isApprove, setisApprove] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [endTime, setEndTime] = useState(0);
  
 
  
@@ -87,9 +89,16 @@ const Staking = () => {
 
     Utils.getGovStake(address).then(function(data){
       setCurrentStakeamount(Number(data.amount) / 1e18);
+      setEndTime(Number(data.startTime));
     });
-  }, [ethereum]);
+    Utils.getReward(address).then(function(data){
+      setReward(Number(data) / 1e18);
+    })
+;  }, [ethereum]);
 
+  let now = new Date();
+  now = Date.parse(now) / 1000;
+  const timeDepends = endTime + Number(2592000);
   const address = localStorage.getItem("accounts");
 
   return (
@@ -268,8 +277,7 @@ const Staking = () => {
                               <tr className="text-white">
                                 <th>Staked</th>
                                 <th>Reward</th>
-                                <th>Withdrawal Date</th>
-                                <th>UnStake</th>
+                                <th>Withdrawal Status</th>
                                 <th>Withdraw </th>
                               </tr>
                             </thead>
@@ -298,7 +306,7 @@ const Staking = () => {
                                       color: "#FFFFFF",
                                     }}
                                   >
-                                    0.00
+                                    {reward.toFixed(2)}
                                   </div>
                                 </td>
                                 <td>
@@ -311,26 +319,14 @@ const Staking = () => {
                                       color: "#FFFFFF",
                                     }}
                                   >
-                                    30 Days
-                                  </div>
-                                </td>
-                                <td>
-                                  <div
-                                    style={{
-                                      fontStyle: "normal",
-                                      fontWeight: "400",
-                                      fontSize: "12px",
-                                      lineHeight: "15px",
-                                      color: "#FFFFFF",
-                                    }}
-                                  >
-                                    0.00
+                                    { currentStakeamount > 0 && now >= timeDepends ? "Withdrawable" : "Not Withdrawable"}
                                   </div>
                                 </td>
                                 <td>
                                   <Link to={"/accounts/withdrawstake"}>
-                                    <span
+                                    <button
                                       className="badge cursor-pointer"
+                                      disabled = { currentStakeamount > 0 && now >= timeDepends ? false : true}
                                       style={{
                                         height: "22px",
                                         width: "80px",
@@ -346,7 +342,7 @@ const Staking = () => {
                                       }}
                                     >
                                       Withdraw
-                                    </span>
+                                    </button>
                                   </Link>
                                 </td>
                               </tr>

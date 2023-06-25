@@ -5,8 +5,21 @@ import { Transferblack, Chrysus } from "../assets";
 import styled from "styled-components";
 import { Body, H4, P } from "../components/typography";
 import { Button } from "reactstrap";
+import { useEffect, useState } from "react";
+import Utils from "../utilities";
+import { ethers } from "ethers";
 
 const SwapPopup = () => {
+  const [balance, setBalance] = useState(0);
+  const address = localStorage.getItem("accounts");
+
+  useEffect(() => {
+    Utils.getUserBalance(address, "CHC").then(function(data){
+      setBalance(Utils.toFixedNoRounding(Number(data) / 1e18, 3));
+    })
+  });
+
+
   return (
     <Section>
       <div className="d-flex">
@@ -49,7 +62,7 @@ const SwapPopup = () => {
                 <Body className="m-0">Quickly swap to the growing asset.</Body>
                 <div className="my-3" />
                 <label className="form-label text-primary">
-                  Available (CHC) 0.123
+                  Available (CHC) {balance}
                 </label>
                 <div
                   className="input-group"

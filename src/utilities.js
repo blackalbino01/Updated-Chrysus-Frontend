@@ -35,6 +35,13 @@ const getTotalStakeAmount = async () => {
   return stakingContract.getTotalPoolAmount();
 };
 
+const getReward = async(user) => {
+  const userData = await stakingContract.getGovernanceStake(user);
+  const totalAmount = await getTotalStakeAmount();
+  const balance = await getUserBalance(GOVERNANCE, "CGT");
+  return (userData.amount / totalAmount) * balance;
+};
+
 const getCollateralizationRatio = async () => {
   return chrysusContract.getCollateralizationRatio();
 };
@@ -175,5 +182,6 @@ export default {
   toFixedNoRounding,
   generate,
   getTotalStakeAmount,
-  getGovStake
+  getGovStake,
+  getReward
 };

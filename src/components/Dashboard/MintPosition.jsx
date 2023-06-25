@@ -1,64 +1,26 @@
 import React from "react";
-// import { DataGrid } from "@mui/x-data-grid";
-// import { FormActionButton } from "../buttons/form_action_button";
-// import { Table } from "../table";
-// import { Body, H4, P } from "../typography";
 import styled from "styled-components";
-import { Info } from "react-feather";
 import { Link } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
-import { DepositDAIButton } from "../buttons";
-import { DepositETHButton } from "../buttons";
-// import { PrimaryGradientButton } from "../buttons/primary_gradient.button";
-import {
-  Transferblack,
-  logoo,
-  LeafGold,
-  SwapGold,
-  CartGold,
-  UmbrellaGold,
-  Chrysus,
-  USDTWhite,
-  XLMWhite,
-  XRPWhite,
-  DAIWhite,
-  ETHWhite,
-} from "../../assets";
-// import { COLORS } from "src/assets/styles/theme";
-import { Dropdown, Tab, Nav } from "react-bootstrap";
-// import { useAppDispatch, useAppSelector } from '../../reducer/store';
-// import { MintButton } from "../buttons/mint";
-import OrderTab from "../Future/OrderTab";
-import TradeTab from "../Future/TradeTab";
-import { useEffect, useState, useRef } from "react";
-import Toltip from "../buttons/toltip";
+import { Tab } from "react-bootstrap";
+import { useEffect, useState } from "react";
 import Utils from "../../utilities";
 
 export const MintPosition = () => {
   const [collateralRatio, setcollateralRatio] = useState(0);
   const [liquidationRatio, setLiquidationRatio] = useState(0);
-  const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
-  );
   const [position, setposition] = useState([]);
-  const sort = 6;
-  const activePag = useRef(0);
-  const [test, settest] = useState(0);
-  const addrees = localStorage.getItem("accounts");
   const [feed, setFeed] = useState(0);
 
-  // Active data
-  const chageData = (frist, sec) => {
-    for (var i = 0; i < data.length; ++i) {
-      if (i >= frist && i < sec) {
-        data[i].classList.remove("d-none");
-      } else {
-        data[i].classList.add("d-none");
-      }
-    }
-  };
 
   useEffect(() => {
+    Utils.getMintPositions().then(function (data) {
+      setposition(data);
+    });
+
+    Utils.getFeed("CHC").then(function (data) {
+      setFeed(Utils.toFixedNoRounding((Number(data[1]) / 1e18),2));
+    });
+
     Utils.getCollateralizationRatio().then(function (data) {
       setcollateralRatio((Number(data) / 1e6).toFixed(2));
     });
@@ -68,46 +30,6 @@ export const MintPosition = () => {
     });
   });
 
-  useEffect(() => {
-    setData(document.querySelectorAll("#status_wrapper tbody tr"));
-    //chackboxFun();
-  }, [test]);
-
-  useEffect(() => {
-    Utils.getMintPositions().then(function (data) {
-      setposition(data);
-    });
-
-    Utils.getFeed("CHC").then(function (data) {
-      setFeed((Number(data[1]) / 1e18).toFixedNoRounding(2));
-    });
-  });
-
-  Number.prototype.toFixedNoRounding = function (n) {
-    const reg = new RegExp("^-?\\d+(?:\\.\\d{0," + n + "})?", "g");
-    const a = this.toString().match(reg)[0];
-    const dot = a.indexOf(".");
-    if (dot === -1) {
-      // integer, insert decimal dot and pad up zeros
-      return a + "." + "0".repeat(n);
-    }
-    const b = n - (a.length - dot) + 1;
-    return b > 0 ? a + "0".repeat(b) : a;
-  };
-
-  // Active pagginarion
-
-  // paggination
-  let paggination = Array(Math.ceil(data.length / sort))
-    .fill()
-    .map((_, i) => i + 1);
-
-  // Active paggination & chage data
-  const onClick = (i) => {
-    activePag.current = i;
-    chageData(activePag.current * sort, (activePag.current + 1) * sort);
-    settest(i);
-  };
 
   return (
     <Section>
@@ -156,22 +78,14 @@ export const MintPosition = () => {
                               <tr key={index}>
                                 <td>{item.col}</td>
                                 <td>
-                                  {(
-                                    Number(item.deposited) / 1e18
-                                  ).toFixedNoRounding(2)}
+                                  {Utils.toFixedNoRounding(Number(item.deposited) / 1e18,2)}
                                 </td>
                                 <td>
-                                  {(
-                                    Number(item.minted) / 1e18
-                                  ).toFixedNoRounding(3)}
+                                  {Utils.toFixedNoRounding(Number(item.minted) / 1e18, 3)}
                                 </td>
                                 <td>
                                   {"$" +
-                                    (
-                                      (
-                                        Number(item.minted) / 1e18
-                                      ).toFixedNoRounding(3) * feed
-                                    ).toFixedNoRounding(2)}
+                                    Utils.toFixedNoRounding(Utils.toFixedNoRounding(Number(item.minted) / 1e18, 3) * feed, 2)}
                                 </td>
                                 <td>
                                   <Link
@@ -205,20 +119,6 @@ export const MintPosition = () => {
                                       Liquidate
                                     </button>
                                   </Link>
-                                  {/* <Link to={"/accounts/loan/dai"}>
-																		<span className="badge cursor-pointer ml-3"
-																			style={{
-																				height: "22px",
-																				width: "80px",
-																				color: "black",
-																				textTransform: "uppercase",
-																				fontStyle: "normal",
-																				fontWeight: "700",
-																				fontSize: "10px",
-																				background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-																				borderRadius: "40px",
-																			}}>Claim</span>
-																	</Link> */}
                                 </td>
                               </tr>
                             ))}

@@ -35,8 +35,9 @@ export const WithdrawStake = () => {
                     StakeABI,
                     _signer
                 );
-                setLoading(true);
+                
                 Txn = await Stakecontract.withdrawStake(DAI ,  ethers.utils.parseUnits(String(amount)));
+                setLoading(true);
                 await Txn.wait();
                 setLoading(false);
                 console.log('Withdraw stake successfully!');
