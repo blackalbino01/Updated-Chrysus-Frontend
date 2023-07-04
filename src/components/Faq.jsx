@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { ContentToggle } from "./toggles";
 import styles from "../style";
 import Footer from "./Footer";
+import { H4 } from "./typography";
 
 const questions = [
   {
@@ -49,7 +50,7 @@ export const FAQ = () => {
       <div className="mt-5 d-flex flex-column align-items-center justify-content-center">
         <div className="col-8">
           <div className="d-flex flex-column align-items-center justify-content-center">
-            <p
+            <H4><p
               style={{
                 fontWeight: "600",
                 fontSize: "54px",
@@ -60,6 +61,7 @@ export const FAQ = () => {
             >
               FAQ's{" "}
             </p>
+            </H4>
             <div className="mt-5" />
             <div className="w-100">
               {questions.map((data, ind) => (

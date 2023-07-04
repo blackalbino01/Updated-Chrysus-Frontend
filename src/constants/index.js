@@ -15,7 +15,7 @@ export const navLinks = [
   },
   {
     name: "Governance",
-    path: '/ecosystems'
+    path: '/governanc'
   },
   {
     name: "FAQ",
@@ -148,7 +148,7 @@ export const footerLinks = [
     links: [
       {
         name: "Governance",
-        path: "/ecosystems",
+        path: "/governanc",
       },
       {
         name: "FAQ",

@@ -104,7 +104,7 @@ const Navbar = () => {
           <NavLink
             onClick={() => setActive("Governance")}
             className={`${active === "Governance" ? "" : "text-slate-50"}`}
-            to="/ecosystems"
+            to="/governanc"
           >
             Governance
           </NavLink>

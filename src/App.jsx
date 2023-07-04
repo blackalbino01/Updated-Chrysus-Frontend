@@ -96,7 +96,8 @@ const App = () => {
           />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/ecosystems" element={<Ecosystems />} />
+          {/* <Route path="/ecosystems" element={<Ecosystems />} /> */}
+          <Route path="/governanc" element={<Ecosystems />} />
           <Route path="/faq" element={<FAQ />} />
 
           <Route path="/accounts" element={<Accounts />}>

@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  EcosystemImage,
-  pic6,
-  pic3,
-  pic4,
-  pic5,
-  G1,
-  G2,
-  G3,
-  G4,
-  walet1,
-  meta1,
-} from "../assets";
+// import { H4 } from "./typography/h4";
+import { G1, G2, G3, G4 } from "../assets";
 import Navbar from "./Navbar";
 import styles from "../style";
 import Footer from "./Footer";
 import { Button } from "react-bootstrap";
 import { useAppDispatch, useAppSelector } from "../reducer/store";
 import { updatAccount } from "../slices/web3ContractSlice";
-import { Body, H4, P } from "./typography";
+import { H4 } from "./typography";
 
 const ImageBox = ({ image, changeClass }) => {
   const {
@@ -75,18 +64,20 @@ const Ecosystems = () => {
         </div>
       </div>
       <div className="d-flex flex-column align-items-center justify-content-center">
-        <p
+        <H4><p
           style={{
             fontWeight: "600",
             fontSize: "44px",
-            color: "#846424",
+            // color: "#846424",
             marginTop: "70px",
             marginBottom: "60px",
+            fontFamily:"Montserrat"
           }}
         >
           Governance{" "}
         </p>
-        <p className="text-white text-center col-8">
+        </H4>
+        <p className="text-center col-8" style={{color:"#FFFFFF", fontFamily:"Poppins"}}>
           Chrysus is a comprehensive decentralized application (dApp) that
           seamlessly integrates a range of financial services, such as loans,
           swaps, and more, to create a unified platform for its users. The
@@ -125,14 +116,16 @@ const Ecosystems = () => {
                 </div>
                 <div className="col-lg-6 about-content ps-lg-5 m-b30">
                   <div className="section-head">
-                    <h2
+                    <H4> <h2
                       className="title"
                       style={{
-                        color: "#846424",
+                        // color: "#846424",
+                        fontFamily:"Montserrat"
                       }}
                     >
                       Get Started with ChrysusDAO
                     </h2>
+                    </H4>
                     <p className="m-0 lh-base">
                       ChrysusDAO was founded with a simple mission of making
                       everyone a part of a fair and inclusive Chrysus ecosystem
