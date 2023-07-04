@@ -137,29 +137,6 @@ export const Borrow = () => {
               <Tab.Container defaultActiveKey="All">
                 <div className="card-header border-0 pb-2 flex-wrap">
                   <h4 className="heading ">Borrow</h4>
-                  {/* <div style={{ position: "absolute", right: 30, top: 30 }}>
-                                        <Toltip style={{ position: "absolute", right: 30, top: 30 }}>
-                                            <Info />
-                                        </Toltip>
-                                    </div> */}
-                  {/* <Button
-                                        type="button"
-                                        style={{
-                                            backgroundColor: "#1A1917",
-                                            borderRadius: "16px",
-                                            color: "#846424",
-                                        }}
-                                        className=" font-medium
-                                             rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
-                                        <a>Deposite</a>
-                                    </Button> */}
-                  {/* <>
-									<Nav className="order nav nav-tabs">
-										<Nav.Link as="button" eventKey="All" type="button">Order</Nav.Link>
-										<Nav.Link as="button" eventKey="Order" type="button">Order History</Nav.Link>
-										<Nav.Link as="button" eventKey="Trade" type="button">Trade Histroy</Nav.Link>
-									</Nav>
-								</> */}
                 </div>
                 <div className="card-body pt-0 pb-0">
                   <Tab.Content>
@@ -172,7 +149,7 @@ export const Borrow = () => {
                           <table
                             id="example"
                             className="table display dataTable no-footer"
-                            style={{ minWidth: "845px" }}
+                            style={{ minWidth: "745px" }}
                           >
                             <thead>
                               <tr
@@ -180,11 +157,6 @@ export const Borrow = () => {
                                   color: "#846424",
                                 }}
                               >
-                                {/* <th className="sorting_asc">
-																	<input type="checkbox" className="form-check-input" id="checkAll" required=""
-																		onClick={() => checkboxFun('all')}
-																	/>
-																</th> */}
                                 <th>Pool</th>
                                 <th>Borrow</th>
                                 <th>Current Value</th>

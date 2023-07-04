@@ -155,7 +155,7 @@ export const Lending = () => {
                           <table
                             id="example"
                             className="table display dataTable no-footer"
-                            style={{ minWidth: "845px" }}
+                            style={{ minWidth: "745px" }}
                           >
                             <thead>
                               <tr
