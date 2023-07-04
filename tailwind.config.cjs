@@ -2,6 +2,11 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   mode: "jit",
+  variants: {
+    extend: {
+      textOpacity: ['dark']
+    }
+  },
   theme: {
     // backgroundColor:"black",
     extend: {

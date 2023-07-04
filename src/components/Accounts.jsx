@@ -7,11 +7,9 @@ import UserSideBar from './Dashboard/UserSideBar'
 
 const Accounts = () => {
   return (
-    <Div className='bg-white'>
+    <Div className='bg-black'>
       <UserSideBar/>
       <Outlet/>
-      {/* <Dashboard/> */}
-      
     </Div>
   )
 }
@@ -20,4 +18,5 @@ export default Accounts
 
 const Div = styled.div`
   position: relative;
+  background-color:  #121212;
 `;
