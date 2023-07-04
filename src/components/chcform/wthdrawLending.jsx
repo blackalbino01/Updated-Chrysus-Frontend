@@ -69,6 +69,7 @@ export const WthdrawLending = () => {
 
   return (
     <Section>
+      <div className="min-h-screen">
       <div className="row w-100" style={{ borderRadius: "16px" }}>
         <div className="col ">
           <div
@@ -154,7 +155,7 @@ export const WthdrawLending = () => {
           </div>
         </div>
       </div>
-      <div className="mt-5" />
+      </div>
     </Section>
   );
 };

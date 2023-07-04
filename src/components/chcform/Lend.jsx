@@ -69,58 +69,59 @@ export const Lend = () => {
   };
   return (
     <Section>
-      <div className="row w-100" style={{ borderRadius: "16px" }}>
-        <div className="col ">
-          <div
-            className="w-100 d-flex flex-column align-items-center text-center"
-            style={{
-              backgroundColor: "#211f21",
-              borderRadius: "16px",
-              color: "#846424",
-            }}
-          >
-            <div className="mt-5" />
-            <H4>Lend CHC</H4>
-            <div className="d-flex flex-column align-items-start">
-              <P className="m-0">How much would you like to Lend?</P>
-              <div className="my-3" />
-              <label className="form-label text-primary">
-                Avaliable to Lend : {Utils.toFixedNoRounding(balance, 3)}CHC
-              </label>
-              <div
-                className="input-group"
-                style={{
-                  backgroundColor: "#1A1917",
-                  color: "#846424",
-                }}
-              >
-                <input
-                  type="text"
-                  className="form-control"
+      <div className="min-h-screen">
+        <div className="row w-100" style={{ borderRadius: "16px" }}>
+          <div className="col ">
+            <div
+              className="w-100 d-flex flex-column align-items-center text-center"
+              style={{
+                backgroundColor: "#211f21",
+                borderRadius: "16px",
+                color: "#846424",
+              }}
+            >
+              <div className="mt-5" />
+              <H4>Lend CHC</H4>
+              <div className="d-flex flex-column align-items-start">
+                <P className="m-0">How much would you like to Lend?</P>
+                <div className="my-3" />
+                <label className="form-label text-primary">
+                  Avaliable to Lend : {Utils.toFixedNoRounding(balance, 3)}CHC
+                </label>
+                <div
+                  className="input-group"
                   style={{
                     backgroundColor: "#1A1917",
                     color: "#846424",
                   }}
-                  onChange={(e) => setAmount(e.target.value)}
-                  placeholder="0.00"
-                />
-                <span
-                  style={{
-                    backgroundColor: "#1A1917",
-                    color: "#846424",
-                  }}
-                  className="input-group-text"
                 >
-                  <img loading="lazy" src={Chrysus} alt="meta" />
-                </span>
-              </div>
-              <div className="my-1" />
-              {/* <P className="m-0">Please Enter an amount would you like to Borrow</P>
+                  <input
+                    type="text"
+                    className="form-control"
+                    style={{
+                      backgroundColor: "#1A1917",
+                      color: "#846424",
+                    }}
+                    onChange={(e) => setAmount(e.target.value)}
+                    placeholder="0.00"
+                  />
+                  <span
+                    style={{
+                      backgroundColor: "#1A1917",
+                      color: "#846424",
+                    }}
+                    className="input-group-text"
+                  >
+                    <img loading="lazy" src={Chrysus} alt="meta" />
+                  </span>
+                </div>
+                <div className="my-1" />
+                {/* <P className="m-0">Please Enter an amount would you like to Borrow</P>
 						<Body className="m-0">
 							Generate an amount that is safety above the liquidation ratio.
 						</Body> */}
-              {/* <div className="my-3"></div> */}
-              {/* <label className="form-label text-primary">Your Blanace 0.123</label>
+                {/* <div className="my-3"></div> */}
+                {/* <label className="form-label text-primary">Your Blanace 0.123</label>
 						<div className="input-group" style={{
 							backgroundColor: "#1A1917",
 							color: "#846424",
@@ -136,37 +137,38 @@ export const Lend = () => {
 								color: "#846424",
 							}} className="input-group-text">Amount</span>
 						</div> */}
-            </div>
-            <div
-              className="w-100"
-              style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
-            />
-            <div className="w-100 d-flex flex-row justify-content-start p-3">
-              {/* Form Actions */}
-              <Link to={"/accounts/loan"}>
-                <FormActionButton color="white" outline>
-                  Back
-                </FormActionButton>
-              </Link>
-              <button
-                style={{
-                  borderRadius: "40px",
-                  background:
-                    "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                  // Fonts
-                  fontStyle: "normal",
-                  padding: "10px",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                  lineHeight: "24px",
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                  color: "black",
-                }}
-                onClick={() => lend()}
-              >
-                {loading ? "Processing...." : "Continue"}
-              </button>
+              </div>
+              <div
+                className="w-100"
+                style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
+              />
+              <div className="w-100 d-flex flex-row justify-content-start p-3">
+                {/* Form Actions */}
+                <Link to={"/accounts/loan"}>
+                  <FormActionButton color="white" outline>
+                    Back
+                  </FormActionButton>
+                </Link>
+                <button
+                  style={{
+                    borderRadius: "40px",
+                    background:
+                      "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                    // Fonts
+                    fontStyle: "normal",
+                    padding: "10px",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    lineHeight: "24px",
+                    letterSpacing: "1px",
+                    textTransform: "uppercase",
+                    color: "black",
+                  }}
+                  onClick={() => lend()}
+                >
+                  {loading ? "Processing...." : "Continue"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
