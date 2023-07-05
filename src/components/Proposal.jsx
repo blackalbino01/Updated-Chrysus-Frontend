@@ -17,7 +17,7 @@ const Proposal = () => {
 
   // Active data
   const chageData = (frist, sec) => {
-    for (const i = 0; i < data.length; ++i) {
+    for (let i = 0; i < data.length; ++i) {
       if (i >= frist && i < sec) {
         data[i].classList.remove("d-none");
       } else {
