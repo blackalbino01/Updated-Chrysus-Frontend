@@ -50,7 +50,7 @@ export const DAIDeposite = () => {
         await Txn.wait();
         setloading(false);
         setisApprove(true);
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (error) {
       setloading(false);
