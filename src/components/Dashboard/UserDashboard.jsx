@@ -172,7 +172,7 @@ const UserDashboard = () => {
   ];
 
   return (
-    <>
+    <div className="min-h-screen">
       <div className="row">
         <div className="col-xl-12">
           <div
@@ -442,7 +442,7 @@ const UserDashboard = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default UserDashboard;
