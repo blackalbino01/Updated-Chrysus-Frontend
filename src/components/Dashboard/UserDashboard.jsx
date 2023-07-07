@@ -197,19 +197,19 @@ const UserDashboard = () => {
               <div className="row sp20 mb-4 align-items-center">
                 <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
                   <div className="px-2 info-group">
-                    <p className="fs-18 mb-1">Liquidation Ratio</p>
+                    <p className="fs-18 mb-1 text-white">Liquidation Ratio</p>
                     <h2 className="fs-28 font-w600 text-white">
                       {liquidationRatio}%
                     </h2>
                   </div>
                   <div className="px-2 info-group">
-                    <p className="fs-14 mb-1">COLLATERALIZATION Ratio</p>
+                    <p className="fs-14 mb-1 text-white">COLLATERALIZATION Ratio</p>
                     <h3 className="fs-20 font-w600 text-white">
                       {collateralRatio}%
                     </h3>
                   </div>
                   <div className="px-2 info-group">
-                    <p className="fs-14 mb-1">ACTIVE CDPS</p>
+                    <p className="fs-14 mb-1 text-white">ACTIVE CDPS</p>
                     <h3 className="fs-20 font-w600 text-white">{cdp} CDPs</h3>
                   </div>
                 </div>
@@ -238,16 +238,16 @@ const UserDashboard = () => {
                   <thead>
                     <tr>
                       <td>
-                        <span style={{ color: "#B79841" }}>ASSET</span>
+                        <span style={{ color: "#B79841" }} className="text-white">ASSET</span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }}>BALANCE</span>
+                        <span style={{ color: "#B79841" }} className="text-white">BALANCE</span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }}>USD</span>
+                        <span style={{ color: "#B79841" }} className="text-white">USD</span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }}> </span>
+                        <span style={{ color: "#B79841" }} className="text-white"> </span>
                       </td>
                     </tr>
                   </thead>
