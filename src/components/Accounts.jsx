@@ -7,7 +7,7 @@ import UserSideBar from './Dashboard/UserSideBar'
 
 const Accounts = () => {
   return (
-    <Div className='bg-black'>
+    <Div>
       <UserSideBar/>
       <Outlet/>
     </Div>
