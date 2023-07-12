@@ -35,13 +35,13 @@ export default function Dashboard() {
 
 const Section = styled.section`
   margin-left: 18vw;
-  padding: 2rem;
+  padding: 0rem 1rem 0rem 1rem;
   height: 100%;
   background-color:  #121212;
   .grid {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 50%;
     gap: 1rem;
     .row__one {
       display: grid;

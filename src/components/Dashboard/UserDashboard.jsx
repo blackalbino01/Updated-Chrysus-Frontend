@@ -173,7 +173,7 @@ const UserDashboard = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="row">
+      <div className="row mt-4">
         <div className="col-xl-12">
           <div
             className="card"
@@ -183,18 +183,18 @@ const UserDashboard = () => {
               color: "#846424",
             }}
           >
-            <div className="mt-4 text-center">
+            <div className="mt-2 text-center">
               <H4>
                 <h2>WELCOME</h2>
               </H4>
             </div>
-            <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
+            {/* <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
               <div className="me-auto">
                 <h2 className="fs-28 font-w600 text-white" />
               </div>
-            </div>
+            </div> */}
             <div className="card-body">
-              <div className="row sp20 mb-4 align-items-center">
+              <div className="row sp20 mb-2 align-items-center">
                 <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
                   <div className="px-2 info-group">
                     <p className="fs-18 mb-1 text-white">Liquidation Ratio</p>
