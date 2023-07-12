@@ -39,7 +39,7 @@ export const ETHDeposite = () => {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const _signer = provider.getSigner();
         const contract = new ethers.Contract(CHRYSUS, chrysus.abi, _signer);
-
+        setloading(true);
         let Txn = await contract.depositCollateral(
           ETH,
           ethers.utils.parseUnits(String(ethamount)),
@@ -48,10 +48,10 @@ export const ETHDeposite = () => {
             value: ethers.utils.parseUnits(String(ethamount)),
           }
         );
-        setloading(true);
         await Txn.wait();
         setloading(false);
-        window.location.reload();
+        setModalShow(false)
+        // window.location.reload();
       }
     } catch (error) {
       setloading(false);
@@ -94,13 +94,6 @@ export const ETHDeposite = () => {
                   onChange={(e) => setethamount(e.target.value)}
                   placeholder="0.00"
                 />
-                {/* <CInput
-                                    type="text"
-                                    dir="rtl"
-                                    rightText="ETH"
-                                    bottomLineText="YOUR BALANCE 0"
-                                    onChange={(e) => setethamount(e.target.value)}
-                                /> */}
                 <div className="my-3" />
               </div>
               <div className="mt-2" />
@@ -132,57 +125,53 @@ export const ETHDeposite = () => {
                           style={{
                             // backgroundColor: "#7a7a79",
                             // color: "black",
-                            backgroundColor: "#211f21",
+                            // backgroundColor: "#211f21",
+                            // borderRadius: "16px",
+                            // color: "#846424",
+                            backgroundColor: "#525151",
                             borderRadius: "16px",
-                            color: "#846424",
+                            // color: "#846424",
+                            color: "white",
                           }}
                         >
-                          {/* <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none"
-                                                        style={{
-                                                            // backgroundColor: "#7a7a79",
-                                                            // color: "black",
-                                                            backgroundColor: "#211f21",
-                                                            borderRadius: "16px",
-                                                            color: "#846424",
-                                                        }}
-                                                    > */}
 
-                          <div
-                            className="row w-150"
-                            // style={{
-                            //     backgroundColor: "#211f21",
-                            //     borderRadius: "16px",
-                            //     color: "#846424",
-                            // }}
-                          >
+                          <div className="row w-150" >
                             <div className="col-12">
                               <div className="d-flex flex-column align-items-center mt-4">
-                                <H4>Confirm MInt Details</H4>
+                                <H4>Confirm Mint Details</H4>
                                 <div className="d-flex flex-column align-items-center justify-content-center col-5">
                                   <ConfirmationItem
                                     title="Depositing"
                                     value={ethamount}
                                   />
+                                  {""}
                                   <ConfirmationItem
                                     title="Generating"
                                     value={amount + "CHC"}
                                   />
 
-                                  {/* <div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
-                                                                            <input
-                                                                                type="checkbox"
-                                                                                style={{
-                                                                                    transform: "scale(1.5)",
-                                                                                    accentColor: "#EDC452",
-                                                                                }}
-                                                                            />
-                                                                            <Body className="m-0 mx-3">
-                                                                                Understand the Stability Fee is not fixed and is likely to
-                                                                                change over time
-                                                                            </Body>
-                                                                        </div> */}
+                                  <div className="d-flex flex-row align-items-center justify-content-start my-3 w-100">
+                                    {/* <input
+                                      type="checkbox"
+                                      style={{
+                                        transform: "scale(1.5)",
+                                        accentColor: "#EDC452",
+                                      }}
+                                    /> */}
+                                    <Body className="">
+                                      Please Press Confirm Button for depositing the
+                                      Ethereum or closed the Button fro cancellation.
+                                    </Body>
+                                  </div>
                                 </div>
                               </div>
+                            </div>
+                            <div className="flex justify-center items-center ">
+                              {loading ? (
+                                <div className="">
+                                  <div class="loader" />
+                                </div>
+                              ) : ""}
                             </div>
                             <div className="mt-2" />
                             <div
