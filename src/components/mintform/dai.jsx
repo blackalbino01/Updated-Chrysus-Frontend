@@ -157,7 +157,7 @@ export const DAIDeposite = () => {
                               <div className="d-flex flex-column align-items-center justify-content-center col-5">
                                 <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
                                   <Body className="m-0 mx-3">
-                                    Your Transection has been Confirmed
+                                    Your Transaction has been Confirmed
                                   </Body>
                                 </div>
                               </div>
@@ -224,7 +224,7 @@ export const DAIDeposite = () => {
                                 <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
 
                                   <Body className="m-0 mx-3">
-                                    You have been Approved DAI. Now Submit the transection.
+                                    You have been Approved DAI. Now Submit the transaction.
                                   </Body>
                                 </div>
                               </div>
@@ -454,7 +454,7 @@ export const DAIDeposite = () => {
                             <div className="row w-150">
                               <div className="col-12">
                                 <div className="d-flex flex-column align-items-center mt-4">
-                                  <H4>Transection for Approval</H4>
+                                  <H4>Transaction for Approval</H4>
                                   <h4>In Proccess</h4>
                                   <div className="flex items-start justify-between">
                                     <div class="loader" />
