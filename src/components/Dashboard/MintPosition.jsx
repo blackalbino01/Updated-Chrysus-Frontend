@@ -32,8 +32,8 @@ export const MintPosition = () => {
 
 
   return (
-    <Section>
-      <div className="min-h-screen">
+    <div className="min-h-screen">
+      <Section>
         <div className="row">
           <div className="col-xl-12">
             <div
@@ -135,8 +135,8 @@ export const MintPosition = () => {
             </div>
           </div>
         </div>
-      </div>
-    </Section>
+      </Section>
+    </div>
   );
 };
 
