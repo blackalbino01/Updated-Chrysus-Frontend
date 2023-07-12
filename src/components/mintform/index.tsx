@@ -25,18 +25,9 @@ export const MintForm = () => {
 	const [_selectedView, _setSelectedView] = useState<FormView>(steps[0]);
 	return (
 		<>
-			{/* <div className="p-4 d-flex flex-row justify-content-between align-items-center">
-				<CToggle
-					options={[
-						{ value: "loan", label: "LOAN" },
-					]}
-					setSelected={() => { }}
-				/>
-			</div> */}
 			<StepperForm callback={_setSelectedView} steps={steps}>
 				<Outlet />
 			</StepperForm>
-			{/* <Outlet /> */}
 		</>
 	);
 };

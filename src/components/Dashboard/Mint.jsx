@@ -29,11 +29,15 @@ const Mint = () => {
 
 
   return (
-    <Section>
-      <div className="grid min-h-screen">
-        <MintForm />
-      </div>
-    </Section>
+    <div className=" min-h-screen">
+      <Section>
+
+        <div className="grid">
+          <MintForm />
+        </div>
+
+      </Section>
+    </div>
   )
 }
 
@@ -49,7 +53,6 @@ const Section = styled.section`
     flex-direction: column;
     height: 100%;
     gap: 1rem;
-    margin-top: 2rem;
     .row__one {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
