@@ -150,7 +150,6 @@ export const DAIDeposite = () => {
                           <div className="col-12">
                             <div className="d-flex flex-column align-items-center mt-4">
                               <H4>Congratulations</H4>
-
                               <img
                                 loading="lazy"
                                 src={tick}
