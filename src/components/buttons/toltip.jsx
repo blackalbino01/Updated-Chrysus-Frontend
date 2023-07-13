@@ -22,29 +22,30 @@ const Toltip = ({ text, children }) => {
                     fontStyle: "normal",
                     fontWeight: "700",
                     fontSize: "10px",
-                    background: "#141414",
+                    // background: "#141414",
+                    backgroundColor: "#525151",
                     borderRadius: "10px",
                 }}>
                     <div className="">
                         <div className="p-3">
-                            <Body style={{ fontWeight: "600" }}>
+                            <Body style={{ fontWeight: "600", color: "white"}}>
                                 Stability Fee
                             </Body>
-                            <Body style={{ fontWeight: "300" }}>
+                            <Body style={{ fontWeight: "300",color: "white" }}>
                                 The fee calculated based on the outstanding debt of your position.
                                 This is continiously added to your existing debt.
                             </Body>
-                            <Body className="mt-3" style={{ fontWeight: "600" }}>
+                            <Body className="mt-3" style={{ fontWeight: "600",color: "white" }}>
                                 Liquidation Ratio
                             </Body>
-                            <Body style={{ fontWeight: "300" }}>
+                            <Body style={{ fontWeight: "300",color: "white" }}>
                                 The collateral-to-dai ratio at which the position becomes
                                 vulnerable to liquidation.
                             </Body>
-                            <Body className="mt-3" style={{ fontWeight: "600" }}>
+                            <Body className="mt-3" style={{ fontWeight: "600",color: "white" }}>
                                 Liquidation Fee
                             </Body>
-                            <Body style={{ fontWeight: "300" }}>
+                            <Body style={{ fontWeight: "300" ,color: "white"}}>
                                 The fee that is added to the total outstanding DAI debt when a
                                 liquidation occurs.
                             </Body>
