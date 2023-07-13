@@ -441,6 +441,52 @@ const UserDashboard = () => {
             </div>
           </div>
         </div>
+        <div className="col-xl-12">
+            <div
+              className="card"
+              style={{
+                backgroundColor: "#211f21",
+                borderRadius: "16px",
+                color: "#846424",
+              }}
+            >
+              <Tab.Container defaultActiveKey="All">
+                <div className="card-header border-0 pb-2 flex-wrap">
+                  <h4 className="heading ">Recent Activity</h4>
+                </div>
+                <div className="card-body pt-0 pb-0">
+                  <Tab.Content>
+                    <Tab.Pane eventKey="All">
+                      <div className="table-responsive dataTabletrade ">
+                        <div
+                          id="status_wrapper"
+                          className="dataTables_wrapper no-footer"
+                        >
+                          <table
+                            id="example"
+                            className="table display dataTable no-footer"
+                            style={{ minWidth: "845px" }}
+                          >
+                            <thead>
+                            </thead>
+                            <tbody className="text-white">
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3" />
+                        </div>
+                      </div>
+                    </Tab.Pane>
+                  </Tab.Content>
+                </div>
+              </Tab.Container>
+            </div>
+          </div>
       </div>
     </div>
   );
