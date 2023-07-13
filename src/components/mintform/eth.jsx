@@ -14,12 +14,15 @@ import { Button, Util } from "reactstrap";
 import Utils from "../../utilities";
 import chrysus from "../../abis/Chrysus.json";
 import { CHRYSUS, ETH } from "../../constant";
+import { tick } from '../../assets';
 
 export const ETHDeposite = () => {
   const [ethamount, setethamount] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [amount, setAmount] = useState(0);
   const [loading, setloading] = useState(false);
+  const [confirm, setconfirm] = useState(false);
+  const [recipt, setrecipt] = useState();
 
   useEffect(() => {
     Utils.generate(ethers.utils.parseUnits(ethamount.toString()), "ETH").then(
@@ -46,11 +49,12 @@ export const ETHDeposite = () => {
           {
             from: _signer.address,
             value: ethers.utils.parseUnits(String(ethamount)),
-          }
-        );
+          });
         await Txn.wait();
+        setrecipt(Txn.hash);
         setloading(false);
         setModalShow(false)
+        setconfirm(true);
         // window.location.reload();
       }
     } catch (error) {
@@ -116,6 +120,70 @@ export const ETHDeposite = () => {
                 >
                   Preview
                 </Button>
+                {confirm === true ? (
+                  <>
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                      <div
+                        className="relative w-auto my-6 mx-auto max-w-2xl"
+                        style={{
+                          backgroundColor: "#525151",
+                          borderRadius: "16px",
+                          // color: "#846424",
+                          color: "white",
+                        }}>
+                        <div className="row w-150">
+                          <div className="col-12">
+                            <div className="d-flex flex-column align-items-center mt-4">
+                              <H4>Congratulations</H4>
+                              <img
+                                loading="lazy"
+                                src={tick}
+                                alt="tick"
+                                className="w-[38px] h-[38px]"
+                              />
+                              <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                                <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
+                                  <Body className="m-0 mx-3">
+                                    Your Transaction has been Confirmed
+                                    <br/>
+                                    {recipt}
+                                  </Body>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-2" />
+                          <div
+                            style={{
+                              borderBottom:
+                                "1px solid rgba(255, 255, 255, 0.1)",
+                            }}
+                          />
+                        </div>
+                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                          <button
+                            style={{
+                              height: "32px",
+                              width: "90px",
+                              color: "#846424",
+                              textTransform: "uppercase",
+                              fontStyle: "normal",
+                              fontWeight: "600",
+                              fontSize: "10px",
+                              backgroundColor: "#1A1917",
+                              borderRadius: "16px",
+                              border: "1px solid transparent",
+                              borderColor: "#846424",
+                            }}
+                            type="button"
+                            onClick={() => setconfirm(false)}>
+                            ok
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (<></>)}
                 {modalShow ? (
                   <>
                     <>

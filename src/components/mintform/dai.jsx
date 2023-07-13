@@ -26,7 +26,7 @@ export const DAIDeposite = () => {
   const [modalShows, setModalShows] = useState(false);
   const [confirm, setconfirm] = useState(false);
   const [amount, setAmount] = useState(0);
-
+  const [recipt, setrecipt] = useState();
   if (DAIamount) {
     Utils.generate(ethers.utils.parseUnits(DAIamount.toString()), "DAI").then(
       function (data) {
@@ -81,6 +81,9 @@ export const DAIDeposite = () => {
         );
         setloading(true);
         await Txn.wait();
+        console.log(Txn)
+        setrecipt(Txn.hash);
+        // alert(` you have https://sepolia.etherscan.io/tx/${Txn.hash}`);
         setloading(false);
         setloadings(false);
         setconfirm(true);
@@ -158,6 +161,8 @@ export const DAIDeposite = () => {
                                 <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
                                   <Body className="m-0 mx-3">
                                     Your Transaction has been Confirmed
+                                    <br/>
+                                    {recipt}
                                   </Body>
                                 </div>
                               </div>
