@@ -185,7 +185,6 @@ const UserDashboard = () => {
           >
             <div className="mt-2 text-center">
               <H4>
-                <h2>WELCOME</h2>
               </H4>
             </div>
             {/* <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
