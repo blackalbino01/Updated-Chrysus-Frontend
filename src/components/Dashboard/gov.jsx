@@ -5,16 +5,18 @@ import styles from "../../style";
 import styled from "styled-components";
 
 const Governance = () => {
-    return (
-        <Section>
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-                <div className={`${styles.boxWidth}`} >
-                    <DaoNav />
-                </div>
-            </div>
-            <Outlet />
-        </Section>
-    )
+  return (
+    <div className=" min-h-screen">
+      <Section>
+        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+          <div className={`${styles.boxWidth}`} >
+            <DaoNav />
+          </div>
+        </div>
+        <Outlet />
+      </Section>
+    </div>
+  )
 }
 
 export default Governance

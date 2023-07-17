@@ -228,7 +228,7 @@ const UserDashboard = () => {
             <div className="card-body pt-4">
               <div className="w-100">
                 <div className="d-flex flex-row justify-content-start align-items-center w-100">
-                  <H4>Wallet Balances</H4>
+                  <h3 className="text-white">Wallet Balances</h3>
                 </div>
                 <table
                   className="w-100"
@@ -362,7 +362,7 @@ const UserDashboard = () => {
             <div className="card-body pt-4">
               <div className="w-100">
                 <div className="d-flex flex-row align-items-center justify-content-between mb-4">
-                  <H4>Price Feeds</H4>
+                  <h3 className="text-white">Price Feeds</h3>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-between my-2">
                   <div
@@ -451,7 +451,7 @@ const UserDashboard = () => {
             >
               <Tab.Container defaultActiveKey="All">
                 <div className="card-header border-0 pb-2 flex-wrap">
-                  <h4 className="heading ">Recent Activity</h4>
+                  <h3 className="text-white">Recent Activity</h3>
                 </div>
                 <div className="card-body pt-0 pb-0">
                   <Tab.Content>
