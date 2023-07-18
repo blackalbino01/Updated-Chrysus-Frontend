@@ -49,7 +49,7 @@ const Overview = () => {
   };
 
   useEffect(() => {
-    Utils.getTotalStakeAmount().then(function(data){
+    Utils.getTotalStakeAmount().then(function (data) {
       setTotalStake(Number(data) / 1e18);
     });
 
@@ -60,7 +60,7 @@ const Overview = () => {
       <div className="page-content mt-5">
         <div className="row justify-content-center">
           <div
-            className="col-lg-4 col-md-6 m-b30 wow fadeInUp"
+            className="col-lg-3 col-md-6 m-b30 wow fadeInUp"
             data-wow-delay="0.2s"
           >
             <div
@@ -76,18 +76,20 @@ const Overview = () => {
                   <h5 className="title">Staked</h5>
                 </div>
               </div>
-              <div className="icon-content">
+              <p className="mb-0 amount">Tokens {""}
+              <span className="text-white  ml-2">{TotalStake}</span></p>
+              {/* <div className="icon-content">
                 <ul className="price ">
                   <li>
                     <p className="mb-0 amount">Tokens</p>
                     <span className="text-white">{TotalStake}</span>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
           <div
-            className="col-lg-4 col-md-6 m-b30 wow fadeInUp"
+            className="col-lg-3 col-md-6 m-b30 wow fadeInUp"
             data-wow-delay="0.2s"
           >
             <div
@@ -104,14 +106,18 @@ const Overview = () => {
                   <h5 className="title">Lock time</h5>
                 </div>
               </div>
-              <div className="icon-content">
-                <ul className="price ">
-                  <li>
-                    <p className="mb-0 amount">Average Time</p>
-                    <span className="text-white">30Days</span>
-                  </li>
-                </ul>
-              </div>
+              <p className="mb-0 amount">Average Time {""}
+                <a className="text-white ml-2">30Days</a></p>
+              {/* <div className="icon-content"> */}
+              {/* <ul className="">
+                    <li>
+                      <p className="mb-0 amount">Average Time{""}
+                        <a className="text-white">30Days</a>
+                      </p>
+
+                    </li>
+                  </ul> */}
+              {/* </div> */}
             </div>
           </div>
         </div>
@@ -196,9 +202,8 @@ const Overview = () => {
                                   }}
                                   key={i}
                                   // to="/future"
-                                  className={`paginate_button  ${
-                                    activePag.current === i ? "current" : ""
-                                  } `}
+                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
+                                    } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}
