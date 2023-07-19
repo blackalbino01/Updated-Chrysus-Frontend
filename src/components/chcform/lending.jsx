@@ -126,6 +126,26 @@ export const Lending = () => {
       lend_value: Utils.toFixedNoRounding(dai_chcBalance * feed, 2),
     },
   ];
+  const Bat = [
+    {
+      Collateral: "CHC/BAT",
+    }]
+  const Usdt = [
+    {
+      Collateral: "CHC/USDT",
+    }]
+  const Usdc = [
+    {
+      Collateral: "CHC/USDC",
+    }]
+  const Uni = [
+    {
+      Collateral: "CHC/UNI",
+    }]
+    const Wbtc = [
+      {
+        Collateral: "CHC/WBTC",
+      }]
 
   return (
     <>
@@ -265,6 +285,276 @@ export const Lending = () => {
                                       to={"/accounts/lend"}
                                       state={{ collateral: "DAI" }}
                                     >
+                                      <span
+                                        className="badge cursor-pointer ml-2"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "black",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          background:
+                                            "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                          borderRadius: "40px",
+                                        }}
+                                      >
+                                        Lend
+                                      </span>
+                                    </Link>
+                                  </td>
+                                </tr>
+                              ))}
+                               {Bat.map((item, index) => (
+                                <tr key={index}>
+                                  <td>{item.Collateral}</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>$0</td>
+                                  <td>$0</td>
+                                  <td>
+                                    <Link
+                                      to={"/accounts/wthdrawLending"}
+                                      state={{ collateral: "ETH" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer"
+                                        // onClick={() => setModalShowDAI(true)}
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "#846424",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          backgroundColor: "#1A1917",
+                                          borderRadius: "16px",
+                                          border: "1px solid transparent",
+                                          borderColor: "#846424",
+                                        }}
+                                      >
+                                        Withdraw
+                                      </span>
+                                    </Link>
+                                    <Link
+                                      to={"/accounts/lend"}
+                                      state={{ collateral: "ETH" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer ml-2"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "black",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          background:
+                                            "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                          borderRadius: "40px",
+                                        }}
+                                      >
+                                        Lend
+                                      </span>
+                                    </Link>
+                                  </td>
+                                </tr>
+                              ))}
+                                {Usdt.map((item, index) => (
+                                <tr key={index}>
+                                  <td>{item.Collateral}</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>$0</td>
+                                  <td>$0</td>
+                                  <td>
+                                    <Link>
+                                      <span
+                                        className="badge cursor-pointer"
+                                        // onClick={() => setModalShowDAI(true)}
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "#846424",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          backgroundColor: "#1A1917",
+                                          borderRadius: "16px",
+                                          border: "1px solid transparent",
+                                          borderColor: "#846424",
+                                        }}
+                                      >
+                                        Withdraw
+                                      </span>
+                                    </Link>
+                                    <Link
+                                      to={"/accounts/lend"}
+                                      state={{ collateral: "ETH" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer ml-2"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "black",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          background:
+                                            "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                          borderRadius: "40px",
+                                        }}
+                                      >
+                                        Lend
+                                      </span>
+                                    </Link>
+                                  </td>
+                                </tr>
+                              ))}
+                                {Usdc.map((item, index) => (
+                                <tr key={index}>
+                                  <td>{item.Collateral}</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>$0</td>
+                                  <td>$0</td>
+                                  <td>
+                                    <Link>
+                                      <span
+                                        className="badge cursor-pointer"
+                                        // onClick={() => setModalShowDAI(true)}
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "#846424",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          backgroundColor: "#1A1917",
+                                          borderRadius: "16px",
+                                          border: "1px solid transparent",
+                                          borderColor: "#846424",
+                                        }}
+                                      >
+                                        Withdraw
+                                      </span>
+                                    </Link>
+                                    <Link
+                                      to={"/accounts/lend"}
+                                      state={{ collateral: "ETH" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer ml-2"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "black",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          background:
+                                            "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                          borderRadius: "40px",
+                                        }}
+                                      >
+                                        Lend
+                                      </span>
+                                    </Link>
+                                  </td>
+                                </tr>
+                              ))}
+                                {Wbtc.map((item, index) => (
+                                <tr key={index}>
+                                  <td>{item.Collateral}</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>$0</td>
+                                  <td>$0</td>
+                                  <td>
+                                    <Link>
+                                      <span
+                                        className="badge cursor-pointer"
+                                        // onClick={() => setModalShowDAI(true)}
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "#846424",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          backgroundColor: "#1A1917",
+                                          borderRadius: "16px",
+                                          border: "1px solid transparent",
+                                          borderColor: "#846424",
+                                        }}
+                                      >
+                                        Withdraw
+                                      </span>
+                                    </Link>
+                                    <Link
+                                      to={"/accounts/lend"}
+                                      state={{ collateral: "ETH" }}
+                                    >
+                                      <span
+                                        className="badge cursor-pointer ml-2"
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "black",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          background:
+                                            "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                          borderRadius: "40px",
+                                        }}
+                                      >
+                                        Lend
+                                      </span>
+                                    </Link>
+                                  </td>
+                                </tr>
+                              ))}
+                                {Uni.map((item, index) => (
+                                <tr key={index}>
+                                  <td>{item.Collateral}</td>
+                                  <td>0</td>
+                                  <td>0</td>
+                                  <td>$0</td>
+                                  <td>$0</td>
+                                  <td>
+                                    <Link>
+                                      <span
+                                        className="badge cursor-pointer"
+                                        // onClick={() => setModalShowDAI(true)}
+                                        style={{
+                                          height: "22px",
+                                          width: "80px",
+                                          color: "#846424",
+                                          textTransform: "uppercase",
+                                          fontStyle: "normal",
+                                          fontWeight: "700",
+                                          fontSize: "10px",
+                                          backgroundColor: "#1A1917",
+                                          borderRadius: "16px",
+                                          border: "1px solid transparent",
+                                          borderColor: "#846424",
+                                        }}
+                                      >
+                                        Withdraw
+                                      </span>
+                                    </Link>
+                                    <Link>
                                       <span
                                         className="badge cursor-pointer ml-2"
                                         style={{
