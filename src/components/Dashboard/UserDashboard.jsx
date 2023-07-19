@@ -451,7 +451,7 @@ const UserDashboard = () => {
             >
               <Tab.Container defaultActiveKey="All">
                 <div className="card-header border-0 pb-2 flex-wrap">
-                  <h3 className="text-white">Recent Activity</h3>
+                  <h3 className="">Recent Activity</h3>
                 </div>
                 <div className="card-body pt-0 pb-0">
                   <Tab.Content>
