@@ -475,7 +475,7 @@ const Section = styled.section`
             text-decoration: none;
             display: flex;
             gap: 1rem;
-            color: #846424;
+            color:white;
           }
         }
         .active {

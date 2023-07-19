@@ -196,19 +196,19 @@ const UserDashboard = () => {
               <div className="row sp20 mb-2 align-items-center">
                 <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
                   <div className="px-2 info-group">
-                    <p className="fs-18 mb-1 text-white">Liquidation Ratio</p>
+                    <p className="fs-18 mb-1">Liquidation Ratio</p>
                     <h2 className="fs-28 font-w600 text-white">
                       {liquidationRatio}%
                     </h2>
                   </div>
                   <div className="px-2 info-group">
-                    <p className="fs-14 mb-1 text-white">COLLATERALIZATION Ratio</p>
+                    <p className="fs-14 mb-1 ">COLLATERALIZATION Ratio</p>
                     <h3 className="fs-20 font-w600 text-white">
                       {collateralRatio}%
                     </h3>
                   </div>
                   <div className="px-2 info-group">
-                    <p className="fs-14 mb-1 text-white">ACTIVE CDPS</p>
+                    <p className="fs-14 mb-1 ">ACTIVE CDPS</p>
                     <h3 className="fs-20 font-w600 text-white">{cdp} CDPs</h3>
                   </div>
                 </div>
@@ -228,7 +228,7 @@ const UserDashboard = () => {
             <div className="card-body pt-4">
               <div className="w-100">
                 <div className="d-flex flex-row justify-content-start align-items-center w-100">
-                  <h3 className="text-white">Wallet Balances</h3>
+                  <h3 className="">Wallet Balances</h3>
                 </div>
                 <table
                   className="w-100"
@@ -362,7 +362,7 @@ const UserDashboard = () => {
             <div className="card-body pt-4">
               <div className="w-100">
                 <div className="d-flex flex-row align-items-center justify-content-between mb-4">
-                  <h3 className="text-white">Price Feeds</h3>
+                  <h3 className="">Price Feeds</h3>
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-between my-2">
                   <div
