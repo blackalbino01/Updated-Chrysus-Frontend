@@ -470,10 +470,12 @@ const UserDashboard = () => {
                             </thead>
                             <tbody className="text-white">
                               <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>5-10-2023</td>
+                                <td>Minted some CHC</td>
+                              </tr>
+                              <tr>
+                                <td>19-10-2023</td>
+                                <td>Stack 100 CGT</td>
                               </tr>
                             </tbody>
                           </table>
