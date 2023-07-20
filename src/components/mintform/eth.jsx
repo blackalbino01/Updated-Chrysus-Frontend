@@ -155,7 +155,7 @@ export const ETHDeposite = () => {
                                   <Body className="m-0 mx-3">
                                     Your Transaction has been Confirmed
                                     <br/>
-                                    {recipt}
+                                    <a href={recipt}>{recipt}</a>
                                   </Body>
                                 </div>
                               </div>
