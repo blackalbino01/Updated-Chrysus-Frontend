@@ -91,7 +91,8 @@ export const DAIDeposite = () => {
         setloading(true);
         await Txn.wait();
         console.log(Txn)
-        setrecipt(Txn.hash);
+        // setrecipt(Txn.hash);
+        setrecipt(`https://sepolia.etherscan.io/tx/${Txn.hash}`);
         // alert(` you have https://sepolia.etherscan.io/tx/${Txn.hash}`);
         setloading(false);
         setloadings(false);

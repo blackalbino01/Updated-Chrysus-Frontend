@@ -53,7 +53,8 @@ export const ETHDeposite = () => {
             value: ethers.utils.parseUnits(String(ethamount)),
           });
         await Txn.wait();
-        setrecipt(Txn.hash);
+        // setrecipt(Txn.hash);
+        setrecipt(`https://sepolia.etherscan.io/tx/${Txn.hash}`);
         setloading(false);
         setModalShow(false)
         setconfirm(true);

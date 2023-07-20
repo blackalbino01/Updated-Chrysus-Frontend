@@ -5,7 +5,7 @@ import { Body, H4, P } from "../typography";
 import { Info } from "react-feather";
 // import { COLORS } from "src/assets/styles/theme";
 import { CInput } from "../inputs/cinput";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Chrysus } from "../../assets";
 import Utils from "../../utilities";
 import { DAI, ETH, CHRYSUS, LOAN } from "../../constant";
@@ -13,14 +13,19 @@ import { ethers } from "ethers";
 import loan from "../../abis/MockLending.json";
 import chrysus from "../../abis/Chrysus.json";
 import styled from "styled-components";
+import { tick } from '../../assets';
 
 export const Lend = () => {
+  const navigate = useNavigate();
   const [balance, setBalance] = useState(0);
   const addrees = localStorage.getItem("accounts");
   const location = useLocation();
   const { collateral } = location.state;
   const [amount, setAmount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [recipt, setrecipt] = useState();
+  const [confirm, setconfirm] = useState(false);
+  const [rout, setrout] = useState(false);
 
   useEffect(() => {
     Utils.getUserBalance(addrees, "CHC").then(function (data) {
@@ -45,12 +50,12 @@ export const Lend = () => {
         );
 
         const _collateral = collateral == "DAI" ? DAI : ETH;
-
+        setLoading(true);
         let Txn = await chrysusContract.approve(
           LOAN,
           ethers.utils.parseUnits(String(amount))
         );
-        setLoading(true);
+        // setLoading(true);
         await Txn.wait();
 
         Txn = await loanContract.lend(
@@ -59,14 +64,22 @@ export const Lend = () => {
         );
         await Txn.wait();
         setLoading(false);
+        setrecipt(`https://sepolia.etherscan.io/tx/${Txn.hash}`);
+        setconfirm(true);
         console.log("Lend successfully!");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (error) {
       setLoading(false);
       console.error("Error:", error);
     }
   };
+  useEffect(() => {
+    if (rout == true) {
+      navigate("/accounts")
+    }
+  });
+
   return (
     <Section>
       <div className="min-h-screen">
@@ -147,6 +160,114 @@ export const Lend = () => {
                 >
                   {loading ? "Processing...." : "Continue"}
                 </button>
+
+                {loading === true ? (
+                  <>
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                      <div
+                        className="relative w-auto my-6 mx-auto max-w-2xl"
+                        style={{
+                          backgroundColor: "#525151",
+                          borderRadius: "16px",
+                          // color: "#846424",
+                          color: "white",
+                        }}>
+                        <div className="row w-150">
+                          <div className="col-12">
+                            <div className="d-flex flex-column align-items-center mt-4">
+                              <H4>Your Transaction is in Process</H4>
+                              <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                                <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
+                                  <Body className="m-0 mx-3">
+                                    <div className="">
+                                      <div class="loader" />
+                                    </div>
+                                  </Body>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-2" />
+                          <div
+                            style={{
+                              borderBottom:
+                                "1px solid rgba(255, 255, 255, 0.1)",
+                            }}
+                          />
+                        </div>
+                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (<></>)}
+
+                {confirm === true ? (
+                  <>
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                      <div
+                        className="relative w-auto my-6 mx-auto max-w-2xl"
+                        style={{
+                          backgroundColor: "#525151",
+                          borderRadius: "16px",
+                          // color: "#846424",
+                          color: "white",
+                        }}>
+                        <div className="row w-150">
+                          <div className="col-12">
+                            <div className="d-flex flex-column align-items-center mt-4">
+                              <H4>Congratulations</H4>
+                              <img
+                                loading="lazy"
+                                src={tick}
+                                alt="tick"
+                                className="w-[38px] h-[38px]"
+                              />
+                              <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                                <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
+                                  <Body className="m-0 mx-3 ">
+                                    Your Transaction has been Confirmed
+                                    <br />
+                                    <div className="mr-2 ml-2">
+                                      {recipt}
+                                    </div>
+                                  </Body>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-2" />
+                          <div
+                            style={{
+                              borderBottom:
+                                "1px solid rgba(255, 255, 255, 0.1)",
+                            }}
+                          />
+                        </div>
+                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                          <button
+                            style={{
+                              height: "32px",
+                              width: "90px",
+                              color: "#846424",
+                              textTransform: "uppercase",
+                              fontStyle: "normal",
+                              fontWeight: "600",
+                              fontSize: "10px",
+                              backgroundColor: "#1A1917",
+                              borderRadius: "16px",
+                              border: "1px solid transparent",
+                              borderColor: "#846424",
+                            }}
+                            type="button"
+                            onClick={() => setconfirm(false) & setrout(true)}>
+                            ok
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (<></>)}
               </div>
             </div>
           </div>

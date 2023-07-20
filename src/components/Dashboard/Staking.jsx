@@ -76,7 +76,8 @@ const Staking = () => {
         );
         await Txn.wait();
         setLoading(false);
-        setrecipt(Txn.hash);
+        // setrecipt(Txn.hash);
+        setrecipt(`https://sepolia.etherscan.io/tx/${Txn.hash}`);
         setconfirm(true);
         console.log("stake successfully!");
         // window.location.reload();
@@ -287,10 +288,12 @@ const Staking = () => {
                         />
                         <div className="d-flex flex-column align-items-center justify-content-center col-5">
                           <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
-                            <Body className="m-0 mx-3">
+                            <Body className="m-0 mx-3 ">
                               Your Transaction has been Confirmed
                               <br />
-                              {recipt}
+                              <div className="mr-2 ml-2">
+                                {recipt}
+                              </div>
                             </Body>
                           </div>
                         </div>
