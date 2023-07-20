@@ -480,7 +480,7 @@ const UserDashboard = () => {
                               <td>Minted some CHC</td>
                               <td></td>
                               <td>
-                                <Link>
+                                {/* <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{
@@ -498,7 +498,7 @@ const UserDashboard = () => {
                                   >
                                     Action
                                   </span>
-                                </Link>
+                                </Link> */}
                                 <Link >
                                   <span
                                     className="badge cursor-pointer"
@@ -526,7 +526,7 @@ const UserDashboard = () => {
                               <td>Stack 100 CGT</td>
                               <td></td>
                               <td>
-                                <Link>
+                                {/* <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{
@@ -544,7 +544,7 @@ const UserDashboard = () => {
                                   >
                                     Action
                                   </span>
-                                </Link>
+                                </Link> */}
                                 <Link >
                                   <span
                                     className="badge cursor-pointer"
