@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import { FormActionButton } from "../buttons/form_action_button";
 import styles from "../../style";
@@ -17,12 +17,14 @@ import { CHRYSUS, ETH } from "../../constant";
 import { tick } from '../../assets';
 
 export const ETHDeposite = () => {
+  const navigate = useNavigate();
   const [ethamount, setethamount] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [amount, setAmount] = useState(0);
   const [loading, setloading] = useState(false);
   const [confirm, setconfirm] = useState(false);
   const [recipt, setrecipt] = useState();
+  const [rout, setrout] = useState(false);
 
   useEffect(() => {
     Utils.generate(ethers.utils.parseUnits(ethamount.toString()), "ETH").then(
@@ -62,6 +64,12 @@ export const ETHDeposite = () => {
       console.error("Error:", error);
     }
   };
+
+  useEffect(() => {
+    if(rout == true){
+      navigate("/accounts")
+    }
+  });
 
   return (
     <>
@@ -176,7 +184,8 @@ export const ETHDeposite = () => {
                               borderColor: "#846424",
                             }}
                             type="button"
-                            onClick={() => setconfirm(false)}>
+                            // onClick={() =>setrout(true)} &&
+                            onClick={() => setconfirm(false) & setrout(true)}>
                             ok
                           </button>
                         </div>

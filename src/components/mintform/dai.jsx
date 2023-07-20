@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { FormActionButton } from "../buttons/form_action_button";
 import styles from "../../style";
 import { Body, H4, P } from "../typography";
@@ -18,6 +18,7 @@ import { tick } from '../../assets';
 
 
 export const DAIDeposite = () => {
+  const navigate = useNavigate();
   const [modalShow, setModalShow] = useState(false);
   const [isApprove, setisApprove] = useState(false);
   const [loading, setloading] = useState(false);
@@ -27,6 +28,8 @@ export const DAIDeposite = () => {
   const [confirm, setconfirm] = useState(false);
   const [amount, setAmount] = useState(0);
   const [recipt, setrecipt] = useState();
+  const [rout, setrout] = useState(false);
+
   if (DAIamount) {
     Utils.generate(ethers.utils.parseUnits(DAIamount.toString()), "DAI").then(
       function (data) {
@@ -34,6 +37,12 @@ export const DAIDeposite = () => {
       }
     );
   }
+
+  useEffect(() => {
+    if(rout == true){
+      navigate("/accounts")
+    }
+  });
 
   const DAIApprove = async () => {
     try {
@@ -191,7 +200,7 @@ export const DAIDeposite = () => {
                               borderColor: "#846424",
                             }}
                             type="button"
-                            onClick={() => setconfirm(false)}
+                            onClick={() => setconfirm(false) & setrout(true)}
                           >
                             ok
                           </button>
