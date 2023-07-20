@@ -5,15 +5,17 @@ import { Body, H4, P } from "../typography";
 import { Info } from "react-feather";
 // import { COLORS } from "src/assets/styles/theme";
 import { CInput } from "../inputs/cinput";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Chrysus } from "../../assets";
 import Utils from "../../utilities";
 import { ethers } from "ethers";
 import ERC20 from "../../abis/ERC20.json";
 import loan from "../../abis/MockLending.json";
 import { DAI, ETH, LOAN } from "../../constant";
+import { tick } from '../../assets';
 
 export const BorrowCHC = () => {
+  const navigate = useNavigate();
   const [collateralAmount, setCollateralAmount] = useState(0);
   const [eth_lend, setEth_Lend] = useState(0);
   const [dai_lend, setDai_Lend] = useState(0);
@@ -23,6 +25,9 @@ export const BorrowCHC = () => {
   const { collateral } = location.state;
   const [interestRate, setInterestRate] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [recipt, setrecipt] = useState();
+  const [confirm, setconfirm] = useState(false);
+  const [rout, setrout] = useState(false);
 
   useEffect(() => {
     Utils.getLendPosition(addrees, "DAI").then(function (data) {
@@ -63,7 +68,7 @@ export const BorrowCHC = () => {
         const loanContract = new ethers.Contract(LOAN, loan.abi, _signer);
 
         const _collateral = collateral == "DAI" ? DAI : ETH;
-
+        setLoading(true);
         if (collateral == "DAI") {
           let Txn = await token.approve(
             LOAN,
@@ -83,10 +88,10 @@ export const BorrowCHC = () => {
             }
           );
 
-          setLoading(true);
+
           await Txn.wait();
-          setLoading(false);
-          window.location.reload();
+          // setLoading(false);
+          // window.location.reload();
         }
 
         let Txn = await loanContract.borrow(
@@ -96,6 +101,8 @@ export const BorrowCHC = () => {
         //setLoading(true);
         await Txn.wait();
         setLoading(false);
+        setrecipt(`https://sepolia.etherscan.io/tx/${Txn.hash}`);
+        setconfirm(true);
         console.log("Borrow successfully!");
         window.location.reload();
       }
@@ -122,7 +129,7 @@ export const BorrowCHC = () => {
             <P className="m-0">How much would you like to Borrow?</P>
             <div className="my-3" />
             <label className="form-label text-primary">
-              Avaliable to Borrow : {}
+              Avaliable to Borrow : { }
               {collateral == "DAI" ? dai_lend : eth_lend}CHC
             </label>
             <div
@@ -184,6 +191,114 @@ export const BorrowCHC = () => {
               </span>
             </div>
           </div>
+
+          {loading === true ? (
+            <>
+              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                <div
+                  className="relative w-auto my-6 mx-auto max-w-2xl"
+                  style={{
+                    backgroundColor: "#525151",
+                    borderRadius: "16px",
+                    // color: "#846424",
+                    color: "white",
+                  }}>
+                  <div className="row w-150">
+                    <div className="col-12">
+                      <div className="d-flex flex-column align-items-center mt-4">
+                        <H4>Your Transaction is in Process</H4>
+                        <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                          <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
+                            <Body className="m-0 mx-3">
+                              <div className="">
+                                <div class="loader" />
+                              </div>
+                            </Body>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-2" />
+                    <div
+                      style={{
+                        borderBottom:
+                          "1px solid rgba(255, 255, 255, 0.1)",
+                      }}
+                    />
+                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (<></>)}
+
+          {confirm === true ? (
+            <>
+              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                <div
+                  className="relative w-auto my-6 mx-auto max-w-2xl"
+                  style={{
+                    backgroundColor: "#525151",
+                    borderRadius: "16px",
+                    // color: "#846424",
+                    color: "white",
+                  }}>
+                  <div className="row w-150">
+                    <div className="col-12">
+                      <div className="d-flex flex-column align-items-center mt-4">
+                        <H4>Congratulations</H4>
+                        <img
+                          loading="lazy"
+                          src={tick}
+                          alt="tick"
+                          className="w-[38px] h-[38px]"
+                        />
+                        <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                          <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
+                            <Body className="m-0 mx-3 ">
+                              Your Transaction has been Confirmed
+                              <br />
+                              <div className="mr-2 ml-2">
+                                {recipt}
+                              </div>
+                            </Body>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-2" />
+                    <div
+                      style={{
+                        borderBottom:
+                          "1px solid rgba(255, 255, 255, 0.1)",
+                      }}
+                    />
+                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                    <button
+                      style={{
+                        height: "32px",
+                        width: "90px",
+                        color: "#846424",
+                        textTransform: "uppercase",
+                        fontStyle: "normal",
+                        fontWeight: "600",
+                        fontSize: "10px",
+                        backgroundColor: "#1A1917",
+                        borderRadius: "16px",
+                        border: "1px solid transparent",
+                        borderColor: "#846424",
+                      }}
+                      type="button"
+                      onClick={() => setconfirm(false) & setrout(true)}>
+                      ok
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (<></>)}
           <div
             className="w-100"
             style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
