@@ -111,7 +111,12 @@ export const BorrowCHC = () => {
       console.error("Error:", error);
     }
   };
-
+  useEffect(() => {
+    if (rout == true) {
+      navigate("/accounts")
+    }
+  });
+  
   return (
     <div className="row w-100" style={{ borderRadius: "16px" }}>
       <div className="col ">
