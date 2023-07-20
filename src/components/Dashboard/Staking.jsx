@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { H4 } from "../typography/h4";
+import { Body } from "../typography";
 import {
   Chrysus
 } from "../../assets";
 import { Tab } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   updatAccount,
 } from "../../slices/web3ContractSlice";
@@ -16,9 +17,11 @@ import Utils from "../../utilities";
 import { MockStabilityModule, GOVERNANCE } from "../../constant";
 import StakeABI from "../../abis/MockStabilityModule.json";
 import governance from "../../abis/Governance.json";
+import { tick } from '../../assets';
 
 const Staking = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [Stakeamount, setStakeamount] = useState(0);
   const [TotalStake, setTotalStake] = useState(0);
   const [currentStakeamount, setCurrentStakeamount] = useState([]);
@@ -27,7 +30,9 @@ const Staking = () => {
   const [isApprove, setisApprove] = useState(false);
   const [loading, setLoading] = useState(false);
   const [endTime, setEndTime] = useState(0);
-
+  const [recipt, setrecipt] = useState();
+  const [confirm, setconfirm] = useState(false);
+  const [rout, setrout] = useState(false);
 
 
   // Account Switching
@@ -59,25 +64,35 @@ const Staking = () => {
           governance.abi,
           _signer
         );
+        setLoading(true);
         let Txn = await GovernanceContract.approve(
           MockStabilityModule,
           ethers.utils.parseUnits(String(Stakeamount))
         );
-        setLoading(true);
+        // setLoading(true);
         await Txn.wait();
         Txn = await Stakecontract.stake(
           ethers.utils.parseUnits(String(Stakeamount))
         );
         await Txn.wait();
         setLoading(false);
+        setrecipt(Txn.hash);
+        setconfirm(true);
         console.log("stake successfully!");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (error) {
       setLoading(false);
       console.error("Error:", error);
     }
   };
+
+  useEffect(() => {
+    if (rout == true) {
+      navigate("/accounts")
+    }
+  });
+
 
   useEffect(() => {
     Utils.getUserBalance(address, "CGT").then(function (data) {
@@ -239,7 +254,7 @@ const Staking = () => {
                         }}
                         onClick={() => Stake()}
                         className=" font-thin
-                                                        rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
+                         rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
                       >
                         <a>{loading ? "Processing...." : "Stake"}</a>
                       </Button>
@@ -249,6 +264,112 @@ const Staking = () => {
               </div>
             </div>
           </div>
+          {confirm === true ? (
+            <>
+              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                <div
+                  className="relative w-auto my-6 mx-auto max-w-2xl"
+                  style={{
+                    backgroundColor: "#525151",
+                    borderRadius: "16px",
+                    // color: "#846424",
+                    color: "white",
+                  }}>
+                  <div className="row w-150">
+                    <div className="col-12">
+                      <div className="d-flex flex-column align-items-center mt-4">
+                        <H4>Congratulations</H4>
+                        <img
+                          loading="lazy"
+                          src={tick}
+                          alt="tick"
+                          className="w-[38px] h-[38px]"
+                        />
+                        <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                          <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
+                            <Body className="m-0 mx-3">
+                              Your Transaction has been Confirmed
+                              <br />
+                              {recipt}
+                            </Body>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-2" />
+                    <div
+                      style={{
+                        borderBottom:
+                          "1px solid rgba(255, 255, 255, 0.1)",
+                      }}
+                    />
+                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                    <button
+                      style={{
+                        height: "32px",
+                        width: "90px",
+                        color: "#846424",
+                        textTransform: "uppercase",
+                        fontStyle: "normal",
+                        fontWeight: "600",
+                        fontSize: "10px",
+                        backgroundColor: "#1A1917",
+                        borderRadius: "16px",
+                        border: "1px solid transparent",
+                        borderColor: "#846424",
+                      }}
+                      type="button"
+                      // onClick={() =>setrout(true)} &&
+                      onClick={() => setconfirm(false) & setrout(true)}>
+                      ok
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (<></>)}
+          {loading === true ? (
+            <>
+              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                <div
+                  className="relative w-auto my-6 mx-auto max-w-2xl"
+                  style={{
+                    backgroundColor: "#525151",
+                    borderRadius: "16px",
+                    // color: "#846424",
+                    color: "white",
+                  }}>
+                  <div className="row w-150">
+                    <div className="col-12">
+                      <div className="d-flex flex-column align-items-center mt-4">
+                        <H4>Your Transaction is in Process</H4>
+                        <div className="d-flex flex-column align-items-center justify-content-center col-5">
+                          <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
+                            <Body className="m-0 mx-3">
+                              <div className="">
+                                <div class="loader" />
+                              </div>
+                            </Body>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-2" />
+                    <div
+                      style={{
+                        borderBottom:
+                          "1px solid rgba(255, 255, 255, 0.1)",
+                      }}
+                    />
+                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (<></>)}
+
           <div className="col-xl-12">
             <div
               className="card"
