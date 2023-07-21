@@ -171,7 +171,7 @@ export const DAIDeposite = () => {
                                   <Body className="m-0 mx-3">
                                     Your Transaction has been Confirmed
                                     <br/>
-                                   <a href={recipt}>{recipt}</a>
+                                   <a href={recipt} target="_blank">{recipt}</a>
                                   </Body>
                                 </div>
                               </div>
