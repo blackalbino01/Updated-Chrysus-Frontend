@@ -569,7 +569,80 @@ const UserDashboard = () => {
                             </tr>
                           </tbody>
                         </table>
-                        <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3" />
+                        <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
+                          <div className="dataTables_info">
+                            Showing {activePag.current * sort + 1} to{" "}
+                            {data.length > (activePag.current + 1) * sort
+                              ? (activePag.current + 1) * sort
+                              : data.length}{" "}
+                            of {data.length} entries
+                          </div>
+                          <div
+                            className="dataTables_paginate paging_simple_numbers mb-0"
+                            id="application-tbl1_paginate"
+                          >
+                            <Link
+                              className="paginate_button previous text-white mt-2"
+                              onClick={() =>
+                                activePag.current > 0 &&
+                                onClick(activePag.current - 1)
+                              }
+                            >
+                              <i>
+                                <svg
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginTop: "12",
+                                  }}
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 448 512"
+                                >
+                                  <path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z" />
+                                </svg>
+                              </i>
+                            </Link>
+                            <span className="text-white">
+                              {paggination.map((number, i) => (
+                                <Link
+                                  style={{
+                                    fontSize: "10px",
+                                  }}
+                                  key={i}
+                                  // to="/future"
+                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
+                                    } `}
+                                  onClick={() => onClick(i)}
+                                >
+                                  {number}
+                                </Link>
+                              ))}
+                            </span>
+
+                            <Link
+                              className="paginate_button next text-white mt-2"
+                              onClick={() =>
+                                activePag.current + 1 < paggination.length &&
+                                onClick(activePag.current + 1)
+                              }
+                            >
+                              <i>
+                                <svg
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginTop: "12",
+                                    marginLeft: "10px",
+                                  }}
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 448 512"
+                                >
+                                  <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
+                                </svg>
+                              </i>
+                            </Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </Tab.Pane>
