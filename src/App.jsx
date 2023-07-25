@@ -2,27 +2,22 @@ import React, { Suspense, lazy } from "react";
 import styles from "./style";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Navbar from './components/Navbar';
 import NotFound from "./components/NotFound";
 import "react-toastify/dist/ReactToastify.css";
 import About from "./components/About";
 import Services from "./components/Services";
 import Ecosystems from "./components/Ecosystems";
 import { FAQ } from "./components/Faq";
-// import Footer from './components/Footer';
 import Accounts from "./components/Accounts";
 import Loan from "./components/Dashboard/Loan";
 import { Collateral } from "./components/chcform/collateral";
-// import { Vault } from './components/chcform/vault';
 import { DAI } from "./components/chcform/dai";
 import SwapPopup from "./components/SwapPopup";
 import { DAIDeposite } from "./components/mintform/dai";
 import { ETHDeposite } from "./components/mintform/eth";
 import { Confirmation } from "./components/chcform/confirmation";
 import Dashboard from "./components/Dashboard/Dashboard";
-// import Governance from './components/governance';
 import Governance from "./components/Dashboard/gov";
-// import {DaoLandPage} from './components/DaoLandPage';
 import DaoLandPage from "./components/DaoLandPage";
 import Mint from "./components/Dashboard/Mint";
 import LoanPositions from "./components/Dashboard/LoanPositions";
@@ -34,7 +29,6 @@ import { Lend } from "./components/chcform/Lend";
 import { BorrowCHC } from "./components/chcform/borrowCHC";
 import { Repay } from "./components/chcform/repay";
 import { Liquidate } from "./components/Dashboard/Liquidate";
-// import { DaiLiquidate } from './components/Dashboard/DaiLiquidate';
 import { MintPosition } from "./components/Dashboard/MintPosition";
 import { Withdraw } from "./components/Dashboard/withdraw";
 import { WthdrawLending } from "./components/chcform/wthdrawLending";
@@ -96,10 +90,8 @@ const App = () => {
           />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-          {/* <Route path="/ecosystems" element={<Ecosystems />} /> */}
           <Route path="/governanc" element={<Ecosystems />} />
           <Route path="/faq" element={<FAQ />} />
-
           <Route path="/accounts" element={<Accounts />}>
             <Route index element={<Dashboard />} />
             <Route path="createproposal" element={<CreateProposal />} />
@@ -108,7 +100,6 @@ const App = () => {
             <Route path="withdrawstake" element={<WithdrawStake />} />
             <Route path="wthdrawLending" element={<WthdrawLending />} />
             <Route path="lend" element={<Lend />} />
-            {/* <Route path="daiLiquidate" element={<DaiLiquidate/>}/> */}
             <Route path="staking" element={<Staking />} />
             <Route path="loanpositions" element={<LoanPositions />} />
             <Route path="mintposition" element={<MintPosition />} />
@@ -116,7 +107,6 @@ const App = () => {
               <Route index element={<Collateral />} />
               <Route path="dai" element={<DAI />} />
               <Route path="eth" element={<ETH />} />
-              {/* <Route path="lend" element={<Lend/>} /> */}
               <Route path="confirmation" element={<Confirmation />} />
               <Route path="borrowchc" element={<BorrowCHC />} />
               <Route path="repay" element={<Repay />} />
@@ -132,16 +122,8 @@ const App = () => {
               <Route index element={<DaoLandPage />} />
             </Route>
           </Route>
-          {/* <Route path="/governance" element={<Governance />}>
-          <Route index element={<DaoLandPage />} />
-          </Route> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Footer />
-          </div>
-        </div> */}
         <ScrollToTop />
       </BrowserRouter>
     </div>
