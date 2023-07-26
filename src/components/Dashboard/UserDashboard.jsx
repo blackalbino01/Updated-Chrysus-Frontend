@@ -15,7 +15,6 @@ import {
 } from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import Utils from "../../utilities";
-
 // import { Button } from 'react-bootstrap';
 import styled from "styled-components";
 // import { BiSearch } from "react-icons/bi";
@@ -43,9 +42,7 @@ const tabDataBlog = [
 const UserDashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
-  const { web3, contract, accounts, socketContract, Provider } = useAppSelector(
-    (state) => state.web3Connect
-  );
+  const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
   const [usdprice, setusdprice] = useState();
   const [collateralRatio, setcollateralRatio] = useState(null);
   const [liquidationRatio, setLiquidationRatio] = useState(null);
@@ -55,9 +52,7 @@ const UserDashboard = () => {
   const [daiFeed, setDaiFeed] = useState(0);
   const [chcFeed, setChcFeed] = useState(0);
   const [ethFeed, setEthFeed] = useState(0);
-  const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
-  );
+  const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
   const [cdp, setCDP] = useState(0);
   const sort = 6;
   const activePag = useRef(0);
@@ -121,7 +116,9 @@ const UserDashboard = () => {
   };
 
   const addrees = localStorage.getItem("accounts");
-  console.log("addrees", addrees);
+  const WalletAddress = accounts[0];
+  console.log("addrees:", addrees);
+  console.log("addrees:", accounts[0]);
 
   useEffect(() => {
     Utils.getCollateralizationRatio().then(function (data) {
@@ -148,15 +145,15 @@ const UserDashboard = () => {
       setEthFeed((Number(data[1]) / 1e8).toFixed(2));
     });
 
-    Utils.getUserBalance(addrees, "DAI").then(function (data) {
+    Utils.getUserBalance(WalletAddress, "DAI").then(function (data) {
       setdaiBalance(Number(data) / 1e18);
     });
 
-    Utils.getUserBalance(addrees, "CHC").then(function (data) {
+    Utils.getUserBalance(WalletAddress, "CHC").then(function (data) {
       setchcBalance(Number(data) / 1e18);
     });
 
-    Utils.getUserBalance(addrees, "ETH").then(function (data) {
+    Utils.getUserBalance(WalletAddress, "ETH").then(function (data) {
       setbalance(Number(data) / 1e18);
     });
   });
