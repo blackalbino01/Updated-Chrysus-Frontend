@@ -35,6 +35,7 @@ import { WthdrawLending } from "./components/chcform/wthdrawLending";
 import ScrollToTop from "./components/ScrollToTop";
 import { WithdrawStake } from "./components/Dashboard/withdrawStke";
 const Home = lazy(() => import("./components/Home"));
+// const {MintPosition} = lazy(() => import("./components/Dashboard/MintPosition"));
 
 const App = () => {
   function Loading() {
