@@ -37,20 +37,20 @@ export const MintPosition = () => {
     });
   });
   console.log(position)
+
+
   function Loading() {
     return (
-      // <div className="row">
-      //    <div className="col-xl-12">
       <div className="card">
         <div className="card-body">
-          <h4>Processing
+          <h4 className="text-center">Loading
             <span>
-              {""}
-              <div class="spinner-border spinner-border-sm"></div>
+              {/* <div class="spinner-border spinner-border-sm ml-2"></div> */}
+              <div className="spinner-grow spinner-grow-sm ml-2" role="status" aria-hidden="true"></div>
+              <div className="spinner-grow spinner-grow-sm ml-2" role="status" aria-hidden="true"></div>
+              <div className="spinner-grow spinner-grow-sm ml-2" role="status" aria-hidden="true"></div>
             </span>
           </h4>
-          {/* </div>
-        </div> */}
         </div>
       </div>
     );
@@ -100,7 +100,7 @@ export const MintPosition = () => {
                             </thead>
                             <tbody className="text-white">
                               {position == 0 ? (
-                                <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3" >
+                                <div>
                                   <Loading />
                                 </div>
                               ) : (
