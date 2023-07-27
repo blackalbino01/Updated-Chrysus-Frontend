@@ -35,13 +35,15 @@ import { WthdrawLending } from "./components/chcform/wthdrawLending";
 import ScrollToTop from "./components/ScrollToTop";
 import { WithdrawStake } from "./components/Dashboard/withdrawStke";
 const Home = lazy(() => import("./components/Home"));
+import { CCoinGold } from './assets';
+
 // const {MintPosition} = lazy(() => import("./components/Dashboard/MintPosition"));
 
 const App = () => {
   function Loading() {
     return (
       <div className="flex h-screen w-screen items-center justify-center">
-        <button
+        {/* <button
           type="button"
           className="flex items-center rounded-lg bg-green-700 px-4 py-2 text-white"
           disabled
@@ -67,7 +69,14 @@ const App = () => {
             />
           </svg>
           <span className="font-medium"> Processing... </span>
-        </button>
+        </button> */}
+        <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
+          <div className="">
+            <span className="action action-center coin-rotating">
+              <img src={CCoinGold} alt="c-coin-gold.sg" />
+            </span>
+          </div>
+        </div>
       </div>
     );
   }
