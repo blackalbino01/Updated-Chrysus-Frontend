@@ -100,9 +100,13 @@ export const MintPosition = () => {
                             </thead>
                             <tbody className="text-white">
                               {position == 0 ? (
-                                <div>
+                                <tr>
+                                  <td></td>
+                                  <td></td>
                                   <Loading />
-                                </div>
+                                  <td></td>
+                                  <td></td>
+                                </tr>
                               ) : (
                                 <>
                                   {
