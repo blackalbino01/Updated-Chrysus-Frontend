@@ -208,7 +208,7 @@ const UserDashboard = () => {
                 <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
                   <div className="px-2 info-group">
                     <p className="fs-18 mb-1">Liquidation Ratio</p>
-                    <h2 className="fs-28 font-w600 text-white">
+                    <h2 className="fs-20 font-w600 text-white">
                       {liquidationRatio}%
                     </h2>
                   </div>
