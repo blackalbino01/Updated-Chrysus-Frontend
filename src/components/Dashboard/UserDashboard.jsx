@@ -43,6 +43,7 @@ const UserDashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
   const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
+  const [WalletAddress, setWalletAddress]= useState()
   const [usdprice, setusdprice] = useState();
   const [collateralRatio, setcollateralRatio] = useState(null);
   const [liquidationRatio, setLiquidationRatio] = useState(null);
@@ -115,10 +116,14 @@ const UserDashboard = () => {
     }
   };
 
+  useEffect(() => {
+    if (window.ethereum) {
+      setWalletAddress(accounts[0]);
+    }
+  });
   const addrees = localStorage.getItem("accounts");
-  const WalletAddress = accounts[0];
-  console.log("addrees:", addrees);
-  console.log("addrees:", accounts[0]);
+  console.log("addrees:", WalletAddress);
+  // console.log("addrees:", accounts[0]);
 
   useEffect(() => {
     Utils.getCollateralizationRatio().then(function (data) {
