@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 // import { TokenButton } from '../buttons';
 // import { FiLogOut } from "react-icons/fi";
 // import FcHome from "react-icons/fc";
@@ -6,21 +7,10 @@ import { H4 } from "../typography/h4";
 import { Dash, C, Ether, home, meta1 } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import OrderTab from "../Future/OrderTab";
-import TradeTab from "../Future/TradeTab";
-import {
-  loadBlockchain,
-  loadWalletConnect,
-  updatAccount,
-} from "../../slices/web3ContractSlice";
+import { loadBlockchain, loadWalletConnect, updatAccount, } from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import Utils from "../../utilities";
-// import { Button } from 'react-bootstrap';
 import styled from "styled-components";
-// import { BiSearch } from "react-icons/bi";
-
-import { Button } from "react-bootstrap";
-// import utils from '../../utilities';
 
 const tabDataBlog = [
   {
@@ -43,7 +33,8 @@ const UserDashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
   const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
-  const [WalletAddress, setWalletAddress]= useState()
+  const [WalletAddress, setWalletAddress] = useState([]);
+  const [transaction, settransaction] = useState();
   const [usdprice, setusdprice] = useState();
   const [collateralRatio, setcollateralRatio] = useState(null);
   const [liquidationRatio, setLiquidationRatio] = useState(null);
@@ -116,6 +107,24 @@ const UserDashboard = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchTransaction = async () => {
+      try {
+          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
+            .then(response => {
+              return response.json()
+            })
+            .then(data => {
+              !transaction && settransaction(data.result);
+            })
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchTransaction();
+  });
+
+  console.log("transaction", transaction);
   useEffect(() => {
     if (window.ethereum) {
       setWalletAddress(accounts[0]);
