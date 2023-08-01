@@ -560,12 +560,8 @@ const UserDashboard = () => {
                               </tr>
                             )))
                             }
-                            {/* <tr>
-                              <td>5-10-2023</td>
-                              <td>Minted some CHC</td>
-                              <td></td>
-                              <td>
-                                <Link>
+                            
+                            {/* <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{
@@ -583,75 +579,7 @@ const UserDashboard = () => {
                                   >
                                     Action
                                   </span>
-                                </Link>
-                                <Link >
-                                  <span
-                                    className="badge cursor-pointer"
-                                    style={{
-                                      height: "22px",
-                                      width: "80px",
-                                      color: "black",
-                                      textTransform: "uppercase",
-                                      fontStyle: "normal",
-                                      fontWeight: "700",
-                                      fontSize: "10px",
-                                      background:
-                                        "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                      borderRadius: "40px",
-                                      marginLeft: "10px",
-                                    }}
-                                  >
-                                    more
-                                  </span>
-                                </Link>
-                              </td>
-                            </tr> */}
-                            {/* <tr>
-                              <td>19-10-2023</td>
-                              <td>Stack 100 CGT</td>
-                              <td></td>
-                              <td>
-                                <Link>
-                                  <span
-                                    className="badge cursor-pointer"
-                                    style={{
-                                      height: "22px",
-                                      width: "80px",
-                                      color: "black",
-                                      textTransform: "uppercase",
-                                      fontStyle: "normal",
-                                      fontWeight: "700",
-                                      fontSize: "10px",
-                                      background:
-                                        "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                      borderRadius: "40px",
-                                    }}
-                                  >
-                                    Action
-                                  </span>
-                                </Link>
-                                <Link >
-                                  <span
-                                    className="badge cursor-pointer"
-                                    style={{
-                                      height: "22px",
-                                      width: "80px",
-                                      color: "black",
-                                      textTransform: "uppercase",
-                                      fontStyle: "normal",
-                                      fontWeight: "700",
-                                      fontSize: "10px",
-                                      background:
-                                        "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                      borderRadius: "40px",
-                                      marginLeft: "10px",
-                                    }}
-                                  >
-                                    more
-                                  </span>
-                                </Link>
-                              </td>
-                            </tr> */}
+                                </Link> */}
                           </tbody>
                         </table>
                         <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
