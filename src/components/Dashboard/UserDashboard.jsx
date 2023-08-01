@@ -34,7 +34,7 @@ const UserDashboard = () => {
   const dispatch = useAppDispatch();
   const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
   const [WalletAddress, setWalletAddress] = useState([]);
-  const [transaction, settransaction] = useState();
+  const [transaction, settransaction] = useState([]);
   const [usdprice, setusdprice] = useState();
   const [collateralRatio, setcollateralRatio] = useState(null);
   const [liquidationRatio, setLiquidationRatio] = useState(null);
@@ -110,19 +110,21 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
-          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
-            .then(response => {
-              return response.json()
-            })
-            .then(data => {
-              !transaction && settransaction(data.result);
-            })
+        fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            {transaction.length === 0 ? (
+              settransaction(data.result)
+            ):""}
+          })
       } catch (err) {
         console.log(err);
       }
     };
     fetchTransaction();
-  });
+  },[transaction]);
 
   console.log("transaction", transaction);
   useEffect(() => {
@@ -181,6 +183,62 @@ const UserDashboard = () => {
       Reward: "reward",
     },
   ];
+
+
+
+  //   const validMethodIDs = [
+  //   "0x26c01303",
+  //   "0x350c35e9",
+  //   "0xa5d5db0c",
+  //   "0x1d7ce898",
+  //   "0xdf133bca",
+  //   "0xb1884744",
+  //   "0x4b3fd148",
+  //   "0x22867d78",
+  //   "0x00f714ce",
+  //   "0xa694fc3a",
+  //   "0xc6066272"
+  // ];
+
+  // console.log("hii")
+
+  // // Function to fetch and filter user transactions
+  // async function getUserTransactionsBatch(startBlock = 0, batchSize = 5, allTransactions = []) {
+  //   try {
+  //     const url = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&startblock=${startBlock}&endblock=${startBlock + batchSize - 1}&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`;
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+
+  //     // Check if the API response is successful
+  //     if (data.status !== "1") {
+  //       console.log("API request failed. Please check the API or try again later.");
+  //       return allTransactions;
+  //     }
+
+  //     // Filter the transactions based on valid method IDs
+  //     const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
+
+  //     // Concatenate the new transactions with the existing ones
+  //     const updatedTransactions = allTransactions.concat(transactions);
+
+  //     // If the desired number of transactions is reached or there are no more transactions, return the result
+  //     if (updatedTransactions.length >= 5 || transactions.length === 0) {
+  //       return updatedTransactions.slice(0, 5);
+  //     }
+
+  //     // Recursive call to fetch the next batch of transactions
+  //     return getUserTransactionsBatch(startBlock + batchSize, batchSize, updatedTransactions);
+  //   } catch (error) {
+  //     console.error("An error occurred while fetching data:", error);
+  //     return allTransactions;
+  //   }
+  // }
+
+  // Call the function and log the result
+  // getUserTransactionsBatch()
+  //   .then((transactions) => console.log(transactions))
+  //   .catch((error) => console.error("Error:", error));
+
 
   return (
     <div className="min-h-screen">
@@ -478,20 +536,36 @@ const UserDashboard = () => {
                           style={{ minWidth: "845px" }}
                         >
                           <thead>
-                            {/* <tr className="text-white">
+                            <tr className="text-white">
                               <th>Date</th>
-                              <th />
-                              <th />
-                              <th>Action</th>
-                            </tr> */}
+                              <th>ID</th>
+                              <th>Block Hash</th>
+                              {/* <th>Action</th> */}
+                            </tr>
                           </thead>
                           <tbody className="text-white">
-                            <tr>
+                            {transaction.length == 0 ? (
+                              ""
+                            ):(transaction.map((item, index) => (
+                              <tr key={index}>
+                                <td>{(new Date(item.timeStamp*1000)).toDateString()}</td>
+                                <td>
+                                  {item.methodId}
+                                </td>
+                                <td>
+                                  {item.blockHash}
+                                </td>
+                                <td>
+                                </td>
+                              </tr>
+                            )))
+                            }
+                            {/* <tr>
                               <td>5-10-2023</td>
                               <td>Minted some CHC</td>
                               <td></td>
                               <td>
-                                {/* <Link>
+                                <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{
@@ -509,7 +583,7 @@ const UserDashboard = () => {
                                   >
                                     Action
                                   </span>
-                                </Link> */}
+                                </Link>
                                 <Link >
                                   <span
                                     className="badge cursor-pointer"
@@ -531,13 +605,13 @@ const UserDashboard = () => {
                                   </span>
                                 </Link>
                               </td>
-                            </tr>
-                            <tr>
+                            </tr> */}
+                            {/* <tr>
                               <td>19-10-2023</td>
                               <td>Stack 100 CGT</td>
                               <td></td>
                               <td>
-                                {/* <Link>
+                                <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{
@@ -555,7 +629,7 @@ const UserDashboard = () => {
                                   >
                                     Action
                                   </span>
-                                </Link> */}
+                                </Link>
                                 <Link >
                                   <span
                                     className="badge cursor-pointer"
@@ -577,7 +651,7 @@ const UserDashboard = () => {
                                   </span>
                                 </Link>
                               </td>
-                            </tr>
+                            </tr> */}
                           </tbody>
                         </table>
                         <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
