@@ -185,61 +185,6 @@ const UserDashboard = () => {
   ];
 
 
-
-  //   const validMethodIDs = [
-  //   "0x26c01303",
-  //   "0x350c35e9",
-  //   "0xa5d5db0c",
-  //   "0x1d7ce898",
-  //   "0xdf133bca",
-  //   "0xb1884744",
-  //   "0x4b3fd148",
-  //   "0x22867d78",
-  //   "0x00f714ce",
-  //   "0xa694fc3a",
-  //   "0xc6066272"
-  // ];
-
-  // console.log("hii")
-
-  // // Function to fetch and filter user transactions
-  // async function getUserTransactionsBatch(startBlock = 0, batchSize = 5, allTransactions = []) {
-  //   try {
-  //     const url = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&startblock=${startBlock}&endblock=${startBlock + batchSize - 1}&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`;
-  //     const response = await fetch(url);
-  //     const data = await response.json();
-
-  //     // Check if the API response is successful
-  //     if (data.status !== "1") {
-  //       console.log("API request failed. Please check the API or try again later.");
-  //       return allTransactions;
-  //     }
-
-  //     // Filter the transactions based on valid method IDs
-  //     const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-
-  //     // Concatenate the new transactions with the existing ones
-  //     const updatedTransactions = allTransactions.concat(transactions);
-
-  //     // If the desired number of transactions is reached or there are no more transactions, return the result
-  //     if (updatedTransactions.length >= 5 || transactions.length === 0) {
-  //       return updatedTransactions.slice(0, 5);
-  //     }
-
-  //     // Recursive call to fetch the next batch of transactions
-  //     return getUserTransactionsBatch(startBlock + batchSize, batchSize, updatedTransactions);
-  //   } catch (error) {
-  //     console.error("An error occurred while fetching data:", error);
-  //     return allTransactions;
-  //   }
-  // }
-
-  // Call the function and log the result
-  // getUserTransactionsBatch()
-  //   .then((transactions) => console.log(transactions))
-  //   .catch((error) => console.error("Error:", error));
-
-
   return (
     <div className="min-h-screen">
       <div className="row mt-4">
