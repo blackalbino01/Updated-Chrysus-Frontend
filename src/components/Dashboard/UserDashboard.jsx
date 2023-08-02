@@ -108,6 +108,7 @@ const UserDashboard = () => {
   };
 
   useEffect(() => {
+    if (WalletAddress) {
       const fetchTransaction = async () => {
         try {
           fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
@@ -118,8 +119,8 @@ const UserDashboard = () => {
               {
                 transaction.length === 0 ? (
                   settransaction(data.result)
-                ) : 
-                "transection error"
+                ) :
+                  "transection error"
               }
             })
         } catch (err) {
@@ -127,6 +128,7 @@ const UserDashboard = () => {
         }
       };
       fetchTransaction();
+    }
   }, []);
 
   console.log("transaction", transaction);
@@ -493,22 +495,22 @@ const UserDashboard = () => {
                             </tr>
                           </thead>
                           <tbody className="text-white">
-                                {transaction.length === 0 ? (
-                                  ""
-                                ) : (transaction.map((item, index) => (
-                                  <tr key={index}>
-                                    <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
-                                    <td>
-                                      {item.methodId}
-                                    </td>
-                                    <td>
-                                      {item.blockHash}
-                                    </td>
-                                    <td>
-                                    </td>
-                                  </tr>
-                                )))
-                                }
+                            {transaction.length === 0 ? (
+                              ""
+                            ) : (transaction.map((item, index) => (
+                              <tr key={index}>
+                                <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
+                                <td>
+                                  {item.methodId}
+                                </td>
+                                <td>
+                                  {item.blockHash}
+                                </td>
+                                <td>
+                                </td>
+                              </tr>
+                            )))
+                            }
                             {/* <Link>
                               <span
                                 className="badge cursor-pointer"
