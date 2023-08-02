@@ -7,7 +7,8 @@ import staking from "./abis/MockStabilityModule.json";
 import mockOracle from "./abis/MockOracle.json";
 import { DAI, ETH } from "./constant";
 
-const PROVIDER ="https://rpc.sepolia.org";
+// const PROVIDER ="https://rpc.sepolia.org";
+const PROVIDER ="https://eth-sepolia.public.blastapi.io";
 const LOAN = "0x83abAf05B065B1aD34919e5E121476670E796e3a";
 const CHRYSUS ="0x5Acf4e52FDB68b4928a215Af05771c23A7663CBF";
 const GOVERNANCE = "0xAA49841d3a52BbD0c62de8D0Cba1e30e988749ec";

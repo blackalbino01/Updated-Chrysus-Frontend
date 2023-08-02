@@ -108,25 +108,29 @@ const UserDashboard = () => {
   };
 
   useEffect(() => {
-    const fetchTransaction = async () => {
-      try {
-        fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            {transaction.length === 0 ? (
-              settransaction(data.result)
-            ):""}
-          })
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchTransaction();
-  },[transaction]);
+      const fetchTransaction = async () => {
+        try {
+          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
+            .then(response => {
+              return response.json()
+            })
+            .then(data => {
+              {
+                transaction.length === 0 ? (
+                  settransaction(data.result)
+                ) : 
+                "transection error"
+              }
+            })
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchTransaction();
+  }, []);
 
   console.log("transaction", transaction);
+  console.log("transaction", transaction.length);
   useEffect(() => {
     if (window.ethereum) {
       setWalletAddress(accounts[0]);
@@ -489,42 +493,41 @@ const UserDashboard = () => {
                             </tr>
                           </thead>
                           <tbody className="text-white">
-                            {transaction.length == 0 ? (
-                              ""
-                            ):(transaction.map((item, index) => (
-                              <tr key={index}>
-                                <td>{(new Date(item.timeStamp*1000)).toDateString()}</td>
-                                <td>
-                                  {item.methodId}
-                                </td>
-                                <td>
-                                  {item.blockHash}
-                                </td>
-                                <td>
-                                </td>
-                              </tr>
-                            )))
-                            }
-                            
+                                {transaction.length === 0 ? (
+                                  ""
+                                ) : (transaction.map((item, index) => (
+                                  <tr key={index}>
+                                    <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
+                                    <td>
+                                      {item.methodId}
+                                    </td>
+                                    <td>
+                                      {item.blockHash}
+                                    </td>
+                                    <td>
+                                    </td>
+                                  </tr>
+                                )))
+                                }
                             {/* <Link>
-                                  <span
-                                    className="badge cursor-pointer"
-                                    style={{
-                                      height: "22px",
-                                      width: "80px",
-                                      color: "black",
-                                      textTransform: "uppercase",
-                                      fontStyle: "normal",
-                                      fontWeight: "700",
-                                      fontSize: "10px",
-                                      background:
-                                        "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                      borderRadius: "40px",
-                                    }}
-                                  >
-                                    Action
-                                  </span>
-                                </Link> */}
+                              <span
+                                className="badge cursor-pointer"
+                                style={{
+                                  height: "22px",
+                                  width: "80px",
+                                  color: "black",
+                                  textTransform: "uppercase",
+                                  fontStyle: "normal",
+                                  fontWeight: "700",
+                                  fontSize: "10px",
+                                  background:
+                                    "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                                  borderRadius: "40px",
+                                }}
+                              >
+                                Action
+                              </span>
+                            </Link> */}
                           </tbody>
                         </table>
                         <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
