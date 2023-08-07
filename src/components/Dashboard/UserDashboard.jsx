@@ -35,6 +35,7 @@ const UserDashboard = () => {
   const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
   const [WalletAddress, setWalletAddress] = useState([]);
   const [transaction, settransaction] = useState([]);
+  const [Alltransaction, setAlltransaction] = useState([]);
   const [usdprice, setusdprice] = useState();
   const [collateralRatio, setcollateralRatio] = useState(null);
   const [liquidationRatio, setLiquidationRatio] = useState(null);
@@ -107,6 +108,58 @@ const UserDashboard = () => {
     }
   };
 
+  const validMethodIDs = [
+    "0x26c01303",
+    "0x350c35e9",
+    "0xa5d5db0c",
+    "0x1d7ce898",
+    "0xdf133bca",
+    "0xb1884744",
+    "0x4b3fd148",
+    "0x22867d78",
+    "0x00f714ce",
+    "0xa694fc3a",
+    "0xc6066272"
+  ];
+
+  
+  // Function to fetch and filter user transactions
+  // async function getUserTransactionsBatch(startBlock = 0, batchSize = 5, allTransactions = []) {
+  //   try {
+  //     const url = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&startblock=${startBlock}&endblock=${startBlock + batchSize - 1}&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`;
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  
+  //     // Check if the API response is successful
+  //     if (data.status !== "1") {
+  //       console.log("API request failed. Please check the API or try again later.");
+  //       return allTransactions;
+  //     }
+  
+  //     // Filter the transactions based on valid method IDs
+  //     const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
+  
+  //     // Concatenate the new transactions with the existing ones
+  //     const updatedTransactions = allTransactions.concat(transactions);
+  
+  //     // If the desired number of transactions is reached or there are no more transactions, return the result
+  //     if (updatedTransactions.length >= 5 || transactions.length === 0) {
+  //       return updatedTransactions.slice(0, 5);
+  //     }
+  
+  //     // Recursive call to fetch the next batch of transactions
+  //     return getUserTransactionsBatch(startBlock + batchSize, batchSize, updatedTransactions);
+  //   } catch (error) {
+  //     console.error("An error occurred while fetching data:", error);
+  //     return allTransactions;
+  //   }
+  // }
+  
+  // Call the function and log the result
+  // getUserTransactionsBatch()
+  //   .then((transactions) => console.log(transactions))
+  //   .catch((error) => console.error("Error:", error));
+
   useEffect(() => {
     if (WalletAddress) {
       const fetchTransaction = async () => {
@@ -116,12 +169,15 @@ const UserDashboard = () => {
               return response.json()
             })
             .then(data => {
-              {
-                transaction.length === 0 ? (
-                  settransaction(data.result)
-                ) :
-                  "transection error"
-              }
+              const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
+              settransaction(transactions)
+              // {
+              //   const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
+              //   transaction.length === 0 ? (
+              //     settransaction(transactions)
+              //   ) :
+              //     "transection error"
+              // }
             })
         } catch (err) {
           console.log(err);
@@ -130,6 +186,40 @@ const UserDashboard = () => {
       fetchTransaction();
     }
   }, []);
+  // useEffect(() => {
+  //   if (WalletAddress) {
+  //     const getUserTransactionsBatch = async (startBlock = 0, batchSize = 5)  =>  {
+  //       try {
+  //         const url = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&startblock=${startBlock}&endblock=${startBlock + batchSize - 1}&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`;
+  //         const response = await fetch(url);
+  //         const data = await response.json();
+  //         // Check if the API response is successful
+  //         if (data.status !== "1") {
+  //           console.log("API request failed. Please check the API or try again later.");
+  //           return Alltransaction;
+  //         }
+      
+  //         // Filter the transactions based on valid method IDs
+  //         const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
+  //         setAlltransaction(transactions);
+  //         // Concatenate the new transactions with the existing ones
+  //         // const updatedTransactions = Alltransaction.concat(transactions);
+      
+  //         // If the desired number of transactions is reached or there are no more transactions, return the result
+  //         if (Alltransaction.length >= 5 || transactions.length === 0) {
+  //           return Alltransaction.slice(0, 5);
+  //         }
+      
+  //         // Recursive call to fetch the next batch of transactions
+  //         return getUserTransactionsBatch(startBlock + batchSize, batchSize, Alltransaction);
+  //       } catch (error) {
+  //         console.error("An error occurred while fetching data:", error);
+  //         return Alltransaction;
+  //       }
+  //     }
+  //     getUserTransactionsBatch();
+  //   }
+  // }, []);
 
   console.log("transaction", transaction);
   console.log("transaction", transaction.length);
