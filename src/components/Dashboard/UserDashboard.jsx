@@ -557,7 +557,11 @@ const UserDashboard = () => {
                                 }
                                 </td>
                                 <td>
+                                  <Link  to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}>
+                                    explor
+                                  </Link>
                                   {(item.blockHash)?.substring(0, 7) + "...."}
+                                  {/* https://sepolia.etherscan.io/tx/0x54fe54f6f55c982dcfce343d4075d25ef2c3013724b1ec279030e8e1f8674cd4 */}
                                 </td>
                                 <td>
                                 </td>
