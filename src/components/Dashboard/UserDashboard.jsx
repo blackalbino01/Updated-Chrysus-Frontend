@@ -506,7 +506,7 @@ const UserDashboard = () => {
                             <tr className="text-white">
                               <th>Date</th>
                               <th>Action</th>
-                              <th>Explore More</th>
+                              <th>Details</th>
                             </tr>
                           </thead>
                           <tbody className="text-white">
@@ -558,9 +558,8 @@ const UserDashboard = () => {
                                 </td>
                                 <td>
                                   <Link  to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}>
-                                    explor
+                                    More details
                                   </Link>
-                                  {(item.blockHash)?.substring(0, 7) + "...."}
                                   {/* https://sepolia.etherscan.io/tx/0x54fe54f6f55c982dcfce343d4075d25ef2c3013724b1ec279030e8e1f8674cd4 */}
                                 </td>
                                 <td>
@@ -568,25 +567,6 @@ const UserDashboard = () => {
                               </tr>
                             )))
                             }
-                            {/* <Link>
-                              <span
-                                className="badge cursor-pointer"
-                                style={{
-                                  height: "22px",
-                                  width: "80px",
-                                  color: "black",
-                                  textTransform: "uppercase",
-                                  fontStyle: "normal",
-                                  fontWeight: "700",
-                                  fontSize: "10px",
-                                  background:
-                                    "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                                  borderRadius: "40px",
-                                }}
-                              >
-                                Action
-                              </span>
-                            </Link> */}
                           </tbody>
                         </table>
                         <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
