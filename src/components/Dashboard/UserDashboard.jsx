@@ -506,7 +506,7 @@ const UserDashboard = () => {
                             <tr className="text-white">
                               <th>Date</th>
                               <th>Action</th>
-                              <th>Details</th>
+                              <th>Transaction</th>
                             </tr>
                           </thead>
                           <tbody className="text-white">
