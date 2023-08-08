@@ -519,13 +519,13 @@ const UserDashboard = () => {
                                 {item.methodId == 0x26c01303 ? (
                                   <a>Liquidity</a>
                                 ):( item.methodId == 0x350c35e9 ? (
-                                  <a>withdrawCollateral</a>
+                                  <a>WithdrawCollateral</a>
                                 ):(
                                   item.methodId == 0xa5d5db0c ? (
-                                    <a>depositCollateral</a>
+                                    <a>DepositCollateral</a>
                                   ):(
                                     item.methodId == 0x1d7ce898 ? (
-                                      <a>proposeVote</a>
+                                      <a>ProposeVote</a>
                                     ):(
                                       item.methodId == 0xb1884744 ? (
                                         <a>Lend</a>
