@@ -91,22 +91,6 @@ const UserDashboard = () => {
     }
   });
 
-  const DisconnectWallet = async () => {
-    if (window.ethereum) {
-      localStorage.clear();
-      if (Provider.isMetaMask) {
-        Provider._handleDisconnect();
-        web3.setProvider(null);
-        if (addrees !== null) {
-          localStorage.clear();
-        }
-      }
-      if (Provider.connected) {
-        Provider.disconnect();
-        web3.setProvider(null);
-      }
-    }
-  };
 
   const validMethodIDs = [
     "0x26c01303",
@@ -122,55 +106,29 @@ const UserDashboard = () => {
     "0xc6066272"
   ];
 
-  
-  // Function to fetch and filter user transactions
-  // async function getUserTransactionsBatch(startBlock = 0, batchSize = 5, allTransactions = []) {
-  //   try {
-  //     const url = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&startblock=${startBlock}&endblock=${startBlock + batchSize - 1}&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`;
-  //     const response = await fetch(url);
-  //     const data = await response.json();
-  
-  //     // Check if the API response is successful
-  //     if (data.status !== "1") {
-  //       console.log("API request failed. Please check the API or try again later.");
-  //       return allTransactions;
-  //     }
-  
-  //     // Filter the transactions based on valid method IDs
-  //     const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-  
-  //     // Concatenate the new transactions with the existing ones
-  //     const updatedTransactions = allTransactions.concat(transactions);
-  
-  //     // If the desired number of transactions is reached or there are no more transactions, return the result
-  //     if (updatedTransactions.length >= 5 || transactions.length === 0) {
-  //       return updatedTransactions.slice(0, 5);
-  //     }
-  
-  //     // Recursive call to fetch the next batch of transactions
-  //     return getUserTransactionsBatch(startBlock + batchSize, batchSize, updatedTransactions);
-  //   } catch (error) {
-  //     console.error("An error occurred while fetching data:", error);
-  //     return allTransactions;
-  //   }
-  // }
-  
-  // Call the function and log the result
-  // getUserTransactionsBatch()
-  //   .then((transactions) => console.log(transactions))
-  //   .catch((error) => console.error("Error:", error));
 
+  
   useEffect(() => {
     if (WalletAddress) {
       const fetchTransaction = async () => {
         try {
-          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
+          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
             .then(response => {
               return response.json()
             })
             .then(data => {
               const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
+              // const settrasactions = validMethodID.filter((transaction) => transaction.name);
+              // setAlltransaction(settrasactions);
               settransaction(transactions)
+              // for (let i = 0; i < validMethodID.length; i++) {
+              //   const arr = [];
+              //   arr.push(validMethodID[i].name)
+              //   setAlltransaction(arr);
+              // transaction
+              // const settrasactions = validMethodID.filter((transactionss) => transactionss.ID === transactions.methodId);
+              // setAlltransaction(settrasactions);
+              // }
               // {
               //   const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
               //   transaction.length === 0 ? (
@@ -186,43 +144,11 @@ const UserDashboard = () => {
       fetchTransaction();
     }
   }, []);
-  // useEffect(() => {
-  //   if (WalletAddress) {
-  //     const getUserTransactionsBatch = async (startBlock = 0, batchSize = 5)  =>  {
-  //       try {
-  //         const url = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&startblock=${startBlock}&endblock=${startBlock + batchSize - 1}&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`;
-  //         const response = await fetch(url);
-  //         const data = await response.json();
-  //         // Check if the API response is successful
-  //         if (data.status !== "1") {
-  //           console.log("API request failed. Please check the API or try again later.");
-  //           return Alltransaction;
-  //         }
-      
-  //         // Filter the transactions based on valid method IDs
-  //         const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-  //         setAlltransaction(transactions);
-  //         // Concatenate the new transactions with the existing ones
-  //         // const updatedTransactions = Alltransaction.concat(transactions);
-      
-  //         // If the desired number of transactions is reached or there are no more transactions, return the result
-  //         if (Alltransaction.length >= 5 || transactions.length === 0) {
-  //           return Alltransaction.slice(0, 5);
-  //         }
-      
-  //         // Recursive call to fetch the next batch of transactions
-  //         return getUserTransactionsBatch(startBlock + batchSize, batchSize, Alltransaction);
-  //       } catch (error) {
-  //         console.error("An error occurred while fetching data:", error);
-  //         return Alltransaction;
-  //       }
-  //     }
-  //     getUserTransactionsBatch();
-  //   }
-  // }, []);
+ 
 
+  console.log("All transaction", Alltransaction);
+  // console.log("See transaction", transaction[0].functionName);
   console.log("transaction", transaction);
-  console.log("transaction", transaction.length);
   useEffect(() => {
     if (window.ethereum) {
       setWalletAddress(accounts[0]);
@@ -579,9 +505,8 @@ const UserDashboard = () => {
                           <thead>
                             <tr className="text-white">
                               <th>Date</th>
-                              <th>ID</th>
-                              <th>Block Hash</th>
-                              {/* <th>Action</th> */}
+                              <th>Action</th>
+                              <th>Explore More</th>
                             </tr>
                           </thead>
                           <tbody className="text-white">
@@ -591,10 +516,48 @@ const UserDashboard = () => {
                               <tr key={index}>
                                 <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
                                 <td>
-                                  {item.methodId}
+                                {item.methodId == 0x26c01303 ? (
+                                  <a>Liquidity</a>
+                                ):( item.methodId == 0x350c35e9 ? (
+                                  <a>withdrawCollateral</a>
+                                ):(
+                                  item.methodId == 0xa5d5db0c ? (
+                                    <a>depositCollateral</a>
+                                  ):(
+                                    item.methodId == 0x1d7ce898 ? (
+                                      <a>proposeVote</a>
+                                    ):(
+                                      item.methodId == 0xb1884744 ? (
+                                        <a>Lend</a>
+                                      ):(
+                                        item.methodId == 0x4b3fd148 ? (
+                                          <a>Borrow</a>
+                                        ):(
+                                          item.methodId == 0x22867d78 ? (
+                                            <a>Repay</a>
+                                          ):(
+                                            item.methodId == 0x00f714ce ? (
+                                              <a>Withdraw</a>
+                                            ):(
+                                              item.methodId == 0xa694fc3a ? (
+                                                <a>Stake</a>
+                                              ):(
+                                                item.methodId == 0xc6066272 ? (
+                                                  <a>WithdrawStake</a>
+                                                ):(<></>)
+                                              )
+                                            )
+                                          )
+                                        )
+                                      )
+                                    )
+                                  )
+                                )
+                                )
+                                }
                                 </td>
                                 <td>
-                                  {item.blockHash}
+                                  {(item.blockHash)?.substring(0, 7) + "...."}
                                 </td>
                                 <td>
                                 </td>
