@@ -47,7 +47,7 @@ const UserDashboard = () => {
   const [ethFeed, setEthFeed] = useState(0);
   const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
   const [cdp, setCDP] = useState(0);
-  const sort = 6;
+  const sort = 5;
   const activePag = useRef(0);
   const [test, settest] = useState(0);
 
@@ -512,7 +512,9 @@ const UserDashboard = () => {
                           <tbody className="text-white">
                             {transaction.length === 0 ? (
                               ""
-                            ) : (transaction.map((item, index) => (
+                            ) : (transaction
+                              .slice(activePag.current * 5, (activePag.current + 1) * 5)
+                              .map((item, index) => (
                               <tr key={index}>
                                 <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
                                 <td>
