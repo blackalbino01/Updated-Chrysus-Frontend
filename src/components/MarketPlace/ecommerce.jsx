@@ -3,7 +3,7 @@ import styled from "styled-components";
 import scrollreveal from "scrollreveal";
 
 
-const MarketPlace = () => {
+const Ecommerce = () => {
 
   useEffect(() => {
     const sr = scrollreveal({
@@ -39,7 +39,7 @@ const MarketPlace = () => {
   )
 }
 
-export default MarketPlace
+export default Ecommerce
 
 const Section = styled.section`
   margin-left: 18vw;

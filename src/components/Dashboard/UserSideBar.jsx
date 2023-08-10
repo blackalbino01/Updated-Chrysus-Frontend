@@ -181,18 +181,18 @@ export default function UserSideBar() {
                   </Link>
                 </li>
               </Link>
-              <Link to={"marketplace"}>
+              <Link to={"ecommerce"}>
                 <li
                   className={currentLink === 7 ? "active" : "none"}
                   onClick={() => setCurrentLink(7)}
                 >
-                  <Link to={"marketplace"}>
+                  <Link to={"ecommerce"}>
                     <img width="20" height="12"
                       className="jumbo-button-icon"
                       src={market}
                       alt="umbrella-gold"
                     />
-                    <span> MarketPlace </span>
+                    <span>  Ecommerce </span>
                   </Link>
                 </li>
               </Link>
@@ -324,18 +324,18 @@ export default function UserSideBar() {
                 </Link>
               </li>
             </Link>
-            <Link to={"marketplace"}>
+            <Link to={"ecommerce"}>
                 <li
                   className={currentLink === 7 ? "active" : "none"}
                   onClick={() => setCurrentLink(7)}
                 >
-                  <Link to={"marketplace"}>
+                  <Link to={"ecommerce"}>
                     <img width="15" height="15"
                       className="jumbo-button-icon"
                       src={market}
                       alt="umbrella-gold"
                     />
-                    <span> MarketPlace </span>
+                    <span>  Ecommerce </span>
                   </Link>
                 </li>
               </Link>
