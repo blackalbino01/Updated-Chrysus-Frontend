@@ -73,6 +73,14 @@ const UserDashboard = () => {
     //chackboxFun();
   }, [test, data]);
 
+  useEffect(() => {
+    if(transaction){
+      // setData(document.querySelectorAll("#status_wrapper tbody tr"));
+        onClick(1)
+    }
+    //chackboxFun();
+  }, [transaction]);
+
   // Active pagginarion
 
   // paggination
