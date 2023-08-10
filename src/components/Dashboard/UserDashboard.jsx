@@ -68,6 +68,7 @@ const UserDashboard = () => {
   useEffect(() => {
     if(data){
       setData(document.querySelectorAll("#status_wrapper tbody tr"));
+        // onClick(1)
     }
     //chackboxFun();
   }, [test, data]);
@@ -498,9 +499,10 @@ const UserDashboard = () => {
                           <tbody className="text-white">
                             {transaction.length === 0 ? (
                               ""
-                            ) : (transaction
-                              .slice(activePag.current * 5, (activePag.current + 1) * 5)
-                              .map((item, index) => (
+                            // ) : (transaction
+                            //   .slice(activePag.current * 5, (activePag.current + 1) * 5)
+                            //   .map((item, index) => (
+                              ) : (transaction.map((item, index) => (
                                 <tr key={index}>
                                   <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
                                   <td>
@@ -607,8 +609,7 @@ const UserDashboard = () => {
 
                             <Link
                               className="paginate_button next text-white mt-2"
-                              onClick={() =>
-                                activePag.current + 1 < paggination.length &&
+                              onClick={() => activePag.current + 1 < paggination.length &&
                                 onClick(activePag.current + 1)
                               }
                             >
