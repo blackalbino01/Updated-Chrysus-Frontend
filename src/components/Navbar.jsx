@@ -243,7 +243,7 @@ const Navbar = () => {
                   alt="wallets"
                   className="w-[20px] h-[25px] mr-3"
                 />
-                <a
+                {/* <a
                   style={{
                     fontStyle: "normal",
                     fontWeight: "700",
@@ -253,9 +253,9 @@ const Navbar = () => {
                     textTransform: "uppercase",
                     color: "#846424",
                   }}
-                >
+                > */}
                   {status === "pending" ? "Connecting..." : "Connect"}
-                </a>
+                {/* </a> */}
               </Button>
               <WalletConnect
                 show={modalShow}
@@ -341,7 +341,7 @@ const Navbar = () => {
                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
                dropdown-toggle"
                   >
-                    <a>{addrees?.substring(0, 7) + "...."}</a>
+                    {addrees?.substring(0, 7) + "...."}
                   </Button>
                   <ul
                     className="dropdown-menu text-black mt-2"

@@ -45,7 +45,8 @@ const UserDashboard = () => {
   const [daiFeed, setDaiFeed] = useState(0);
   const [chcFeed, setChcFeed] = useState(0);
   const [ethFeed, setEthFeed] = useState(0);
-  const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
+  // const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
+  const [data, setData] = useState([]);
   const [cdp, setCDP] = useState(0);
   const sort = 5;
   const activePag = useRef(0);
@@ -61,11 +62,15 @@ const UserDashboard = () => {
       }
     }
   };
+
+  console.log("data pagination",data)
   // use effect
   useEffect(() => {
-    setData(document.querySelectorAll("#status_wrapper tbody tr"));
+    if(data){
+      setData(document.querySelectorAll("#status_wrapper tbody tr"));
+    }
     //chackboxFun();
-  }, [test]);
+  }, [test, data]);
 
   // Active pagginarion
 
@@ -105,7 +110,7 @@ const UserDashboard = () => {
   ];
 
 
-  
+
   useEffect(() => {
     if (WalletAddress) {
       const fetchTransaction = async () => {
@@ -125,7 +130,7 @@ const UserDashboard = () => {
       fetchTransaction();
     }
   }, []);
- 
+
 
   console.log("All transaction", Alltransaction);
   // console.log("See transaction", transaction[0].functionName);
@@ -496,58 +501,59 @@ const UserDashboard = () => {
                             ) : (transaction
                               .slice(activePag.current * 5, (activePag.current + 1) * 5)
                               .map((item, index) => (
-                              <tr key={index}>
-                                <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
-                                <td>
-                                {item.methodId == 0x26c01303 ? (
-                                  <a>Liquidity</a>
-                                ):( item.methodId == 0x350c35e9 ? (
-                                  <a>WithdrawCollateral</a>
-                                ):(
-                                  item.methodId == 0xa5d5db0c ? (
-                                    <a>DepositCollateral</a>
-                                  ):(
-                                    item.methodId == 0x1d7ce898 ? (
-                                      <a>ProposeVote</a>
-                                    ):(
-                                      item.methodId == 0xb1884744 ? (
-                                        <a>Lend</a>
-                                      ):(
-                                        item.methodId == 0x4b3fd148 ? (
-                                          <a>Borrow</a>
-                                        ):(
-                                          item.methodId == 0x22867d78 ? (
-                                            <a>Repay</a>
-                                          ):(
-                                            item.methodId == 0x00f714ce ? (
-                                              <a>Withdraw</a>
-                                            ):(
-                                              item.methodId == 0xa694fc3a ? (
-                                                <a>Stake</a>
-                                              ):(
-                                                item.methodId == 0xc6066272 ? (
-                                                  <a>WithdrawStake</a>
-                                                ):(<></>)
+                                <tr key={index}>
+                                  <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
+                                  <td>
+                                    {item.methodId == 0x26c01303 ? (
+                                      <a>Liquidity</a>
+                                    ) : (item.methodId == 0x350c35e9 ? (
+                                      <a>WithdrawCollateral</a>
+                                    ) : (
+                                      item.methodId == 0xa5d5db0c ? (
+                                        <a>DepositCollateral</a>
+                                      ) : (
+                                        item.methodId == 0x1d7ce898 ? (
+                                          <a>ProposeVote</a>
+                                        ) : (
+                                          item.methodId == 0xb1884744 ? (
+                                            <a>Lend</a>
+                                          ) : (
+                                            item.methodId == 0x4b3fd148 ? (
+                                              <a>Borrow</a>
+                                            ) : (
+                                              item.methodId == 0x22867d78 ? (
+                                                <a>Repay</a>
+                                              ) : (
+                                                item.methodId == 0x00f714ce ? (
+                                                  <a>Withdraw</a>
+                                                ) : (
+                                                  item.methodId == 0xa694fc3a ? (
+                                                    <a>Stake</a>
+                                                  ) : (
+                                                    item.methodId == 0xc6066272 ? (
+                                                      <a>WithdrawStake</a>
+                                                    ) : (<></>)
+                                                  )
+                                                )
                                               )
                                             )
                                           )
                                         )
                                       )
                                     )
-                                  )
-                                )
-                                )
-                                }
-                                </td>
-                                <td>
-                                  <Link  to={`https://sepolia.etherscan.io/tx/${item.blockHash}`} target="_blank" style={{textDecorationLine: "underline"}}>
-                                    More details
-                                  </Link>
-                                </td>
-                                <td>
-                                </td>
-                              </tr>
-                            )))
+                                    )
+                                    }
+                                  </td>
+                                  <td>
+                                    <Link className="tranlink" to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
+                                      target="_blank" style={{ textDecorationLine: "underline" }}>
+                                      More details
+                                    </Link>
+                                  </td>
+                                  <td>
+                                  </td>
+                                </tr>
+                              )))
                             }
                           </tbody>
                         </table>
@@ -637,57 +643,12 @@ const UserDashboard = () => {
 };
 export default UserDashboard;
 
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  z-index: 99;
-  .title {
-    h1 {
-      span {
-        margin-left: 0.5rem;
-        color: #ffc107;
-        font-family: "Normal", cursive;
-        letter-spacing: 0.2rem;
-      }
-    }
-  }
-  .search {
-    background-color: #212121;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1rem 1rem 1rem;
-    border-radius: 1rem;
-    svg {
-      color: #ffc107;
-    }
-    input {
-      background-color: transparent;
-      border: none;
-      color: #ffc107;
-      font-family: "Normal", cursive;
-      letter-spacing: 0.3rem;
-      &:focus {
-        outline: none;
-      }
-      &::placeholder {
-        color: #ffc107;
-        font-family: "Permanent Marker", cursive;
-      }
-    }
-  }
-  @media screen and (min-width: 280px) and (max-width: 1080px) {
-    flex-direction: column;
-    .title {
-      h1 {
-        span {
-          display: block;
+// const Linktran = styled.Linktran`
+// .tranlink {
+//   background-color: white;
+//   &:hover {
+//     background-color: #846424;
+//   }
+// }
+// `;
 
-          margin: 1rem 0;
-          /* letter-spacing: 0; */
-        }
-      }
-    }
-  }
-`;
