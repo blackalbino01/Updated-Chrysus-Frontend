@@ -70,9 +70,7 @@ const UserDashboard = () => {
   // Active pagginarion
 
   // paggination
-  let paggination = Array(Math.ceil(data.length / sort))
-    .fill()
-    .map((_, i) => i + 1);
+  let paggination = Array(Math.ceil(data.length / sort)).fill().map((_, i) => i + 1);
 
   // Active paggination & chage data
   const onClick = (i) => {
@@ -118,24 +116,7 @@ const UserDashboard = () => {
             })
             .then(data => {
               const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-              // const settrasactions = validMethodID.filter((transaction) => transaction.name);
-              // setAlltransaction(settrasactions);
               settransaction(transactions)
-              // for (let i = 0; i < validMethodID.length; i++) {
-              //   const arr = [];
-              //   arr.push(validMethodID[i].name)
-              //   setAlltransaction(arr);
-              // transaction
-              // const settrasactions = validMethodID.filter((transactionss) => transactionss.ID === transactions.methodId);
-              // setAlltransaction(settrasactions);
-              // }
-              // {
-              //   const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-              //   transaction.length === 0 ? (
-              //     settransaction(transactions)
-              //   ) :
-              //     "transection error"
-              // }
             })
         } catch (err) {
           console.log(err);
@@ -577,10 +558,8 @@ const UserDashboard = () => {
                               : data.length}{" "}
                             of {data.length} entries
                           </div>
-                          <div
-                            className="dataTables_paginate paging_simple_numbers mb-0"
-                            id="application-tbl1_paginate"
-                          >
+                          <div className="dataTables_paginate paging_simple_numbers mb-0"
+                            id="application-tbl1_paginate">
                             <Link
                               className="paginate_button previous text-white mt-2"
                               onClick={() =>
