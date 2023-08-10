@@ -34,6 +34,7 @@ import { Withdraw } from "./components/Dashboard/withdraw";
 import { WthdrawLending } from "./components/chcform/wthdrawLending";
 import ScrollToTop from "./components/ScrollToTop";
 import { WithdrawStake } from "./components/Dashboard/withdrawStke";
+import MarketPlace from "./components/MarketPlace/marketplace";
 const Home = lazy(() => import("./components/Home"));
 import { CCoinGold } from './assets';
 
@@ -131,6 +132,7 @@ const App = () => {
             <Route path="governance" element={<Governance />}>
               <Route index element={<DaoLandPage />} />
             </Route>
+            <Route path="marketplace" element ={<MarketPlace/>}/>
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -181,12 +181,12 @@ export default function UserSideBar() {
                   </Link>
                 </li>
               </Link>
-              <Link>
+              <Link to={"marketplace"}>
                 <li
                   className={currentLink === 7 ? "active" : "none"}
                   onClick={() => setCurrentLink(7)}
                 >
-                  <Link>
+                  <Link to={"marketplace"}>
                     <img width="20" height="12"
                       className="jumbo-button-icon"
                       src={market}
@@ -324,12 +324,12 @@ export default function UserSideBar() {
                 </Link>
               </li>
             </Link>
-            <Link>
+            <Link to={"marketplace"}>
                 <li
                   className={currentLink === 7 ? "active" : "none"}
                   onClick={() => setCurrentLink(7)}
                 >
-                  <Link>
+                  <Link to={"marketplace"}>
                     <img width="15" height="15"
                       className="jumbo-button-icon"
                       src={market}
