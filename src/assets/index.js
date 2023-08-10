@@ -93,9 +93,11 @@ import lb from "./lb.svg"
 import sb from "./sb.svg"
 import bb from "./bb.svg"
 import tick from "./confirm.png"
+import market from "./market.png"
 
 
 export {
+  market,
   tick,
   mb,
   lb,

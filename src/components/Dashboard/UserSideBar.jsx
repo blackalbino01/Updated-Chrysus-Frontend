@@ -1,60 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Button from 'react-bootstrap/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import Modal from 'react-bootstrap/Modal';
-import { MdSpaceDashboard } from "react-icons/md";
-import { RiDashboard2Fill } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
-import { PrimaryGradientButton } from "../buttons/primary_gradient.button";
 import scrollreveal from "scrollreveal";
-import { Transferblack, logoo, LeafGold, SwapGold, UmbrellaGold, Chrysus, G, P, GI, A, DashboardIcon, HomeIcon, LoanIcon, MintIcon, SwapIcon, } from "../../assets";
-import { MintButton } from "../buttons/mint";
-import { useAppDispatch, useAppSelector } from '../../reducer/store';
-import PerfectScrollbar from "react-perfect-scrollbar";
-import { WalletDropdown } from "../dropdowns/wallet_dropdown.jsx";
-import * as AiIcons from 'react-icons/ai';
-import * as FaIcons from 'react-icons/fa';
-import SubMenu from "../dropdowns/SubMenu";
-import { IconContext } from 'react-icons/lib';
+import { logoo, market, GI, A, DashboardIcon, HomeIcon, LoanIcon, MintIcon, SwapIcon, } from "../../assets";
+import { useAppSelector } from '../../reducer/store';
 
-const MenuList = [
-  {
-    title: 'Overview',
-    path: '/overview',
-    icon: <AiIcons.AiFillHome />,
-
-    subNav: [
-      {
-        title: 'Users',
-        path: '/overview/users',
-        // icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: 'Revenue',
-        path: '/overview/revenue',
-        // icon: <IoIcons.IoIosPaper />
-      }
-    ]
-  },
-]
 
 export default function UserSideBar() {
   const navigate = useNavigate();
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
-  const [showSwapModel, setshowSwapModel] = useState(false);
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
-  const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3,Provider } = useAppSelector((state) => state.web3Connect);
   const [sidebar, setSidebar] = useState(false);
-  const [visible, setvisible] = useState(false);
-  const [drop, setdrop] = useState(false);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  // const showSidebar = () => setSidebar(!sidebar);
 
   const DisconnectWallet = async () => {
     if (window.ethereum) {
@@ -217,10 +181,25 @@ export default function UserSideBar() {
                   </Link>
                 </li>
               </Link>
-              <Link to={"mintposition"}>
+              <Link>
                 <li
                   className={currentLink === 7 ? "active" : "none"}
                   onClick={() => setCurrentLink(7)}
+                >
+                  <Link>
+                    <img width="20" height="12"
+                      className="jumbo-button-icon"
+                      src={market}
+                      alt="umbrella-gold"
+                    />
+                    <span> MarketPlace </span>
+                  </Link>
+                </li>
+              </Link>
+              <Link to={"mintposition"}>
+                <li
+                  className={currentLink === 8 ? "active" : "none"}
+                  onClick={() => setCurrentLink(8)}
                 >
                   <Link to={"mintposition"}>
                     <img width="15" height="15"
@@ -345,10 +324,25 @@ export default function UserSideBar() {
                 </Link>
               </li>
             </Link>
+            <Link>
+                <li
+                  className={currentLink === 7 ? "active" : "none"}
+                  onClick={() => setCurrentLink(7)}
+                >
+                  <Link>
+                    <img width="15" height="15"
+                      className="jumbo-button-icon"
+                      src={market}
+                      alt="umbrella-gold"
+                    />
+                    <span> MarketPlace </span>
+                  </Link>
+                </li>
+              </Link>
             <Link to={"allpositions"}>
               <li
-                className={currentLink === 7 ? "active" : "none"}
-                onClick={() => setCurrentLink(7)}
+                className={currentLink === 8 ? "active" : "none"}
+                onClick={() => setCurrentLink(8)}
               >
                 <Link to={"allpositions"}>
                   <img
