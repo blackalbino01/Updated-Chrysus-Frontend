@@ -589,7 +589,8 @@ const UserDashboard = () => {
                                   style={{
                                     width: "15px",
                                     height: "15px",
-                                    marginTop: "12",
+                                    marginTop: "14",
+                                    marginLeft: "8px",
                                   }}
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 448 512"
@@ -599,20 +600,18 @@ const UserDashboard = () => {
                               </i>
                             </Link>
                             <span className="text-white">
-                              {paggination.map((number, i) => (
-                                <Link
-                                  style={{
-                                    fontSize: "10px",
-                                  }}
+                              {/* {paggination.map((number, i) => (
+                                <Link style={{ fontSize: "10px",}}
                                   key={i}
-                                  // to="/future"
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${activePag.current === i ? "current" : ""} `}
                                   onClick={() => onClick(i)}
-                                >
-                                  {number}
+                                  >
+                                  {activePag.current}
                                 </Link>
-                              ))}
+                              ))} */}
+                                <Link style={{ fontSize: "10px",}}>
+                                  {activePag.current +1}
+                                </Link>
                             </span>
 
                             <Link
@@ -626,8 +625,8 @@ const UserDashboard = () => {
                                   style={{
                                     width: "15px",
                                     height: "15px",
-                                    marginTop: "12",
-                                    marginLeft: "10px",
+                                    marginTop: "14",
+                                    marginLeft: "8px",
                                   }}
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 448 512"
@@ -652,12 +651,4 @@ const UserDashboard = () => {
 };
 export default UserDashboard;
 
-// const Linktran = styled.Linktran`
-// .tranlink {
-//   background-color: white;
-//   &:hover {
-//     background-color: #846424;
-//   }
-// }
-// `;
 

@@ -15,6 +15,7 @@
 * {
   scroll-behavior: smooth;
 }
+
 /* .text-gradient {
   background: radial-gradient(64.18% 64.18% at 71.16% 35.69%,
       #eecc88 0.89%,
@@ -28707,6 +28708,13 @@ table.dataTable.no-footer {
   }
 }
 
+/* .tranlink {
+  background-color: white;
+
+  &:hover {
+    background-color: #846424;
+  }
+} */
 
 
 

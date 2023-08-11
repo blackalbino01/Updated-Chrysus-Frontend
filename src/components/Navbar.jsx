@@ -243,7 +243,7 @@ const Navbar = () => {
                   alt="wallets"
                   className="w-[20px] h-[25px] mr-3"
                 />
-                {/* <a
+                <a
                   style={{
                     fontStyle: "normal",
                     fontWeight: "700",
@@ -253,9 +253,9 @@ const Navbar = () => {
                     textTransform: "uppercase",
                     color: "#846424",
                   }}
-                > */}
+                >
                   {status === "pending" ? "Connecting..." : "Connect"}
-                {/* </a> */}
+                </a>
               </Button>
               <WalletConnect
                 show={modalShow}
@@ -338,9 +338,7 @@ const Navbar = () => {
                       color: "#846424",
                     }}
                     className=" font-medium
-               rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center 
-               dropdown-toggle"
-                  >
+                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dropdown-toggle">
                     {addrees?.substring(0, 7) + "...."}
                   </Button>
                   <ul
@@ -378,7 +376,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                       {/* <li><NavLink href="#">CSS</NavLink></li>
-                  <li><NavLink href="#">JavaScript</NavLink></li> */}
+                      <li><NavLink href="#">JavaScript</NavLink></li> */}
                     </div>
                   </ul>
                 </div>
@@ -392,8 +390,8 @@ const Navbar = () => {
                     }}
                     onClick={() => setModalShow(true)}
                     className=" font-medium 
-                rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
-                  >
+                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
+                    >
                     <img
                       src={Wallets}
                       alt="wallets"
