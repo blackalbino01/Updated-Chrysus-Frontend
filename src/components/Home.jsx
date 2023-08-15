@@ -12,7 +12,7 @@ const Footer = lazy(() => import('./Footer'));
 
 const Home = () => {
   return (
-    <div>
+    <div className='min-h-screen'>
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />

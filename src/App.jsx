@@ -83,7 +83,7 @@ const App = () => {
   }
 
   return (
-    <div className="bg-black w-full overflow-hidden">
+    <div className="bg-black w-full overflow-hidden min-h-screen">
       <BrowserRouter>
         {/* <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
