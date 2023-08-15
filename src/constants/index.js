@@ -68,7 +68,7 @@ export const features = [
     icon: lb,
     title: "Loan with CHC",
     content:
-      "Individuals with long-term investments in Ether and tokens (“HODLers”) can use a money market as a source of additional returns on their investment.",
+      "Individuals with long-term investments in Ether and tokens (“Holders”) can use a money market as a source of additional returns on their investment.",
   },
   {
     id: "feature-4",
