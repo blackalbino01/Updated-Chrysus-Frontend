@@ -60,7 +60,7 @@ export const features = [
     icon: sb,
     title: "Swap CHC",
     content:
-      "Connect your wallet, Swap your CHC tokens with other cryptocurrencies",
+      "Connect your wallet, Swap your CHC tokens with other cryptocurrencies.Swap provides DeFi tools for CHC holders to buy, trade and secure crypto assets with confidence.",
   },
   {
     id: "feature-3",
