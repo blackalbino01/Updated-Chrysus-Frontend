@@ -113,23 +113,23 @@ export const Service = [
 ];
 
 export const footerLinks = [
-  {
-    title: "Services",
-    links: [
-      {
-        name: "Mint",
-        path: "/accounts/mint",
-      },
-      {
-        name: "Swap",
-        path: "/accounts/swappopup",
-      },
-      {
-        name: "Loan",
-        path: "/accounts/loan",
-      },
-    ],
-  },
+  // {
+  //   title: "Services",
+  //   links: [
+  //     {
+  //       name: "Mint",
+  //       path: "/accounts/mint",
+  //     },
+  //     {
+  //       name: "Swap",
+  //       path: "/accounts/swappopup",
+  //     },
+  //     {
+  //       name: "Loan",
+  //       path: "/accounts/loan",
+  //     },
+  //   ],
+  // },
   {
     title: "Community",
     links: [

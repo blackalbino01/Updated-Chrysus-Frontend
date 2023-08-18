@@ -13,7 +13,7 @@ const Footer = lazy(() => import('./Footer'));
 const Home = () => {
   return (
     <div>
-      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+      <div className={`${styles.paddingXX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>
@@ -25,7 +25,7 @@ const Home = () => {
           </Suspense>
         </div>
       </div>
-      <div className={`${styles.paddingX}  ${styles.flexStart}`}>
+      <div className={`${styles.paddingXX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Suspense>
             <Coin />
@@ -41,7 +41,7 @@ const Home = () => {
           </Suspense>
         </div>
       </div>
-      <div className={` ${styles.paddingX}  ${styles.flexStart}`}>
+      <div className={` ${styles.paddingXX}  ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Footer />
         </div>
