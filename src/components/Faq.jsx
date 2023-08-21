@@ -41,7 +41,7 @@ const questions = [
 export const FAQ = () => {
   return (
     <>
-      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+      <div className={`${styles.paddingXX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>

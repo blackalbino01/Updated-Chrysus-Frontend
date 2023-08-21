@@ -33,7 +33,7 @@ const Services = () => {
     const [hover, setHover] = useState(false);
     return (
         <>
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.paddingXX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
                     <Navbar />
                 </div>

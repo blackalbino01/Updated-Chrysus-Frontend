@@ -8,7 +8,7 @@ import { H4 } from "./typography/h4";
 const About = () => {
     return (
         <>
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.paddingXX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
                     <Navbar />
                 </div>
