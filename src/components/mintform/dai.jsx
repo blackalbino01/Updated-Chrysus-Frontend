@@ -73,6 +73,7 @@ export const DAIDeposite = () => {
   };
   console.log("DAI amount", DAIamount);
 
+  
   const DepositDAICollateral = async () => {
     try {
       const { ethereum } = window;

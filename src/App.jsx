@@ -58,14 +58,7 @@ const App = () => {
     <div className="bg-black w-full overflow-hidden">
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<Loading />}>
-                <Home />
-              </Suspense>
-            }
-          />
+          <Route path="/" element={<Suspense fallback={<Loading />}> <Home /></Suspense>}/>
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/governanc" element={<Ecosystems />} />

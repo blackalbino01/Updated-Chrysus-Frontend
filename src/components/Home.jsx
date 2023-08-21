@@ -14,11 +14,11 @@ const Home = () => {
   return (
     <div>
       <div className={`${styles.paddingXX} ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
+        {/* <div className={`${styles.boxWidth}`}> */}
           <Navbar />
-        </div>
+        {/* </div> */}
       </div>
-      <div className={` ${styles.flexStart}`}>
+      <div className={`${styles.paddingXX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Suspense>
             <Hero />
