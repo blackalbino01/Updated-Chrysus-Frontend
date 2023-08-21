@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-import styles from "../style";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import OrderTab from "./Future/OrderTab";
 import TradeTab from "./Future/TradeTab";
-import Footer from "./Footer";
 import Utils from "../utilities.js";
 
 const Overview = () => {
@@ -31,10 +28,9 @@ const Overview = () => {
   // use effect
   useEffect(() => {
     setData(document.querySelectorAll("#status_wrapper tbody tr"));
-    //chackboxFun();
   }, [test]);
 
-  // Active pagginarion
+  on
 
   // paggination
   let paggination = Array(Math.ceil(data.length / sort))
@@ -77,15 +73,7 @@ const Overview = () => {
                 </div>
               </div>
               <p className="mb-0 amount">Tokens {""}
-              <span className="text-white  ml-2">{TotalStake}</span></p>
-              {/* <div className="icon-content">
-                <ul className="price ">
-                  <li>
-                    <p className="mb-0 amount">Tokens</p>
-                    <span className="text-white">{TotalStake}</span>
-                  </li>
-                </ul>
-              </div> */}
+                <span className="text-white  ml-2">{TotalStake}</span></p>
             </div>
           </div>
           <div
@@ -101,23 +89,12 @@ const Overview = () => {
               }}
             >
               <div className=" justify-between items-center">
-                {/* <img src={data.image} alt="" /> */}
                 <div className="icon-info">
                   <h5 className="title">Lock time</h5>
                 </div>
               </div>
               <p className="mb-0 amount">Average Time {""}
                 <a className="text-white ml-2">30Days</a></p>
-              {/* <div className="icon-content"> */}
-              {/* <ul className="">
-                    <li>
-                      <p className="mb-0 amount">Average Time{""}
-                        <a className="text-white">30Days</a>
-                      </p>
-
-                    </li>
-                  </ul> */}
-              {/* </div> */}
             </div>
           </div>
         </div>
@@ -201,7 +178,6 @@ const Overview = () => {
                                     fontSize: "10px",
                                   }}
                                   key={i}
-                                  // to="/future"
                                   className={`paginate_button  ${activePag.current === i ? "current" : ""
                                     } `}
                                   onClick={() => onClick(i)}

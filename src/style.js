@@ -8,7 +8,7 @@ const styles = {
     flexStart: "flex justify-center items-start",
   
     paddingX: "sm:px-16 px-6",
-    paddingXX: "sm:px-6 px-6",
+    paddingXX: "px-6",
     paddingY: "sm:py-16 py-6",
     padding: "sm:px-16 px-6 sm:py-12 py-4",
   

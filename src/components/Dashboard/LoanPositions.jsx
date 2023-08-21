@@ -47,9 +47,7 @@ const LoanPositions = () => {
     settest(i);
   };
 
-  // const Dai = [
-  //   { Pool: 'DAI', Collateral: '267%', Browser: "$152.7", Credit: "123%", Debt: "123%" },
-  // ];
+
   const Dai = [
     {
       Collateral: "CHC/DAI",
@@ -123,7 +121,6 @@ const LoanPositions = () => {
                                   <Link>
                                     <span
                                       className="badge cursor-pointer"
-                                      // onClick={() => setModalShowDAI(true)}
                                       style={{
                                         height: "22px",
                                         width: "80px",
@@ -174,7 +171,6 @@ const LoanPositions = () => {
                                   <Link>
                                     <span
                                       className="badge cursor-pointer"
-                                      // onClick={() => setModalShowDAI(true)}
                                       style={{
                                         height: "22px",
                                         width: "80px",

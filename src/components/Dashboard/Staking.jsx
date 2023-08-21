@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { H4 } from "../typography/h4";
 import { Body } from "../typography";
-import {
-  Chrysus
-} from "../../assets";
+import {Chrysus} from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  updatAccount,
-} from "../../slices/web3ContractSlice";
+import {updatAccount} from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
@@ -27,7 +23,6 @@ const Staking = () => {
   const [currentStakeamount, setCurrentStakeamount] = useState([]);
   const [cgtBalance, setCGTBalance] = useState(0);
   const [reward, setReward] = useState(0);
-  const [isApprove, setisApprove] = useState(false);
   const [loading, setLoading] = useState(false);
   const [endTime, setEndTime] = useState(0);
   const [recipt, setrecipt] = useState();
@@ -69,14 +64,12 @@ const Staking = () => {
           MockStabilityModule,
           ethers.utils.parseUnits(String(Stakeamount))
         );
-        // setLoading(true);
         await Txn.wait();
         Txn = await Stakecontract.stake(
           ethers.utils.parseUnits(String(Stakeamount))
         );
         await Txn.wait();
         setLoading(false);
-        // setrecipt(Txn.hash);
         setrecipt(`https://sepolia.etherscan.io/tx/${Txn.hash}`);
         setconfirm(true);
         console.log("stake successfully!");
@@ -273,7 +266,6 @@ const Staking = () => {
                   style={{
                     backgroundColor: "#525151",
                     borderRadius: "16px",
-                    // color: "#846424",
                     color: "white",
                   }}>
                   <div className="row w-150">
@@ -323,7 +315,6 @@ const Staking = () => {
                         borderColor: "#846424",
                       }}
                       type="button"
-                      // onClick={() =>setrout(true)} &&
                       onClick={() => setconfirm(false) & setrout(true)}>
                       ok
                     </button>
@@ -340,7 +331,6 @@ const Staking = () => {
                   style={{
                     backgroundColor: "#525151",
                     borderRadius: "16px",
-                    // color: "#846424",
                     color: "white",
                   }}>
                   <div className="row w-150">

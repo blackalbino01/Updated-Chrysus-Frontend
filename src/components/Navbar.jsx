@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { close, logoo, menu, Wallets, walet1, meta1, logo } from "../assets";
+import { Link, NavLink } from "react-router-dom";
+import { close, logoo, menu, Wallets, walet1, meta1 } from "../assets";
 import { navLinks } from "../constants";
 import styled from "styled-components";
 import Pdf from "../assets/pdf/whitepaper.pdf";
@@ -8,28 +8,15 @@ import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { FiLogOut } from "react-icons/fi";
 import { useAppDispatch, useAppSelector } from "../reducer/store";
-import {
-  loadBlockchain,
-  loadWalletConnect,
-  updatAccount,
-} from "../slices/web3ContractSlice";
+import { loadBlockchain, loadWalletConnect, updatAccount } from "../slices/web3ContractSlice";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
-  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useAppDispatch();
-  const {
-    web3,
-    balance,
-    contract,
-    accounts,
-    socketContract,
-    Provider,
-    status,
-  } = useAppSelector((state) => state.web3Connect);
+  const { web3, Provider, status } = useAppSelector((state) => state.web3Connect);
 
   // Account Switching
   useEffect(() => {
@@ -129,7 +116,6 @@ const Navbar = () => {
         >
           WhitePaper
         </li>
-        {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
         {addrees !== null ? (
           <li
             className="text-[14px] ml-4 font-poppins cursor-pointer"
@@ -152,7 +138,6 @@ const Navbar = () => {
           id="menushow"
           onClick={() => setShowMenu(!showMenu)}
         >
-          {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
           {addrees !== null ? (
             <div className="dropdown">
               <Button
@@ -179,8 +164,6 @@ const Navbar = () => {
               <ul
                 className="dropdown-menu text-black mt-2"
                 style={{
-                  // backgroundColor: "#211f21",
-                  // borderRadius: "16px",
                   background:
                     "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
                   borderEndStartRadius: "16px",
@@ -199,14 +182,8 @@ const Navbar = () => {
                       <span className="visually-hidden">Loading...</span>
                     </div>
                     <a className="text-center ml-1">Ethereum</a>
-                    {/* <img loading="lazy" src={Wallets} alt="discount" className="w-[18px] h-[18px]" /> */}
-                    {/* <span className="ml-2"> {addrees?.substring(0, 7) + "...."}</span> */}
                   </a>
                   <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
-                    {/* <FiLogOut /> */}
-                    {/* <Link className="ml-2"
-                      onClick={() => DisconnectWallet()}
-                    >Disconnect</Link> */}
                     <Link
                       className="btn btn-lg btn-primary btn-shadow"
                       style={{
@@ -275,18 +252,16 @@ const Navbar = () => {
         />
 
         <div
-          className={`${
-            !toggle ? "hidden" : "flex"
-          }  p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-lg sidebar`}
+          className={`${!toggle ? "hidden" : "flex"
+            }  p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-lg sidebar`}
           style={{ zIndex: 6 }}
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
             {navLinks.map((nav, index) => (
               <li
                 key={nav.path}
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                  active === nav.name ? "text-white" : "text-dimWhite"
-                } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
+                className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.name ? "text-white" : "text-dimWhite"
+                  } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.name)}
               >
                 <NavLink
@@ -305,7 +280,6 @@ const Navbar = () => {
             >
               WhitePaper
             </li>
-            {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
             {addrees !== null ? (
               <li
                 style={{ marginTop: "20px" }}
@@ -326,7 +300,6 @@ const Navbar = () => {
               id="menushow"
               onClick={() => setShowMenu(!showMenu)}
             >
-              {/* {web3 && (loadBlockchain || loadWalletConnect) && (Provider.chainId !== null && Provider.connected !== false) ? ( */}
               {addrees !== null ? (
                 <div className="dropdown">
                   <Button
@@ -367,7 +340,6 @@ const Navbar = () => {
                       </a>
                       <li className="inline-flex text-sm  py-2.5 items-center logout font-medium">
                         <FiLogOut />
-                        {/* {navigate("/")} */}
                         <Link
                           className="ml-2"
                           onClick={() => DisconnectWallet()}
@@ -375,8 +347,6 @@ const Navbar = () => {
                           Disconnect
                         </Link>
                       </li>
-                      {/* <li><NavLink href="#">CSS</NavLink></li>
-                      <li><NavLink href="#">JavaScript</NavLink></li> */}
                     </div>
                   </ul>
                 </div>
@@ -391,7 +361,7 @@ const Navbar = () => {
                     onClick={() => setModalShow(true)}
                     className=" font-medium 
                     rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
-                    >
+                  >
                     <img
                       src={Wallets}
                       alt="wallets"

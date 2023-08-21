@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FormActionButton } from "../buttons/form_action_button";
-// import { Table } from "../table";
-import { Body, H4, P } from "../typography";
-// import { Info } from "react-feather";
-// import { COLORS } from "src/assets/styles/theme";
-// import { CInput } from "../inputs/cinput";
+import { H4, P } from "../typography";
 import { Link, useLocation } from "react-router-dom";
-import { Chrysus } from "../../assets";
-import styles from "../../style";
 import styled from "styled-components";
 import Utils from "../../utilities";
 import { DAI, ETH, CHRYSUS } from "../../constant";

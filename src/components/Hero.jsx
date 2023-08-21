@@ -1,8 +1,6 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import styles from "../style";
-import { Link } from "react-router-dom";
 import { logo } from "../assets";
-import GetStarted from "./GetStarted";
 import { memo } from "react";
 import { LeafGold } from '../assets';
 import { UmbrellaGold } from '../assets';
@@ -35,9 +33,7 @@ const Hero = () => {
       </div>
 
       <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
-        {/* <img  loading="lazy" src={house} alt="billing" className="w-[100%] h-[75%] relative z-[5]" /> */}
         <div className="jumbotron-actions">
-          {/* <img src={JumbotronImage} alt="jumbotron" /> */}
           <JumboButton
             className="action top-left"
             text="MINT"

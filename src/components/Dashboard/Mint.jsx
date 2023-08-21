@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollreveal from "scrollreveal";
 import { MintForm } from "../mintform";
-import styles from "../../style";
 
 
 const Mint = () => {

@@ -1,43 +1,20 @@
 import { useEffect, useState } from "react";
-// import { toast } from "react-toastify";
-// import styles from "../style";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import {
-  close,
-  logoo,
-  menu,
-  Wallets,
-  walet,
-  walet1,
-  meta1,
-  logo,
-  Gov,
-} from "../assets";
-import { daoNavLinks } from "../constants";
+import { Link, useNavigate } from "react-router-dom";
+import {close, menu, Wallets, walet1,meta1} from "../assets";
 import styled from "styled-components";
-import Pdf from "../assets/pdf/whitepaper.pdf";
 import { Button } from "react-bootstrap";
-// import Button from 'react-bootstrap/Button';
 import Modal from "react-bootstrap/Modal";
 import { FiLogOut } from "react-icons/fi";
 import { useAppDispatch, useAppSelector } from "../reducer/store";
-import {
-  loadBlockchain,
-  loadWalletConnect,
-  updatAccount,
-} from "../slices/web3ContractSlice";
+import { loadBlockchain,loadWalletConnect, updatAccount} from "../slices/web3ContractSlice";
 
 const DaoNav = () => {
   const navigate = useNavigate();
-  const [active, setActive] = useState("Home");
-  // const [isNavShow, setisNavShow] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  // const [isConnected, setIsConnected] = useState(false);
   const dispatch = useAppDispatch();
-  const { web3, balance, contract, accounts, socketContract, Provider } =
-    useAppSelector((state) => state.web3Connect);
+  const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
 
   // Account Switching
   useEffect(() => {
@@ -264,7 +241,6 @@ const WalletConnect = (props) => {
               Connect a Wallet
             </h3>
           </Modal.Title>
-          {/* <Button onClick={props.onHide}>Close</Button> */}
           <button
             onClick={props.onHide}
             type="button"

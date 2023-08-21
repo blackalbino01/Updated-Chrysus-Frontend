@@ -1,9 +1,6 @@
 import { memo } from "react";
-import { Link } from "react-router-dom";
-import { PlayCircle } from "react-feather";
 import { features } from "../constants";
 import styles, { layout } from "../style";
-import Button from "./Button";
 import { ExplorButton } from "./buttons";
 
 const FeatureCard = ({ icon, title, content, index }) => (
@@ -43,7 +40,6 @@ const Coin = () => (
       </p>
       <a target="_blank" href="https://chrysusofficial.medium.com/">
         <ExplorButton className="my-3 mb-5 " />
-        {/* <Button styles={`mt-10`} /> */}
       </a>
     </div>
     <div className={`${layout.sectionImg} flex-col `}>

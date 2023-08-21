@@ -11,11 +11,6 @@ import { Button } from "react-bootstrap";
 
 const FeatureCard = ({ icon, title, content, index }) => (
     <div
-        // style={{
-        //     backgroundColor:"linear-gradient(153.13deg, #846424 17.05%, #EDC452 49.23%, #846424 82.83%)",
-        //     padding: "1px",
-        //     borderRadius: "16px",
-        // }}
         className={`flex flex-row p-6  items-center py-[6px] px-4 rounded-[12px] ${index !== Service.length - 1 ? "mb-6" : "mb-0"} feature-card`}>
         <div
             className={`w-[50px] h-[50px] rounded-full ${styles.flexCenter}`}
@@ -44,9 +39,10 @@ const Services = () => {
                 </div>
             </div>
             <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
-                <div className="page-content">
-                    <section className="content-inner about-sec">
-                        <div className="container">
+                <div className="container">
+                    <div className="page-content">
+                        <section className="content-inner about-sec">
+                            {/* <div className="container"> */}
                             <div className="row about-bx2 style-1 align-items-center">
                                 <div className="col-lg-6">
                                     <div className={`${layout.sectionImg} row `}>
@@ -109,9 +105,9 @@ const Services = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </section>
+                            {/* </div> */}
+                        </section>
+                    </div >
                 </div >
             </section >
             <div className={`bg-black ${styles.paddingX}  ${styles.flexStart}`}>

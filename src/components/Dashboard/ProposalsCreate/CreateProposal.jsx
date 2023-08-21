@@ -27,7 +27,6 @@ import {
   updatAccount,
 } from "../../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../../reducer/store";
-import Utils from "../../../utilities";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 
@@ -35,13 +34,9 @@ const CreateProposal = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [currentLink, setCurrentLink] = useState(1);
-  const { web3, contract, accounts, socketContract, Provider } = useAppSelector(
-    (state) => state.web3Connect
-  );
+  const { web3, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
   const [action, setaction] = useState({});
-  const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
-  );
+  const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
   const sort = 6;
   const activePag = useRef(0);
   const [test, settest] = useState(0);
@@ -58,22 +53,7 @@ const CreateProposal = () => {
     }
   });
 
-  const DisconnectWallet = async () => {
-    if (window.ethereum) {
-      localStorage.clear();
-      if (Provider.isMetaMask) {
-        Provider._handleDisconnect();
-        web3.setProvider(null);
-        if (addrees !== null) {
-          localStorage.clear();
-        }
-      }
-      if (Provider.connected) {
-        Provider.disconnect();
-        web3.setProvider(null);
-      }
-    }
-  };
+
   const more = async () => {
     navigate("/accounts/governance");
   };
@@ -242,7 +222,6 @@ const CreateProposal = () => {
                               fontWeight: "700",
                               fontSize: "15px",
                             }}
-                            // onClick={() => ProposalButton()}
                             className=" font-thin
                                                     rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
                           >
@@ -351,10 +330,7 @@ const CreateProposal = () => {
                               fontWeight: "700",
                               fontSize: "15px",
                             }}
-                            // onClick={() => ProposalButton()}
-                            className=" font-thin
-                                                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
-                          >
+                            className=" font-thin rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
                             <a>Submit</a>
                           </Button>
                         </div>
@@ -667,57 +643,3 @@ const Section = styled.section`
   }
 `;
 
-// const Nav = styled.nav`
-//   display: flex;
-//   justify-content: space-between;
-//   color: white;
-//   z-index: 99;
-//   .title {
-//     h1 {
-//       span {
-//         margin-left: 0.5rem;
-//         color: #ffc107;
-//         font-family: "Normal", cursive;
-//         letter-spacing: 0.2rem;
-//       }
-//     }
-//   }
-//   .search {
-//     background-color: #212121;
-//     display: flex;
-//     align-items: center;
-//     gap: 1rem;
-//     padding: 1rem 1rem 1rem 1rem;
-//     border-radius: 1rem;
-//     svg {
-//       color: #ffc107;
-//     }
-//     input {
-//       background-color: transparent;
-//       border: none;
-//       color: #ffc107;
-//       font-family: "Normal", cursive;
-//       letter-spacing: 0.3rem;
-//       &:focus {
-//         outline: none;
-//       }
-//       &::placeholder {
-//         color: #ffc107;
-//         font-family: "Permanent Marker", cursive;
-//       }
-//     }
-//   }
-//   @media screen and (min-width: 280px) and (max-width: 1080px) {
-//     flex-direction: column;
-//     .title {
-//       h1 {
-//         span {
-//           display: block;
-
-//           margin: 1rem 0;
-//           /* letter-spacing: 0; */
-//         }
-//       }
-//     }
-//   }
-// `;

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import scrollreveal from "scrollreveal";
 import { CHCForm } from "../chcform";
 import Utils from "../../utilities";
-import { Util } from "reactstrap";
 
 export default function Loan() {
   const [interestRate, setInterestRate] = useState(0);
@@ -60,7 +59,6 @@ export default function Loan() {
               <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
                 <div className="me-auto mb-3">
                   <h2 className="fs-28 font-w600 text-white">
-                    {/* {usdprice * web3.utils.fromWei(balance, 'ether')?.substring(0, 7) + "...."} */}
                   </h2>
                 </div>
               </div>

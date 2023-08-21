@@ -1,42 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
-// import { TokenButton } from '../buttons';
-// import { FiLogOut } from "react-icons/fi";
-// import FcHome from "react-icons/fc";
 import { H4 } from "../typography/h4";
 import { Dash, C, Ether, home, meta1 } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { loadBlockchain, loadWalletConnect, updatAccount, } from "../../slices/web3ContractSlice";
+import { updatAccount, } from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import Utils from "../../utilities";
-import styled from "styled-components";
 
-const tabDataBlog = [
-  {
-    Date: "ETH/DAI",
-    Trade: "$152.7",
-    Status: "$605.2",
-    Price: "$20000",
-    Amount: "57.6%",
-  },
-  {
-    Date: "ETH/USDT",
-    Trade: "$152.7",
-    Status: "$605.2",
-    Price: "$21000",
-    Amount: "57.6%",
-  },
-];
 
 const UserDashboard = () => {
-  const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
   const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
   const [WalletAddress, setWalletAddress] = useState([]);
   const [transaction, settransaction] = useState([]);
   const [Alltransaction, setAlltransaction] = useState([]);
-  const [usdprice, setusdprice] = useState();
   const [collateralRatio, setcollateralRatio] = useState(null);
   const [liquidationRatio, setLiquidationRatio] = useState(null);
   const [daiBalance, setdaiBalance] = useState(0);
@@ -45,7 +22,6 @@ const UserDashboard = () => {
   const [daiFeed, setDaiFeed] = useState(0);
   const [chcFeed, setChcFeed] = useState(0);
   const [ethFeed, setEthFeed] = useState(0);
-  // const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
   const [data, setData] = useState([]);
   const [cdp, setCDP] = useState(0);
   const sort = 5;
@@ -63,25 +39,20 @@ const UserDashboard = () => {
     }
   };
 
-  console.log("data pagination",data)
+  console.log("data pagination", data)
   // use effect
   useEffect(() => {
-    if(data){
+    if (data) {
       setData(document.querySelectorAll("#status_wrapper tbody tr"));
-        // onClick(1)
     }
-    //chackboxFun();
   }, [test, data]);
 
   useEffect(() => {
-    if(transaction){
-      // setData(document.querySelectorAll("#status_wrapper tbody tr"));
-        onClick(1)
+    if (transaction) {
+      onClick(1)
     }
-    //chackboxFun();
   }, [transaction]);
 
-  // Active pagginarion
 
   // paggination
   let paggination = Array(Math.ceil(data.length / sort)).fill().map((_, i) => i + 1);
@@ -142,7 +113,6 @@ const UserDashboard = () => {
 
 
   console.log("All transaction", Alltransaction);
-  // console.log("See transaction", transaction[0].functionName);
   console.log("transaction", transaction);
   useEffect(() => {
     if (window.ethereum) {
@@ -218,11 +188,6 @@ const UserDashboard = () => {
               <H4>
               </H4>
             </div>
-            {/* <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
-              <div className="me-auto">
-                <h2 className="fs-28 font-w600 text-white" />
-              </div>
-            </div> */}
             <div className="card-body">
               <div className="row sp20 mb-2 align-items-center">
                 <div className="col-xxl-12 d-flex flex-wrap justify-content-between align-items-center">
@@ -507,43 +472,39 @@ const UserDashboard = () => {
                           <tbody className="text-white">
                             {transaction.length === 0 ? (
                               ""
-                            // ) : (transaction
-                            //   .slice(activePag.current * 5, (activePag.current + 1) * 5)
-                            //   .map((item, index) => (
-                              ) : (transaction.map((item, index) => (
-                                <tr key={index}>
-                                  <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
-                                  <td>
-                                    {item.methodId == 0x26c01303 ? (
-                                      <a>Liquidity</a>
-                                    ) : (item.methodId == 0x350c35e9 ? (
-                                      <a>WithdrawCollateral</a>
+                            ) : (transaction.map((item, index) => (
+                              <tr key={index}>
+                                <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
+                                <td>
+                                  {item.methodId == 0x26c01303 ? (
+                                    <a>Liquidity</a>
+                                  ) : (item.methodId == 0x350c35e9 ? (
+                                    <a>WithdrawCollateral</a>
+                                  ) : (
+                                    item.methodId == 0xa5d5db0c ? (
+                                      <a>DepositCollateral</a>
                                     ) : (
-                                      item.methodId == 0xa5d5db0c ? (
-                                        <a>DepositCollateral</a>
+                                      item.methodId == 0x1d7ce898 ? (
+                                        <a>ProposeVote</a>
                                       ) : (
-                                        item.methodId == 0x1d7ce898 ? (
-                                          <a>ProposeVote</a>
+                                        item.methodId == 0xb1884744 ? (
+                                          <a>Lend</a>
                                         ) : (
-                                          item.methodId == 0xb1884744 ? (
-                                            <a>Lend</a>
+                                          item.methodId == 0x4b3fd148 ? (
+                                            <a>Borrow</a>
                                           ) : (
-                                            item.methodId == 0x4b3fd148 ? (
-                                              <a>Borrow</a>
+                                            item.methodId == 0x22867d78 ? (
+                                              <a>Repay</a>
                                             ) : (
-                                              item.methodId == 0x22867d78 ? (
-                                                <a>Repay</a>
+                                              item.methodId == 0x00f714ce ? (
+                                                <a>Withdraw</a>
                                               ) : (
-                                                item.methodId == 0x00f714ce ? (
-                                                  <a>Withdraw</a>
+                                                item.methodId == 0xa694fc3a ? (
+                                                  <a>Stake</a>
                                                 ) : (
-                                                  item.methodId == 0xa694fc3a ? (
-                                                    <a>Stake</a>
-                                                  ) : (
-                                                    item.methodId == 0xc6066272 ? (
-                                                      <a>WithdrawStake</a>
-                                                    ) : (<></>)
-                                                  )
+                                                  item.methodId == 0xc6066272 ? (
+                                                    <a>WithdrawStake</a>
+                                                  ) : (<></>)
                                                 )
                                               )
                                             )
@@ -551,19 +512,20 @@ const UserDashboard = () => {
                                         )
                                       )
                                     )
-                                    )
-                                    }
-                                  </td>
-                                  <td>
-                                    <Link className="tranlink" to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
-                                      target="_blank" style={{ textDecorationLine: "underline" }}>
-                                      More details
-                                    </Link>
-                                  </td>
-                                  <td>
-                                  </td>
-                                </tr>
-                              )))
+                                  )
+                                  )
+                                  }
+                                </td>
+                                <td>
+                                  <Link className="tranlink" to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
+                                    target="_blank" style={{ textDecorationLine: "underline" }}>
+                                    More details
+                                  </Link>
+                                </td>
+                                <td>
+                                </td>
+                              </tr>
+                            )))
                             }
                           </tbody>
                         </table>
@@ -600,18 +562,9 @@ const UserDashboard = () => {
                               </i>
                             </Link>
                             <span className="text-white">
-                              {/* {paggination.map((number, i) => (
-                                <Link style={{ fontSize: "10px",}}
-                                  key={i}
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""} `}
-                                  onClick={() => onClick(i)}
-                                  >
-                                  {activePag.current}
-                                </Link>
-                              ))} */}
-                                <Link style={{ fontSize: "10px",}}>
-                                  {activePag.current +1}
-                                </Link>
+                              <Link style={{ fontSize: "10px", }}>
+                                {activePag.current + 1}
+                              </Link>
                             </span>
 
                             <Link

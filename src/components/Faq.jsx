@@ -1,4 +1,3 @@
-// import { PrimaryGradientText } from "src/components/text";
 import Navbar from "./Navbar";
 import { ContentToggle } from "./toggles";
 import styles from "../style";

@@ -1,5 +1,5 @@
 import styles from "../style";
-import { arrowUp , Play} from "../assets";
+import {Play} from "../assets";
 import { memo } from "react";
 
 const GetStarted = () => (
@@ -11,7 +11,6 @@ const GetStarted = () => (
         </p>
         <img loading="lazy" src={Play} alt="arrow-up" className=" ml-1 w-[23px] h-[23px] object-contain" />
       </div>
-      {/* animate-ping */}
       
       <p className="font-poppins font-medium text-[18px] leading-[23.4px]">
         <span className="text-gradient">TOUR</span>

@@ -12,8 +12,6 @@ import StakeABI  from "../../abis/MockStabilityModule.json";
 export const WithdrawStake = () => {
     const [TotalStake, setTotalStake] = useState(0);
     const addrees = localStorage.getItem("accounts");
-    // const location = useLocation()
-    // const { collateral } = location.state;
     const [amount, setAmount] = useState(0);
     const [loading, setLoading] = useState(false);
 
@@ -41,7 +39,6 @@ export const WithdrawStake = () => {
                 await Txn.wait();
                 setLoading(false);
                 console.log('Withdraw stake successfully!');
-                // window.location.reload();
             }
         } catch (error) {
             setLoading(false);

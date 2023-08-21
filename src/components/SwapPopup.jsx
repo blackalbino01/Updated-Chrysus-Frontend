@@ -4,10 +4,8 @@ import { PrimaryGradientButton } from "../components/buttons/primary_gradient.bu
 import { Transferblack, Chrysus } from "../assets";
 import styled from "styled-components";
 import { Body, H4, P } from "../components/typography";
-import { Button } from "reactstrap";
 import { useEffect, useState } from "react";
 import Utils from "../utilities";
-import { ethers } from "ethers";
 
 const SwapPopup = () => {
   const [balance, setBalance] = useState(0);
@@ -47,7 +45,6 @@ const SwapPopup = () => {
                 className="w-100 d-flex flex-column align-items-center"
                 style={{
                   backgroundColor: "#211f21",
-                  // borderRadius: "16px",
                   borderEndStartRadius: "16px",
                   borderEndEndRadius: "16px",
                   color: "#846424",
@@ -125,7 +122,6 @@ const SwapPopup = () => {
                         backgroundColor: "#1A1917",
                         color: "#846424",
                       }}
-                    // onChange={(e) => setlocation(e.target.value)}
                     >
                       <option value="">Swap To</option>
                       <option value="Ethreum">ETH</option>

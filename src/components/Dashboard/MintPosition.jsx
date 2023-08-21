@@ -4,21 +4,15 @@ import { Link } from "react-router-dom";
 import { Tab } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Utils from "../../utilities";
-import { useAppDispatch, useAppSelector } from "../../reducer/store";
+import { useAppSelector } from "../../reducer/store";
 
 export const MintPosition = () => {
   const [collateralRatio, setcollateralRatio] = useState(0);
   const [liquidationRatio, setLiquidationRatio] = useState(0);
   const [position, setposition] = useState([]);
   const [feed, setFeed] = useState(0);
-  const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
-  const WalletAddress = accounts[0];
+  const { accounts } = useAppSelector((state) => state.web3Connect);
 
-  // useEffect(() => {
-  //   if (position === 0) {
-  //     <Loading />
-  //   }
-  // })
   useEffect(() => {
     Utils.getMintPositions().then(function (data) {
       setposition(data);
@@ -45,7 +39,6 @@ export const MintPosition = () => {
         <div className="card-body">
           <h4 className="text-center">Loading
             <span>
-              {/* <div class="spinner-border spinner-border-sm ml-2"></div> */}
               <div className="spinner-grow spinner-grow-sm ml-2" role="status" aria-hidden="true"></div>
               <div className="spinner-grow spinner-grow-sm ml-2" role="status" aria-hidden="true"></div>
               <div className="spinner-grow spinner-grow-sm ml-2" role="status" aria-hidden="true"></div>

@@ -16,9 +16,7 @@ export default function UserSideBar() {
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
   const { web3,Provider } = useAppSelector((state) => state.web3Connect);
-  const [sidebar, setSidebar] = useState(false);
 
-  // const showSidebar = () => setSidebar(!sidebar);
 
   const DisconnectWallet = async () => {
     if (window.ethereum) {
@@ -97,7 +95,6 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(1)}
                 >
                   <Link to={"/accounts"}>
-                    {/* <MdSpaceDashboard /> */}
                     <img
                       className="jumbo-button-icon"
                       src={DashboardIcon}
@@ -113,7 +110,6 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(2)}
                 >
                   <Link to={"/"}>
-                    {/* <RiDashboard2Fill /> */}
                     <img
                       className="jumbo-button-icon"
                       src={HomeIcon}
@@ -233,7 +229,6 @@ export default function UserSideBar() {
                 className={currentLink === 1 ? "active" : "none"}
                 onClick={() => setCurrentLink(1)} >
                 <Link to={"/accounts"}>
-                  {/* <MdSpaceDashboard /> */}
                   <img
                     className="jumbo-button-icon"
                     src={DashboardIcon}
@@ -249,7 +244,6 @@ export default function UserSideBar() {
                 onClick={() => setCurrentLink(2)}
               >
                 <Link to={"/"}>
-                  {/* <RiDashboard2Fill /> */}
                   <img
                     className="jumbo-button-icon"
                     src={HomeIcon}
@@ -281,7 +275,6 @@ export default function UserSideBar() {
               >
                 <Link to={"swappopup"}>
                   <a className="cursor-pointer"
-                  // onClick={() => setshowSwapModel(true)}
                   >
                     <img
                       className="jumbo-button-icon"
@@ -291,7 +284,6 @@ export default function UserSideBar() {
                     <span> Swap</span>
                   </a>
                 </Link>
-                {/* <Swap show={showSwapModel} onHide={() => setshowSwapModel(false)} /> */}
               </li>
             </Link>
             <Link to={"loan"}>
