@@ -452,24 +452,26 @@ const UserDashboard = () => {
               <div className="card-body pt-0 pb-0">
                 <Tab.Content>
                   <Tab.Pane eventKey="All">
-                    <div className="table-responsive dataTabletrade ">
+                    <div
+                    // className="table-responsive dataTabletrade "
+                    >
                       <div
-                        id="status_wrapper"
+                        // id="status_wrapper"
                         className="dataTables_wrapper no-footer"
                       >
                         <table
                           id="example"
-                          className="table display dataTable no-footer"
-                          style={{ minWidth: "845px" }}
+                          className="table hover:table-auto border-slate-50 display dataTable no-footer"
+                          style={{ minWidth: "645px" }}
                         >
                           <thead>
-                            <tr className="text-white">
+                            <tr className="text-white" style={{ textAlign: "center"}}>
                               <th>Date</th>
                               <th>Action</th>
                               <th>Transaction</th>
                             </tr>
                           </thead>
-                          <tbody className="text-white">
+                          <tbody className="text-white" style={{ textAlign: "center" }}>
                             {transaction.length === 0 ? (
                               ""
                             ) : (transaction.map((item, index) => (
@@ -517,7 +519,7 @@ const UserDashboard = () => {
                                   }
                                 </td>
                                 <td>
-                                  <Link className="tranlink" to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
+                                  <Link className="hover:text-amber-400 tranlink" to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
                                     target="_blank" style={{ textDecorationLine: "underline" }}>
                                     More details
                                   </Link>
