@@ -14,7 +14,20 @@ const Footer = () => (
           alt="hoobank"
           className="w-[170px] h-[40px] object-contain"
         />
+          <div className="flex flex-row md:mt-0 mt-4 ml-5">
+          {socialMedia.map((social, index) => (
+            <img loading="lazy"
+              key={social.id}
+              src={social.icon}
+              alt={social.id}
+              className={`w-[15px] h-[15px] object-contain cursor-pointer ${index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
+                }`}
+              onClick={() => window.open(social.link)}
+            />
+          ))}
+        </div>
       </div>
+
       {footerLinks.map((footerlink) => (
           <div
             key={footerlink.title}
@@ -68,7 +81,7 @@ const Footer = () => (
         ))} */}
         <div className={"flex flex-col ss:my-0 my-4 min-w-[150px]"}> 
         </div>
-        <div className="flex flex-row md:mt-0 mt-4">
+        {/* <div className="flex flex-row md:mt-0 mt-4">
           {socialMedia.map((social, index) => (
             <img loading="lazy"
               key={social.id}
@@ -79,7 +92,7 @@ const Footer = () => (
               onClick={() => window.open(social.link)}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
 

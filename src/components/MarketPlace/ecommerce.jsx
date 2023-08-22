@@ -87,54 +87,53 @@ const Ecommerce = () => {
   }
 
   return (
-    <div className=" min-h-screen">
-      <Section>
-        <div>
-          <ul className="flex">
-            <li className="flex-1 mr-2">
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-300 hover:text-gray-700">
-                    Sort
-                    <ChevronDownIcon
-                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                  </Menu.Button>
-                </div>
+    <Section className=" min-h-screen">
+      <div >
+        <ul className="flex">
+          <li className="flex-1 mr-2">
+            <Menu as="div" className="relative inline-block text-left">
+              <div>
+                <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-300 hover:text-gray-700">
+                  Sort
+                  <ChevronDownIcon
+                    className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                </Menu.Button>
+              </div>
 
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute leftt-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      {sortOptions.map((option) => (
-                        <Menu.Item key={option.name}>
-                          {({ active }) => (
-                            <a
-                              href={option.href}
-                              className={classNames(
-                                option.current ? 'font-medium text-gray-900' : 'text-gray-500',
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm'
-                              )}
-                            >
-                              {option.name}
-                            </a>
-                          )}
-                        </Menu.Item>
-                      ))}
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-              {/* <H4>Ecommerce</H4>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="absolute leftt-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="py-1">
+                    {sortOptions.map((option) => (
+                      <Menu.Item key={option.name}>
+                        {({ active }) => (
+                          <a
+                            href={option.href}
+                            className={classNames(
+                              option.current ? 'font-medium text-gray-900' : 'text-gray-500',
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            {option.name}
+                          </a>
+                        )}
+                      </Menu.Item>
+                    ))}
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+            {/* <H4>Ecommerce</H4>
                 <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
                   <div class="flex items-center">
                     <div class="relative inline-block text-left">
@@ -170,40 +169,64 @@ const Ecommerce = () => {
                     </button>
                   </div>
                 </div> */}
-              {/* <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white" href="#">Active Item</a> */}
-            </li>
-            <li className="flex-1 mr-2">
-              {/* <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" href="#">Nav Item</a> */}
-              <h5>Search Bar</h5>
-            </li>
-            <li className="text-center flex-1">
-              {/* <a className="block py-2 px-4 text-gray-400 cursor-not-allowed" href="#">Disabled Item</a> */}
-              <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
-                <span className="sr-only">View grid</span>
-                <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
-                onClick={() => setMobileFiltersOpen(true)}
-              >
-                <span className="sr-only">Filters</span>
-                <FunnelIcon className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className="row mt-5">
-          <div className="col-xl-3">
-            <div
-              className="card"
-              style={{
-                backgroundColor: "#211f21",
-                borderRadius: "16px",
-                color: "#846424",
-              }}
+            {/* <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white" href="#">Active Item</a> */}
+          </li>
+          <li className="flex-1 mr-2">
+            {/* <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" href="#">Nav Item</a> */}
+            {/* <h5>Search Bar</h5> */}
+            <div className="flex items-center">
+              <div className="flex space-x-1">
+                <input
+                  type="text"
+                  className="block w-full px-4 py-2 text-purple-700 bg-white border rounded-full focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  placeholder="Search..."
+                />
+                <button className="px-4 text-white rounded-full " style={{background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424"}}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li className="text-center flex-1">
+            {/* <a className="block py-2 px-4 text-gray-400 cursor-not-allowed" href="#">Disabled Item</a> */}
+            <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
+              <span className="sr-only">View grid</span>
+              <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+              onClick={() => setMobileFiltersOpen(true)}
             >
-              {/* <div className="card-body pt-4">
+              <span className="sr-only">Filters</span>
+              <FunnelIcon className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div className="row mt-5">
+        <div className="col-xl-3">
+          <div
+            className="card"
+            style={{
+              backgroundColor: "#211f21",
+              borderRadius: "16px",
+              color: "#846424",
+            }}>
+            {/* <div className="card-body pt-4">
                 <div className="w-100">
                   <div className="d-flex flex-row align-items-center justify-content-between mb-4">
                     <H4>Create Proposal</H4>
@@ -224,41 +247,40 @@ const Ecommerce = () => {
                   </div>
                 </div>
               </div> */}
-            </div>
           </div>
-          <div className="col-xl-9">
-            <div
-              className="card"
-              style={{
-                backgroundColor: "#211f21",
-                borderRadius: "16px",
-                color: "#846424",
-              }}
-            >
-              <div className="card-body pt-4">
-                <div className="w-100">
-                  <div className="d-flex flex-row align-items-center justify-content-between mb-4">
-                    <H4>MarketPlace</H4>
-                  </div>
-                  <div
-                    className="card"
-                    style={{
-                      backgroundColor: "#121112",
-                      borderRadius: "16px",
-                      color: "#846424",
-                    }}
-                  >
-                    <div className="card-body">
-                      CHC Project MarketPlace
-                    </div>
+        </div>
+        <div className="col-xl-9">
+          <div
+            className="card"
+            style={{
+              backgroundColor: "#211f21",
+              borderRadius: "16px",
+              color: "#846424",
+            }}
+          >
+            <div className="card-body pt-4">
+              <div className="w-100">
+                <div className="d-flex flex-row align-items-center justify-content-between mb-4">
+                  <H4>MarketPlace</H4>
+                </div>
+                <div
+                  className="card"
+                  style={{
+                    backgroundColor: "#121112",
+                    borderRadius: "16px",
+                    color: "#846424",
+                  }}
+                >
+                  <div className="card-body">
+                    CHC Project MarketPlace
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </Section>
-    </div>
+      </div>
+    </Section>
     // <div className=" min-h-screen">
     //   <Section>
     //     {/* Mobile filter dialog */}
@@ -503,7 +525,7 @@ const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  #121212;
+  background-color:  white;
   .grid {
     display: flex;
     flex-direction: column;
