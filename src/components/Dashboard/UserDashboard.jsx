@@ -457,7 +457,6 @@ const UserDashboard = () => {
                         id="status_wrapper"
                         className="dataTables_wrapper no-footer"
                       >
-                        <div className="" style={{marginRight:"610px"}}>
                           <table
                             id="example"
                             className="table display dataTable no-footer"
@@ -530,7 +529,6 @@ const UserDashboard = () => {
                               }
                             </tbody>
                           </table>
-                        </div>
                         <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
                           <div className="dataTables_info">
                             Showing {activePag.current * sort + 1} to{" "}
