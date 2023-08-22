@@ -452,61 +452,61 @@ const UserDashboard = () => {
               <div className="card-body pt-0 pb-0">
                 <Tab.Content>
                   <Tab.Pane eventKey="All">
-                    <div
-                    // className="table-responsive dataTabletrade "
-                    >
+                    <div className="table-responsive dataTabletrade ">
                       <div
-                        // id="status_wrapper"
+                        id="status_wrapper"
                         className="dataTables_wrapper no-footer"
                       >
-                        <table
-                          id="example"
-                          className="table hover:table-auto border-slate-50 display dataTable no-footer"
-                          style={{ minWidth: "645px" }}
-                        >
-                          <thead>
-                            <tr className="text-white" style={{ textAlign: "center"}}>
-                              <th>Date</th>
-                              <th>Action</th>
-                              <th>Transaction</th>
-                            </tr>
-                          </thead>
-                          <tbody className="text-white" style={{ textAlign: "center" }}>
-                            {transaction.length === 0 ? (
-                              ""
-                            ) : (transaction.map((item, index) => (
-                              <tr key={index}>
-                                <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
-                                <td>
-                                  {item.methodId == 0x26c01303 ? (
-                                    <a>Liquidity</a>
-                                  ) : (item.methodId == 0x350c35e9 ? (
-                                    <a>WithdrawCollateral</a>
-                                  ) : (
-                                    item.methodId == 0xa5d5db0c ? (
-                                      <a>DepositCollateral</a>
+                        <div className="" style={{marginRight:"610px"}}>
+                          <table
+                            id="example"
+                            className="table display dataTable no-footer"
+                            style={{ minWidth: "845px" }}
+                          >
+                            <thead>
+                              <tr className="text-white" style={{textAlign: "center"}}>
+                                <th>Date</th>
+                                <th>Action</th>
+                                <th>Transaction</th>
+                              </tr>
+                            </thead>
+                            <tbody className="text-white">
+                              {transaction.length === 0 ? (
+                                ""
+                              ) : (transaction.map((item, index) => (
+                                <tr key={index} style={{textAlign: "center"}}>
+                                  <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
+                                  <td>
+                                    {item.methodId == 0x26c01303 ? (
+                                      <a>Liquidity</a>
+                                    ) : (item.methodId == 0x350c35e9 ? (
+                                      <a>WithdrawCollateral</a>
                                     ) : (
-                                      item.methodId == 0x1d7ce898 ? (
-                                        <a>ProposeVote</a>
+                                      item.methodId == 0xa5d5db0c ? (
+                                        <a>DepositCollateral</a>
                                       ) : (
-                                        item.methodId == 0xb1884744 ? (
-                                          <a>Lend</a>
+                                        item.methodId == 0x1d7ce898 ? (
+                                          <a>ProposeVote</a>
                                         ) : (
-                                          item.methodId == 0x4b3fd148 ? (
-                                            <a>Borrow</a>
+                                          item.methodId == 0xb1884744 ? (
+                                            <a>Lend</a>
                                           ) : (
-                                            item.methodId == 0x22867d78 ? (
-                                              <a>Repay</a>
+                                            item.methodId == 0x4b3fd148 ? (
+                                              <a>Borrow</a>
                                             ) : (
-                                              item.methodId == 0x00f714ce ? (
-                                                <a>Withdraw</a>
+                                              item.methodId == 0x22867d78 ? (
+                                                <a>Repay</a>
                                               ) : (
-                                                item.methodId == 0xa694fc3a ? (
-                                                  <a>Stake</a>
+                                                item.methodId == 0x00f714ce ? (
+                                                  <a>Withdraw</a>
                                                 ) : (
-                                                  item.methodId == 0xc6066272 ? (
-                                                    <a>WithdrawStake</a>
-                                                  ) : (<></>)
+                                                  item.methodId == 0xa694fc3a ? (
+                                                    <a>Stake</a>
+                                                  ) : (
+                                                    item.methodId == 0xc6066272 ? (
+                                                      <a>WithdrawStake</a>
+                                                    ) : (<></>)
+                                                  )
                                                 )
                                               )
                                             )
@@ -514,23 +514,23 @@ const UserDashboard = () => {
                                         )
                                       )
                                     )
-                                  )
-                                  )
-                                  }
-                                </td>
-                                <td>
-                                  <Link className="hover:text-amber-400 tranlink" to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
-                                    target="_blank" style={{ textDecorationLine: "underline" }}>
-                                    More details
-                                  </Link>
-                                </td>
-                                <td>
-                                </td>
-                              </tr>
-                            )))
-                            }
-                          </tbody>
-                        </table>
+                                    )
+                                    }
+                                  </td>
+                                  <td>
+                                    <Link className="tranlink" to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
+                                      target="_blank" style={{ textDecorationLine: "underline" }}>
+                                      More details
+                                    </Link>
+                                  </td>
+                                  <td>
+                                  </td>
+                                </tr>
+                              )))
+                              }
+                            </tbody>
+                          </table>
+                        </div>
                         <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
                           <div className="dataTables_info">
                             Showing {activePag.current * sort + 1} to{" "}
