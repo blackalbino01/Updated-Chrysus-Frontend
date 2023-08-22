@@ -42,9 +42,7 @@ const Ecosystems = () => {
   return (
     <div>
       <div className={`${styles.paddingXX} ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
           <Navbar />
-        </div>
       </div>
       <div className="d-flex flex-column align-items-center justify-content-center">
         <H4><p
