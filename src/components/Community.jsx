@@ -30,12 +30,11 @@ const Community = () => {
             Join Our Community
           </span>
         </div>
-        <div className="w-100 my-3">
+        <div className="w-100 my-3 fontsize">
           <p
             style={{
               fontStyle: "normal",
               fontWeight: "300",
-              fontSize: "16px",
               lineHeight: "24px",
               color: "#FFFFFF",
             }}

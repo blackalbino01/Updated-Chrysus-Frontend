@@ -57,7 +57,7 @@ const Ecosystems = () => {
           Governance{" "}
         </p>
         </H4>
-        <p className="text-center col-8" style={{ color: "#FFFFFF", fontFamily: "Poppins" }}>
+        <p className="text-center col-8 fontsize" style={{ color: "#FFFFFF", fontFamily: "Poppins" }}>
           Chrysus is a comprehensive decentralized application (dApp) that
           seamlessly integrates a range of financial services, such as loans,
           swaps, and more, to create a unified platform for its users. The
@@ -103,7 +103,7 @@ const Ecosystems = () => {
                       Get Started with ChrysusDAO
                     </h2>
                     </H4>
-                    <p className="m-0 lh-base">
+                    <p className="m-0 fontsize">
                       ChrysusDAO was founded with a simple mission of making
                       everyone a part of a fair and inclusive Chrysus ecosystem
                     </p>

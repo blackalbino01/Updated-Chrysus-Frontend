@@ -27,7 +27,7 @@ const Coin = () => (
       <h2 className="font-poppins" style={{ color: "#846424" }}>
         About Chrysus Coin (CHC) <br className="sm:block hidden" />
       </h2>
-      <p className={`${styles.paragraph} max-w-[470px] mt-3`}>
+      <p className={`${styles.paragraph} fontsize max-w-[470px] mt-3`}>
         Project Chrysus aims to be a fully decentralized ecosystem revolving around Chrysus Coin.
         Chrysus Coin (Chrysus) is an ERC20 token, deployed on the Ethereum network which is pegged
         to the price of gold (XAU/USD) using Decentralized Finance (DeFi) best practices.

@@ -42,7 +42,7 @@ const FeatureBlog = () => {
                                                     </ul>
                                                 </div>
                                                 <h4 className="" style={{ color: "#846424" }}><Link >{item.title}</Link></h4>
-                                                <p className="m-b0 text-white">Ethereum, and other digital currencies to create a secure, fast, and reliable digital asset for global payments.</p>
+                                                <p className="m-b0 fontsize text-white">Ethereum, and other digital currencies to create a secure, fast, and reliable digital asset for global payments.</p>
                                             </div>
                                         </div>
                                     </div>

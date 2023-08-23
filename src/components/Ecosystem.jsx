@@ -16,7 +16,7 @@ const Ecosystem = () => (
       </div>
 
       <div className={`flex items-center py-[6px] px-4 bg-discount-gradient rounded-[12px] mb-2 ${layout.sectionInfo}`}>
-        <p className={`${styles.paragraph} mt-5 max-w-[570px]  text-center`}>
+        <p className={`${styles.paragraph} fontsize mt-5 max-w-[570px]  text-center`}>
           The Chrysus ecosystem is a blockchain-based financial infrastructure that enables users to earn yield,
           borrow and lend, and access DeFi liquidity through a single, unified platform. It utilizes Chrysus Protocols to
           create a secure, transparent, and efficient system for exchanging digital assets and fiat currency. The Chrysus coin

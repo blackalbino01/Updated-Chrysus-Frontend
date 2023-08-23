@@ -28708,6 +28708,21 @@ table.dataTable.no-footer {
   }
 }
 
+@media screen and (max-width: 1440px) {
+  .fontsize {
+    font-size: calc(12px + (12 - 16) * ((100vw - 320px) / (1600 - 320)));
+  }
+}
+
+@media screen and (min-width: 376px) {
+  .fontsize {
+    font-size: calc(16px + (12 - 16) * ((100vw - 375px) / (1600 - 375)));
+  }
+}
+
+
+
+
 /* .tranlink {
   background-color: white;
 
