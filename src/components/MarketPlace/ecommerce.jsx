@@ -6,7 +6,8 @@ import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-
+import { eco, pro1 } from "../../assets";
+import { Link } from "react-feather";
 
 const Ecommerce = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -44,6 +45,15 @@ const Ecommerce = () => {
     { name: 'Hip Bags', href: '#' },
     { name: 'Laptop Sleeves', href: '#' },
   ]
+
+  const data = [
+    { id: 1, image: pro1, name: "First Product", desc: "Product description" },
+    { id: 2, image: pro1, name: "First Product", desc: "Product description" },
+    { id: 3, image: pro1, name: "First Product", desc: "Product description" },
+    { id: 4, image: pro1, name: "First Product", desc: "Product description" },
+    { id: 5, image: pro1, name: "First Product", desc: "Product description" }
+  ]
+
   const filters = [
     {
       id: 'color',
@@ -93,7 +103,7 @@ const Ecommerce = () => {
           <li className="flex-1 mr-2">
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-300 hover:text-gray-700">
+                <Menu.Button className="group inline-flex justify-center text-sm font-medium text-black hover:text-gray-300">
                   Sort
                   <ChevronDownIcon
                     className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -172,37 +182,21 @@ const Ecommerce = () => {
             {/* <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white" href="#">Active Item</a> */}
           </li>
           <li className="flex-1 mr-2">
-            {/* <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" href="#">Nav Item</a> */}
-            {/* <h5>Search Bar</h5> */}
             <div className="flex items-center">
-              <div className="flex space-x-1">
+              <div className="flex rounded">
                 <input
                   type="text"
-                  className="block w-full px-4 py-2 text-purple-700 bg-white border rounded-full focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-4 py-2 bg-white border focus:border-white focus:ring-white focus:outline-none focus:ring focus:ring-opacity-40"
                   placeholder="Search..."
                 />
-                <button className="px-4 text-white rounded-full " style={{background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424"}}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
+                <button className="px-4 text-white border-l rounded " style={{ background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424" }}>
+                  Search
                 </button>
               </div>
             </div>
           </li>
           <li className="text-center flex-1">
-            {/* <a className="block py-2 px-4 text-gray-400 cursor-not-allowed" href="#">Disabled Item</a> */}
-            <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
+            {/* <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
               <span className="sr-only">View grid</span>
               <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -213,12 +207,71 @@ const Ecommerce = () => {
             >
               <span className="sr-only">Filters</span>
               <FunnelIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
+            </button> */}
           </li>
         </ul>
       </div>
       <div className="row mt-5">
-        <div className="col-xl-3">
+        <div className="col-xl-12">
+          <div className="card">
+            <img src={eco} alt="ecommerce" />
+          </div>
+        </div>
+        {/* {data &&
+          data?.map((item) => (
+            <div className="col-md-6 col-xl-4 m-b30" key={item.id}>
+              <div class="card bg-dark text-white">
+                <img width="200" height="200" src={item.image} alt="" />
+                <div class="card-img-overlay">
+                  <h5 class="card-title">{item.name}</h5>
+                  <p class="card-text">{item.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))} */}
+        {data.map((items, index) => (
+          <div className="col-lg-4 col-md-6 m-b30 fadeInUp " key={index}>
+            <div className=" icon-bx-wraper style-1">
+              <div className=" justify-between items-center">
+                <img width="150" height="150" src={items.image} alt="" />
+                <div className="icon-info">
+                  <h5 className="title text-black">{items.name}</h5>
+                </div>
+              </div>
+              <div className="icon-content">
+                <ul className="price ">
+                  <li>
+                    <p className="mb-0 amount text-black">{items.desc}</p>
+                    {/* <span className={`percentage ${index === 2 ? "text-green" : "text-red"} `}>{items.percent}%</span> */}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+        {/* {data &&
+          data?.map((item) => (
+            <div className="col-md-6 col-xl-4 m-b30" key={item.id}>
+              <div className="dz-card style-1 blog-lg overlay-shine">
+                <div className="dz-media">
+                  <img width="200" height="200" src={item.image} alt="" />
+                </div>
+                <div className="dz-info">
+                  <div className="dz-meta">
+                    <ul>
+                      <Link to={"#"}>
+                        <span>{item.name}</span>
+                      </Link>
+                    </ul>
+                    <p className="post-date text-black"> Date: 12-8-2023</p>
+                  </div>
+                  <h4 className="dz-title text-black">{item.desc}</h4>
+
+                </div>
+              </div>
+            </div>
+          ))} */}
+        {/* <div className="col-xl-3">
           <div
             className="card"
             style={{
@@ -226,7 +279,7 @@ const Ecommerce = () => {
               borderRadius: "16px",
               color: "#846424",
             }}>
-            {/* <div className="card-body pt-4">
+            <div className="card-body pt-4">
                 <div className="w-100">
                   <div className="d-flex flex-row align-items-center justify-content-between mb-4">
                     <H4>Create Proposal</H4>
@@ -246,10 +299,10 @@ const Ecommerce = () => {
                     </div>
                   </div>
                 </div>
-              </div> */}
+              </div>
           </div>
-        </div>
-        <div className="col-xl-9">
+        </div> */}
+        <div className="col-xl-12">
           <div
             className="card"
             style={{
@@ -525,7 +578,7 @@ const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  white;
+  background-color:  #D0D0D0;
   .grid {
     display: flex;
     flex-direction: column;

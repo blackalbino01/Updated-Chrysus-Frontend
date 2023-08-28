@@ -30,7 +30,6 @@ const Overview = () => {
     setData(document.querySelectorAll("#status_wrapper tbody tr"));
   }, [test]);
 
-  on
 
   // paggination
   let paggination = Array(Math.ceil(data.length / sort))

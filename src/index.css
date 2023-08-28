@@ -28710,21 +28710,8 @@ table.dataTable.no-footer {
 
 .fontsize {
   /* font-size: calc(16px + (12 - 16) * ((100vw - 375px) / (1600 - 375))); */
-  /* font-size: clamp(0.125rem, 1.464vw + 0.229rem, 1rem); */
   font-size: clamp(0.75rem, 0.376vw + 0.662rem, 1rem);
 }
-
-/* @media screen and (max-width: 1440px) {
-  .fontsize {
-    font-size: calc(12px + (12 - 16) * ((100vw - 320px) / (1600 - 320)));
-  }
-} */
-
-/* @media screen and (max-width: 1200px) {
-  .fontsize {
-    font-size: calc(12px + (12 - 16) * ((100vw - 375px) / (1600 - 375)));
-  }
-} */
 
 
 

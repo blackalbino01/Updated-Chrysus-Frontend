@@ -94,9 +94,12 @@ import sb from "./sb.svg"
 import bb from "./bb.svg"
 import tick from "./confirm.png"
 import market from "./market.png"
-
+import eco from "./eco.png"
+import pro1 from "./pro1.png"
 
 export {
+  pro1,
+  eco,
   market,
   tick,
   mb,
