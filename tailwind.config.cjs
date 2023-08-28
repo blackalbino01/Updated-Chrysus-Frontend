@@ -19,6 +19,9 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      // fontSize: {
+      //   clamp: "clamp(1rem, 5vw, 3rem)",
+      // },
     },
     screens: {
       xs: "480px",
