@@ -8,9 +8,12 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
 import { eco, pro1 } from "../../assets";
 import { Link } from "react-feather";
+import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+import { RxDotFilled } from 'react-icons/rx';
 
 const Ecommerce = () => {
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     const sr = scrollreveal({
       origin: "bottom",
@@ -95,6 +98,41 @@ const Ecommerce = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
+
+  const slides = [
+    {
+      url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80',
+    },
+
+    {
+      url: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80',
+    },
+  ];
+
+  const prevSlide = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const nextSlide = () => {
+    const isLastSlide = currentIndex === slides.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const goToSlide = (slideIndex) => {
+    setCurrentIndex(slideIndex);
+  };
 
   return (
     <Section className=" min-h-screen">
@@ -214,94 +252,52 @@ const Ecommerce = () => {
       <div className="row mt-5">
         <div className="col-xl-12">
           <div className="card">
-            <img src={eco} alt="ecommerce" />
-          </div>
-        </div>
-        {/* {data &&
-          data?.map((item) => (
-            <div className="col-md-6 col-xl-4 m-b30" key={item.id}>
-              <div class="card bg-dark text-white">
-                <img width="200" height="200" src={item.image} alt="" />
-                <div class="card-img-overlay">
-                  <h5 class="card-title">{item.name}</h5>
-                  <p class="card-text">{item.desc}</p>
-                </div>
+            <div className='max-w-[1700px] h-[280px] w-full m-auto relative group'>
+              <div
+                style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+                className='w-full h-full rounded-2xl bg-center bg-cover duration-500'></div>
+              {/* Left Arrow */}
+              <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                <BsChevronCompactLeft onClick={prevSlide} size={30} />
+              </div>
+              {/* Right Arrow */}
+              <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                <BsChevronCompactRight onClick={nextSlide} size={30} />
+              </div>
+              <div className='flex top-4 justify-center py-2'>
+                {slides.map((slide, slideIndex) => (
+                  <div
+                    key={slideIndex}
+                    onClick={() => goToSlide(slideIndex)}
+                    className='text-2xl cursor-pointer'
+                  >
+                    <RxDotFilled />
+                  </div>
+                ))}
               </div>
             </div>
-          ))} */}
+          </div>
+        </div>
         {data.map((items, index) => (
-          <div className="col-lg-4 col-md-6 m-b30 fadeInUp " key={index}>
+          <div className="col-lg-3 col-md-4 m-b30 products" key={index}>
             <div className=" icon-bx-wraper style-1">
               <div className=" justify-between items-center">
-                <img width="150" height="150" src={items.image} alt="" />
+                <img className="rounded-2" width="150" height="150" src={items.image} alt="" />
                 <div className="icon-info">
                   <h5 className="title text-black">{items.name}</h5>
                 </div>
               </div>
               <div className="icon-content">
+                <p className="mb-0 amount text-black">{items.desc}</p>
                 <ul className="price ">
                   <li>
                     <p className="mb-0 amount text-black">{items.desc}</p>
-                    {/* <span className={`percentage ${index === 2 ? "text-green" : "text-red"} `}>{items.percent}%</span> */}
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         ))}
-        {/* {data &&
-          data?.map((item) => (
-            <div className="col-md-6 col-xl-4 m-b30" key={item.id}>
-              <div className="dz-card style-1 blog-lg overlay-shine">
-                <div className="dz-media">
-                  <img width="200" height="200" src={item.image} alt="" />
-                </div>
-                <div className="dz-info">
-                  <div className="dz-meta">
-                    <ul>
-                      <Link to={"#"}>
-                        <span>{item.name}</span>
-                      </Link>
-                    </ul>
-                    <p className="post-date text-black"> Date: 12-8-2023</p>
-                  </div>
-                  <h4 className="dz-title text-black">{item.desc}</h4>
-
-                </div>
-              </div>
-            </div>
-          ))} */}
-        {/* <div className="col-xl-3">
-          <div
-            className="card"
-            style={{
-              backgroundColor: "#211f21",
-              borderRadius: "16px",
-              color: "#846424",
-            }}>
-            <div className="card-body pt-4">
-                <div className="w-100">
-                  <div className="d-flex flex-row align-items-center justify-content-between mb-4">
-                    <H4>Create Proposal</H4>
-                  </div>
-                  <div
-                    className="card"
-                    style={{
-                      backgroundColor: "#121112",
-                      borderRadius: "16px",
-                      color: "#846424",
-                    }}
-                  >
-                    <div className="card-body">
-                      Tip: You must be staking CGT to submit a proposal.
-                      Select an action below and describe your proposal for
-                      the community.
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div> */}
         <div className="col-xl-12">
           <div
             className="card"
@@ -333,7 +329,7 @@ const Ecommerce = () => {
           </div>
         </div>
       </div>
-    </Section>
+    </Section >
     // <div className=" min-h-screen">
     //   <Section>
     //     {/* Mobile filter dialog */}
