@@ -3,13 +3,7 @@ import { CHRYSUS, DAI } from '../constant';
 import CHRYSUS_ABI  from '../abis/Chrysus.json';
 import ERC20  from '../abis/ERC20.json';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import { Web3Provider } from '@ethersproject/providers';
-// import { useWeb3React } from '@web3-react/core';
-import { InjectedConnector } from '@web3-react/injected-connector';
-// import WalletConnectProvider from '@walletconnect/web3-provider';
 import WalletConnectProvider from '@walletconnect/web3-provider/dist/umd/index.min.js';
-// import WalletConnectProvider from "@walletconnect/web3-provider";
-// import QRCodeModal from '@walletconnect/qrcode-modal/dist/umd/index.min.js';
 
 export const initialState = {
     status: null,
@@ -26,15 +20,8 @@ export const initialState = {
 
 export const loadBlockchain = createAsyncThunk("loadBlockchain", async (_, thunkAPI) => {
     try {
-        // const provider = new InjectedConnector({ supportedChainIds: [1, 5, 11155111] })
-        // if(Web3.givenProvider && Web3.givenProvider.chainId ==="0x11155111"){
-        // if(Web3.givenProvider.chainId ==="0x11155111"){
         if (Web3.givenProvider && Web3.givenProvider.chainId === Web3.utils.toHex(11155111)) {
-            // if (provider) {
-            // const Provider = provider;
-            // await provider.enable();
             const Provider = Web3.givenProvider;
-            // const web3 = new Web3(provider);
             await Web3.givenProvider.enable();
             const web3 = new Web3(Web3.givenProvider);
             console.log('web3', web3)
@@ -43,15 +30,8 @@ export const loadBlockchain = createAsyncThunk("loadBlockchain", async (_, thunk
             const accounts = await web3.eth.getAccounts();
             localStorage.setItem("accounts", accounts)
             console.log(`Wallet address ${accounts} stored on local storage.`);
-            // const accountss = localStorage.getItem("accounts")
             const balance = await web3.eth.getBalance(accounts[0]);
             const DAIContract = new web3.eth.Contract(ERC20.abi, DAI);
-            //web3 Socket
-            // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
-            //     `wss://goerli.infura.io/ws/v3/b0b0d100567e4e59bb2bab1a2c353381`
-            // ))
-
-            // const socketContract = new web3Socket.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
             return {
                 web3,
                 balance,
@@ -59,7 +39,6 @@ export const loadBlockchain = createAsyncThunk("loadBlockchain", async (_, thunk
                 Provider,
                 contract,
                 DAIContract,
-                // socketContract,
             }
         }
         else {
@@ -88,25 +67,6 @@ export const loadBlockchain = createAsyncThunk("loadBlockchain", async (_, thunk
                   });
                 }
             }
-            // if(error.code ==4902 ){
-            // await window.ethereum.request({
-            //     method: 'wallet_addEthereumChain',
-            //     params: [
-            //       {
-            //         chainId: Web3.utils.toHex(11155111),
-            //         chainName: "Sepolia test network",
-            //         rpcUrls: ["https://sepolia.infura.io/v3/"],
-            //         nativeCurrency: {
-            //             name:"ETH",
-            //             symbol:"ETH",
-            //             decimals: 18,
-            //         },
-            //         blockExplorerUrls: ["https://sepolia.etherscan.io"],
-            //       },
-            //     ],
-            //   });
-            // }
-            // // console.log("Networl error" ,error)
             return {
                 web3loadingerror: 'errorloading'
 
@@ -121,101 +81,11 @@ export const loadBlockchain = createAsyncThunk("loadBlockchain", async (_, thunk
 });
 
 
-// export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thunkAPI) => {
-//     try {
-//         // if(Web3.givenProvider && Web3.givenProvider.chainId ==="0x3"){
-//         if (Web3.givenProvider !== 'undefined') {
-//             const Provider = Web3.givenProvider;
-//             await Web3.givenProvider.enable();
-//             const web3 = new Web3(Web3.givenProvider);
-//             console.log('web3', web3)
-//             const contract = new web3.eth.Contract(CHRYSUS_ABI.abi, CHRYSUS);
-//             console.log("contract",contract )
-//             const accounts = await web3.eth.getAccounts();
-//             localStorage.setItem("accounts", accounts)
-//             console.log(`Wallet address ${accounts} stored on local storage.`);
-//             // const accountss = localStorage.getItem("accounts")
-//             const balance = await web3.eth.getBalance(accounts[0]);
-//             const DAIContract = new web3.eth.Contract(ERC20.abi, DAI);
-//             //web3 Socket
-//             // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
-//             //     `wss://goerli.infura.io/ws/v3/b0b0d100567e4e59bb2bab1a2c353381`
-//             // ))
-
-//             // const socketContract = new web3Socket.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
-//             return {
-//                 web3,
-//                 balance,
-//                 accounts,
-//                 Provider,
-//                 contract,
-//                 DAIContract,
-//                 // socketContract,
-//             }
-//         }
-//         else {
-//             return {
-//                 web3loadingerror: 'errorloading'
-
-//             }
-
-//         }
-
-//     } catch (error) {
-//         console.log('error', error)
-
-//     }
-// });
-
-
-
-
-// export const loadBlockchain = createAsyncThunk( "loadBlockchain", async (_, thunkAPI) => {
-//     try {
-//         const provider =new InjectedConnector({ supportedChainIds: [1, 5] })
-//         if (provider) {
-//             const Provider = provider;
-//             await provider.enable();
-//             const web3 = new Web3(provider);
-//             console.log('web3', web3)
-//             const accounts = await web3.eth.getAccounts();
-//             const balance = await web3.eth.getBalance(accounts[0]);
-//             //web3 Socket
-//             // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
-//             //     `wss://goerli.infura.io/ws/v3/b0b0d100567e4e59bb2bab1a2c353381`
-//             // ))
-
-//             // const socketContract = new web3Socket.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
-//             return {
-//                 web3,
-//                 accounts,
-//                 balance,
-//                 Provider,
-//                 // socketContract,
-//             }
-//         }
-//         else {
-//             return {
-//                 web3loadingerror: 'errorloading'
-
-//             }
-
-//         }
-
-//     } catch (error) {
-//         console.log('error', error)
-
-//     }
-// });
-
 
 
 export const loadWalletConnect = createAsyncThunk( "loadWalletConnect", async (_, thunkAPI) => {
     try {
         const provider = new WalletConnectProvider({
-            rpc: {
-              5: "https://goerli.infura.io/v3/b0b0d100567e4e59bb2bab1a2c353381",
-            },
             chainId: 5,
           });
         if (provider) {
@@ -225,20 +95,12 @@ export const loadWalletConnect = createAsyncThunk( "loadWalletConnect", async (_
             console.log('web3', web3)
             const accounts = await web3.eth.getAccounts();
             localStorage.setItem("accounts", accounts)
-            // console.log(`Wallet address ${accounts} stored on local storage.`);
             const balance = await web3.eth.getBalance(accounts[0]);
-            //web3 Socket
-            // const web3Socket = new Web3(new Web3.providers.WebsocketProvider(
-            //     `wss://goerli.infura.io/ws/v3/b0b0d100567e4e59bb2bab1a2c353381`
-            // ))
-
-            // const socketContract = new web3Socket.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
             return {
                 web3,
                 accounts,
                 balance,
                 Provider,
-                // socketContract,
             }
         }
         else {
@@ -254,36 +116,6 @@ export const loadWalletConnect = createAsyncThunk( "loadWalletConnect", async (_
 
     }
 });
-
-
-// export const loadContracts = createAsyncThunk(
-//     "loadContracts",
-//     async (id) => {
-//       try {
-//         const response = await axios.get(`${url}/products/find/${id}`,
-//           setHeaders()
-//         );
-//         const data = response.data;
-//         if (Web3.givenProvider && data) {
-//             await Web3.givenProvider.enable();
-//             const web3 = new Web3(Web3.givenProvider);
-//             console.log('web3', web3)
-//             const propContracts = new web3.eth.Contract(CONTRACT_ABIS, data.uid);
-
-//         return {
-//             propContracts,
-//         };
-//     }
-//       } catch (error) {
-//         console.log(error.response.data);
-//         console.log(error.propContracts);
-//         toast.error(error.response?.data, {
-//           position: "bottom-left",
-//         });
-//       }
-//     }
-//   );
-
 
 export const updatAccount = createAsyncThunk("updatAccount", async (data, thunkAPI) => {
     try {
@@ -315,7 +147,6 @@ const web3ConnectSlice = createSlice({
             state.socketContract = payload?.socketContract;
             state.balance = payload?.balance;
             state.Provider = payload?.Provider;
-            // localStorage.setItem("accounts", state.accounts )
             state.status = "success";
         },
         [loadBlockchain.rejected.toString()]: (state, { payload }) => {
@@ -329,7 +160,6 @@ const web3ConnectSlice = createSlice({
             state.balance = payload?.balance;
             state.DAIContract = payload?.DAIContract;
             state.Provider = payload?.Provider;
-            // state.socketContract = payload?.socketContract;
             state.status = "success";
         },
         [updatAccount.fulfilled.toString()]: (state, { payload }) => {
