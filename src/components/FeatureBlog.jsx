@@ -4,8 +4,9 @@ import { pic1,SendDarkIcon } from '../assets';
 import { useWindowSize } from "../hooks";
 import {PrimaryGradientButton} from "../components/buttons";
 
+
 const blocardList = [
-    { image: pic1, image2: pic1, title: 'Five Things To Avoid In Cryptocurrency' },
+    { image: pic1, image2: pic1, title: 'Featured Blog' },
 ];
 
 const FeatureBlog = () => {
@@ -23,16 +24,16 @@ const FeatureBlog = () => {
                                         <div className="dz-card style-1 blog-half" style={{ background: "#262522", }}>
                                             <div className="dz-media">
                                                 <Link ><img src={item.image} alt="" /></Link>
-                                                <ul className="dz-badge-list">
+                                                {/* <ul className="dz-badge-list">
                                                     <li><Link to={"#"} className="dz-badge">14 Fan 2022</Link></li>
                                                 </ul>
-                                                <Link className="btn btn-secondary">Read More</Link>
+                                                <Link className="btn btn-secondary">Read More</Link> */}
                                             </div>
                                             <div className="dz-info">
-                                                <div className="dz-meta">
+                                                {/* <div className="dz-meta">
                                                     <ul>
                                                         <li className="post-author">
-                                                            <h1 style={{ color: "#846424" }}>Featured Blog</h1>
+                                                            <h2 style={{ color: "#846424" }} >Featured Blog</h2>
                                                             <Link to={"#"}>
                                                                 <img src={item.image2} alt="" className="me-2" />
                                                                 <span className='text-white'>By Noare</span>
@@ -40,9 +41,12 @@ const FeatureBlog = () => {
                                                         </li>
                                                         <li className="post-date text-white"><Link to={"#"}>12 May 2022</Link></li>
                                                     </ul>
-                                                </div>
+                                                </div> */}
                                                 <h4 className="" style={{ color: "#846424" }}><Link >{item.title}</Link></h4>
                                                 <p className="m-b0 fontsize text-white">Ethereum, and other digital currencies to create a secure, fast, and reliable digital asset for global payments.</p>
+                                                <span>7 April, 2022</span>
+                                                
+                                              
                                             </div>
                                         </div>
                                     </div>

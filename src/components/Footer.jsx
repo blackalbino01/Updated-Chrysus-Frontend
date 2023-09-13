@@ -1,110 +1,53 @@
-import styles from "../style";
+import React from 'react';
+import styles from '../style';
 import { logoo } from "../assets";
-import { footerLinks, socialMedia } from "../constants";
-import { memo } from "react";
-import {NavLink } from "react-router-dom";
+
+import { footerLinks, socialMedia } from '../constants';
 
 const Footer = () => (
-  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
-    <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
-      <div className="flex-[0.5] flex flex-col justify-start mr-10 mt-3">
-        <img
-          loading="lazy"
-          src={logoo}
-          alt="hoobank"
-          className="w-[170px] h-[40px] object-contain"
-        />
-          <div className="flex flex-row md:mt-0 mt-4 ml-5">
-          {socialMedia.map((social, index) => (
-            <img loading="lazy"
-              key={social.id}
-              src={social.icon}
-              alt={social.id}
-              className={`w-[15px] h-[15px] object-contain cursor-pointer ${index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-                }`}
-              onClick={() => window.open(social.link)}
-            />
+    <section className={`${styles.flexCenter} flex-col`}>
+      <div className={`${styles.flexStart} md:flex-row flex-col w-full`}>
+        <div className='flex-1 flex flex-col justify-start mr-10'>
+          <img src={logoo} alt="hoobank" className='w-[266px] h-[72px] object-contain' />
+          <div className='border-t-[1px] border-t-[#846424] w-[380px] mt-[20px]'> 
+          <p className={`${styles.paragraph} mt-3 `}>
+          Developed by <b> BlocksGenie Technologies</b>
+          </p>
+          </div>
+        </div>
+
+        <div className='flex-[1.5px] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10 '>
+          {footerLinks.map((footerLink) => (
+            <div key='footerLink.key' className='flex flex-col ss:my-0 my-4 min-w-[150px]'>
+              <h4 className='font-poppins font-medium text-[18px] leading-[27px] text-[#846424]'>
+                {footerLink.title}
+              </h4>
+              <ul className='list-none mt-4'>
+                {footerLink.links.map((link, index) => (
+                  <li key={link.name} className={`font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-[#846424] cursor-pointer ${index !== footerLink.links.length - 1 ? 'mb-4' : 'mb-0'}`}>
+                    {link.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
 
-      {footerLinks.map((footerlink) => (
-          <div
-            key={footerlink.title}
-            className={"flex flex-col ss:my-0 my-4 min-w-[150px]"}
-          >
-            <h4
-              className="font-poppins font-medium text-[18px] leading-[27px]"
-              style={{ color: "#846424" }}
-            >
-              {footerlink.title}
-            </h4>
-            <ul className="list-none mt-4">
-              {footerlink.links.map((link, index) => (
-                <li
-                  key={link.name}
-                  className={`font-poppins font-normal text-[16px] leading-[24px] 
-                  text-dimWhite hover:text-white cursor-pointer 
-                  ${index !== footerlink.links.length - 1 ? "mb-4" : "mb-0"}`}
-                >
-                  <NavLink to={link.path}>{link.name}</NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      <div className="flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10">
-        {/* {footerLinks.map((footerlink) => (
-          <div
-            key={footerlink.title}
-            className={"flex flex-col ss:my-0 my-4 min-w-[150px]"}
-          >
-            <h4
-              className="font-poppins font-medium text-[18px] leading-[27px]"
-              style={{ color: "#846424" }}
-            >
-              {footerlink.title}
-            </h4>
-            <ul className="list-none mt-4">
-              {footerlink.links.map((link, index) => (
-                <li
-                  key={link.name}
-                  className={`font-poppins font-normal text-[16px] leading-[24px] 
-                  text-dimWhite hover:text-white cursor-pointer 
-                  ${index !== footerlink.links.length - 1 ? "mb-4" : "mb-0"}`}
-                >
-                  <NavLink to={link.path}>{link.name}</NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))} */}
-        <div className={"flex flex-col ss:my-0 my-4 min-w-[150px]"}> 
-        </div>
-        {/* <div className="flex flex-row md:mt-0 mt-4">
+      <div className='w-full flex justify-between items-center md:flex-row flex-col py-6 border-t-[1px] border-t-[#846424]'>
+        <p className='font-poppins font-normal text-center text-[18px] leading-[27px] text-white mb-0'>
+          Copyright Ⓒ 2023 <span className="text-[#EDC452]"> Chrysus</span>. 2022, All Rights Reserved.
+        </p>
+        <div className='flex flex-row md:mt-0 mt-6'>
           {socialMedia.map((social, index) => (
-            <img loading="lazy"
-              key={social.id}
-              src={social.icon}
-              alt={social.id}
-              className={`w-[21px] h-[21px] object-contain cursor-pointer ${index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-                }`}
-              onClick={() => window.open(social.link)}
-            />
+            <a href={social.link}>
+            <img key={social.id} src={social.icon} alt={social.id} className={`w-[21px] h-[21px] object-contain cursor-pointer ${index !== socialMedia.length - 1 ? 'mr-6' : 'mr-0'}`}/>
+            </a>
           ))}
-        </div> */}
+        </div>
       </div>
-    </div>
+    </section>
+  )
 
-    <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
-      <p className={` mt-1 max-w-[450px]`}>
-        Developed by BlocksGenie Technologies
-      </p>
-      <p className="font-poppins font-normal text-center text-[13px] leading-[27px] text-white">
-        Copyright Ⓒ 2023 Chrysus. 2022, All Rights Reserved.
-      </p>
-    </div>
-  </section>
-);
 
-export default memo(Footer);
+export default Footer

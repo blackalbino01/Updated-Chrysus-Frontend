@@ -1,4 +1,4 @@
-import { facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold,mb,sb,lb,bb,Linkedin } from "../assets";
+import { facebook, instagram, TelegramWhiteIcon, DiscordWhiteIcon, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold,mb,sb,lb,bb,Linkedin } from "../assets";
 
 export const navLinks = [
   {
@@ -131,15 +131,23 @@ export const footerLinks = [
   //   ],
   // },
   {
-    title: "Community",
+    title: "Services",
     links: [
       {
-        name: "Ecosystem",
-        path: "/ecosystems",
+        name: "Mint",
+        path: "/mint",
       },
       {
-        name: "About",
-        path: "/about",
+        name: "Swap",
+        path: "/swap",
+      },
+      {
+        name: "Loan",
+        path: "/loan",
+      },
+      {
+        name: "Shop",
+        path: "/shop",
       },
     ],
   },
@@ -147,8 +155,29 @@ export const footerLinks = [
     title: "Learn",
     links: [
       {
+        name: "Whitepaper",
+        path: "/whitepaper",
+      },
+      {
+        name: "Blog",
+        path: "/blog",
+      },
+      {
+        name: "FAQ",
+        path: "/faq",
+      },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      {
         name: "Governance",
-        path: "/governanc",
+        path: "/governance",
+      },
+      {
+        name: "Ecosystem",
+        path: "/ecosystem",
       },
       {
         name: "FAQ",
@@ -161,8 +190,13 @@ export const footerLinks = [
 export const socialMedia = [
   {
     id: "social-media-1",
-    icon: instagram,
+    icon: TelegramWhiteIcon,
     link: "https://t.me/chrysusofficial",
+  },
+  {
+    id: "social-media-3",
+    icon: twitter,
+    link: " https://twitter.com/chrysus_coin01",
   },
   {
     id: "social-media-2",
@@ -170,9 +204,9 @@ export const socialMedia = [
     link: "https://www.facebook.com/chrysuscoin",
   },
   {
-    id: "social-media-3",
-    icon: twitter,
-    link: " https://twitter.com/chrysus_coin01",
+    id: "social-media-4",
+    icon: DiscordWhiteIcon,
+    link: "https://www.linkedin.com/company/chrysus-gold-coin/",
   },
   {
     id: "social-media-4",
