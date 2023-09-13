@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../style';
 import { logoo } from "../assets";
-
+import { memo } from "react";
 import { footerLinks, socialMedia } from '../constants';
 
 const Footer = () => (
@@ -18,7 +18,7 @@ const Footer = () => (
 
         <div className='flex-[1.5px] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10 '>
           {footerLinks.map((footerLink) => (
-            <div key='footerLink.key' className='flex flex-col ss:my-0 my-4 min-w-[150px]'>
+            <div key={footerLink.key} className='flex flex-col ss:my-0 my-4 min-w-[150px]'>
               <h4 className='font-poppins font-medium text-[18px] leading-[27px] text-[#846424]'>
                 {footerLink.title}
               </h4>
@@ -50,4 +50,4 @@ const Footer = () => (
   )
 
 
-export default Footer
+export default memo(Footer)

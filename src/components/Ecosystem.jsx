@@ -1,4 +1,4 @@
-import { apple, google, EcosystemImage } from "../assets";
+import { apple, google, EcosystemImage2 } from "../assets";
 import { memo } from "react";
 import styles, { layout } from "../style";
 import { ReadButton } from "./buttons";
@@ -11,12 +11,12 @@ const Ecosystem = () => (
 
     <section id="product" className={layout.sectionReverse}>
       <div className={layout.sectionImgReverse}>
-        <img loading="lazy" src={EcosystemImage} alt="Ecosystem" className="w-[100%] h-[100%] relative z-[5]" />
+        <img loading="lazy" src={EcosystemImage2} alt="Ecosystem" className="w-[100%] h-[100%] relative z-[5]" />
 
       </div>
 
-      <div className={`flex items-center py-[6px] px-4 bg-discount-gradient rounded-[12px] mb-2 ${layout.sectionInfo}`}>
-        <p className={`${styles.paragraph} fontsize mt-5 max-w-[570px]  text-center`}>
+      <div className={`flex items-center py-[6px] px-4 bg-gradient-to-r from-[#262522] to-[#262522] rounded-[12px] mb-2 ${layout.sectionInfo}`}>
+        <p className={`${styles.paragraph} fontsize mt-5 max-w-[570px]`}>
           The Chrysus ecosystem is a blockchain-based financial infrastructure that enables users to earn yield,
           borrow and lend, and access DeFi liquidity through a single, unified platform. It utilizes Chrysus Protocols to
           create a secure, transparent, and efficient system for exchanging digital assets and fiat currency. The Chrysus coin

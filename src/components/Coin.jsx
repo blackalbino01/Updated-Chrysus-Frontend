@@ -4,7 +4,8 @@ import styles, { layout } from "../style";
 import { ExplorButton } from "./buttons";
 
 const FeatureCard = ({ icon, title, content, index }) => (
-  <div className={`flex flex-row p-6  items-center py-[6px] px-4 bg-discount-gradient rounded-[12px] ${index !== features.length - 1 ? "mb-6" : "mb-0"} feature-card`}>
+
+  <div className={`flex flex-row p-6  items-center py-[6px] px-4 bg-gradient-to-r from-[#262522] to-[#262522] rounded-[12px] ${index !== features.length - 1 ? "mb-6" : "mb-0"} feature-card`}>
     <div className={`w-[48px] h-[48px] rounded-full ${styles.flexCenter} bg-stone-900`}
       style={{ background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424", }}
     >
@@ -33,10 +34,7 @@ const Coin = () => (
         to the price of gold (XAU/USD) using Decentralized Finance (DeFi) best practices.
         The ecosystem around Chrysus will involve a SWAP solution, a lending solution and an
         eCommerce integration solution allowing for the use of Chrysus outside of the DeFi
-        ecosystem. One of the main goals of Chrysus is to not just closely follow the price of
-        gold, but also to be a cash flow generating token. This is achieved through the Chrysus
-        Governance Token (CGT) which will serve both
-        as a decentralization tool for the system and as a reward tool for Chrysus token minters.
+        ecosystem. 
       </p>
       <a target="_blank" href="https://chrysusofficial.medium.com/">
         <ExplorButton className="my-3 mb-5 " />
@@ -46,6 +44,7 @@ const Coin = () => (
       {features.map((feature, index) => (
         <FeatureCard key={feature.id} {...feature} index={index} />
       ))}
+      
     </div>
   </section>
 );

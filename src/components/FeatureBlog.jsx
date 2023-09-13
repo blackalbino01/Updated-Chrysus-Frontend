@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { pic1,SendDarkIcon } from '../assets';
 import { useWindowSize } from "../hooks";
 import {PrimaryGradientButton} from "../components/buttons";
-
+import { ReadButton } from "./buttons";
 
 const blocardList = [
     { image: pic1, image2: pic1, title: 'Featured Blog' },
@@ -13,109 +13,72 @@ const FeatureBlog = () => {
     const [width, height] = useWindowSize();
 
     return (
+        
         <div className="page-content">
-            <section className="content-inner bg-black">
-                <div className="container">
-                    <div className="row ">
-                        <div className="col-xl-8 col-lg-8">
-                            <div className="row">
-                                {blocardList.map((item, index) => (
-                                    <div className="col-lg-12 m-b40" key={index}>
-                                        <div className="dz-card style-1 blog-half" style={{ background: "#262522", }}>
-                                            <div className="dz-media">
-                                                <Link ><img src={item.image} alt="" /></Link>
-                                                {/* <ul className="dz-badge-list">
-                                                    <li><Link to={"#"} className="dz-badge">14 Fan 2022</Link></li>
-                                                </ul>
-                                                <Link className="btn btn-secondary">Read More</Link> */}
-                                            </div>
-                                            <div className="dz-info">
-                                                {/* <div className="dz-meta">
-                                                    <ul>
-                                                        <li className="post-author">
-                                                            <h2 style={{ color: "#846424" }} >Featured Blog</h2>
-                                                            <Link to={"#"}>
-                                                                <img src={item.image2} alt="" className="me-2" />
-                                                                <span className='text-white'>By Noare</span>
-                                                            </Link>
-                                                        </li>
-                                                        <li className="post-date text-white"><Link to={"#"}>12 May 2022</Link></li>
-                                                    </ul>
-                                                </div> */}
-                                                <h4 className="" style={{ color: "#846424" }}><Link >{item.title}</Link></h4>
-                                                <p className="m-b0 fontsize text-white">Ethereum, and other digital currencies to create a secure, fast, and reliable digital asset for global payments.</p>
-                                                <span>7 April, 2022</span>
-                                                
-                                              
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+        <section className="content-inner bg-black">
+          <div className="container">
+            <div className="flex flex-col lg:flex-row">
+              <div className="lg:w-[60%] lg:mr-8">
+                <div className="flex flex-col space-y-8">
+                  {blocardList.map((item, index) => (
+                    <div className="mb-8" key={index}>
+                      <div className="dz-card style-1 blog-half bg-gradient-to-r from-[#262522] to-[#262522] p-4 rounded-lg">
+                        <div className="dz-media">
+                          <Link to="#">
+                            <img src={item.image} alt="" className="rounded-lg" />
+                          </Link>
                         </div>
-                        <div className="col-xl-4 col-lg-4">
-                            <div className="">
-                                <div className="row">
-                                    <div className="col-12">
-                                        <div className="row">
-                                            <h1 className="text-white">Subscribe</h1>
-                                        </div>
-                                        <div className="row mt-3">
-                                            <p style={{ color: "#846424" }}>
-                                                Enter your email below for latest blogs and news
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div
-                                        className="d-flex flex-row align-item-center justify-content-between mt-3"
-                                        style={{
-                                            border: "1px solid #846424",
-                                            borderRadius: "32px",
-                                            backgroundColor: "transparent",
-                                            padding: "0.5em",
-                                        }}
-                                    >
-                                        <input
-                                            type="email"
-                                            placeholder="Email"
-                                            style={{
-                                                outline: "none",
-                                                border: "none",
-                                                paddingLeft: "1em",
-                                                fontFamily: "'Montserrat'",
-                                                fontStyle: "normal",
-                                                fontWeight: "300",
-                                                fontSize: "16px",
-                                                lineHeight: "24px",
-                                                color: "white",
-                                                background: "transparent",
-                                            }}
-                                        />
-                                        {width <= 460 ? (
-                                            <PrimaryGradientButton
-                                                className="text-uppercase"
-                                                onClick={() => { }}
-                                            >
-                                                <img src={SendDarkIcon} alt="send-dark.svg" />
-                                            </PrimaryGradientButton>
-                                        ) : (
-                                            <PrimaryGradientButton
-                                                className="text-uppercase"
-                                                onClick={() => { }}
-                                            >
-                                                Subscribe
-                                            </PrimaryGradientButton>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="dz-info">
+                          <h4 className="text-yellow-500 text-2xl font-semibold mb-2">
+                            <Link to="#" className="text-[#846424]">
+                              {item.title}
+                            </Link>
+                          </h4>
+                          <p className="text-white text-base leading-6 mb-4">
+                            Ethereum, and other digital currencies to create a secure, fast, and reliable digital asset for global payments.
+                          </p>
+                          <span className="text-white">7 April, 2022</span>
+                          <div>
+                          <a style={{ color: "#846424" }} target="_blank" href="https://chrysusofficial.medium.com/">
+                            <ReadButton className="my-3 mb-5 " />
+                          </a>
+                          </div>
                         </div>
+                      </div>
                     </div>
+                  ))}
                 </div>
-            </section>
-        </div>
+              </div>
+              <div className="lg:w-[40%] flex items-center justify-between">
+                <div className="flex flex-col">
+                  <h1 className="text-white text-2xl font-semibold mb-4">Subscribe</h1>
+                  <p className="text-[#EDC452] mb-4">
+                    Enter your email below for the latest blogs and news
+                  </p>
+                  <div className="flex items-center justify-between border border-yellow-500 rounded-full bg-transparent p-2">
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      className="outline-none border-none pl-4 font-montserrat font-light text-base text-white bg-transparent flex-grow"
+                    />
+                    {width <= 460 ? (
+                      <PrimaryGradientButton className="text-uppercase" onClick={() => { }}>
+                        <img src={SendDarkIcon} alt="send-dark.svg" />
+                      </PrimaryGradientButton>
+                    ) : (
+                      <PrimaryGradientButton className="text-uppercase" onClick={() => { }}>
+                        Subscribe
+                      </PrimaryGradientButton>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+        
     )
 }
 

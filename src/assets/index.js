@@ -20,7 +20,7 @@ import meta1 from "./meta1.png";
 import walet1 from "./walet1.png";
 import logoo from "./logoo.png";
 import pic1 from "./pic1.jpg";
-import EcosystemImage from './ecosystem.svg'
+import EcosystemImage2 from './ecosystem2.svg';
 import Picture from './picture.png';
 
 import Wallets from './wallets.png';
@@ -166,7 +166,6 @@ export {
   XMarkWhiteIcon,
   PlusWhiteIcon,
   Picture,
-  EcosystemImage,
   SendDarkIcon,
   Play,
   SwapGold,
@@ -193,5 +192,6 @@ export {
   linkedin,
   twitter,
   walet,
+  EcosystemImage2,
   meta
 };

@@ -23451,7 +23451,7 @@ ul a.rsswidget:hover {
 
 .dz-card {
   position: relative;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .dz-card .dz-info {
@@ -23780,7 +23780,7 @@ ul a.rsswidget:hover {
   transition: all 0.5s;
   display: flex;
   position: relative;
-  background: #F8F5FF;
+  /* background: #F8F5FF; */
 }
 
 @media only screen and (max-width: 767px) {
