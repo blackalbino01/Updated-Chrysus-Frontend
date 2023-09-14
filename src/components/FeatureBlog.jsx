@@ -16,8 +16,7 @@ const FeatureBlog = () => {
         
         <div className="page-content">
         <section className="content-inner bg-black">
-          <div className="container">
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex items-center justify-between flex-col lg:flex-row">
               <div className="lg:w-[60%] lg:mr-8">
                 <div className="flex flex-col space-y-8">
                   {blocardList.map((item, index) => (
@@ -74,7 +73,6 @@ const FeatureBlog = () => {
                 </div>
               </div>
             </div>
-          </div>
         </section>
       </div>
       

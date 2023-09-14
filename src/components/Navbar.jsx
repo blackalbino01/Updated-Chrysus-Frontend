@@ -50,7 +50,7 @@ const Navbar = () => {
 
   const addrees = localStorage.getItem("accounts");
   return (
-    <nav className="w-full flex  py-6 justify-between items-center navbar">
+    <nav className="w-full flex py-6 justify-between items-center navbar">
       <Link to="/">
         <img
           src={logoo}

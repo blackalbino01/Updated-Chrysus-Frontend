@@ -28,7 +28,7 @@ const Hero = () => {
         <div className="flex flex-row items-center py-[6px] px-1  rounded-[10px] mb-2">
           <img loading="lazy" src={logo} alt="discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} mt-3 ml-2`}>
-            <span className="text-white">Innovative,</span> secure and smart ecosystem{" "}
+            <span className="text-white">Innovative,</span> secure and smart ecosystem
           </p>
         </div>
         <PlayTourButton className="my-3 " />

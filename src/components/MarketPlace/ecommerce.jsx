@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollreveal from "scrollreveal";
 import { useState } from 'react'
-import { eco, pro1 } from "../../assets";
+import { eco, shoe1 } from "../../assets";
 import { Link } from "react-feather";
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+// import { BsFillArrowRightCircleFill, FiArrowLeft } from 'react-icons/bs';
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { RxDotFilled } from 'react-icons/rx';
 import { VscChromeClose } from "react-icons/vsc";
 import { RiSearch2Line } from "react-icons/ri";
 import { AiOutlineSearch } from "react-icons/ai";
+import SearchBar from "../SearchBar";
+import { FaArrowTrendUp } from "react-icons/fa6";
 
 
 const Ecommerce = () => {
@@ -19,6 +22,7 @@ const Ecommerce = () => {
 
   useEffect(() => {
     const sr = scrollreveal({
+
       origin: "bottom",
       distance: "80px",
       duration: 2000,
@@ -53,11 +57,12 @@ const Ecommerce = () => {
   ]
 
   const data = [
-    { id: 1, image: pro1, name: "First Product", desc: "Product description" },
-    { id: 2, image: pro1, name: "First Product", desc: "Product description" },
-    { id: 3, image: pro1, name: "First Product", desc: "Product description" },
-    { id: 4, image: pro1, name: "First Product", desc: "Product description" },
-    { id: 5, image: pro1, name: "First Product", desc: "Product description" }
+    { id: 1, image: shoe1, name: "Skechers Men's Go Max-Athleti Air Mesh Slip on Walking Shoe Sneaker", reviews: "4.5 out of 5 stars (5-star: 71%)", desc: "300+ bought in past month" },
+    { id: 2, image: shoe1, name: "Skechers Men's Go Max-Athleti Air Mesh Slip on Walking Shoe Sneaker", reviews: "4.5 out of 5 stars (5-star: 71%)", desc: "300+ bought in past month" },
+    { id: 3, image: shoe1, name: "Skechers Men's Go Max-Athleti Air Mesh Slip on Walking Shoe Sneaker", reviews: "4.5 out of 5 stars (5-star: 71%)", desc: "300+ bought in past month" },
+    { id: 4, image: shoe1, name: "Skechers Men's Go Max-Athleti Air Mesh Slip on Walking Shoe Sneaker", reviews: "4.5 out of 5 stars (5-star: 71%)", desc: "300+ bought in past month" },
+    { id: 5, image: shoe1, name: "Skechers Men's Go Max-Athleti Air Mesh Slip on Walking Shoe Sneaker", reviews: "4.5 out of 5 stars (5-star: 71%)", desc: "300+ bought in past month" },
+    { id: 6, image: shoe1, name: "Skechers Men's Go Max-Athleti Air Mesh Slip on Walking Shoe Sneaker", reviews: "4.5 out of 5 stars (5-star: 71%)", desc: "300+ bought in past month" }
   ]
 
   const filters = [
@@ -143,81 +148,10 @@ const Ecommerce = () => {
     <Section className=" min-h-screen">
       <div className="flex-1 mr-2">
         <div className="flex items-center" style={{justifyContent:"center"}}>
-          <div className="flex rounded">
-            <input className="w-full px-4 py-2 bg-white " type="text" placeholder="Search..." />
-            <button className="px-4 text-white " style={{ background: "white" }}>
-              <AiOutlineSearch className="text-black " />
-            </button>
-          </div>
+          <SearchBar/>
         </div>
       </div>
       <div className="row mt-5">
-        {/* {openfilter ? (
-          <>
-            <div className="col-xl-3">
-              <div className="card" style={{ backgroundColor: "white" }}>
-                <button className='bg-black hover:bg-blue-700 transition w-full lg:max-w-[65px]
-                   h-12 rounded-lg flex justify-center items-center text-lg'>
-                </button>
-              </div>
-            </div>
-            <div className="col-xl-9">
-              <div className="card">
-                <div className='max-w-[1700px] h-[280px] w-full m-auto relative group'>
-                  <div
-                    style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-                    className='w-full h-full rounded-2xl bg-center bg-cover duration-500'></div>
-                  <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                    <BsChevronCompactLeft onClick={prevSlide} size={30} />
-                  </div>
-                  <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                    <BsChevronCompactRight onClick={nextSlide} size={30} />
-                  </div>
-                  <div className='flex top-4 justify-center py-2'>
-                    {slides.map((slide, slideIndex) => (
-                      <div
-                        key={slideIndex}
-                        onClick={() => goToSlide(slideIndex)}
-                        className='text-2xl cursor-pointer'
-                      >
-                        <RxDotFilled />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="col-xl-12">
-              <div className="card">
-                <div className='max-w-[1700px] h-[280px] w-full m-auto relative group'>
-                  <div
-                    style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-                    className='w-full h-full rounded-2xl bg-center bg-cover duration-500'></div>
-                  <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                    <BsChevronCompactLeft onClick={prevSlide} size={30} />
-                  </div>
-                  <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                    <BsChevronCompactRight onClick={nextSlide} size={30} />
-                  </div>
-                  <div className='flex top-4 justify-center py-2'>
-                    {slides.map((slide, slideIndex) => (
-                      <div
-                        key={slideIndex}
-                        onClick={() => goToSlide(slideIndex)}
-                        className='text-2xl cursor-pointer'
-                      >
-                        <RxDotFilled />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </>
-        )} */}
         <div className="col-xl-12">
           <div className="card">
             <div className='max-w-[1700px] h-[280px] w-full m-auto relative group'>
@@ -225,12 +159,12 @@ const Ecommerce = () => {
                 style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
                 className='w-full h-full rounded-2xl bg-center bg-cover duration-500'></div>
               {/* Left Arrow */}
-              <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                <BsChevronCompactLeft onClick={prevSlide} size={30} />
+              <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-[#d9d9d9] text-white cursor-pointer'>
+                <FiArrowLeft className="text-black" onClick={prevSlide} size={30} />
               </div>
               {/* Right Arrow */}
-              <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                <BsChevronCompactRight onClick={nextSlide} size={30} />
+              <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-[#d9d9d9] text-white cursor-pointer'>
+                <FiArrowRight className="text-black"  onClick={nextSlide} size={30} />
               </div>
               <div className='flex top-4 justify-center py-2'>
                 {slides.map((slide, slideIndex) => (
@@ -239,34 +173,40 @@ const Ecommerce = () => {
                     onClick={() => goToSlide(slideIndex)}
                     className='text-2xl cursor-pointer'
                   >
-                    <RxDotFilled />
+                    {/* <RxDotFilled /> */}
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </div>
-        {data.map((items, index) => (
-          <div className="col-lg-3 col-md-4 m-b30 products" key={index}>
-            <div className=" icon-bx-wraper style-1">
-              <div className=" justify-between items-center">
-                <img className="rounded-2" width="150" height="150" src={items.image} alt="" />
-                <div className="icon-info">
-                  <h5 className="title text-black">{items.name}</h5>
-                </div>
-              </div>
-              <div className="icon-content">
-                <p className="mb-0 amount text-black">{items.desc}</p>
-                <ul className="price ">
-                  <li>
-                    <p className="mb-0 amount text-black">{items.desc}</p>
-                  </li>
-                </ul>
-              </div>
+        <h2 className="text-2xl text-black mt-5">
+          <span className="flex items-center gap-2"><FaArrowTrendUp/> Popular Goods</span> 
+          </h2>
+
+    <div className="flex flex-wrap ">
+      {data.map((item, index) => (
+        <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 p-2 " key={index}>
+          <div className="bg-gradient-to-b from-white to-[#E1E1E1] rounded-lg shadow p-3">
+            <img
+              className="rounded-lg w-full h-auto"
+              src={item.image}
+              alt={item.name}
+            />
+            <div className="mt-4">
+              <h5 className="text-black font-semibold text-base font-semibold">{item.name}</h5>
+              <p className="text-gray-600 mb-0">{item.reviews}</p>
+              <p className="text-gray-600 mb-0">{item.desc}</p>
+              <h3 className="text-black font-semibold">CHC 65.00</h3>
             </div>
+           
           </div>
-        ))}
-        <div className="col-xl-12">
+        </div>
+      ))}
+    </div>
+
+
+        {/* <div className="col-xl-12">
           <div
             className="card"
             style={{
@@ -276,10 +216,9 @@ const Ecommerce = () => {
             }}
           >
             <div className="card-body pt-4">
-           
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Section >
   )
