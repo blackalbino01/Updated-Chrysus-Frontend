@@ -248,7 +248,7 @@ export const DAIDeposite = () => {
                           <div className="flex justify-center items-center ">
                             {loadings ? (
                               <div className="">
-                                <div class="loader" />
+                                <div className="loader" />
                               </div>
                             ) : ""}
                           </div>
@@ -375,7 +375,7 @@ export const DAIDeposite = () => {
                           <div className="relative w-auto my-6 mx-auto max-w-3xl">
                             <div className="border-0 relative flex flex-col w-full outline-none focus:outline-none">
                               <div className="flex items-start justify-between">
-                                <div class="loader" />
+                                <div className="loader" />
                               </div>
                             </div>
                           </div>
@@ -424,7 +424,7 @@ export const DAIDeposite = () => {
                                   <H4>Transaction for Approval</H4>
                                   <h4>In Proccess</h4>
                                   <div className="flex items-start justify-between">
-                                    <div class="loader" />
+                                    <div className="loader" />
                                   </div>
                                   <div className="d-flex flex-column align-items-center justify-content-center col-5">
 

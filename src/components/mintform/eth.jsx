@@ -247,7 +247,7 @@ export const ETHDeposite = () => {
                             <div className="flex justify-center items-center ">
                               {loading ? (
                                 <div className="">
-                                  <div class="loader" />
+                                  <div className="loader" />
                                 </div>
                               ) : ""}
                             </div>

@@ -24,8 +24,8 @@ const Community = () => {
               fontWeight: "600",
               fontSize: "24px",
               lineHeight: "32px",
-              color: "#846424",
             }}
+            className="text-baseAssets"
           >
             Join Our Community
           </span>

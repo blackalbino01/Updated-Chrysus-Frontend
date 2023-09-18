@@ -183,7 +183,7 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(7)}
                 >
                   <Link to={"ecommerce"}>
-                    <img width="20" height="12"
+                    <img width="18" height="6"
                       className="jumbo-button-icon"
                       src={market}
                       alt="umbrella-gold"

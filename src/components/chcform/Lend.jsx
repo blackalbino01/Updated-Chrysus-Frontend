@@ -180,7 +180,7 @@ export const Lend = () => {
                                 <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
                                   <Body className="m-0 mx-3">
                                     <div className="">
-                                      <div class="loader" />
+                                      <div className="loader" />
                                     </div>
                                   </Body>
                                 </div>

@@ -83,12 +83,12 @@ const Ecosystems = () => {
                     }}
                   >
                     <div className="row align-items-end">
-                      <ImageBox image={G1} changeClass="image-box-1" />
-                      <ImageBox image={G2} changeClass="image-box-2" />
+                      <ImageBox image={G1} changeclassName="image-box-1" />
+                      <ImageBox image={G2} changeclassName="image-box-2" />
                     </div>
                     <div className="row">
-                      <ImageBox image={G3} changeClass="image-box-3" />
-                      <ImageBox image={G4} changeClass="image-box-4" />
+                      <ImageBox image={G3} changeclassName="image-box-3" />
+                      <ImageBox image={G4} changeclassName="image-box-4" />
                     </div>
                   </div>
                 </div>

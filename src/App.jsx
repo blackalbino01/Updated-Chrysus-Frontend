@@ -35,6 +35,9 @@ import { WthdrawLending } from "./components/chcform/wthdrawLending";
 import ScrollToTop from "./components/ScrollToTop";
 import { WithdrawStake } from "./components/Dashboard/withdrawStke";
 import Ecommerce from "./components/MarketPlace/ecommerce";
+import SearchPage from "./components/MarketPlace/SearchPage";
+
+
 const Home = lazy(() => import("./components/Home"));
 import { CCoinGold } from './assets';
 
@@ -93,8 +96,10 @@ const App = () => {
               <Route index element={<DaoLandPage />} />
             </Route>
             <Route path="ecommerce" element ={<Ecommerce/>}/>
+          <Route path="searchpage" element={<SearchPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
+
         </Routes>
         <ScrollToTop />
       </BrowserRouter>

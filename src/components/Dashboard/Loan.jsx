@@ -43,8 +43,6 @@ export default function Loan() {
   });
 
 
-
-
   return (
     <div className=" min-h-screen">
       <Section>
